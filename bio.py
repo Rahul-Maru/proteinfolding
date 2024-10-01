@@ -1,13 +1,18 @@
 """Plots the atoms in a protein using VPython"""
-
+from random import randint
 import vpython as vp
 
+
+SHOW_HETAMS = False
+
+# radius of the atoms
 RAD = 0.8
 
-COLORS = {'C': vp.vector(0.42, 0.42, 0.42),
-		  'N': vp.vector(0.04, 0.02, 0.99),
-		  'O': vp.vector(0.99, 0.0, 0.01),
-		  'S': vp.vector(0.98, 0.5, 0.02),
+# colors for depending on atom and chain
+COLORS = {'C': [vp.vector(0.5, 0.42, 0.42), vp.vector(0.42, 0.5, 0.42), vp.vector(0.42, 0.42, 0.5)],
+		  'N': [vp.vector(0, 0, 1), vp.vector(0, 0.52, 0.87), vp.vector(0.13, 0, 0.75)],
+		  'O': [vp.vector(1, 0, 0), vp.vector(0.85, 0.2, 0.1), vp.vector(0.75, 0, 0.2)],
+		  'S': [vp.vector(1, 0.5, 0), vp.vector(1, 0.58, 0), vp.vector(1, 0.7, 0.1)],
 		  'HETATM': vp.vector(0.85, 0.14, 0.85)}
 
 with open("proteins/1rwt.pdb") as file:
@@ -29,14 +34,25 @@ print(len(s), " Sulfur (orange),")
 print(len(hetatms), " Hetero-atoms (magenta)")
 
 for i, atom in enumerate(atoms):
-	ele = atom[77]
 	spr = vp.sphere()
-	spr.radius = RAD
-	spr.color = COLORS[ele]
-	spr.pos = vp.vector(x[i], y[i], z[i])
 
-for i, j, k in zip(hx, hy, hz):
-	spr = vp.sphere()
+	elem = atom[77]
+	chain = ord(atom[21]) - 65 # convert the chain letter to index
+	# pick the appropriate color based on element and chain
+	if chain <= 2:
+		spr.color = COLORS[elem][chain]
+	else:
+		# if the chain number exceeds the number of available colors,
+		# loop through the colors
+		spr.color = COLORS[elem][chain % 3]
+
+	spr.pos = vp.vector(x[i], y[i], z[i])
 	spr.radius = RAD
-	spr.color = COLORS['HETATM']
-	spr.pos = vp.vector(i, j, k)
+	# get the appropriate color based on element and side chain
+
+if SHOW_HETAMS:
+	for i, j, k in zip(hx, hy, hz):
+		spr = vp.sphere()
+		spr.radius = RAD
+		spr.color = COLORS['HETATM']
+		spr.pos = vp.vector(i, j, k)
