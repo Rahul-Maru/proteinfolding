@@ -10,7 +10,7 @@ COLORS = {'C': vp.vector(0.42, 0.42, 0.42),
 		  'S': vp.vector(0.98, 0.5, 0.02),
 		  'HETATM': vp.vector(0.85, 0.14, 0.85)}
 
-with open("1rwt.pdb") as file:
+with open("proteins/1rwt.pdb") as file:
 	lines = file.readlines()
 
 # extract only the ATOM and HETATM lines from the database and their coords
@@ -20,12 +20,6 @@ x, y, z = [[float(atom[i:i+8]) for atom in atoms] for i in range(30, 54, 8)]
 hx, hy, hz = [[float(hetatm[i:i+8]) for hetatm in hetatms] for i in range(30, 54, 8)]
 # sort atoms by element
 c, o, n, s = [list(filter(lambda x: x[77] == e, atoms)) for e in ['C', 'O', 'N', 'S']]
-
-# extract lists of x, y, z coordinates for each element
-# cx, cy, cz = [[float(atom[i:i+8]) for atom in c] for i in range(30, 54, 8)]
-# nx, ny, nz = [[float(atom[i:i+8]) for atom in n] for i in range(30, 54, 8)]
-# ox, oy, oz = [[float(atom[i:i+8]) for atom in o] for i in range(30, 54, 8)]
-# sx, sy, sz = [[float(atom[i:i+8]) for atom in s] for i in range(30, 54, 8)]
 
 print(len(atoms), " Atoms:")
 print(len(c), " Carbon (grey),")
