@@ -2,10 +2,8 @@
 import numpy as np
 import vpython as vp
 import argparse
+from Protein import Protein, CHAIN_ID
 
-#——UTILS——
-# convert the chain letter of an atom to a numerical index
-CHAIN_ID = lambda a : ord(a[21]) - 65
 
 #——DEFAULTS——
 DEF_PROT = "5fil"
@@ -18,7 +16,7 @@ RAD = 0.8
 # opacity of HETATMs (WARNING: changing this may cause severe lag)
 OPCTY = 1
 
-# colors for depending on atom and chain
+# colors for depending on atom, chain, and rainbow mode
 COLORS = {'C': [vp.vector(0.5, 0.42, 0.42), vp.vector(0.42, 0.5, 0.42), vp.vector(0.42, 0.42, 0.5)],
 		'N': [vp.vector(0, 0, 1), vp.vector(0, 0.52, 0.93), vp.vector(0.13, 0, 0.75)],
 		'O': [vp.vector(1, 0, 0), vp.vector(0.85, 0.2, 0.1), vp.vector(0.75, 0, 0.2)],
@@ -27,7 +25,7 @@ COLORS = {'C': [vp.vector(0.5, 0.42, 0.42), vp.vector(0.42, 0.5, 0.42), vp.vecto
 
 
 def main():
-	# parses the command line to get the protein
+	# parses the command line to get the protein file and conditional arguments
 	parser = argparse.ArgumentParser(description="Renders the atom in a protein")
 	parser.add_argument('pdbfile', type=str, nargs='?', default=DEF_PROT,
 					 help='the PDB file containing the protein data')
@@ -44,48 +42,25 @@ def main():
 	rainbow = args.rainbow or RAINBOW_OVR
 	show_hetamts = args.show_hetatms or SHOW_HETAMS_OVR
 
-	with open(f"{prot_path}") as file:
-		lines = file.readlines()
-
-	# extract only the ATOM and HETATM lines from the database and their coords
-	atoms = list(filter(lambda l : l[:4] == "ATOM", lines))
-	hetatms = list(filter(lambda l : l[:6] == "HETATM", lines))
-	x, y, z = [[float(atom[i:i+8]) for atom in atoms] for i in range(30, 54, 8)]
-	hx, hy, hz = [[float(hetatm[i:i+8]) for hetatm in hetatms] for i in range(30, 54, 8)]
-	# sort atoms by element
-	c, o, n, s = [list(filter(lambda x: x[77] == e, atoms)) for e in ['C', 'O', 'N', 'S']]
-
-	chainlens = []
-	for atom in atoms:
-		try:
-			chainlens[CHAIN_ID(atom)] += 1
-		except:
-			chainlens.append(1)
+	# load the protein
+	p = Protein(prot_path)
 
 	print(f"Rendering protein at {prot_path}")
-	print(f"{len(chainlens)} Chains,")
-	print(len(atoms), " Atoms:")
-	print(len(c), " Carbon (grey),")
-	print(len(n), " Nitrogen (blue),")
-	print(len(o), " Oxygen (red),")
-	print(len(s), " Sulfur (orange),")
-	print(len(hetatms), " Hetero-atoms (magenta)")
+	p.info()
 
-	rcos = lambda x : min(1, max(0, np.cos(x) + 0.5))
-	gcos = lambda x : min(1, max(0, np.cos(x - 2*np.pi/3) + 0.5))
-	bcos = lambda x : min(1, max(0, np.cos(x + 2*np.pi/3) + 0.5))
 
-	for i, atom in enumerate(atoms):
+	for i, atom in enumerate(p.atoms):
 		spr = vp.sphere()
-		spr.pos = vp.vector(x[i], y[i], z[i])
+		spr.pos = vp.vector(p.x[i], p.y[i], p.z[i])
 		spr.radius = RAD
 
 		elem = atom[77] # get the element of the atom
 		chain = CHAIN_ID(atom)
 
 		if rainbow:
-			rb_pos = 2*np.pi * (i - sum(chainlens[:chain])) / chainlens[chain]
-			spr.color = vp.vector(rcos(rb_pos), gcos(rb_pos), bcos(rb_pos))
+			# calculates the relative position of the atom in its chain reduced to the range [0, 2π]
+			rb_pos = 2*np.pi * (i - sum(p.chainlens[:chain])) / p.chainlens[chain]
+			spr.color = hue_to_RGB(rb_pos)
 
 		else:
 			# pick the appropriate color based on element and chain
@@ -99,12 +74,20 @@ def main():
 		# get the appropriate color based on element and side chain
 
 	if show_hetamts:
-		for i, j, k in zip(hx, hy, hz):
+		for i, j, k in zip(p.hx, p.hy, p.hz):
 			spr = vp.sphere()
 			spr.radius = RAD
 			spr.pos = vp.vector(i, j, k)
 			spr.color = COLORS['HETATM'][int(rainbow)]
 			spr.opacity = OPCTY
+
+def hue_to_RGB(θ: float) -> vp.vector:
+	"""Given a hue value θ ∈ [0, 2π] and converts it to an RGB vector """
+	rcos = lambda x : min(1, max(0, np.cos(x) + 0.5))
+	gcos = lambda x : min(1, max(0, np.cos(x - 2*np.pi/3) + 0.5))
+	bcos = lambda x : min(1, max(0, np.cos(x + 2*np.pi/3) + 0.5))
+
+	return vp.vector(rcos(θ), gcos(θ), bcos(θ))
 
 if __name__ == "__main__":
 	main()
