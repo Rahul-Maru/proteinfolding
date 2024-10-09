@@ -6,7 +6,7 @@ from Protein import Protein, CHAIN_ID
 
 
 #——DEFAULTS——
-DEF_PROT = "5fil"
+DEF_PROT = "2bv6"
 # Overrides. If set to true, the respective flag will be assumed to be present
 SHOW_HETAMS_OVR = False # Shows Heterogens
 RAINBOW_OVR = False # Displays the atoms with a rainbow color scheme
@@ -17,11 +17,12 @@ RAD = 0.8
 OPCTY = 1
 
 # colors for depending on atom, chain, and rainbow mode
-COLORS = {'C': [vp.vector(0.5, 0.42, 0.42), vp.vector(0.42, 0.5, 0.42), vp.vector(0.42, 0.42, 0.5)],
-		'N': [vp.vector(0, 0, 1), vp.vector(0, 0.52, 0.93), vp.vector(0.13, 0, 0.75)],
-		'O': [vp.vector(1, 0, 0), vp.vector(0.85, 0.2, 0.1), vp.vector(0.75, 0, 0.2)],
-		'S': [vp.vector(1, 0.5, 0), vp.vector(1, 0.58, 0), vp.vector(1, 0.7, 0.1)],
-		'HETATM': [vp.vector(0.08, 0.69, 0.08), vp.vector(1, 0.96, 0.85)]} # 0 - Normal, 1 - Rainbow
+COLORS = {'C': [(0.5, 0.42, 0.42), (0.42, 0.5, 0.42), (0.42, 0.42, 0.5)],
+		'N': [(0, 0, 1), (0, 0.52, 0.93), (0.13, 0, 0.75)],
+		'O': [(1, 0, 0), (0.85, 0.2, 0.1), (0.75, 0, 0.2)],
+		'S': [(1, 0.5, 0), (1, 0.58, 0), (1, 0.7, 0.1)],
+		'HETATM': [(0.08, 0.69, 0.08), (1, 0.96, 0.85)], # 0 - Normal, 1 - Rainbow
+		'CENTRD': [(1, 1, 1), (0.2, 0.21, 0.24)]} # 0 - Normal, 1 - Rainbow
 
 
 def main():
@@ -58,36 +59,38 @@ def main():
 		chain = CHAIN_ID(atom)
 
 		if rainbow:
+			# colors the atoms in a rainbow spectrum
 			# calculates the relative position of the atom in its chain reduced to the range [0, 2π]
 			rb_pos = 2*np.pi * (i - sum(p.chainlens[:chain])) / p.chainlens[chain]
-			spr.color = hue_to_RGB(rb_pos)
-
+			spr.color = vp.vector(*hue_to_RGB(rb_pos))
 		else:
 			# pick the appropriate color based on element and chain
-			if chain <= 2:
-				spr.color = COLORS[elem][chain]
-			else:
-				# if the chain number exceeds the number of available colors,
-				# loop through the colors
-				spr.color = COLORS[elem][chain % 3]
-
-		# get the appropriate color based on element and side chain
+			# if the chain number exceeds the number of available colors,
+			# loop through the colors
+			spr.color = vp.vector(*COLORS[elem][chain % 3])
 
 	if show_hetamts:
 		for i, j, k in zip(p.hx, p.hy, p.hz):
 			spr = vp.sphere()
-			spr.radius = RAD
 			spr.pos = vp.vector(i, j, k)
-			spr.color = COLORS['HETATM'][int(rainbow)]
+			spr.radius = RAD
+			spr.color = vp.vector(*COLORS['HETATM'][int(rainbow)])
 			spr.opacity = OPCTY
 
-def hue_to_RGB(θ: float) -> vp.vector:
+	# display the centroid
+	cent = vp.sphere()
+	cent.pos = vp.vector(*tuple(p.centroid()))
+	cent.radius = RAD*3
+	cent.color = vp.vector(*COLORS['CENTRD'][int(rainbow)])
+
+
+def hue_to_RGB(θ: float) -> tuple:
 	"""Given a hue value θ ∈ [0, 2π] and converts it to an RGB vector """
 	rcos = lambda x : min(1, max(0, np.cos(x) + 0.5))
 	gcos = lambda x : min(1, max(0, np.cos(x - 2*np.pi/3) + 0.5))
 	bcos = lambda x : min(1, max(0, np.cos(x + 2*np.pi/3) + 0.5))
 
-	return vp.vector(rcos(θ), gcos(θ), bcos(θ))
+	return (rcos(θ), gcos(θ), bcos(θ))
 
 if __name__ == "__main__":
 	main()

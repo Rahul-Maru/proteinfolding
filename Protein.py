@@ -1,3 +1,5 @@
+import numpy as np
+
 #——UTILS——
 # convert the chain letter of an atom to a numerical index
 CHAIN_ID = lambda a : ord(a[21]) - 65
@@ -44,4 +46,11 @@ class Protein:
 		print(len(s), " Sulfur (orange),")
 		print(len(self.hetatms), " Hetero-atoms (magenta)")
 
+	def centroid(self):
+		sum = np.zeros(3)
+
+		for x, y, z in zip(self.x, self.y, self.z):
+			sum += np.array([x, y, z])
+
+		return sum/len(self.atoms)
 
