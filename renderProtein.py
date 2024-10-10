@@ -18,11 +18,12 @@ OPCTY = 1
 
 # colors for depending on atom, chain, and rainbow mode
 COLORS = {'C': [(0.5, 0.42, 0.42), (0.42, 0.5, 0.42), (0.42, 0.42, 0.5)],
-		'N': [(0, 0, 1), (0, 0.52, 0.93), (0.13, 0, 0.75)],
+		'N': [(0, 0, 1), (0, 0.52, 0.93), (0.15, 0, 0.78)],
 		'O': [(1, 0, 0), (0.85, 0.2, 0.1), (0.75, 0, 0.2)],
 		'S': [(1, 0.5, 0), (1, 0.58, 0), (1, 0.7, 0.1)],
-		'HETATM': [(0.08, 0.69, 0.08), (1, 0.96, 0.85)], # 0 - Normal, 1 - Rainbow
-		'CENTRD': [(1, 1, 1), (0.2, 0.21, 0.24)]} # 0 - Normal, 1 - Rainbow
+		'HETATM': [(0.08, 0.7, 0.08), (1, 0.96, 0.85)],	#   v
+		'CENTRD': [(1, 1, 1), (0.2, 0.21, 0.24)],		# 0 - Normal, 1 - Rainbow
+		'HETCTD': [(0.2, 1, 0.65), (0.64, 0.6, 0.55)]}	#   ^
 
 
 def main():
@@ -34,7 +35,7 @@ def main():
 	parser.add_argument('--rainbow', action="store_true", dest="rainbow",
 					 help="Using this flag colors the atoms in a rainbow")
 
-	parser.add_argument('--show_hetatms', action='store_true', dest='show_hetatms',
+	parser.add_argument('--hetatm', action='store_true', dest='show_hetatms',
 					 help="Shows Heterogens")
 
 	args = parser.parse_args()
@@ -69,6 +70,13 @@ def main():
 			# loop through the colors
 			spr.color = vp.vector(*COLORS[elem][chain % 3])
 
+	# display the centroid
+	if len(p.atoms) > 0:
+		cent = vp.sphere()
+		cent.pos = vp.vector(*tuple(p.centroid()))
+		cent.radius = RAD*2
+		cent.color = vp.vector(*COLORS['CENTRD'][int(rainbow)])
+
 	if show_hetamts:
 		for i, j, k in zip(p.hx, p.hy, p.hz):
 			spr = vp.sphere()
@@ -77,11 +85,13 @@ def main():
 			spr.color = vp.vector(*COLORS['HETATM'][int(rainbow)])
 			spr.opacity = OPCTY
 
-	# display the centroid
-	cent = vp.sphere()
-	cent.pos = vp.vector(*tuple(p.centroid()))
-	cent.radius = RAD*3
-	cent.color = vp.vector(*COLORS['CENTRD'][int(rainbow)])
+		if len(p.hetatms) > 0:
+			# display the hetatm centroid
+			cent = vp.sphere()
+			cent.pos = vp.vector(*tuple(p.centroid(True)))
+
+			cent.radius = RAD*1.8
+			cent.color = vp.vector(*COLORS['HETCTD'][int(rainbow)])
 
 
 def hue_to_RGB(θ: float) -> tuple:

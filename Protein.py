@@ -46,11 +46,11 @@ class Protein:
 		print(len(s), " Sulfur (orange),")
 		print(len(self.hetatms), " Hetero-atoms (magenta)")
 
-	def centroid(self):
+	def centroid(self, het=False):
+		"""Calculates the centroid of the protein or the heterogens"""
 		sum = np.zeros(3)
-
-		for x, y, z in zip(self.x, self.y, self.z):
+		for x, y, z in (zip(self.hx, self.hy, self.hz) if het else zip(self.x, self.y, self.z)):
 			sum += np.array([x, y, z])
 
-		return sum/len(self.atoms)
+		return sum/len(self.hetatms if het else self.atoms)
 
