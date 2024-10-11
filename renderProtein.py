@@ -6,7 +6,7 @@ from Protein import Protein, CHAIN_ID
 
 
 #——DEFAULTS——
-DEF_PROT = "2bv6"
+DEF_PROT = "1b41"
 # Overrides. If set to true, the respective flag will be assumed to be present
 SHOW_HETAMS_OVR = False # Shows Heterogens
 RAINBOW_OVR = False # Displays the atoms with a rainbow color scheme
@@ -50,7 +50,6 @@ def main():
 	print(f"Rendering protein at {prot_path}")
 	p.info()
 
-
 	for i, atom in enumerate(p.atoms):
 		spr = vp.sphere()
 		spr.pos = vp.vector(p.x[i], p.y[i], p.z[i])
@@ -62,8 +61,8 @@ def main():
 		if rainbow:
 			# colors the atoms in a rainbow spectrum
 			# calculates the relative position of the atom in its chain reduced to the range [0, 2π]
-			rb_pos = 2*np.pi * (i - sum(p.chainlens[:chain])) / p.chainlens[chain]
-			spr.color = vp.vector(*hue_to_RGB(rb_pos))
+			rel_pos = 2*np.pi * (i - len(sum(p.chains[:chain], []))) / len(p.chains[chain])
+			spr.color = vp.vector(*hue_to_RGB(rel_pos))
 		else:
 			# pick the appropriate color based on element and chain
 			# if the chain number exceeds the number of available colors,
@@ -71,31 +70,33 @@ def main():
 			spr.color = vp.vector(*COLORS[elem][chain % 3])
 
 	# display the centroid
-	if len(p.atoms) > 0:
-		cent = vp.sphere()
-		cent.pos = vp.vector(*tuple(p.centroid()))
-		cent.radius = RAD*2
-		cent.color = vp.vector(*COLORS['CENTRD'][int(rainbow)])
+	cent = vp.sphere()
+	cent.pos = vp.vector(*tuple(p.centroid()))
+	cent.radius = RAD*2
+	cent.color = vp.vector(*COLORS['CENTRD'][int(rainbow)])
+	# vp.scene.center = cent.pos
 
-	if show_hetamts:
-		for i, j, k in zip(p.hx, p.hy, p.hz):
+	if show_hetamts and len(p.hetatms) > 0:
+		hx, hy, hz = p.get_xyz(-2)
+
+		for hi, hj, hk in zip(hx, hy, hz):
 			spr = vp.sphere()
-			spr.pos = vp.vector(i, j, k)
+			spr.pos = vp.vector(hi, hj, hk)
 			spr.radius = RAD
 			spr.color = vp.vector(*COLORS['HETATM'][int(rainbow)])
 			spr.opacity = OPCTY
 
-		if len(p.hetatms) > 0:
-			# display the hetatm centroid
-			cent = vp.sphere()
-			cent.pos = vp.vector(*tuple(p.centroid(True)))
+		# display the hetatm centroid
+		hcent = vp.sphere()
+		hcent.pos = vp.vector(*tuple(p.centroid()))
 
-			cent.radius = RAD*1.8
-			cent.color = vp.vector(*COLORS['HETCTD'][int(rainbow)])
+		hcent.radius = RAD*1.8
+		hcent.color = vp.vector(*COLORS['HETCTD'][int(rainbow)])
 
 
 def hue_to_RGB(θ: float) -> tuple:
-	"""Given a hue value θ ∈ [0, 2π] and converts it to an RGB vector """
+	"""Given a hue value θ ∈ [0, 2π] and converts it to an RGB vector."""
+
 	rcos = lambda x : min(1, max(0, np.cos(x) + 0.5))
 	gcos = lambda x : min(1, max(0, np.cos(x - 2*np.pi/3) + 0.5))
 	bcos = lambda x : min(1, max(0, np.cos(x + 2*np.pi/3) + 0.5))
