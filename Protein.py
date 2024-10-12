@@ -1,19 +1,6 @@
 from functools import cached_property
 from typing import Literal
-import numpy as np
-
-#——UTILS——
-# convert the chain letter of an atom to a numerical index
-CHAIN_ID = lambda atom : ord(atom[21]) - 65
-# gets the residue number from an atom
-RES_NUM = lambda atom : int(atom[22:26])
-
-# map from 3- to 1-letter codes of the amino acids (+ the blank residue)
-AA_MAP = {'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D', 'CYS': 'C',
-		  'GLU': 'E', 'GLN': 'Q', 'GLY': 'G', 'HIS': 'H', 'ILE': 'I',
-		  'LEU': 'L', 'LYS': 'K', 'MET': 'M', 'PHE': 'F', 'PRO': 'P',
-		  'SER': 'S', 'THR': 'T', 'TRP': 'W', 'TYR': 'Y', 'VAL': 'V',
-		  'MSE': 'SeM', '___': '-'}
+from consts import AA_MAP, CHAIN_ID, RES_NUM, np
 
 class Protein:
 	"""A class to store data about the spacial information of a protein."""
@@ -21,6 +8,7 @@ class Protein:
 	def __init__(self, prot_path, display_mode="normal") -> None:
 		"""Initializes a protein."""
 
+		self.path = prot_path
 		self.display_mode = display_mode
 
 		# opens the file and splits it into lines
@@ -104,7 +92,8 @@ class Protein:
 	def get_record(self, record: str):
 		"""Returns all the entries in self with the given record."""
 
-		return list(filter(lambda l : l[:4] == record, self.lines))
+		return list(filter(lambda l : l[:6].strip() == record, self.lines))
+
 
 	def get_ss(self, ss_type: Literal['HELIX', 'SHEET']):
 		"""Returns the residues of all the instances of the given secondary structure"""
@@ -159,7 +148,7 @@ class Protein:
 {len(n)} Nitrogen{"" if rb else" (blue)"},\n\
 {len(o)} Oxygen{"" if rb else" (red)"},\n\
 {len(s)} Sulfur{"" if rb else" (orange)"},\n\
-{len(self.hetatms)} Hetero-atoms ({"white" if rb else "green"}, centroid: light {"grey" if rb else "green"}).\n\
+{len(self.hetatms)} Hetero-atoms ({"white" if rb else "green"}) (centroid: light {"grey" if rb else "green"}).\n\
 Sequence: {self.seq()}'
 
 		return s
