@@ -45,10 +45,13 @@ def main():
 	show_hetamts = args.show_hetatms or SHOW_HETAMS_OVR
 
 	# load the protein
-	p = Protein(prot_path)
+	if rainbow: p = Protein(prot_path, "rainbow")
+	else: p = Protein(prot_path)
 
 	print(f"Rendering protein at {prot_path}")
-	p.info()
+	print(p)
+	print(p.get_ss('HELIX'))
+	print(p.get_ss('SHEET'))
 
 	for i, atom in enumerate(p.atoms):
 		spr = vp.sphere()

@@ -1,5 +1,5 @@
-1. Getting the centroid of a protein and of a ligand 
-2. Splitting the pdb file into monomeric protein chains
+X Getting the centroid of a protein and of a ligand
+X Splitting the pdb file into monomeric protein chains
 3. Extracting residues forming a particular secondary structure
 
 charge coloration
