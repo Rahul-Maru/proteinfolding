@@ -11,7 +11,7 @@ def render(p: Protein, dp_mode: list[bool] = [False, False]):
 
 	rainbow, show_hetatms = (*dp_mode,)
 
-	print(f"Rendering protein at {p.path}")
+	print(f'Rendering protein at "{p.path}"')
 	print(p)
 	print(p.get_ss('HELIX'))
 	print(p.get_ss('SHEET'))
@@ -33,14 +33,19 @@ def render(p: Protein, dp_mode: list[bool] = [False, False]):
 			# pick the appropriate color based on element and chain
 			# if the chain number exceeds the number of available colors,
 			# loop through the colors
-			spr.color = vp.vector(*COLORS[elem][chain % 3])
+			try:
+				spr.color = vp.vector(*COLORS[elem][chain % 3])
+			except KeyError:
+				# use the hetatm color if for some reason an element other than the
+				#  standard 5 is encountered in an ATOM record
+				spr.color = vp.vector(*COLORS['HETATM'][int(rainbow)])
 
 	# display the centroid
 	cent = vp.sphere()
 	cent.pos = vp.vector(*tuple(p.centroid()))
 	cent.radius = RAD*2
 	cent.color = vp.vector(*COLORS['CENTRD'][int(rainbow)])
-	# vp.scene.center = cent.pos
+	vp.scene.center = cent.pos
 
 	if show_hetatms and len(p.hetatms) > 0:
 		hx, hy, hz = p.get_xyzlist(-2)

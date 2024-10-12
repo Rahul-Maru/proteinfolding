@@ -1,6 +1,6 @@
 from functools import cached_property
 from typing import Literal
-from consts import AA_MAP, CHAIN_ID, RES_NUM, np
+from consts import AA_MAP, CHAIN_ID, ELEMS, RES_NUM, np
 
 class Protein:
 	"""A class to store data about the spacial information of a protein."""
@@ -42,11 +42,28 @@ class Protein:
 		"""self.atoms split by residue."""
 
 		res = []
+
+		# yields the atom and residue number of the next TER record
+		ter = self.terminations()
+		ter_atm_no, ter_res_no = next(ter)
+		# start point of the current chain
+		st = 0
 		for atom in self.atoms:
-			n = RES_NUM(atom)
+			# If the loop has crossed the TER record, update st and yield the next TER record,
+			#  moving to the next chain
+			if int(atom[6:11]) > ter_atm_no:
+				res.append({'code': 'TER', 'n': ter_res_no + 1, 'atoms': []})
+				st = ter_res_no + 1
+				ter_atm_no, ter_res_no = next(ter)
+				ter_res_no += st
+
+			# each chain residue number must have st added to it to avoid overlaps between
+			#   residues with the same number in different chain
+			n = RES_NUM(atom) + st
+
 			try:
 				# (try to) add the new atom to its residue
-				res[n-1]['atoms'].append(atom)
+				res[n - 1]['atoms'].append(atom)
 			except IndexError:
 				# if this is the first atom, create a new residue entry
 
@@ -61,15 +78,16 @@ class Protein:
 
 				res.append({'code': atom[17:20], 'n': n, 'atoms': [atom]})
 
+
 		return res
 
 	@cached_property
 	def elems(self):
 		"""Splits self.atoms into different lists based on the element of each atom."""
 
-		c, n, o, s = [list(filter(lambda x: x[77] == e, self.atoms))
-				for e in ['C', 'N', 'O', 'S']]
-		return (c, n, o, s)
+		h, c, n, o, s = [list(filter(lambda x: x[77] == elmt, self.atoms))
+				for elmt in ELEMS]
+		return (h, c, n, o, s)
 
 	def get_xyzlist(self, chain=-1):
 		"""Extracts coordinates from a list as 3 separate lists. -1 is the full atoms list,
@@ -136,19 +154,28 @@ class Protein:
 
 		return ''.join([AA_MAP[res['code']] for res in residues])
 
+	def terminations(self):
+		"""Successively yield the positions of each TER record in the file."""
+		ters = self.get_record('TER')
+		for ter in ters:
+			yield (int(ter[6:11]), int(ter[22:26]))
+
 	def __str__(self):
 		"""Outputs information about the protein to the terminal."""
 
-		c, n, o, s = self.elems
+		h, c, n, o, s = self.elems
 		rb = self.display_mode == 'rainbow'
 
-		s = f'{len(self.chains)} Chains,\n\
+		s = f'Sequence (- represents a gap in sequence, | represents the end of a chain):\n\
+{self.seq()}.\n\
+{len(self.chains)} Chains,\n\
 {len(self.atoms)} Atoms (centroid: {"grey" if rb else "white"}):\n\
+{len(h)} Hydrogen{"" if rb else" (light grey)"},\n\
 {len(c)} Carbon{"" if rb else" (grey)"},\n\
 {len(n)} Nitrogen{"" if rb else" (blue)"},\n\
 {len(o)} Oxygen{"" if rb else" (red)"},\n\
 {len(s)} Sulfur{"" if rb else" (orange)"},\n\
-{len(self.hetatms)} Hetero-atoms ({"white" if rb else "green"}) (centroid: light {"grey" if rb else "green"}).\n\
-Sequence: {self.seq()}'
+{len(self.hetatms)} Hetero-atoms ({"white" if rb else "green"}) (centroid: light {"grey" if rb else "green"}).'
 
 		return s
+
