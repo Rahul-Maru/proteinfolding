@@ -2,7 +2,7 @@
 import numpy as np
 
 #——DEFAULTS——
-DEF_PROT = "1b41"
+DEF_PROT = "2bv6"
 # Overrides. If set to true, the respective flag will be assumed to be present
 SHOW_HETAMS_OVR = False # Shows Heterogens
 RAINBOW_OVR = False # Displays the atoms with a rainbow color scheme

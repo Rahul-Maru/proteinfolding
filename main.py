@@ -11,22 +11,24 @@ def main():
 					 help='the PDB file containing the protein data')
 
 	parser.add_argument('--rainbow', action="store_true", dest="rainbow",
-					 help="Using this flag colors the atoms in a rainbow")
+					 help="applies a rainbow color scheme to the atoms")
 
 	parser.add_argument('--hetatm', action='store_true', dest='show_hetatms',
-					 help="Shows Heterogens")
+					 help="shows heterogens")
 
 	args = parser.parse_args()
 	prot_file = args.pdbfile
 	prot_path = f"proteins/{prot_file}.pdb"
+
+	# if the OVR variables are set to true, set the flag to true
 	rainbow = args.rainbow or RAINBOW_OVR
 	show_hetatms = args.show_hetatms or SHOW_HETAMS_OVR
+	dp = (rainbow, show_hetatms)
 
 	# load the protein
-	if rainbow: p = Protein(prot_path, "rainbow")
-	else: p = Protein(prot_path)
+	p = Protein(prot_path, dp)
 
-	render(p, [rainbow, show_hetatms])
+	render(p)
 
 if __name__ == "__main__":
 	main()

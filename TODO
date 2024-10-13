@@ -1,6 +1,9 @@
 X Getting the centroid of a protein and of a ligand
 X Splitting the pdb file into monomeric protein chains
-3. Extracting residues forming a particular secondary structure
+X Extracting residues forming a particular secondary structure
+
+make sure to not ignore hetatms
+do not consider all helices and sheets as one
 
 charge coloration
 

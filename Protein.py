@@ -5,11 +5,13 @@ from consts import AA_MAP, CHAIN_ID, ELEMS, RES_NUM, np
 class Protein:
 	"""A class to store data about the spacial information of a protein."""
 
-	def __init__(self, prot_path, display_mode="normal") -> None:
-		"""Initializes a protein."""
+	def __init__(self, prot_path, dp_mode: tuple[bool] = [False, False]) -> None:
+		"""Initializes a protein. dp_mode is a list of the following values:
+		color_scheme: False (normal), True (rainbow)
+		het_atms: False (only shows normal atoms), True (shows hetatms as well)."""
 
 		self.path = prot_path
-		self.display_mode = display_mode
+		self.display_mode = dp_mode
 
 		# opens the file and splits it into lines
 		with open(f"{prot_path}") as file:
@@ -117,10 +119,10 @@ class Protein:
 		"""Returns the residues of all the instances of the given secondary structure"""
 
 		if ss_type == 'HELIX':
-			helices = [atom for atom in self.atoms if atom[:6] == 'HELIX']
+			helices = self.get_record('HELIX')
 			return sum([self.res_subset(int(ln[21:25]), int(ln[33:37])) for ln in helices], [])
 		else:
-			sheets = [atom for atom in self.atoms if atom[:6] == 'SHEET']
+			sheets = self.get_record('SHEET')
 			return sum([self.res_subset(int(ln[22:26]), int(ln[33:37])) for ln in sheets], [])
 
 
@@ -164,18 +166,20 @@ class Protein:
 		"""Outputs information about the protein to the terminal."""
 
 		h, c, n, o, s = self.elems
-		rb = self.display_mode == 'rainbow'
+		rb, hetatm = self.display_mode
+		lc = len(self.chains)
+		hetcolor = f'({("white" if rb else "green")}) (centroid: {"light grey" if rb else "teal"})' if hetatm else '(hidden)'
 
 		s = f'Sequence (- represents a gap in sequence, | represents the end of a chain):\n\
 {self.seq()}.\n\
-{len(self.chains)} Chains,\n\
+{lc} Chain{"s" if lc != 1 else ""},\n\
 {len(self.atoms)} Atoms (centroid: {"grey" if rb else "white"}):\n\
 {len(h)} Hydrogen{"" if rb else" (light grey)"},\n\
 {len(c)} Carbon{"" if rb else" (grey)"},\n\
 {len(n)} Nitrogen{"" if rb else" (blue)"},\n\
 {len(o)} Oxygen{"" if rb else" (red)"},\n\
 {len(s)} Sulfur{"" if rb else" (orange)"},\n\
-{len(self.hetatms)} Hetero-atoms ({"white" if rb else "green"}) (centroid: light {"grey" if rb else "green"}).'
+{len(self.hetatms)} Heterogens {hetcolor}.'
 
 		return s
 

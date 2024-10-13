@@ -4,17 +4,20 @@ from consts import *
 from Protein import Protein
 
 
-def render(p: Protein, dp_mode: list[bool] = [False, False]):
-	"""Renders the Protein p in vpython. dp_mode is a list of the following values:
-	color_scheme: 0 (normal), 1 (rainbow)
-	het_atms: 0 (only shows normal atoms), 1 (shows hetatms as well)."""
+def render(p: Protein):
+	"""Renders a Protein p in vpython using the sphere model."""
 
-	rainbow, show_hetatms = (*dp_mode,)
+	rainbow, show_hetatms = p.display_mode
 
 	print(f'Rendering protein at "{p.path}"')
+	print("———α HELIX RESIDUES———")
+	for r in p.get_ss('HELIX'):
+		print(f"{r['code']} - {r['n']}")
+	print("———β SHEET RESIDUES———")
+	for r in p.get_ss('SHEET'):
+		print(f"{r['code']} - {r['n']}")
 	print(p)
-	print(p.get_ss('HELIX'))
-	print(p.get_ss('SHEET'))
+
 
 	for i, atom in enumerate(p.atoms):
 		spr = vp.sphere()
@@ -45,7 +48,11 @@ def render(p: Protein, dp_mode: list[bool] = [False, False]):
 	cent.pos = vp.vector(*tuple(p.centroid()))
 	cent.radius = RAD*2
 	cent.color = vp.vector(*COLORS['CENTRD'][int(rainbow)])
+	print("Position of protein's centroid (Å):", cent.pos)
+
+	# Center the camera on the centroid
 	vp.scene.center = cent.pos
+
 
 	if show_hetatms and len(p.hetatms) > 0:
 		hx, hy, hz = p.get_xyzlist(-2)
@@ -63,3 +70,6 @@ def render(p: Protein, dp_mode: list[bool] = [False, False]):
 
 		hcent.radius = RAD*1.8
 		hcent.color = vp.vector(*COLORS['HETCTD'][int(rainbow)])
+
+		print("Position of heterogens' centroid (Å):", hcent.pos)
+
