@@ -1,8 +1,8 @@
-"""CONSTANTS. TO CHANGE THE PARAMS, MODIFY THIS FILE"""
+"""CONSTANTS. TO CHANGE THE PARAMS, MODIFY THIS FILE."""
 import numpy as np
 
 #——DEFAULTS——
-DEF_PROT = "2bv6"
+DEF_PROT = "1luc"
 # Overrides. If set to true, the respective flag will be assumed to be present
 SHOW_HETAMS_OVR = False # Shows Heterogens
 RAINBOW_OVR = False # Displays the atoms with a rainbow color scheme

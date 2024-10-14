@@ -91,20 +91,23 @@ class Protein:
 				for elmt in ELEMS]
 		return (h, c, n, o, s)
 
-	def get_xyzlist(self, chain=-1):
+	def get_xyzlist(self, chain=-1, res: dict=None):
 		"""Extracts coordinates from a list as 3 separate lists. -1 is the full atoms list,
 		-2 denotes the heterogen list."""
-
-		match chain:
-			case -1:
-				x, y, z = [[float(atom[i:i+8]) for atom in (self.atoms)]
-						for i in range(30, 54, 8)]
-			case -2:
-				x, y, z = [[float(atom[i:i+8]) for atom in (self.hetatms)]
-						for i in range(30, 54, 8)]
-			case _:
-				x, y, z = [[float(atom[i:i+8]) for atom in (self.chains[chain])]
-						for i in range(30, 54, 8)]
+		if not res:
+			match chain:
+				case -1:
+					x, y, z = [[float(atom[i:i+8]) for atom in (self.atoms)]
+							for i in range(30, 54, 8)]
+				case -2:
+					x, y, z = [[float(atom[i:i+8]) for atom in (self.hetatms)]
+							for i in range(30, 54, 8)]
+				case _:
+					x, y, z = [[float(atom[i:i+8]) for atom in (self.chains[chain])]
+							for i in range(30, 54, 8)]
+		else:
+			x, y, z = [[float(atom[i:i+8]) for atom in (res['atoms'])]
+							for i in range(30, 54, 8)]
 
 		return (x, y, z)
 
@@ -126,11 +129,11 @@ class Protein:
 			return sum([self.res_subset(int(ln[22:26]), int(ln[33:37])) for ln in sheets], [])
 
 
-	def centroid(self, chain=-1):
+	def centroid(self, chain=-1, res: dict = None):
 		"""Calculates the centroid of the protein or the heterogens.
 		-1 = full protein, -2 = hetatms."""
 
-		coords = self.get_xyzlist(chain)
+		coords = self.get_xyzlist(chain=chain, res=res)
 		sum = np.zeros(3)
 		for x, y, z in zip(*coords):
 			sum += np.array([x, y, z])
@@ -158,20 +161,35 @@ class Protein:
 
 	def terminations(self):
 		"""Successively yield the positions of each TER record in the file."""
+
 		ters = self.get_record('TER')
 		for ter in ters:
 			yield (int(ter[6:11]), int(ter[22:26]))
+
+	def get_ligand(self, query: str) -> dict:
+		"""Extracts a ligand based on a query string
+
+		Args:
+			query (str): the 3-letter code of the ligand
+
+		Returns:
+			dict: The HETAM lines associated with the target molecule
+		"""
+
+		lig = {"code": query, "n": 0, "atoms": [atm for atm in self.lines if atm[17:20] == query]}
+		return lig
+
 
 	def __str__(self):
 		"""Outputs information about the protein to the terminal."""
 
 		h, c, n, o, s = self.elems
-		rb, hetatm = self.display_mode
+		rb, hetatm, _ = self.display_mode
 		lc = len(self.chains)
 		hetcolor = f'({("white" if rb else "green")}) (centroid: {"light grey" if rb else "teal"})' if hetatm else '(hidden)'
 
 		s = f'Sequence (- represents a gap in sequence, | represents the end of a chain):\n\
-{self.seq()}.\n\
+{self.seq()}.\n\n\
 {lc} Chain{"s" if lc != 1 else ""},\n\
 {len(self.atoms)} Atoms (centroid: {"grey" if rb else "white"}):\n\
 {len(h)} Hydrogen{"" if rb else" (light grey)"},\n\
