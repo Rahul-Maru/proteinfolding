@@ -1,17 +1,26 @@
 """CONSTANTS. TO CHANGE THE PARAMS, MODIFY THIS FILE."""
+import math
 import numpy as np
 
 #——DEFAULTS——
-DEF_PROT = "1luc"
-# Overrides. If set to true, the respective flag will be assumed to be present
+DEF_PROT = "1a0i"
+DEF_LIG = "ATP"
+# overrides. if set to true, the respective flag will be assumed to be present
 SHOW_HETAMS_OVR = False # Shows Heterogens
 RAINBOW_OVR = False # Displays the atoms with a rainbow color scheme
 
+# maximum distance of a residue from a ligand for it to be considered
+#	part of the binding site
+BS_DIST = 4.5
+
 #——UTILS——
-# convert the chain letter of an atom to a numerical index
+# converts the chain letter of an atom to a numerical index
 CHAIN_ID = lambda atom : ord(atom[21]) - 65
 # gets the residue number from an atom
 RES_NUM = lambda atom : int(atom[22:26])
+# gets the distance between 3 triplets of coordinates
+DIST = lambda p, q: math.sqrt(sum([(p[i] - q[i])**2 for i in range(3)]))
+
 
 #——TABULAR DATA——
 ELEMS = ['H', 'C', 'N', 'O', 'S']
@@ -25,6 +34,7 @@ AA_MAP = {'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D', 'CYS': 'C',
 # to invert:
 # AA_MAP_INV = {v: k for k, v in AA_MAP.items()}
 
+#——DISPLAY PROPERTIES——
 # radius of the atoms
 RAD = 0.8
 # opacity of HETATMs (WARNING: changing this may cause severe lag)
@@ -39,6 +49,7 @@ COLORS = {'H': [(0.75, 0.7, 0.7), (0.7, 0.75, 0.7), (0.7, 0.7, 0.75)],
 		'HETATM': [(0.08, 0.7, 0.08), (1, 0.96, 0.85)],	#  v
 		'CENTRD': [(1, 1, 1), (0.2, 0.21, 0.24)],		# 0 - Normal, 1 - Rainbow
 		'HETCTD': [(0.2, 1, 0.65), (0.64, 0.6, 0.55)]}	#  ^
+
 
 def hue_to_RGB(θ: float) -> tuple:
 	"""Given a hue value θ ∈ [0, 2π] and converts it to an RGB vector."""

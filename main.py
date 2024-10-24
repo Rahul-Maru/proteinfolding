@@ -16,7 +16,7 @@ def main():
 	parser.add_argument('--hetatm', action='store_true', dest='show_hetatms',
 					 help="shows heterogens")
 
-	parser.add_argument('--bsite', action="store_true", dest="b_site",
+	parser.add_argument('--bsite', action="store_true", dest="bsite",
 					 help='stores only the binding site of the ligand')
 
 	args = parser.parse_args()
@@ -26,8 +26,8 @@ def main():
 	# if the OVR variables are set to true, set the flag to true
 	rainbow = args.rainbow or RAINBOW_OVR
 	show_hetatms = args.show_hetatms or SHOW_HETAMS_OVR
-	b_site = args.b_site
-	dp = (rainbow, show_hetatms, b_site)
+	bsite = args.bsite
+	dp = [rainbow, show_hetatms, bsite]
 
 	# load the protein
 	p = Protein(prot_path, dp)
