@@ -20,6 +20,7 @@ def render(p: Protein):
 
 	# prints general info about the protein
 	print(p)
+	print()
 
 	# if b_site:
 	# 	ligand = p.get_ligand(DEF_LIG)
@@ -53,7 +54,11 @@ def render(p: Protein):
 			spr.color = vect(0.42, 0, 0.69)
 
 		bsite = p.get_bsite(ligand)
+
+		print("———BINDING SITE———")
 		Protein.print_res(bsite)
+		print()
+
 		for res in bsite:
 			coords = p.get_xyzlist(res, triplet=True)
 

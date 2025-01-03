@@ -1,0 +1,60 @@
+INSTALLATION ON LINUX (or other Unix-based systems with GCC):
+
+    * Extract the tarball using:
+             tar -zxvf MUSTANG_v3.2.4.tgz
+    * then: 
+    	     cd MUSTANG_v3.2.4
+    * run:  
+             make
+    * Test the installation using:
+             ./bin/mustang-3.2.4 -f ./data/test/test_zf-CCHH
+
+      This should produce the following files:
+      -- results.html
+      -- results.pdb
+
+
+MUSTANG COMMAND LINE OPTIONS:
+    -p  <path>
+        Path to the directory holding the (PDB) structures to be aligned.
+    -i  <struct-1> <struct-2> ...
+        Input structures to be aligned. Note: if -p option is used in the
+         command line, supply only the file names of the structures; if not
+         give the absolute/relative path of each of the input structures.
+    -f  <description file>
+        This option is used to AVOID entering the path (-p)  and file name
+         (-i) details in the command line. Instead, to keep the command line
+         short, the user can enter the path and file name details in a 
+         "description" file and supply it in the command line. The format 
+         of the "description file" is given in  'README.txt'.
+         Note: the options { -p , -i} and  {-f} are mutually exclusive.
+    -o  <output identifier>
+        A common identifier for various outputs of the program. 
+         Appropriate extentions (e.g. <identifier>.html, <identifier>.pdb,
+         <identifier>.msf) will be added to this identifier depending on 
+         the options the user specifies in the command line.  DEFAULT output
+         identifier: 'results'
+    -F  [<html>/<pir>/<fasta>/<msf>]
+        Alignment output format. The choices are: 'html', 'fasta', 
+         'pir', 'msf'.  DEFAULT format: 'html'
+    -D  [CA-CA diameter]
+        Produce an HTML file where the the residues are reported in lower
+         case with grey background when the aligned(superposed) CA-CA diameter
+         of residues in a column of alignment is > the threshold.
+    -s  [ON/OFF]
+        Generate a PDB file containing optimal superposition of all the
+         structures based on the alignment.  DEFAULT:  'ON'
+    -r  [ON/OFF]
+        Print RMSD table, Rotation matrices, translation vectors of structures. 
+         DEFAULT: 'OFF'
+    --help 
+        display this help and exits.
+    --version 
+        output version information and exits.
+
+MUSTANG REFERENCE
+    Arun Konagurthu, James Whisstock, Peter Stuckey, Arthur Lesk. MUSTANG: A multiple structural alignment algorithm, Proteins 64(3):559-574, 2006 
+
+
+Thank you for using MUSTANG!
+A. Konagurthu

@@ -1,0 +1,104 @@
+.\"  Hey, EMACS: -*- mode: nroff; mode:font-lock -*-
+.TH MUSTANG 1 "October  15, 2009"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.SH NAME
+mustang \-  a multiple structural alignment algorithm
+.SH SYNOPSIS
+.B mustang
+.RI [ options ] " files" ...
+.SH DESCRIPTION
+This manual page documents briefly the \fBmustang\fR command.
+
+\fBMustang\fR is a program that implements an algorithm for structural
+alignment of multiple protein structures. Given a set of PDB files, the
+program uses the spatial information in the Calpha atoms of the set to
+produce a sequence alignment.  Based on a progressive pairwise heuristic
+the algorithm then proceeds through a number of refinement
+passes. \fBMustang\fR reports the multiple sequence alignment and the
+corresponding superposition of structures.
+
+To keep the command line short the user can write the path and file names
+into a (description) file and supply the description file at the command
+line using the '\-f' option. For example see the file used to test the
+installation: '/usr/share/doc/mustang/examples/test_zf\-CCHH'.
+
+PATH should have a prefix '>'. When the program parses this file, it looks
+for the line starting with '>' symbol (whitespaces are ignored before and
+after the symbol). The PATH containing the PDB files of the structures to
+be aligned should follow. See for example: /usr/share/doc/mustang/examples/test_zf\-CCHH'.
+
+FILENAMES should have a prefix '+' (whitespaces are ignored before and
+after this symbol).  If PATH is specified then only the filenames should be
+provided after the '+' symbol.  However, if PATH line is NOT provided, then
+the absolute/relative paths of the structure files should be provided.
+
+The description file format is described further under the \fB\-f\fP CmdLine
+option).
+.SH OPTIONS
+A summary of options is included below.
+.TP
+.BI \-p " <path>"
+Path to the directory holding the (PDB) structures
+to be aligned.
+.TP
+.BI \-i " <struct\-1> <struct\-2>" ...
+Input structures to be aligned. Note: if \fB\-p\fR option is used in the
+command line, supply only the file names of the structures; if not give the
+absolute/relative path of each of the input structures.
+.TP
+.BI \-f " <description file>"
+This option is used to AVOID entering the path (\fB\-p\fR) and file name
+(\fB\-i\fR) details in the command line.  Instead, to keep the command line
+short, the user can enter the path and file name details in a "description"
+file and supply it in the command line.  The format of the "description
+file" is furher discussed in the 'DESCRIPTION' section above. Note: the
+options { \fB\-p\fR , \fB\-i\fR} and {\fB\-f\fR} are mutually exclusive.
+.TP
+.BI \-o " <output identifier>"
+A common identifier for various outputs of the program.  Appropriate
+extentions (e.g. \fI<identifier>\fR.html, \fI<identifier>\fR.pdb,
+\fI<identifier>\fR.msf) will be added to this identifier depending on the
+options the user specifies in the command line. 
+DEFAULT output identifier: 'results'
+.TP
+.BI \-F " <format>"             
+Alignment output format. The choices for \fI<format>\fR are: 'html', 'fasta',
+\'pir\', 'msf'.  DEFAULT format: 'html'
+.TP
+.BI \-D " [CA\-CA diameter]"
+Produce an HTML file where the the residues are reported in lower case with
+grey background when the aligned(superposed) CA\-CA diamter of residues in a
+column of alignment is > the CA\-CA diameter threshold.
+.TP
+.BI \-s " [<ON>/<OFF>]"
+Generate a PDB file containing optimal superposition of all the structures
+based on the alignment.  DEFAULT: 'ON'.
+.TP
+.BI \-r " [<ON>/<OFF>]"
+Print to a file rmsd table of multiple superposition along with rotation matrix
+and translation vector corresponding to each input structure.  DEFAULT: 'OFF'.
+.TP
+.B \-\-help
+display a help message and exits.
+.TP
+.B \-\-version
+output version information and exits.
+
+.SH AUTHORS
+\fBMustang\fR was written by A. S. Konagurthu, using the algorithm of 
+A. S. Konagurthu \fIet al.\fR (see REFERENCE)
+
+.SH MAN PAGE 
+This man page was originally produced by Morten Kjeldgaard (mok@bioxray.au.dk) 
+using the information from \fBMustang's\fR \-\-help option.
+
+.SH REFERENCE 
+A. S. Konagurthu, J. Whisstock, P. J. Stuckey, and A. M. Lesk, MUSTANG: A
+multiple structural alignment algorithm, \fBProteins, 64(3) 559-574 (2006).\fR
+
+.SH BUG REPORT
+arun DOT konagurthu AT monash DOT edu
+
+.SH SEE ALSO
+\fBMustang\fR's homepage: http://lcb.infotech.monash.edu.au/mustang

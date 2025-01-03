@@ -1,0 +1,39 @@
+################################################################################
+## This is a valid description file.                                          ##
+##                                                                            ##
+## Line starting with '>' symbol is treated as PATH to the directory          ##
+## containing structures to be aligned                                        ##
+##                                                                            ##
+## Lines starting with '+' symbol are treated as file names of your           ##
+## structures.                                                                ##
+##                                                                            ##
+## If PATH is specified (as in this example file) using the '>', then         ##
+## subsequently at '+' lines, only filenames should be provided.              ##
+## However, when PATH ('>') line is NOT provided, then the                    ##
+## absolute/relative paths of the structure files should be provided          ##
+## at the '+' lines.                                                          ##
+##                                                                            ##
+## All the lines NOT starting with '>' and '+' are simply ignored.            ##
+##                                                                            ##
+## Do NOT use comments in the same lines containng PATH and FILENAMES.        ##
+##                                                                            ##
+################################################################################
+
+
+> ./data/test/pdbs    
+
++1ard.pdb
++1bboN.pdb
++1paa.pdb
++1sp1.pdb
++1sp2.pdb
++1zaa1.pdb
++1zaa2.pdb
++1zaa3.pdb
++1zfd.pdb
++1znf.pdb
++1znm.pdb
++2drp1.pdb
++2drp2.pdb
++3znf.pdb
++5znf.pdb
