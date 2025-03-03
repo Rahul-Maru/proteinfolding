@@ -17,7 +17,7 @@ def main():
 				continue
 			bsite = prot.get_bsite(lig)
 
-			with open(f"HSM/MAPP-3D/MultipleSiteAlignment/HSM2/{p[:-4]}_{CHAIN_LET(i)}.pdb", 'w') as f:
+			with open(f"HSM/MAPP-3D/MultipleSiteAlignment/HSM/{p[:-4]}_{CHAIN_LET(i)}.pdb", 'w') as f:
 				f.writelines(sum([res['atoms'] for res in bsite], []))
 
 if __name__ == "__main__":

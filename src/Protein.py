@@ -77,12 +77,12 @@ class Protein:
 
 			try:
 				# (try to) add the new atom to its residue
-				res[n - 1]['atoms'].append(atom)
+				res[n]['atoms'].append(atom)
 			except IndexError:
 				# if this is the first atom, create a new residue entry
 
 				# what should be the number of the next residue, assuming continuity
-				next_n = 1 if len(res) == 0 else res[-1]['n'] + 1
+				next_n = 0 if len(res) == 0 else res[-1]['n'] + 1
 
 				# if there is a gap between this residue and the previous, fill it with
 				#   blank residues before adding the next one

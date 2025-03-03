@@ -1,0 +1,5 @@
+Filtration steps
+1. Sequence similarity (clustal)
+2. Structural similarity (tm)
+3. extract bsites
+4. SiteMotif
