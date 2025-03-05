@@ -2,7 +2,9 @@ Author: Rahul Maru
 Date: October 2024
 Language: Python 3.10.12
 
-A program that models protein folding using VPython
+A collection of projects related to structural biology
+1) A program that models protein folding using VPython
+2) The programs used to derive a binding site motif for Histamine
 
 Done as part of an internship with Dr. Nagasuma Chandra at IISc's department of Biochemistry 
 
