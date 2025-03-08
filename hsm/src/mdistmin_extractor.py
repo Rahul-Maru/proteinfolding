@@ -2,7 +2,7 @@ import csv
 
 def main():
 	final_list = [["Source", "Target", "Score"]]
-	with open("HSM/MAPP-3D/MultipleSiteAlignment/align_output.txt") as f:
+	with open("hsm/tools/MAPP-3D/MultipleSiteAlignment/align_output.txt") as f:
 		pairs = f.readlines()
 		for pair in pairs:
 			try:
@@ -12,7 +12,7 @@ def main():
 			except:
 				continue
 	
-	with open("HSM/MAPP-3D/MultipleSiteAlignment/mdist.csv", 'w') as f2:
+	with open("hsm/outs/SiteMotif/mdist.csv", 'w') as f2:
 		writer = csv.writer(f2)
 		writer.writerows(final_list)
 

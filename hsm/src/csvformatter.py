@@ -1,7 +1,7 @@
 import csv
 
 def main():
-	with open("HSM/TMalign/out.csv") as f:
+	with open("hsm/outs/TMalign/out.csv") as f:
 		reader = csv.reader(f)
 		labels = next(reader)[1:]
 
@@ -16,7 +16,7 @@ def main():
 	print('\n'.join([' '.join(r) for r in out]))
 	print(len(out) -1)
 
-	with open("HSM/TMalign/network.csv", "w") as f2:
+	with open("hsm/outs/TMalign/network.csv", "w") as f2:
 		writer = csv.writer(f2)
 		writer.writerows(out)
 

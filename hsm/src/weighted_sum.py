@@ -1,7 +1,7 @@
 import csv
 
 def main():
-	with open("HSM/MAPP-3D/MultipleSiteAlignment/mdist.csv") as f:
+	with open("hsm/outs/SiteMotif/mdist.csv") as f:
 		reader = csv.reader(f)
 		next(reader)
 

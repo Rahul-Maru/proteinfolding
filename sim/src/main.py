@@ -1,8 +1,8 @@
 import argparse
 from consts import DEF_PROT, RAINBOW_OVR, SHOW_HETAMS_OVR
 from Protein import Protein
-from renderProtein import render
-
+from sim.src.renderProtein import render
+from subprocess import run
 
 def main():
 	# parses the command line to get the protein file and conditional arguments
@@ -21,7 +21,7 @@ def main():
 
 	args = parser.parse_args()
 	prot_file = args.pdbfile
-	prot_path = f"proteins/{prot_file}.pdb"
+	prot_path = f"sim/proteins/{prot_file}.pdb"
 
 	# if the Override Flags are set to true, force-set the flag to true
 	rainbow = args.rainbow or RAINBOW_OVR

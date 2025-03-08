@@ -1,7 +1,7 @@
 import csv
 
 def main():
-	with open("HSM/PDB2Fasta/mat.txt") as f:
+	with open("hsm/outs/PDB2Fasta/mat.txt") as f:
 		lines = f.readlines()
 		labels = [x[:4] + x[5] for x in lines[1:]]
 
@@ -18,7 +18,7 @@ def main():
 	# print('\n'.join([' '.join(r) for r in out]))
 	print(len(out) - 1)
 
-	with open("HSM/PDB2Fasta/network.csv", "w") as f2:
+	with open("hsm/outs/PDB2Fasta/network.csv", "w") as f2:
 		writer = csv.writer(f2)
 		writer.writerows(out)
 
