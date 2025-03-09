@@ -49,6 +49,16 @@ pdb_ids = ['1avn.pdb', '1ike.pdb', '1jqd.pdb', '1kar.pdb', '1np1.pdb', '1qft.pdb
 		   '2x45.pdb', '3bu1.pdb', '3rxh.pdb', '4xmf.pdb', '5rus.pdb', '6dyn.pdb', '6fu4.pdb',
 		   '6qfa.pdb', '7dfl.pdb', '7yfc.pdb', '8jt5.pdb', '8pok.pdb', '8tgk.pdb', '8yuu.pdb']
 
+bsites = ['1avn_A.pdb', '1ike_A.pdb', '1jqd_A.pdb', '1jqd_B.pdb', '1kar_A.pdb', '1kar_B.pdb', '1np1_A.pdb',
+		  '1np1_B.pdb', '1qft_A.pdb', '1qft_B.pdb', '1qfv_A.pdb', '1qfv_B.pdb', '1u18_A.pdb', '1u18_B.pdb',
+		  '2qeb_A.pdb', '2qeb_B.pdb', '2x45_A.pdb', '2x45_B.pdb', '2x45_C.pdb', '3bu1_A.pdb', '3g7x_A.pdb',
+		  '3g7x_B.pdb', '3rxh_A.pdb', '4xmf_A.pdb', '5rus_A.pdb', '6dyn_A.pdb', '6fu4_A.pdb', '6fu4_B.pdb',
+		  '6fu4_C.pdb', '6fu4_D.pdb', '6qfa_A.pdb', '6qfa_B.pdb', '6qfa_C.pdb', '6qfa_D.pdb', '6qfa_E.pdb',
+		  '7a5v_A.pdb', '7dfl_R.pdb', '7qn7_C.pdb', '7qn7_D.pdb', '7qn8_B.pdb', '7qn8_D.pdb', '7qn9_B.pdb',
+		  '7qn9_C.pdb', '7qn9_D.pdb', '7qnc_C.pdb', '7qnc_D.pdb', '7qnd_B.pdb', '7qnd_C.pdb', '7yfc_R.pdb',
+		  '8hn8_R.pdb', '8jt5_A.pdb', '8jxt_R.pdb', '8pok_A.pdb', '8pvb_A.pdb', '8tgk_A.pdb', '8ucn_A.pdb',
+		  '8yn2_R.pdb', '8yn3_R.pdb', '8yn4_R.pdb', '8yn5_R.pdb', '8yn9_R.pdb', '8yuu_R.pdb']
+
 
 #——DISPLAY PROPERTIES——
 # radius of the atoms

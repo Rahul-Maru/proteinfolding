@@ -11,6 +11,8 @@ class Protein:
 		het_atms: `False` (only shows normal atoms), `True` (shows hetatms as well)."""
 
 		self.path = prot_path
+		self.id = prot_path[-8:-4].upper()
+
 		self.display_mode = dp_mode
 
 		# opens the file and splits it into lines
@@ -221,7 +223,7 @@ class Protein:
 			dict: The HETATM lines associated with the target molecule
 		"""
 
-		lig = {"code": query, "n": 0}
+		lig = {"code": query}
 
 		if chain == "all":
 			# each record must be a HETATM record corresponding to the query ligand
@@ -229,6 +231,8 @@ class Protein:
 		else:
 			lig["atoms"] = [atm for atm in self.lines
 				   if atm[17:20] == query and atm[:6].strip() == 'HETATM' and CHAIN_ID(atm) == chain]
+	
+		lig['n'] = len(lig["atoms"])
 	
 		return lig
 
