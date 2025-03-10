@@ -1,5 +1,6 @@
 Filtration steps
 1. Sequence similarity (clustal)
+ - clustalo -i hsm/outs/PDB2Fasta/fasta.fa -o hsm/outs/Clustal/out.txt --distmat-out=hsm/outs/Clustal/mat.txt --full --force
 2. Structural similarity (tm)
 3. extract bsites
 4. SiteMotif

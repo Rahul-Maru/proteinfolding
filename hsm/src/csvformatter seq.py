@@ -12,7 +12,7 @@ def main():
 	out = [["Source", "Target", "Score"]]
 	for i, (row, prot) in enumerate(zip(rows, labels)):
 		for score, prot2 in zip(row, labels[:i]):
-			if (s := 1 - float(score)) >= 0.65:
+			if (s := 1 - float(score)) >= 0.9:
 				out.append([prot, prot2, s])
 	
 	# print('\n'.join([' '.join(r) for r in out]))
