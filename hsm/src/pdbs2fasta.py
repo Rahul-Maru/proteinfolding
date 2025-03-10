@@ -1,12 +1,15 @@
 from subprocess import run
-from consts import bsites
+from consts import bsites, pdb_ids_all
+
+combined = True
+CMD = './hsm/tools/PDB2Fasta/pdb2fasta.sh'
 
 def main():
-	fasta = ""
+	if combined:
+		fasta = ''.join([run([CMD, f'hsm/bsites_combined/{id}'], capture_output=True, text=True).stdout for id in pdb_ids_all])
+	else:
+		fasta = ''.join([run([CMD, f'hsm/bsites/{bs}'], capture_output=True, text=True).stdout for bs in bsites])
 
-	for bs in bsites:
-		out = run(['./hsm/tools/PDB2Fasta/pdb2fasta.sh', f'hsm/bsites/{bs}'], capture_output=True, text=True)
-		fasta += out.stdout
 	print(fasta)
 	with open("hsm/outs/PDB2Fasta/fasta.fa", "w") as f:
 		f.write(fasta)

@@ -5,7 +5,7 @@ from consts import AA_MAP, BS_DIST, CHAIN_ID, DIST, ELEMS, RES_NUM, np
 class Protein:
 	"""A class to store data about the spacial information of a protein."""
 
-	def __init__(self, prot_path, dp_mode: list[bool] = [False, False, False]) -> None:
+	def __init__(self, prot_path, dp_mode: list[bool] = [False]*3) -> None:
 		"""Initializes a protein. `dp_mode` is a list of the following values:
 		color_scheme: `False` (normal), `True` (rainbow)
 		het_atms: `False` (only shows normal atoms), `True` (shows hetatms as well)."""
@@ -34,17 +34,16 @@ class Protein:
 	def chains(self):
 		"""`self.atoms` split by monomeric chain."""
 
-		chains = []
+		chains = {}
 		for atom in self.atoms:
 			try:
 				# add the new atom to its chain
-				chains[CHAIN_ID(atom)].append(atom)
-			except IndexError:
-				# if this is the first atom, create a new chain entry
-				chains.append([atom])
+				chains[atom[21]].append(atom)
+			except KeyError:
+				# if this is the first atom, create a new key-list pair for the chain
+				chains[atom[21]] = [atom]
 
 		return chains
-
 
 	@cached_property
 	def residues(self):
@@ -121,8 +120,10 @@ class Protein:
 				Defaults to `False`.
 		"""
 
+		# default value
+		# TODO make this work for chains
 		if not qtype:
-			qtype = "res" if query else "all"
+			qtype = "res" if query  else "all"
 
 		match qtype:
 			case "all":
@@ -138,7 +139,7 @@ class Protein:
 			case "lin":
 				x, y, z = (float(query[i:i+8]) for i in range(30, 54, 8))
 			case _:
-				x, y, z = [[float(atom[i:i+8]) for atom in self.chains[int(query)]]
+				x, y, z = [[float(atom[i:i+8]) for atom in self.chains[query]]
 						for i in range(30, 54, 8)]
 
 		if triplet:
@@ -287,7 +288,7 @@ class Protein:
 		hetcolor = f"({"white" if rb else "green"}) (centroid: {"light grey" if rb else "teal"})"\
 			if hetatm else "(hidden)"
 
-		s = "\n".join([
+		s = "\n".join([f"———{self.id}———",
 			"Sequence (- represents a gap in sequence, | represents the end of a chain):",
 			f"{self.seq()}.",
 			f"{lc} Chain{"s" if lc != 1 else ""},",

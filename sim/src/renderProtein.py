@@ -98,6 +98,7 @@ def render(p: Protein):
 			if rainbow:
 				# colors the atoms in a rainbow spectrum
 				# calculates the relative position of the atom in its chain, reduced to the range [0, 2π]
+				# TODO fix the start-index logic
 				rel_pos = 2*np.pi * (i - len(sum(p.chains[:chain], []))) / len(p.chains[chain])
 				spr.color = vect(*hue_to_RGB(rel_pos))
 			else:
