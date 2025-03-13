@@ -59,6 +59,8 @@ def render(p: Protein):
 		Protein.print_res(bsite)
 		print()
 
+		print(p.seq(bsite))
+
 		for res in bsite:
 			coords = p.get_xyzlist(res, triplet=True)
 

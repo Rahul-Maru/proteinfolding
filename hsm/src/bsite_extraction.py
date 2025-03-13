@@ -5,7 +5,7 @@ from Protein import Protein
 from consts import pdb_ids_all, CHAIN_LET
 
 # whether to consider all ligand molecules together or separately
-combined = True
+combined = False
 
 def main():
 	# file path template

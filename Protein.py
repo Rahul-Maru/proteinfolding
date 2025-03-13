@@ -93,7 +93,6 @@ class Protein:
 
 				res.append({'code': atom[17:20], 'n': n, 'atoms': [atom]})
 
-
 		return res
 
 
@@ -217,7 +216,7 @@ class Protein:
 		"""Extracts a ligand based on a query string
 
 		Args:
-			chain (str/int): chain from which to extract ligands 
+			chain (str): chain from which to extract ligands
 			query (str): the 3-letter code of the ligand
 
 		Returns:
@@ -228,10 +227,14 @@ class Protein:
 
 		if chain == "all":
 			# each record must be a HETATM record corresponding to the query ligand
-			lig["atoms"] = [atm for atm in self.lines if atm[17:20] == query and atm[:6].strip() == 'HETATM']
+			lig["atoms"] = [atm for atm in self.lines
+				   if atm[17:20] == query
+				   and atm[:6].strip() in ['ATOM', 'HETATM']]
 		else:
 			lig["atoms"] = [atm for atm in self.lines
-				   if atm[17:20] == query and atm[:6].strip() == 'HETATM' and CHAIN_ID(atm) == chain]
+				   if atm[17:20] == query
+				   and atm[:6].strip() in ['ATOM', 'HETATM']
+				   and atm[21] == chain]
 	
 		lig['n'] = len(lig["atoms"])
 	

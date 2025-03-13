@@ -7,12 +7,11 @@ def main():
 
 		rows = [row[9:-1].split(' ') for row in lines[1:]]
 		# print (rows)
-		# print(rows[0:4])
 	
 	out = [["Source", "Target", "Score"]]
 	for i, (row, prot) in enumerate(zip(rows, labels)):
 		for score, prot2 in zip(row, labels[:i]):
-			if (s := 1 - float(score)) >= 0.9:
+			if (s := 1 - float(score)) >= 0.8:
 				out.append([prot, prot2, s])
 	
 	# print('\n'.join([' '.join(r) for r in out]))

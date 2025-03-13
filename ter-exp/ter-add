@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+f="$1"
+
+
+awk '
+function chain_get(s) {
+	return substr(s, 22, 1)
+}
+
+function trimws(s) {
+	substr(/^\s+/, "", s)
+	substr(/\s+$/, "", s)
+	return s
+}
+
+function atomno_get(s) {
+	return substr(s, 7, 5)
+}
+
+
+BEGIN {
+	prev_chain  = ""
+	prev_record = ""
+	prev_suffix = ""
+	atom_offset = 0
+}
+
+/^ATOM/ || /^HETATM/ {
+	curr_line = $0
+	curr_chain = chain_get($0)
+	curr_record = substr($0, 1, 6)
+	atomno = atomno_get($0)
+
+	if ((prev_chain != curr_chain) && (prev_chain != "") && (prev_record == "ATOM  ")) {
+		printf "TER   "
+		printf "%5d", atomno + atom_offset
+		printf "      "
+		printf prev_suffix
+		for (i = 1; i <= 54; i++) { printf " " }
+		printf "\n"
+		atom_offset++
+	}
+	prev_chain = curr_chain
+	prev_record = curr_record
+	new_no = atomno + atom_offset
+	leftover = length($0) - 11
+	printf substr($0, 1, 6)
+	printf "%5d", new_no
+	printf substr($0, 12, leftover)
+	printf "\n"
+	prev_len = length($0)
+	prev_leftover = prev_len - 22
+
+	prev_suffix = substr($0, 18, 9)
+}
+
+' "$f"
