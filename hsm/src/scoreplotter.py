@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 
 def main():
-	with open("hsm/outs/Clustal/network.csv") as f:
+	with open("hsm/outs/TMalign/network2.csv") as f:
 		r = csv.reader(f)
 		next(r)
 		dat = [i[2] for i in r]

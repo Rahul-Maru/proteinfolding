@@ -1,7 +1,7 @@
 import csv
 
 def main():
-	with open("hsm/outs/TMalign/out.csv") as f:
+	with open("hsm/outs/TMalign/out2.csv") as f:
 		reader = csv.reader(f)
 		labels = next(reader)[1:]
 
@@ -10,13 +10,13 @@ def main():
 	out = [["Source", "Target", "Score"]]
 	for i, (row, prot) in enumerate(zip(rows, labels)):
 		for score, prot2 in zip(row, labels[:i]):
-			if float(score) >= 0.5:
+			if float(score) >= 0.7:
 				out.append([prot, prot2, score])
 	
 	print('\n'.join([' '.join(r) for r in out]))
 	print(len(out) -1)
 
-	with open("hsm/outs/TMalign/network.csv", "w") as f2:
+	with open("hsm/outs/TMalign/network2.csv", "w") as f2:
 		writer = csv.writer(f2)
 		writer.writerows(out)
 

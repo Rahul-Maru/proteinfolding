@@ -6,7 +6,7 @@ def main():
 		pairs = f.readlines()
 		for pair in pairs:
 			try:
-				if (mdist_min := float((dat:=pair.split("\t"))[2].split(" ")[2])) >= 0.5:
+				if (mdist_min := float((dat:=pair.split("\t"))[2].split(" ")[2])) >= 0:
 					if dat[0] < dat[1]:
 						final_list.append([dat[0], dat[1], mdist_min])
 			except:
