@@ -1,6 +1,5 @@
 import argparse
-from consts import DEF_PROT, RAINBOW_OVR, SHOW_HETAMS_OVR
-from Protein import Protein
+from bio import DEF_PROT, RAINBOW_OVR, SHOW_HETAMS_OVR, Protein
 from sim.src.renderProtein import render
 from subprocess import run
 

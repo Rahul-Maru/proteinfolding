@@ -1,6 +1,6 @@
 import csv
 
-def main():
+def csvformatter_seq():
 	with open("hsm/outs/Clustal/mat.txt") as f:
 		lines = f.readlines()
 		labels = [x[:6] for x in lines[1:]]
@@ -22,4 +22,4 @@ def main():
 		writer.writerows(out)
 
 if __name__ == "__main__":
-	main()
+	csvformatter_seq()

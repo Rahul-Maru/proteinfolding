@@ -5,7 +5,7 @@ from subprocess import run
 combined = True
 CMD = './hsm/tools/PDB2Fasta/pdb2fasta.sh'
 
-def main():
+def pdbs2fasta():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('dir', type=str, nargs='?', default="hsm/bsites")
 	parser.add_argument('out', type=str, nargs='?', default="bsite")
@@ -25,4 +25,4 @@ def main():
 		f.write(fasta)
 
 if __name__ == "__main__":
-	main()
+	pdbs2fasta()

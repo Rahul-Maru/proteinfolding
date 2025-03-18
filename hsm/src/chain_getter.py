@@ -1,7 +1,7 @@
 from Protein import Protein
 from consts import pdb_ids_all
 
-def main():
+def chain_getter():
     with open('hsm/outs/PDB2Fasta/bsite.fa') as f:
         chains = [(x[1:-3], x[-2]) for x in f.readlines()[::2]]
     print(chains)
@@ -13,5 +13,6 @@ def main():
             chain = prot.chains[c[1]]
 
             f2.writelines(chain)
+
 if __name__ == "__main__":
-    main()
+    chain_getter()

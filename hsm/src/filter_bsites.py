@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-def main():
+def filter_bsites():
 	bsites = os.listdir("hsm/bsites")
 	bsites.sort()
 	bchains = os.listdir("hsm/bchains_final")
@@ -17,4 +17,4 @@ def main():
 
 
 if __name__ == "__main__":
-	main()
+	filter_bsites()

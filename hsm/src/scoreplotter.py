@@ -2,7 +2,7 @@ import csv
 from matplotlib import pyplot as plt
 import numpy as np
 
-def main():
+def scoreplotter():
 	with open("hsm/outs/TMalign/network2.csv") as f:
 		r = csv.reader(f)
 		next(r)
@@ -19,4 +19,4 @@ def main():
 	
 
 if __name__ == "__main__":
-	main()
+	scoreplotter()

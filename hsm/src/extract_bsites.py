@@ -2,12 +2,12 @@
 and stores them in separate files. """
 
 from Protein import Protein
-from consts import pdb_ids_all, CHAIN_LET
+from consts import pdb_ids_all
 
 # whether to consider all ligand molecules together or separately
 combined = False
 
-def main():
+def extract_bsites():
 	# file path template
 	path = "hsm/pdbs/"
 
@@ -41,4 +41,4 @@ def main():
 					f.writelines(sum([res['atoms'] for res in bsite], []))
 
 if __name__ == "__main__":
-	main()
+	extract_bsites()

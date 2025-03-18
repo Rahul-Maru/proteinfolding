@@ -1,6 +1,6 @@
 import csv
 
-def main():
+def csvformatter():
 	with open("hsm/outs/TMalign/out2.csv") as f:
 		reader = csv.reader(f)
 		labels = next(reader)[1:]
@@ -21,4 +21,4 @@ def main():
 		writer.writerows(out)
 
 if __name__ == "__main__":
-	main()
+	csvformatter()

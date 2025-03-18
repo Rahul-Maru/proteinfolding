@@ -3,7 +3,7 @@ import csv
 import os
 from subprocess import run
 
-def main():
+def tmalign():
 	parser = argparse.ArgumentParser()
 	parser.add_argument('dir', type=str, nargs='?', default="hsm/bchains_final")
 	parser.add_argument('out', type=str, nargs='?', default="out2")
@@ -38,4 +38,4 @@ def main():
 
 
 if __name__ == "__main__":
-	main()
+	tmalign()

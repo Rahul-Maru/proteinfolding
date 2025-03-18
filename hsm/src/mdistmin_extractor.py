@@ -1,6 +1,6 @@
 import csv
 
-def main():
+def mdistmin_extractor():
 	final_list = [["Source", "Target", "Score"]]
 	with open("hsm/tools/MAPP-3D/MultipleSiteAlignment/align_output.txt") as f:
 		pairs = f.readlines()
@@ -19,4 +19,4 @@ def main():
 
 
 if __name__ == "__main__":
-	main()
+	mdistmin_extractor()

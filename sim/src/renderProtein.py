@@ -1,8 +1,7 @@
 """Plots the atoms in a protein using VPython."""
 import vpython as vp
 from vpython import vector as vect
-from consts import *
-from Protein import Protein
+from bio import *
 
 
 def render(p: Protein):

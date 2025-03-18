@@ -1,6 +1,6 @@
 import csv
 
-def main():
+def weighted_sum():
 	with open("hsm/outs/SiteMotif/mdist.csv") as f:
 		reader = csv.reader(f)
 		next(reader)
@@ -21,4 +21,4 @@ def main():
 			
 
 if __name__ == "__main__":
-	main()
+	weighted_sum()
