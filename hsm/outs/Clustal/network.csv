@@ -474,7 +474,9 @@ Source,Target,Score
 8pvb_A,7qnd_B,0.987768
 8pvb_A,7qnd_C,0.987768
 8pvb_A,7qnd_D,0.987768
+8tgk_A,8jt5_A,0.744792
 8ucn_A,8jt5_A,0.977961
+8ucn_A,8tgk_A,0.754821
 8yn2_R,7dfl_R,0.966912
 8yn3_R,8pok_A,0.978417
 8yn4_R,8pok_A,0.958955

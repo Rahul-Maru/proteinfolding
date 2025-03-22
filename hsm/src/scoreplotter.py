@@ -16,7 +16,6 @@ def scoreplotter():
 
 	plt.show()
 
-	
 
 if __name__ == "__main__":
 	scoreplotter()

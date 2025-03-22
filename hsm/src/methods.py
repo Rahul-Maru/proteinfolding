@@ -3,17 +3,90 @@ from matplotlib import pyplot as plt
 import numpy as np
 import os
 import subprocess
+import timeit
 
 from bio import pdb_ids_all, Protein
 
-# file path template
-path = "hsm/pdbs/"
 
-# whether to consider all ligand molecules together or separately
+def timed(func):
+	"""Decorator that times a function."""
+
+	def wrapper(*args, **kwargs):
+		t = timeit.Timer(lambda: func(*args, **kwargs))
+		print(f"done in {t.timeit(1):.3f}s")
+	return wrapper
+
+
+@timed
+def chain_getter():
+	print("Extracting chains with binding sites")
+	with open('hsm/outs/PDB2Fasta/bsite.fa') as f:
+		chains = [(x[1:-3], x[-2]) for x in f.readlines()[::2]]
+
+	for c in chains:
+		with open(f'hsm/bchains/{c[0]}_{c[1]}.pdb', 'w') as f2:
+			prot = Protein(f'hsm/pdbs/{c[0]}.pdb')
+			chain = prot.chains[c[1]]
+
+			f2.writelines(chain)
+
+@timed
+def csvformatter(mode, cutoff):
+	if mode == "seq":
+		with open("hsm/outs/Clustal/mat.txt") as f:
+			lines = f.readlines()
+			labels = [x[:6] for x in lines[1:]]
+
+			rows = [row[9:-1].split(' ') for row in lines[1:]]
+			# print (rows)
+
+		out = [["Source", "Target", "Score"]]
+		for i, (row, prot) in enumerate(zip(rows, labels)):
+			for score, prot2 in zip(row, labels[:i]):
+				if (s := 1 - float(score)) >= cutoff:
+					out.append([prot, prot2, s])
+
+		# print('\n'.join([' '.join(r) for r in out]))
+		print(len(out) - 1)
+
+		with open("hsm/outs/Clustal/network.csv", "w") as f2:
+			writer = csv.writer(f2)
+			writer.writerows(out)
+
+	else:
+		with open("hsm/outs/TMalign/out2.csv") as f:
+			reader = csv.reader(f)
+			labels = next(reader)[1:]
+
+			rows = [row[1:] for row in reader]
+		
+		out = [["Source", "Target", "Score"]]
+		for i, (row, prot) in enumerate(zip(rows, labels)):
+			for score, prot2 in zip(row, labels[:i]):
+				if float(score) >= cutoff:
+					out.append([prot, prot2, score])
+		
+		print('\n'.join([' '.join(r) for r in out]))
+		print(len(out) -1)
+
+		with open("hsm/outs/TMalign/network2.csv", "w") as f2:
+			writer = csv.writer(f2)
+			writer.writerows(out)
+
+@timed
 def extract_bsites(combined=False):
 	"""Extracts the binding sites of a given ligand from a PDB file
-    and stores them in separate files. """
+	and stores them in separate files. 
 
+	Args:
+		combined (bool, optional): #whether to consider all ligand molecules together or separately.
+			Defaults to False.
+	"""
+
+	# file path template
+	path = "hsm/pdbs/"
+
+	print(f"Extracting Binding Sites ({"Combined" if combined else "Ligand-wise"})")
 	for p in pdb_ids_all:
 		prot = Protein(path + p)
 		if combined:
@@ -31,58 +104,29 @@ def extract_bsites(combined=False):
 				lig = prot.get_ligand('HSM', i)
 
 				if len(lig["atoms"]) == 0:
-					print("oops", p, i)
 					continue
-				else:
-					print("huh", p, i)
+			
 				bsite = prot.get_bsite(lig)
 
 				with open(f"hsm/bsites/{p[:-4]}_{i}.pdb", 'w') as f:
 					f.writelines(sum([res['atoms'] for res in bsite], []))
 
-def csvformatter_seq():
-	with open("hsm/outs/Clustal/mat.txt") as f:
-		lines = f.readlines()
-		labels = [x[:6] for x in lines[1:]]
+@timed
+def filter_bsites():
+	bsites = os.listdir("hsm/bsites")
+	bsites.sort()
+	bchains = os.listdir("hsm/bchains_final")
+	bchains.sort()
 
-		rows = [row[9:-1].split(' ') for row in lines[1:]]
-		# print (rows)
-	
-	out = [["Source", "Target", "Score"]]
-	for i, (row, prot) in enumerate(zip(rows, labels)):
-		for score, prot2 in zip(row, labels[:i]):
-			if (s := 1 - float(score)) >= 0.8:
-				out.append([prot, prot2, s])
-	
-	# print('\n'.join([' '.join(r) for r in out]))
-	print(len(out) - 1)
+	i = 0
+	for s in bsites:
+		if s not in bchains:
+			print(s)
+			i += 1
+			subprocess.run(['rm', f'hsm/bsites_final/{s}'])
+	print(i)
 
-	with open("hsm/outs/Clustal/network.csv", "w") as f2:
-		writer = csv.writer(f2)
-		writer.writerows(out)
-
-
-def csvformatter():
-	with open("hsm/outs/TMalign/out2.csv") as f:
-		reader = csv.reader(f)
-		labels = next(reader)[1:]
-
-		rows = [row[1:] for row in reader]
-	
-	out = [["Source", "Target", "Score"]]
-	for i, (row, prot) in enumerate(zip(rows, labels)):
-		for score, prot2 in zip(row, labels[:i]):
-			if float(score) >= 0.7:
-				out.append([prot, prot2, score])
-	
-	print('\n'.join([' '.join(r) for r in out]))
-	print(len(out) -1)
-
-	with open("hsm/outs/TMalign/network2.csv", "w") as f2:
-		writer = csv.writer(f2)
-		writer.writerows(out)
-
-
+@timed
 def mdistmin_extractor():
 	final_list = [["Source", "Target", "Score"]]
 	with open("hsm/tools/MAPP-3D/MultipleSiteAlignment/align_output.txt") as f:
@@ -99,29 +143,28 @@ def mdistmin_extractor():
 		writer = csv.writer(f2)
 		writer.writerows(final_list)
 
+@timed
+def pdbs2fasta(dir, out):
+	print(f"Converting {dir} → {dir}.fa")
 
-def pdbs2fasta(combined = True, dir="hsm/bsites", out="fasta"):
-	
 	CMD = './hsm/tools/PDB2Fasta/pdb2fasta.sh'
 
 	files = os.listdir(dir)
 	files.sort()
-	print()
 
 	fasta = ''.join([subprocess.run([CMD, f'{dir}/{f}'], capture_output=True, text=True).stdout for f in files])
 
-	print(fasta)
 	with open(f"hsm/outs/PDB2Fasta/{out}.fa", "w") as f:
 		f.write(fasta)
 
+def scoreplotter(mode):
+	inf = "Clustal/network" if mode == "seq" else "TMalign/network2"
 
-
-def scoreplotter():
-	with open("hsm/outs/TMalign/network2.csv") as f:
+	with open(f"hsm/outs/{inf}.csv") as f:
 		r = csv.reader(f)
 		next(r)
 		dat = [i[2] for i in r]
-	
+
 	n = len(dat)
 	x = np.linspace(0, 1, 101)
 	y = [len([j for s in dat if (j:=float(s))<=i])/n for i in x]
@@ -130,16 +173,8 @@ def scoreplotter():
 
 	plt.show()
 
-
-def tmalign():
-	parser = argparse.ArgumentParser()
-	parser.add_argument('dir', type=str, nargs='?', default="hsm/bchains_final")
-	parser.add_argument('out', type=str, nargs='?', default="out2")
-
-	args = parser.parse_args()
-	dir = args.dir
-	outf = args.out
-
+@timed
+def tmalign(dir = "hsm/bchains_final", outf = "out2"):
 	prots = os.listdir(dir)
 	prots.sort()
 	print(prots)
@@ -160,41 +195,12 @@ def tmalign():
 			except:
 				print("ERR", out.stdout)
 				mat[-1].append(-1)
-	
+
 	with open(f"hsm/outs/TMalign/{outf}.csv", "w", newline="") as csvfile:
 		writer = csv.writer(csvfile)
 		writer.writerows(mat)
 
-
-def chain_getter():
-    with open('hsm/outs/PDB2Fasta/bsite.fa') as f:
-        chains = [(x[1:-3], x[-2]) for x in f.readlines()[::2]]
-    print(chains)
-
-    for c in chains:
-        print(c)
-        with open(f'hsm/bchains/{c[0]}_{c[1]}.pdb', 'w') as f2:
-            prot = Protein(f'hsm/pdbs/{c[0]}.pdb')
-            chain = prot.chains[c[1]]
-
-            f2.writelines(chain)
-
-
-def filter_bsites():
-	bsites = os.listdir("hsm/bsites")
-	bsites.sort()
-	bchains = os.listdir("hsm/bchains_final")
-	bchains.sort()
-
-	i = 0
-	for s in bsites:
-		if s not in bchains:
-			print(s)
-			i += 1
-			subprocess.run(['rm', f'hsm/bsites_final/{s}'])
-	print(i)
-
-
+@timed
 def weighted_sum():
 	with open("hsm/outs/SiteMotif/mdist.csv") as f:
 		reader = csv.reader(f)
