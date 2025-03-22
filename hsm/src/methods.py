@@ -31,7 +31,7 @@ def chain_getter():
 			f2.writelines(chain)
 
 @timed
-def csvformatter(mode, cutoff):
+def csv_formatter(mode, cutoff = 0):
 	if mode == "seq":
 		with open("hsm/outs/Clustal/mat.txt") as f:
 			lines = f.readlines()
@@ -46,7 +46,6 @@ def csvformatter(mode, cutoff):
 				if (s := 1 - float(score)) >= cutoff:
 					out.append([prot, prot2, s])
 
-		# print('\n'.join([' '.join(r) for r in out]))
 		print(len(out) - 1)
 
 		with open("hsm/outs/Clustal/network.csv", "w") as f2:
@@ -66,7 +65,6 @@ def csvformatter(mode, cutoff):
 				if float(score) >= cutoff:
 					out.append([prot, prot2, score])
 		
-		print('\n'.join([' '.join(r) for r in out]))
 		print(len(out) -1)
 
 		with open("hsm/outs/TMalign/network2.csv", "w") as f2:
@@ -174,20 +172,18 @@ def scoreplotter(mode):
 	plt.show()
 
 @timed
-def tmalign(dir = "hsm/bchains_final", outf = "out2"):
+def tmalign(dir = "hsm/bchains_seq", outf = "out2"):
+	print(f"Aligning {dir} using TMalign → {outf}.csv")
+
 	prots = os.listdir(dir)
 	prots.sort()
-	print(prots)
 
 	mat = [["."] + [id[:-4] for id in prots]]
-	i=0
 	for p1 in prots:
 		mat.append([p1])
 		for p2 in prots:
 			out = subprocess.run(["hsm/tools/TMalign/TMalign_cpp", "-a", "T", f"{dir}/{p1}", f"{dir}/{p2}"],
 						capture_output=True, text=True)
-			print(f"done {i}")
-			i += 1
 			try:
 				x = float(out.stdout.split('\n')[15][9:17].strip())
 				mat[-1].append(x)
