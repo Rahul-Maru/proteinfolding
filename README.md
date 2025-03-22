@@ -15,5 +15,5 @@ The flags --rainbow and --hetatm can be appended to 'python3 main.py' to display
 e.g. >> python3 1acj --rainbow --hetatm
 
 To be able to import lib/bio.py and use the programs herein, add the following line to ~/.bashrc:
-export PYTHONPATH=${PYTHONPATH}:$[PATH_TO_REPOSITORY]/lib
+export PYTHONPATH=${PYTHONPATH}:$HOME/<PATH_TO_REPOSITORY>/lib
 then open a new command window or run `source ~/.bashrc`
