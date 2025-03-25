@@ -5,7 +5,7 @@ from typing import Literal
 
 """CONSTANTS. TO CHANGE PARAMS, MODIFY THIS SECTION."""
 #——DEFAULTS——
-DEF_PROT = "1a0i"
+DEF_PROT = "sim/proteins/1a0i.pdb"
 DEF_LIG = "HSM"
 # overrides. if set to true, the respective flag will be assumed to be present
 SHOW_HETAMS_OVR = False # Shows Heterogens
@@ -327,15 +327,19 @@ class Protein:
 	
 		return lig
 
-	def get_bsite(self, lig: dict):
+	# TODO add toggle for including ligand in binding sites
+	def get_bsite(self, lig, chain):
 		"""Extracts the binding site or sites that bind to the given ligand.
 
 		Args:
-			lig (dict): dict containing the atoms of the ligand.
-
+			lig (dict/str): dict containing the atoms of the ligand.
+			chain (str): chain from which to extract ligands (only used if `lig` is a string)
 		Returns:
 			(list): list of residues that comprise the binding site(s).
 		"""
+
+		if type(lig) == str:
+			lig = self.get_ligand(lig, chain)
 
 		lig_coords = self.get_xyzlist(lig, triplet=True)
 

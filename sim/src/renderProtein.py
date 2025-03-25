@@ -75,6 +75,7 @@ def render(p: Protein):
 			cent.pos = vect(*tuple(p.centroid(ligand)))
 			cent.radius = RAD*1.4
 			cent.color = vect(*COLORS['CENTRD'][int(rainbow)])
+			cent.opacity = 0.5
 
 			print("Position of ligand's centroid (Å):", cent.pos)
 
@@ -118,6 +119,7 @@ def render(p: Protein):
 		cent.pos = vect(*tuple(p.centroid()))
 		cent.radius = RAD*2
 		cent.color = vect(*COLORS['CENTRD'][int(rainbow)])
+		cent.opacity = 0.5
 		print("Position of protein's centroid (Å):", cent.pos)
 
 		# Center the camera on the centroid
@@ -140,6 +142,6 @@ def render(p: Protein):
 
 			hcent.radius = RAD*1.8
 			hcent.color = vect(*COLORS['HETCTD'][int(rainbow)])
-
+			hcent.opacity = 0.5
 			print("Position of heterogens' centroid (Å):", hcent.pos)
 

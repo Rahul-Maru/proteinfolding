@@ -31,33 +31,38 @@ def run_mapp3d_comparisons(query_site, sites_dir, output_dir):
             print(f"Skipping self-comparison with {os.path.basename(site_pdb)}")
             continue
 
-        # Create output subdirectory for this comparison
-        # TODO make it not create directories for the bad comparisons
-        comparison_name = f"{os.path.splitext(os.path.basename(query_site))[0]}_{os.path.splitext(os.path.basename(site_pdb))[0]}"
-        comparison_dir = os.path.join(output_dir, comparison_name)
-        if not os.path.exists(comparison_dir):
-            os.makedirs(comparison_dir)
-            print(f"Created output directory: {comparison_dir}")
+        # # Create output subdirectory for this comparison
+        # # TODO make it not create directories for the bad comparisons
+        # comparison_name = f"{os.path.splitext(os.path.basename(query_site))[0]}_{os.path.splitext(os.path.basename(site_pdb))[0]}"
+        # comparison_dir = os.path.join(output_dir, comparison_name)
+        # if not os.path.exists(comparison_dir):
+        #     os.makedirs(comparison_dir)
+        #     print(f"Created output directory: {comparison_dir}")
 
         # Run MAPP-3D comparison
-        try:
-            print(f"Running comparison...")
-            result = subprocess.run([
-                "python2.7",
-                mapp3d_script,
-                site_pdb,
-                query_site
-            ], cwd=comparison_dir, capture_output=True, text=True)
-            
-            if result.returncode != 0:
-                print(f"Error comparing {os.path.basename(query_site)} with {os.path.basename(site_pdb)}:")
-                print(result.stderr)
-            else:
-                print(f"Successfully completed comparison")
-        except Exception as e:
-            print(f"Exception while comparing {os.path.basename(query_site)} with {os.path.basename(site_pdb)}:")
-            print(str(e))
 
+        print(f"Running comparison...")
+        result = subprocess.run([
+            "python2.7",
+            mapp3d_script,
+            site_pdb,
+            query_site
+        ], cwd=output_dir, capture_output=True, text=True)
+        
+        if result.returncode != 0:
+            print(f"Error comparing {os.path.basename(query_site)} with {os.path.basename(site_pdb)}:")
+            print(result.stderr)
+        else:
+            print(f"Successfully completed comparison")
+
+        try:
+            for file in ['align.txt', 'fixed.pdb', 'frag.pdb', 'site1.pdb', 'site2.pdb']:
+                os.rename(os.path.join(output_dir, file), os.path.join(output_dir,
+                                                        f"{os.path.basename(site_pdb)[:-4]}_{file}"))
+        except Exception as e:
+            print(f"Comparison failed for {os.path.basename(site_pdb)}")
+
+    
 def main():
 	# Run comparisons
 	query_site = os.path.abspath(os.path.join("hsm", "bsites_final", "2x45_C.pdb")) 

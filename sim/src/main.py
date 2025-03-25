@@ -20,7 +20,6 @@ def main():
 
 	args = parser.parse_args()
 	prot_file = args.pdbfile
-	prot_path = f"sim/proteins/{prot_file}.pdb"
 
 	# if the Override Flags are set to true, force-set the flag to true
 	rainbow = args.rainbow or RAINBOW_OVR
@@ -29,7 +28,7 @@ def main():
 	dp = [rainbow, show_hetatms, bsite]
 
 	# load the protein
-	p = Protein(prot_path, dp)
+	p = Protein(prot_file, dp)
 
 	render(p)
 
