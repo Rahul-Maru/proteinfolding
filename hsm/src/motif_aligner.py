@@ -31,14 +31,6 @@ def run_mapp3d_comparisons(query_site, sites_dir, output_dir):
             print(f"Skipping self-comparison with {os.path.basename(site_pdb)}")
             continue
 
-        # # Create output subdirectory for this comparison
-        # # TODO make it not create directories for the bad comparisons
-        # comparison_name = f"{os.path.splitext(os.path.basename(query_site))[0]}_{os.path.splitext(os.path.basename(site_pdb))[0]}"
-        # comparison_dir = os.path.join(output_dir, comparison_name)
-        # if not os.path.exists(comparison_dir):
-        #     os.makedirs(comparison_dir)
-        #     print(f"Created output directory: {comparison_dir}")
-
         # Run MAPP-3D comparison
 
         print(f"Running comparison...")

@@ -2,7 +2,6 @@ import argparse
 from methods import *
 import timeit
 
-#WIP TODO
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('mode', type=str, nargs='?', default="struct")
