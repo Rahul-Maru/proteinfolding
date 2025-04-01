@@ -94,8 +94,8 @@ def render(p: Protein):
 			spr.pos = vect(p.x[i], p.y[i], p.z[i])
 			spr.radius = RAD
 
-			elem = atom[77] # get the element of the atom
-			chain = CHAIN_ID(atom)
+			elem = atom[ELEM] # get the element of the atom
+			chain = atom[CHAIN]
 
 			if rainbow:
 				# colors the atoms in a rainbow spectrum
@@ -108,7 +108,7 @@ def render(p: Protein):
 				# if the chain number exceeds the number of available colors,
 				# loop through the colors
 				try:
-					spr.color = vect(*COLORS[elem][chain % len(COLORS[elem])])
+					spr.color = vect(*COLORS[elem][chain_to_color(chain, elem)])
 				except KeyError:
 					# use the hetatm color if for some reason an element other than the
 					#  standard 5 is encountered in an ATOM record

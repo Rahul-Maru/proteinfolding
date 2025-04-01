@@ -66,7 +66,7 @@ class Protein:
 		ter_atm_no, ter_res_no = next(ter)
 		# start point of the current chain
 		st = 0
-		for atom in self.atoms + self.hetatms:
+		for atom in self.atoms:
 			# If the loop has crossed the TER record, update st and yield the next TER record,
 			#  moving to the next chain
 			if int(atom[ATNO]) > ter_atm_no:
@@ -77,7 +77,7 @@ class Protein:
 
 			# each chain residue number must have st added to it to avoid overlaps between
 			#   residues with the same number in different chain
-			n = atom[RES_SEQ] + st
+			n = int(atom[RES_SEQ]) + st
 
 			try:
 				# (try to) add the new atom to its residue

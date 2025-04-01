@@ -2,6 +2,8 @@
 import math
 import numpy as np
 
+# TODO rearrange
+
 #——DEFAULTS——
 DEF_PROT = "sim/proteins/1a0i.pdb"
 DEF_LIG = "HSM"
@@ -16,7 +18,7 @@ BS_DIST = 4.5
 #——PDB FIELDS——
 # RECORD
 REC = slice(0, 6)
-# ATOM NUMBER 
+# ATOM SERIAL NUMBER
 ATNO = slice(6, 11)
 # RESIDUE NAME (3-letter)
 RESN = slice(17, 20)
@@ -30,6 +32,8 @@ X_COORD = slice(30, 38)
 Y_COORD = slice(38, 46)
 # Z COORDINATE
 Z_COORD = slice(46, 54)
+# ELEMENT
+ELEM = 77
 
 
 #——TABULAR DATA——
@@ -59,6 +63,16 @@ COLORS = {'H': [(0.75, 0.7, 0.7), (0.7, 0.75, 0.7), (0.7, 0.7, 0.75)],
 		'HETATM': [(0.08, 0.7, 0.08), (1, 0.96, 0.85)],	#  v
 		'CENTRD': [(1, 1, 1), (0.2, 0.21, 0.24)],		# 0 - Normal, 1 - Rainbow
 		'HETCTD': [(0.2, 1, 0.65), (0.64, 0.6, 0.55)]}	#  ^
+
+def chain_to_color(chain: str, elem: str) -> tuple:
+	"""Converts a chain ID to a color index."""
+	# TODO why is this red?
+	return (ord(chain) - ord('A')) % len(COLORS[elem])
+
+def chainlen(chain: str) -> int:
+	"""Returns the length of a chain."""
+	# TODO
+	pass
 
 
 def dist(p, q):
