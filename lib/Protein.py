@@ -4,7 +4,7 @@ from typing import Literal
 
 from consts import *
 
-"""PROTEIN CLASS"""
+"""PROTEIN CLASS."""
 class Protein:
 	"""A class to store data about the spacial information of a protein."""
 
@@ -156,15 +156,15 @@ class Protein:
 		return list(filter(lambda l : l[:6].strip() == record, self.lines))
 
 
-	def get_ss(self, ss_type: Literal['HELIX', 'SHEET']):
+	def get_secondary_structure(self, ss_type: Literal['HELIX', 'SHEET']):
 		"""Returns the residues of all the instances of the given secondary structure"""
 
 		if ss_type == 'HELIX':
 			helices = self.get_record('HELIX')
-			return sum([self.res_subset(int(ln[21:25]), int(ln[33:37])) for ln in helices], [])
+			return sum([self.res_subset(int(lin[21:25]), int(lin[33:37])) for lin in helices], [])
 		else:
 			sheets = self.get_record('SHEET')
-			return sum([self.res_subset(int(ln[22:26]), int(ln[33:37])) for ln in sheets], [])
+			return sum([self.res_subset(int(lin[22:26]), int(lin[33:37])) for lin in sheets], [])
 
 
 	def centroid(self, query = None, qtype=""):
@@ -195,7 +195,9 @@ class Protein:
 
 
 	def seq(self, residues=None):
-		"""Returns the 1-letter sequence of the residues in the given list"""
+		"""Returns the 1-letter sequence of the residues in the given list,
+		or in the whole protein if no list is given."""
+
 		if not residues:
 			residues = self.residues
 
