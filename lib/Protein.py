@@ -35,7 +35,11 @@ class Protein:
 
 	@cached_property
 	def chains(self):
-		"""`self.atoms` split by monomeric chain."""
+		"""Group the atoms by chain.
+
+		Returns:
+			dict: A dictionary mapping chain IDs (str) to lists of ATOM records for that chain.
+		"""
 
 		chains = {}
 		for atom in self.atoms:
@@ -55,46 +59,20 @@ class Protein:
 		Returns:
 			dict: keys:
 				code (str): the 3-letter code of the residue
-				n (int): residue number
+				id (str): residue chain id + sequence number
 				atoms (list): the list of ATOM records comprising the residue
 		"""
 
 		res = []
+		a0 = self.atoms[0]
+		last_res_id = ''
 
-		# yields the atom and residue number of the next TER record
-		ter = self.terminations()
-		ter_atm_no, ter_res_no = next(ter)
-		# start point of the current chain
-		st = 0
 		for atom in self.atoms:
-			# If the loop has crossed the TER record, update st and yield the next TER record,
-			#  moving to the next chain
-			if int(atom[ATNO]) > ter_atm_no:
-				res.append({'code': 'TER', 'n': ter_res_no + 1, 'atoms': []})
-				st = ter_res_no + 1
-				ter_atm_no, ter_res_no = next(ter)
-				ter_res_no += st
-
-			# each chain residue number must have st added to it to avoid overlaps between
-			#   residues with the same number in different chain
-			n = int(atom[RES_SEQ]) + st
-
-			try:
-				# (try to) add the new atom to its residue
-				res[n]['atoms'].append(atom)
-			except IndexError:
-				# if this is the first atom, create a new residue entry
-
-				# what should be the number of the next residue, assuming continuity
-				next_n = 0 if len(res) == 0 else res[-1]['n'] + 1
-
-				# if there is a gap between this residue and the previous, fill it with
-				#   blank residues before adding the next one
-				if n > next_n:
-					res.extend([{'code': '___', 'n': i, 'atoms': []}
-						for i in range(next_n, n)])
-
-				res.append({'code': atom[RESN], 'n': n, 'atoms': [atom]})
+			if last_res_id != (id := f'{atom[CHAIN]}-{atom[RES_SEQ].strip()}'):
+				res.append({'code': atom[RESN], 'id': id, 'atoms': [atom]})
+				last_res_id = id
+			else:
+				res[-1]['atoms'].append(atom)
 
 		return res
 
@@ -159,6 +137,7 @@ class Protein:
 	def get_secondary_structure(self, ss_type: Literal['HELIX', 'SHEET']):
 		"""Returns the residues of all the instances of the given secondary structure"""
 
+		# TODO fix res_subset
 		if ss_type == 'HELIX':
 			helices = self.get_record('HELIX')
 			return sum([self.res_subset(int(lin[21:25]), int(lin[33:37])) for lin in helices], [])
@@ -181,16 +160,14 @@ class Protein:
 			raise ValueError(f"Query (type '{qtype}') has no atoms")
 
 
-	def res_subset(self, start:int = None, stop:int = None):
+	def res_subset(self, start:int, stop:int = None):
 		"""Returns a subset of `self.residues` containing all the residues from
 		indices start to stop, inclusive"""
 
-		if start is None and stop is None:
-			start = 1
-			stop = self.residues[-1]['n']
-		elif stop is None:
+		if not stop:
 			start, stop = 1, start
 
+		# TODO fix this
 		return [res for res in self.residues if start <= res['n'] <= stop]
 
 
@@ -198,15 +175,18 @@ class Protein:
 		"""Returns the 1-letter sequence of the residues in the given list,
 		or in the whole protein if no list is given."""
 
+		# TODO make this work for chains and gaps
 		if not residues:
 			residues = self.residues
 
 		return ''.join([AA_MAP[res['code']] for res in residues])
 
 
+	@DeprecationWarning
 	def terminations(self):
 		"""Successively yield the positions (atom no. and residue no.) of each TER record in the file."""
 
+		# TODO remove this probably
 		ters = self.get_record('TER')
 		if ters:
 			for ter in ters:
