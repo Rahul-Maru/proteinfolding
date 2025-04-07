@@ -1,10 +1,11 @@
+"""PROTEIN CLASS."""
+
 from functools import cached_property
 import numpy as np
 from typing import Literal
 
 from consts import *
 
-"""PROTEIN CLASS."""
 class Protein:
 	"""A class to store data about the spacial information of a protein."""
 
@@ -53,35 +54,37 @@ class Protein:
 		return chains
 
 	@cached_property
-	def residues(self):
-		"""`self.atoms` split by residue
+	def residues(self) -> list[dict]:
+		"""Group atoms by residue.
 
 		Returns:
-			dict: keys:
-				code (str): the 3-letter code of the residue
-				id (str): residue chain id + sequence number
-				atoms (list): the list of ATOM records comprising the residue
+			List of residue dictionaries containing:
+				code (str): 3-letter residue code
+				id (str): Chain ID + sequence number
+				atoms (list): ATOM records for residue
 		"""
-
-		res = []
-		a0 = self.atoms[0]
+		residues = []
 		last_res_id = ''
 
 		for atom in self.atoms:
-			if last_res_id != (id := f'{atom[CHAIN]}-{atom[RES_SEQ].strip()}'):
-				res.append({'code': atom[RESN], 'id': id, 'atoms': [atom]})
-				last_res_id = id
+			res_id = f'{atom[CHAIN]}-{atom[RES_SEQ].strip()}'
+			if res_id != last_res_id:
+				residues.append({
+					'code': atom[RESN],
+					'id': res_id,
+					'atoms': [atom]
+				})
+				last_res_id = res_id
 			else:
-				res[-1]['atoms'].append(atom)
+				residues[-1]['atoms'].append(atom)
 
-		return res
-
+		return residues
 
 	@cached_property
 	def elems(self):
 		"""Splits `self.atoms` into different lists based on the element of each atom."""
 
-		h, c, n, o, s = [list(filter(lambda x: x[77] == elmt, self.atoms))
+		h, c, n, o, s = [[atom[ELEM] for atom in self.atoms if atom[ELEM] == elmt]
 				for elmt in ELEMS]
 		return (h, c, n, o, s)
 
@@ -127,12 +130,10 @@ class Protein:
 		else:
 			return (x, y, z)
 
+	def get_record(self, record: str) -> list[str]:
+		"""Get all PDB lines with given record type."""
 
-	def get_record(self, record: str):
-		"""Returns all the entries in the PDB file with the given record."""
-
-		return list(filter(lambda l : l[:6].strip() == record, self.lines))
-
+		return [line for line in self.lines if line[REC].strip() == record]
 
 	def get_secondary_structure(self, ss_type: Literal['HELIX', 'SHEET']):
 		"""Returns the residues of all the instances of the given secondary structure"""
@@ -296,7 +297,7 @@ class Protein:
 
 		return s
 
-	# Probably can be removed
+	@DeprecationWarning
 	def distance_matrix(self, query, qtype="res", query2 = None, qtype2="all") \
 						-> list[list[float]]:
 		"""OBSOLETE. Returns a bipartite distance matrix of all atoms in query vs all atoms in query2
@@ -312,6 +313,8 @@ class Protein:
 		Returns:
 			list[list[float]]: Distance Matrix. d[q2 atom #][q1 atom #s]
 		"""
+
+		# TODO remove this probably
 
 		coords1, coords2 = *self.get_xyzlist(query, qtype, True), *self.get_xyzlist(query2, qtype2, True)
 
