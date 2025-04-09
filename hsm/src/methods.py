@@ -90,26 +90,34 @@ def extract_bsites(combined=False):
 	for p in pdb_ids:
 		prot = Protein(f"hsm/pdbs/{p}")
 		if combined:
-			lig = prot.get_ligand('HSM')
-			bsite = prot.get_bsite(lig)
+			ligs = prot.get_ligand('HSM')
+			bsites = [prot.get_bsite(lig, True) for lig in ligs]
+
+			combined_bsite = []
+			for site in bsites:
+				for res in site:
+					if res not in combined_bsite:
+						# combines all binding sites into one, removing duplicates
+						combined_bsite.append(res)
+			#TODO sort properly
+			combined_bsite.sort(key=lambda x: x['id'])
 
 			with open(f"hsm/bsites_combined/{p[:-4]}.pdb", 'w') as f:
-					f.writelines(sum([res['atoms'] for res in bsite], []))
+				f.writelines(sum([res['atoms'] for res in combined_bsite], []))
 
 		else:
 			# create a separate file for the binding site of each chain
 			# TODO ligands in chains with no other atoms not recognized
 
-			for i in prot.chains:
-				lig = prot.get_ligand('HSM', i)
+			ligs = prot.get_ligand('HSM')
+			bsites = [prot.get_bsite(lig, True) for lig in ligs]
 
+			for i, lig in enumerate(ligs):
 				if len(lig["atoms"]) == 0:
 					continue
 
-				bsite = prot.get_bsite(lig)
-
-				with open(f"hsm/bsites/{p[:-4]}_{i}.pdb", 'w') as f:
-					f.writelines(sum([res['atoms'] for res in bsite], []))
+				with open(f"hsm/bsites/{p[:-4]}_{lig['id'][0]}{i}.pdb", 'w') as f:
+					f.writelines(sum([res['atoms'] for res in bsites[i]], []))
 
 @timed
 def filter_bsites():
@@ -169,7 +177,11 @@ def scoreplotter(mode):
 	x = np.linspace(0, 1, 101)
 	y = [len([j for s in dat if (j:=float(s))<=i])/n for i in x]
 
-	plt.plot(x, y, label="cumulative frequency of scores")
+	plt.plot(x, y, label="cumulative frequency of sequence identity scores")
+
+	plt.xlabel("sequence identity score")
+	plt.ylabel("cumulative frequency")
+	plt.title("cumulative frequency of sequence identity scores")
 
 	plt.show()
 
