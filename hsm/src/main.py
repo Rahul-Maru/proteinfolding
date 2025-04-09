@@ -4,7 +4,7 @@ import timeit
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('mode', type=str, nargs='?', default="struct")
+    parser.add_argument('mode', type=str, nargs='?', default="seq")
 
     args = parser.parse_args()
     mode = args.mode

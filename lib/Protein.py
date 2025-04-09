@@ -67,7 +67,7 @@ class Protein:
 		last_res_id = ''
 
 		for atom in self.atoms + self.hetatms:
-			res_id = f'{atom[CHAIN]}-{atom[RES_SEQ].strip()}'
+			res_id = f'{atom[CHAIN]}_{atom[RES_SEQ].strip()}'
 			if res_id != last_res_id:
 				residues.append({
 					'code': atom[RESN],
@@ -175,12 +175,49 @@ class Protein:
 	def seq(self, residues=None):
 		"""Returns the 1-letter sequence of the residues in the given list,
 		or in the whole protein if no list is given."""
+		# TODO test this
 
-		# TODO make this work for chains and gaps
+
 		if not residues:
 			residues = self.residues
 
-		return ''.join([AA_MAP[res['code']] for res in residues])
+		if not residues: # Handle empty list case
+			return ""
+
+		seq = []
+
+		# --- Handle leading dashes for the very first chain ---
+		first_num_str = residues[0]['id'].split('_')[1]
+		first_num = int(first_num_str)
+		if first_num > 1:
+			seq.extend(['-'] * (first_num - 1))
+
+		for i in range(len(residues)-1):
+			# Add current residue
+			seq.append(AA_MAP[residues[i]['code']])
+
+			# Check for gap to next residue
+			curr_chain, curr_num_str = residues[i]['id'].split('_')
+			next_chain, next_num_str = residues[i+1]['id'].split('_')
+			curr_num = int(curr_num_str)
+			next_num = int(next_num_str)
+
+			# Only add gaps within same chain
+			if curr_chain == next_chain:
+				gap_size = next_num - curr_num - 1
+				if gap_size > 0:
+					seq.extend(['-'] * gap_size)
+			else:
+				# Chain break
+				seq.append('|')
+				# --- Handle leading dashes for the new chain ---
+				if next_num > 1:
+					seq.extend(['-'] * (next_num - 1))
+
+		# Add final residue
+		seq.append(AA_MAP[residues[-1]['code']])
+
+		return ''.join(seq)
 
 
 	@DeprecationWarning

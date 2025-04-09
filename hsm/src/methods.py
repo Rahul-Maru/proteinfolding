@@ -99,6 +99,8 @@ def extract_bsites(combined=False):
 					if res not in combined_bsite:
 						# combines all binding sites into one, removing duplicates
 						combined_bsite.append(res)
+			#TODO sort properly
+			combined_bsite.sort(key=lambda x: x['id'])
 
 			with open(f"hsm/bsites_combined/{p[:-4]}.pdb", 'w') as f:
 				f.writelines(sum([res['atoms'] for res in combined_bsite], []))
@@ -175,7 +177,11 @@ def scoreplotter(mode):
 	x = np.linspace(0, 1, 101)
 	y = [len([j for s in dat if (j:=float(s))<=i])/n for i in x]
 
-	plt.plot(x, y, label="cumulative frequency of scores")
+	plt.plot(x, y, label="cumulative frequency of sequence identity scores")
+
+	plt.xlabel("sequence identity score")
+	plt.ylabel("cumulative frequency")
+	plt.title("cumulative frequency of sequence identity scores")
 
 	plt.show()
 
