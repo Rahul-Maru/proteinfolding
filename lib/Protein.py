@@ -175,7 +175,7 @@ class Protein:
 			raise ValueError(f"Query (type '{qtype}') has no atoms")
 
 
-	def seq(self, residues=None):
+	def seq(self, residues: list[Residue] = None):
 		"""Returns the 1-letter sequence of the residues in the given list,
 		or in the whole protein if no list is given."""
 		# TODO test this

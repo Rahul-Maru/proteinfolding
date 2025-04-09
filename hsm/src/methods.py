@@ -100,7 +100,7 @@ def extract_bsites(combined=False):
 						# combines all binding sites into one, removing duplicates
 						combined_bsite.append(res)
 			#TODO sort properly
-			combined_bsite.sort(key=lambda x: x['id'])
+			combined_bsite.sort(key=lambda x: ((i:=x['id'].split('_'))[0], int(i[1])))
 
 			with open(f"hsm/bsites_combined/{p[:-4]}.pdb", 'w') as f:
 				f.writelines(sum([res['atoms'] for res in combined_bsite], []))
