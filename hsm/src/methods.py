@@ -109,10 +109,11 @@ def extract_bsites(combined=False):
 
 			ligs = prot.get_ligand('HSM')
 			bsites = [prot.get_bsite(lig, True) for lig in ligs]
+
 			for i, lig in enumerate(ligs):
 				if len(lig["atoms"]) == 0:
 					continue
-			
+
 				with open(f"hsm/bsites/{p[:-4]}_{lig['id'][0]}{i}.pdb", 'w') as f:
 					f.writelines(sum([res['atoms'] for res in bsites[i]], []))
 
