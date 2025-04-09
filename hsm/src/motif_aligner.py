@@ -51,7 +51,7 @@ def run_mapp3d_comparisons(query_site, sites_dir, output_dir):
             for file in ['align.txt', 'fixed.pdb', 'frag.pdb', 'site1.pdb', 'site2.pdb']:
                 os.rename(os.path.join(output_dir, file), os.path.join(output_dir,
                                                         f"{os.path.basename(site_pdb)[:-4]}_{file}"))
-        except Exception as e:
+        except Exception:
             print(f"Comparison failed for {os.path.basename(site_pdb)}")
 
     

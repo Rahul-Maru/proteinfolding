@@ -13,9 +13,9 @@ def render(p: Protein):
 
 	# lists residues in helices and sheets
 	print("———α HELIX RESIDUES———")
-	Protein.print_res(p.get_ss('HELIX'))
+	Protein.print_res(p.get_secondary_structure('HELIX'))
 	print("———β SHEET RESIDUES———")
-	Protein.print_res(p.get_ss('SHEET'))
+	Protein.print_res(p.get_secondary_structure('SHEET'))
 
 	# prints general info about the protein
 	print(p)

@@ -1,10 +1,11 @@
+"""PROTEIN CLASS."""
+
 from functools import cached_property
 import numpy as np
 from typing import Literal
 
 from consts import *
 
-"""PROTEIN CLASS"""
 class Protein:
 	"""A class to store data about the spacial information of a protein."""
 
@@ -35,7 +36,11 @@ class Protein:
 
 	@cached_property
 	def chains(self):
-		"""`self.atoms` split by monomeric chain."""
+		"""Group the atoms by chain.
+
+		Returns:
+			dict: A dictionary mapping chain IDs (str) to lists of ATOM records for that chain.
+		"""
 
 		chains = {}
 		for atom in self.atoms:
@@ -49,61 +54,49 @@ class Protein:
 		return chains
 
 	@cached_property
-	def residues(self):
-		"""`self.atoms` split by residue
+	def residues(self) -> list[dict]:
+		"""Group atoms by residue.
 
 		Returns:
-			dict: keys:
-				code (str): the 3-letter code of the residue
-				n (int): residue number
-				atoms (list): the list of ATOM records comprising the residue
+			List of residue dictionaries containing:
+				code (str): 3-letter residue code
+				id (str): Chain ID + sequence number
+				atoms (list): ATOM records for residue
 		"""
+		residues = []
+		last_res_id = ''
 
-		res = []
+		for atom in self.atoms + self.hetatms:
+			res_id = f'{atom[CHAIN]}-{atom[RES_SEQ].strip()}'
+			if res_id != last_res_id:
+				residues.append({
+					'code': atom[RESN],
+					'id': res_id,
+					'type': atom[REC].strip().lower(),
+					'atoms': [atom]
+				})
+				last_res_id = res_id
+			else:
+				residues[-1]['atoms'].append(atom)
 
-		# yields the atom and residue number of the next TER record
-		ter = self.terminations()
-		ter_atm_no, ter_res_no = next(ter)
-		# start point of the current chain
-		st = 0
-		for atom in self.atoms:
-			# If the loop has crossed the TER record, update st and yield the next TER record,
-			#  moving to the next chain
-			if int(atom[ATNO]) > ter_atm_no:
-				res.append({'code': 'TER', 'n': ter_res_no + 1, 'atoms': []})
-				st = ter_res_no + 1
-				ter_atm_no, ter_res_no = next(ter)
-				ter_res_no += st
+		return residues
 
-			# each chain residue number must have st added to it to avoid overlaps between
-			#   residues with the same number in different chain
-			n = int(atom[RES_SEQ]) + st
+	def res_subset(self, start:int, stop:int = None):
+		"""Returns a subset of `self.residues` containing all the residues from
+		indices start to stop, inclusive"""
 
-			try:
-				# (try to) add the new atom to its residue
-				res[n]['atoms'].append(atom)
-			except IndexError:
-				# if this is the first atom, create a new residue entry
+		if not stop:
+			start, stop = 1, start
 
-				# what should be the number of the next residue, assuming continuity
-				next_n = 0 if len(res) == 0 else res[-1]['n'] + 1
-
-				# if there is a gap between this residue and the previous, fill it with
-				#   blank residues before adding the next one
-				if n > next_n:
-					res.extend([{'code': '___', 'n': i, 'atoms': []}
-						for i in range(next_n, n)])
-
-				res.append({'code': atom[RESN], 'n': n, 'atoms': [atom]})
-
-		return res
+		# TODO fix this
+		return [res for res in self.residues if start <= res['n'] <= stop]
 
 
 	@cached_property
 	def elems(self):
 		"""Splits `self.atoms` into different lists based on the element of each atom."""
 
-		h, c, n, o, s = [list(filter(lambda x: x[77] == elmt, self.atoms))
+		h, c, n, o, s = [[atom[ELEM] for atom in self.atoms if atom[ELEM] == elmt]
 				for elmt in ELEMS]
 		return (h, c, n, o, s)
 
@@ -137,7 +130,6 @@ class Protein:
 			case "res":
 				x, y, z = [[float(atom[coord]) for atom in query['atoms']]
 					for coord in [X_COORD, Y_COORD, Z_COORD]]
-
 			case "lin":
 				x, y, z = (float(query[coord]) for coord in [X_COORD, Y_COORD, Z_COORD])
 			case _:
@@ -149,22 +141,21 @@ class Protein:
 		else:
 			return (x, y, z)
 
+	def get_record(self, record: str) -> list[str]:
+		"""Get all PDB lines with given record type."""
 
-	def get_record(self, record: str):
-		"""Returns all the entries in the PDB file with the given record."""
+		return [line for line in self.lines if line[REC].strip() == record]
 
-		return list(filter(lambda l : l[:6].strip() == record, self.lines))
-
-
-	def get_ss(self, ss_type: Literal['HELIX', 'SHEET']):
+	def get_secondary_structure(self, ss_type: Literal['HELIX', 'SHEET']):
 		"""Returns the residues of all the instances of the given secondary structure"""
 
+		# TODO fix res_subset
 		if ss_type == 'HELIX':
 			helices = self.get_record('HELIX')
-			return sum([self.res_subset(int(ln[21:25]), int(ln[33:37])) for ln in helices], [])
+			return sum([self.res_subset(int(lin[21:25]), int(lin[33:37])) for lin in helices], [])
 		else:
 			sheets = self.get_record('SHEET')
-			return sum([self.res_subset(int(ln[22:26]), int(ln[33:37])) for ln in sheets], [])
+			return sum([self.res_subset(int(lin[22:26]), int(lin[33:37])) for lin in sheets], [])
 
 
 	def centroid(self, query = None, qtype=""):
@@ -181,30 +172,22 @@ class Protein:
 			raise ValueError(f"Query (type '{qtype}') has no atoms")
 
 
-	def res_subset(self, start:int = None, stop:int = None):
-		"""Returns a subset of `self.residues` containing all the residues from
-		indices start to stop, inclusive"""
-
-		if start is None and stop is None:
-			start = 1
-			stop = self.residues[-1]['n']
-		elif stop is None:
-			start, stop = 1, start
-
-		return [res for res in self.residues if start <= res['n'] <= stop]
-
-
 	def seq(self, residues=None):
-		"""Returns the 1-letter sequence of the residues in the given list"""
+		"""Returns the 1-letter sequence of the residues in the given list,
+		or in the whole protein if no list is given."""
+
+		# TODO make this work for chains and gaps
 		if not residues:
 			residues = self.residues
 
 		return ''.join([AA_MAP[res['code']] for res in residues])
 
 
+	@DeprecationWarning
 	def terminations(self):
 		"""Successively yield the positions (atom no. and residue no.) of each TER record in the file."""
 
+		# TODO remove this probably
 		ters = self.get_record('TER')
 		if ters:
 			for ter in ters:
@@ -215,7 +198,7 @@ class Protein:
 
 
 
-	def get_ligand(self, query: str, chain = "all") -> dict:
+	def get_ligand(self, query: str = DEF_LIG, chain: str = "all") -> list:
 		"""Extracts a ligand based on a query string
 
 		Args:
@@ -223,47 +206,35 @@ class Protein:
 			query (str): the 3-letter code of the ligand
 
 		Returns:
-			dict: The HETATM lines associated with the target molecule
+			list: The list of `query` residues in `self.residues`
 		"""
-
-		lig = {"code": query}
 
 		if chain == "all":
 			# each record must be a HETATM record corresponding to the query ligand
-			lig["atoms"] = [atm for atm in self.lines
-				   if atm[17:20] == query
-				   and atm[:6].strip() in ['ATOM', 'HETATM']]
-		elif chain == "idv":
-			pass
+			lig = [res for res in self.residues if res['code'] == query]
+
 		else:
-			lig["atoms"] = [atm for atm in self.lines
-				   if atm[17:20] == query
-				   and atm[:6].strip() in ['ATOM', 'HETATM']
-				   and atm[21] == chain]
-	
-		lig['n'] = len(lig["atoms"])
-	
+			lig = [res for res in self.residues if res['code'] == query and res['id'][0] == chain]
+
 		return lig
 
-	# TODO add toggle for including ligand in binding sites
-	def get_bsite(self, lig, chain):
-		"""Extracts the binding site or sites that bind to the given ligand.
+	def get_bsite(self, lig, include_lig: bool = False):
+		"""Extracts the binding site(s) that bind to the given ligand.
 
 		Args:
-			lig (dict/str): dict containing the atoms of the ligand.
-			chain (str): chain from which to extract ligands (only used if `lig` is a string)
+			lig (dict): dict containing the atoms of the ligand.
+			include_lig (bool): whether to include the ligand in the binding site.
 		Returns:
 			(list): list of residues that comprise the binding site(s).
 		"""
 
-		if type(lig) == str:
-			lig = self.get_ligand(lig, chain)
+		bsite = []
 
 		lig_coords = self.get_xyzlist(lig, triplet=True)
 
-		bsite = []
+		aminos = [res for res in self.residues if res['type'] == 'atom']
 
-		for res in self.residues:
+		for res in aminos:
 			for atom in res['atoms']:
 				atom_coords = self.get_xyzlist(atom, "lin")
 				# if the atom is close to the ligand add it to the binding
@@ -276,6 +247,9 @@ class Protein:
 					# if the inner loop was broken, break out of this one too
 					continue
 				break
+
+		if include_lig:
+			bsite.append(lig)
 
 		return bsite
 
@@ -314,7 +288,7 @@ class Protein:
 
 		return s
 
-	# Probably can be removed
+	@DeprecationWarning
 	def distance_matrix(self, query, qtype="res", query2 = None, qtype2="all") \
 						-> list[list[float]]:
 		"""OBSOLETE. Returns a bipartite distance matrix of all atoms in query vs all atoms in query2
@@ -330,6 +304,8 @@ class Protein:
 		Returns:
 			list[list[float]]: Distance Matrix. d[q2 atom #][q1 atom #s]
 		"""
+
+		# TODO remove this probably
 
 		coords1, coords2 = *self.get_xyzlist(query, qtype, True), *self.get_xyzlist(query2, qtype2, True)
 

@@ -5,7 +5,7 @@ import os
 import subprocess
 import timeit
 
-from bio import pdb_ids_all, Protein
+from bio import  Protein
 
 
 def timed(func):
@@ -58,13 +58,13 @@ def csv_formatter(mode, cutoff = 0):
 			labels = next(reader)[1:]
 
 			rows = [row[1:] for row in reader]
-		
+
 		out = [["Source", "Target", "Score"]]
 		for i, (row, prot) in enumerate(zip(rows, labels)):
 			for score, prot2 in zip(row, labels[:i]):
 				if float(score) >= cutoff:
 					out.append([prot, prot2, score])
-		
+
 		print(len(out) -1)
 
 		with open("hsm/outs/TMalign/network2.csv", "w") as f2:
@@ -74,19 +74,21 @@ def csv_formatter(mode, cutoff = 0):
 @timed
 def extract_bsites(combined=False):
 	"""Extracts the binding sites of a given ligand from a PDB file
-	and stores them in separate files. 
+	and stores them in separate files.
 
 	Args:
 		combined (bool, optional): #whether to consider all ligand molecules together or separately.
 			Defaults to False.
 	"""
 
-	# file path template
-	path = "hsm/pdbs/"
-
 	print(f"Extracting Binding Sites ({"Combined" if combined else "Ligand-wise"})")
-	for p in pdb_ids_all:
-		prot = Protein(path + p)
+
+	# Get PDB IDs from the directory
+	pdb_ids = [f for f in os.listdir("hsm/pdbs")]
+	pdb_ids.sort()
+
+	for p in pdb_ids:
+		prot = Protein(f"hsm/pdbs/{p}")
 		if combined:
 			ligs = prot.get_ligand('HSM')
 			bsites = [prot.get_bsite(lig, True) for lig in ligs]
@@ -141,7 +143,7 @@ def mdistmin_extractor():
 						final_list.append([dat[0], dat[1], mdist_min])
 			except:
 				continue
-	
+
 	with open("hsm/outs/SiteMotif/mdist.csv", 'w') as f2:
 		writer = csv.writer(f2)
 		writer.writerows(final_list)
@@ -217,6 +219,6 @@ def weighted_sum():
 
 			prots[row[0]] += float(row[2])
 			prots[row[1]] += float(row[2])
-		
+
 		print(prots)
 		print(max(prots, key=prots.get))
