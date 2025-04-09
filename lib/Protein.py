@@ -66,12 +66,13 @@ class Protein:
 		residues = []
 		last_res_id = ''
 
-		for atom in self.atoms:
+		for atom in self.atoms + self.hetatms:
 			res_id = f'{atom[CHAIN]}-{atom[RES_SEQ].strip()}'
 			if res_id != last_res_id:
 				residues.append({
 					'code': atom[RESN],
 					'id': res_id,
+					'type': atom[REC].strip().lower(),
 					'atoms': [atom]
 				})
 				last_res_id = res_id
@@ -79,6 +80,17 @@ class Protein:
 				residues[-1]['atoms'].append(atom)
 
 		return residues
+
+	def res_subset(self, start:int, stop:int = None):
+		"""Returns a subset of `self.residues` containing all the residues from
+		indices start to stop, inclusive"""
+
+		if not stop:
+			start, stop = 1, start
+
+		# TODO fix this
+		return [res for res in self.residues if start <= res['n'] <= stop]
+
 
 	@cached_property
 	def elems(self):
@@ -118,7 +130,6 @@ class Protein:
 			case "res":
 				x, y, z = [[float(atom[coord]) for atom in query['atoms']]
 					for coord in [X_COORD, Y_COORD, Z_COORD]]
-
 			case "lin":
 				x, y, z = (float(query[coord]) for coord in [X_COORD, Y_COORD, Z_COORD])
 			case _:
@@ -161,17 +172,6 @@ class Protein:
 			raise ValueError(f"Query (type '{qtype}') has no atoms")
 
 
-	def res_subset(self, start:int, stop:int = None):
-		"""Returns a subset of `self.residues` containing all the residues from
-		indices start to stop, inclusive"""
-
-		if not stop:
-			start, stop = 1, start
-
-		# TODO fix this
-		return [res for res in self.residues if start <= res['n'] <= stop]
-
-
 	def seq(self, residues=None):
 		"""Returns the 1-letter sequence of the residues in the given list,
 		or in the whole protein if no list is given."""
@@ -198,7 +198,7 @@ class Protein:
 
 
 
-	def get_ligand(self, query: str, chain = "all") -> dict:
+	def get_ligand(self, query: str = DEF_LIG, chain: str = "all") -> list:
 		"""Extracts a ligand based on a query string
 
 		Args:
@@ -206,47 +206,35 @@ class Protein:
 			query (str): the 3-letter code of the ligand
 
 		Returns:
-			dict: The HETATM lines associated with the target molecule
+			list: The list of `query` residues in `self.residues`
 		"""
-
-		lig = {"code": query}
 
 		if chain == "all":
 			# each record must be a HETATM record corresponding to the query ligand
-			lig["atoms"] = [atm for atm in self.lines
-				   if atm[17:20] == query
-				   and atm[:6].strip() in ['ATOM', 'HETATM']]
-		elif chain == "idv":
-			pass
+			lig = [res for res in self.residues if res['code'] == query]
+
 		else:
-			lig["atoms"] = [atm for atm in self.lines
-				   if atm[17:20] == query
-				   and atm[:6].strip() in ['ATOM', 'HETATM']
-				   and atm[21] == chain]
-	
-		lig['n'] = len(lig["atoms"])
-	
+			lig = [res for res in self.residues if res['code'] == query and res['id'][0] == chain]
+
 		return lig
 
-	# TODO add toggle for including ligand in binding sites
-	def get_bsite(self, lig, chain):
-		"""Extracts the binding site or sites that bind to the given ligand.
+	def get_bsite(self, lig, include_lig: bool = False):
+		"""Extracts the binding site(s) that bind to the given ligand.
 
 		Args:
-			lig (dict/str): dict containing the atoms of the ligand.
-			chain (str): chain from which to extract ligands (only used if `lig` is a string)
+			lig (dict): dict containing the atoms of the ligand.
+			include_lig (bool): whether to include the ligand in the binding site.
 		Returns:
 			(list): list of residues that comprise the binding site(s).
 		"""
 
-		if type(lig) == str:
-			lig = self.get_ligand(lig, chain)
+		bsite = []
 
 		lig_coords = self.get_xyzlist(lig, triplet=True)
 
-		bsite = []
+		aminos = [res for res in self.residues if res['type'] == 'atom']
 
-		for res in self.residues:
+		for res in aminos:
 			for atom in res['atoms']:
 				atom_coords = self.get_xyzlist(atom, "lin")
 				# if the atom is close to the ligand add it to the binding
@@ -259,6 +247,9 @@ class Protein:
 					# if the inner loop was broken, break out of this one too
 					continue
 				break
+
+		if include_lig:
+			bsite.append(lig)
 
 		return bsite
 
