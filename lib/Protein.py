@@ -5,6 +5,9 @@ import numpy as np
 from typing import Literal
 
 from consts import *
+from residue import Residue
+
+#TODO add a residue class or at least a typed dict for residues
 
 class Protein:
 	"""A class to store data about the spacial information of a protein."""
@@ -54,7 +57,7 @@ class Protein:
 		return chains
 
 	@cached_property
-	def residues(self) -> list[dict]:
+	def residues(self) -> list[Residue]:
 		"""Group atoms by residue.
 
 		Returns:
