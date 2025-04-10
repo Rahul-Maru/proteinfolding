@@ -2,7 +2,7 @@ from Protein import Protein
 from consts import pdb_ids_all
 
 def chain_getter():
-    with open('hsm/outs/PDB2Fasta/bsite.fa') as f:
+    with open('hsm/outs/PDB2Fasta/bsite_chain_identifier.fa') as f:
         chains = [(x[1:-3], x[-2]) for x in f.readlines()[::2]]
     print(chains)
 

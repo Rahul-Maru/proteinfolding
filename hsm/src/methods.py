@@ -20,7 +20,7 @@ def timed(func):
 @timed
 def chain_getter():
 	print("Extracting chains with binding sites")
-	with open('hsm/outs/PDB2Fasta/bsite.fa') as f:
+	with open('hsm/outs/PDB2Fasta/bchain_identifier.fa') as f:
 		chains = [(x[1:-3], x[-2]) for x in f.readlines()[::2]]
 
 	for c in chains:
@@ -33,12 +33,13 @@ def chain_getter():
 @timed
 def csv_formatter(mode, cutoff = 0):
 	if mode == "seq":
-		with open("hsm/outs/Clustal/mat.txt") as f:
+		# sequence similarity network
+
+		with open("hsm/outs/Clustal/sequence_identity_matrix.txt") as f:
 			lines = f.readlines()
 			labels = [x[:6] for x in lines[1:]]
 
 			rows = [row[9:-1].split(' ') for row in lines[1:]]
-			# print (rows)
 
 		out = [["Source", "Target", "Score"]]
 		for i, (row, prot) in enumerate(zip(rows, labels)):
@@ -48,12 +49,14 @@ def csv_formatter(mode, cutoff = 0):
 
 		print(len(out) - 1)
 
-		with open("hsm/outs/Clustal/network.csv", "w") as f2:
+		with open("hsm/outs/Clustal/seq_edge_list.csv", "w") as f2:
 			writer = csv.writer(f2)
 			writer.writerows(out)
 
-	else:
-		with open("hsm/outs/TMalign/out2.csv") as f:
+	elif mode == "struct":
+		# structural similarity network
+
+		with open("hsm/outs/TMalign/structure_identity_matrix.csv") as f:
 			reader = csv.reader(f)
 			labels = next(reader)[1:]
 
@@ -67,7 +70,7 @@ def csv_formatter(mode, cutoff = 0):
 
 		print(len(out) -1)
 
-		with open("hsm/outs/TMalign/network2.csv", "w") as f2:
+		with open("hsm/outs/TMalign/struct_edge_list.csv", "w") as f2:
 			writer = csv.writer(f2)
 			writer.writerows(out)
 
@@ -166,8 +169,9 @@ def pdbs2fasta(dir, out):
 		f.write(fasta)
 
 def scoreplotter(mode):
-	inf = "Clustal/network" if mode == "seq" else "TMalign/network2"
+	inf = "Clustal/seq_edge_list" if mode == "seq" else "TMalign/struct_edge_list"
 
+	# TODO more efficient way to do this
 	with open(f"hsm/outs/{inf}.csv") as f:
 		r = csv.reader(f)
 		next(r)
@@ -177,16 +181,19 @@ def scoreplotter(mode):
 	x = np.linspace(0, 1, 101)
 	y = [len([j for s in dat if (j:=float(s))<=i])/n for i in x]
 
-	plt.plot(x, y, label="cumulative frequency of sequence identity scores")
+	plt.plot(x, y,label=f"cumulative frequency of {'sequence' if mode == 'seq' else 'structural'} identity scores")
 
 	plt.xlabel("sequence identity score")
 	plt.ylabel("cumulative frequency")
-	plt.title("cumulative frequency of sequence identity scores")
+	plt.title(f"Cumulative frequency of {'sequence' if mode == 'seq' else 'structural'} identity scores")
 
 	plt.show()
 
 @timed
-def tmalign(dir = "hsm/bchains_seq", outf = "out2"):
+def tmalign():
+	dir = "hsm/bchains_seq"
+	outf = "structure_identity_matrix"
+
 	print(f"Aligning {dir} using TMalign → {outf}.csv")
 
 	prots = os.listdir(dir)
