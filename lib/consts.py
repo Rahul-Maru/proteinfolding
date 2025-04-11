@@ -13,7 +13,7 @@ RAINBOW_OVR = False # Displays the atoms with a rainbow color scheme
 
 # maximum distance of a residue from a ligand for it to be considered
 #	part of the binding site (Å)
-BS_DIST = 4.5
+MAX_BSITE_DIST = 4.5
 
 #——PDB FIELDS——
 # RECORD

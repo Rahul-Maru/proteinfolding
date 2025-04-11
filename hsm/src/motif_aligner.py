@@ -5,7 +5,7 @@ import glob
 def run_mapp3d_comparisons(query_site, sites_dir, output_dir):
     """
     Run MAPP-3D pairwise comparisons between query site and all sites in directory
-    
+
     Args:
         query_site: Path to query PDB file
         sites_dir: Directory containing all binding site PDB files
@@ -40,7 +40,7 @@ def run_mapp3d_comparisons(query_site, sites_dir, output_dir):
             site_pdb,
             query_site
         ], cwd=output_dir, capture_output=True, text=True)
-        
+
         if result.returncode != 0:
             print(f"Error comparing {os.path.basename(query_site)} with {os.path.basename(site_pdb)}:")
             print(result.stderr)
@@ -54,10 +54,10 @@ def run_mapp3d_comparisons(query_site, sites_dir, output_dir):
         except Exception:
             print(f"Comparison failed for {os.path.basename(site_pdb)}")
 
-    
+
 def main():
 	# Run comparisons
-	query_site = os.path.abspath(os.path.join("hsm", "bsites_final", "2x45_C.pdb")) 
+	query_site = os.path.abspath(os.path.join("hsm", "bsites_final", "2x45_C6.pdb"))
 	sites_dir = os.path.abspath(os.path.join("hsm", "bsites_final"))
 	output_dir = os.path.abspath(os.path.join("hsm", "outs", "mapp3d_results"))
 

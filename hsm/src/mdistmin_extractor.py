@@ -1,14 +1,22 @@
 import csv
 
+CUTOFF = 0
+
 def mdistmin_extractor():
+	mode = "directed"
 	final_list = [["Source", "Target", "Score"]]
 	with open("hsm/tools/MAPP-3D/MultipleSiteAlignment/align_output.txt") as f:
 		pairs = f.readlines()
 		for pair in pairs:
 			try:
-				if (mdist_min := float((dat:=pair.split("\t"))[2].split(" ")[2])) >= 0:
-					if dat[0] < dat[1]:
-						final_list.append([dat[0], dat[1], mdist_min])
+				if mode == "filter":
+					if (mdist_min := float((dat:=pair.split("\t"))[2].split(" ")[2])) >= CUTOFF:
+						if dat[0] < dat[1]:
+							final_list.append([dat[0], dat[1], mdist_min])
+				elif mode == "directed":
+					if (mdist_min := float((dat:=pair.split("\t"))[2].split(" ")[2])):
+						if dat[0] != dat[1]:
+							final_list.append([dat[0], dat[1], mdist_min])
 			except:
 				continue
 	

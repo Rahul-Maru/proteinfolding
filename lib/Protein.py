@@ -258,16 +258,17 @@ class Protein:
 
 		return lig
 
-	def get_bsite(self, lig, include_lig: bool = False):
+	def get_bsite(self, lig, include_lig: bool = False, max_dist: float = MAX_BSITE_DIST):
 		"""Extracts the binding site(s) that bind to the given ligand.
 
 		Args:
 			lig (dict): dict containing the atoms of the ligand.
 			include_lig (bool): whether to include the ligand in the binding site.
+			max_dist (float): the maximum distance for a residue to be included in the binding site. (default: 4.5Å)
 		Returns:
 			(list): list of residues that comprise the binding site(s).
 		"""
-
+		#TODO try out different cutoff values
 		bsite = []
 
 		lig_coords = self.get_xyzlist(lig, triplet=True)
@@ -280,7 +281,7 @@ class Protein:
 				# if the atom is close to the ligand add it to the binding
 				# 	site and move on to the next residue
 				for coords in lig_coords:
-					if dist(coords, atom_coords) <= BS_DIST:
+					if dist(coords, atom_coords) <= max_dist:
 						bsite.append(res)
 						break
 				else:
