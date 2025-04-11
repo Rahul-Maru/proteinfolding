@@ -68,6 +68,8 @@ def main():
         csv_formatter("struct", cutoff)
 
         print("\n——INPUT \033[1mstruct_edge_list.csv\033[0m INTO CYTOSCAPE——")
+    elif mode == 'filter':
+        filter_bsites()
 
 
 if __name__ == "__main__":

@@ -124,18 +124,28 @@ def extract_bsites(combined=False):
 
 @timed
 def filter_bsites():
-	bsites = os.listdir("hsm/bsites")
+	"""Moves binding sites to the destination directory if their chain is present in the final chains directory."""
+
+	src = "hsm/bsites"
+	dst = "hsm/bsites_split"
+
+	print(f"Filtering binding sites from {src} to {dst}")
+
+	bsites = os.listdir(src)
 	bsites.sort()
-	bchains = os.listdir("hsm/bchains_final")
-	bchains.sort()
+
+	bchains_final = os.listdir("hsm/bchains_final")
+	bchains_final.sort()
 
 	i = 0
+	# for every binding site in src, check if its chain is in bchains_final
+	# if so, copy it to dst
 	for s in bsites:
-		if s not in bchains:
+		if s[:6] + s[7:] in bchains_final:
 			print(s)
 			i += 1
-			subprocess.run(['rm', f'hsm/bsites_final/{s}'])
-	print(i)
+			subprocess.run(['cp', f'{src}/{s}', f'{dst}/{s}'])
+	print(f"final count: {i}")
 
 @timed
 def mdistmin_extractor():

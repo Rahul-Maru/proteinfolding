@@ -408,3 +408,211 @@
 2025-04-09 16:40:06,023 [DEBUG] py4...: ǀ'cytoscape_version_info' exception RequestException('Cannot find local or remote Cytoscape. Start Cytoscape and then proceed.')
 2025-04-09 16:40:06,023 [DEBUG] py4...: 'cytoscape_ping' exception RequestException('Cannot find local or remote Cytoscape. Start Cytoscape and then proceed.')
 2025-04-09 16:40:06,023 [DEBUG] py4...: --------------------
+2025-04-11 15:29:34,983 [DEBUG] py4...: Calling cytoscape_ping()
+2025-04-11 15:29:34,983 [DEBUG] py4...: ǀCalling cytoscape_version_info(base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:29:34,983 [DEBUG] py4...: ǀǀCalling cyrest_get('version', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:29:34,984 [DEBUG] py4...: Attempting to direct connect to Cytoscape on http://127.0.0.1:1234/v1
+2025-04-11 15:29:35,168 [DEBUG] py4...: Detected py4cytoscape running on Cytoscape workstation
+2025-04-11 15:29:35,168 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/version)
+2025-04-11 15:29:35,184 [DEBUG] py4...: ǀǀOK[200], content: {"apiVersion":"v1","cytoscapeVersion":"3.10.3"}
+2025-04-11 15:29:35,184 [DEBUG] py4...: ǀǀReturning 'cyrest_get': {'apiVersion': 'v1', 'cytoscapeVersion': '3.10.3'}
+2025-04-11 15:29:35,184 [DEBUG] py4...: ǀReturning 'cytoscape_version_info': {'apiVersion': 'v1', 'cytoscapeVersion': '3.10.3', 'automationAPIVersion': '1.11.0', 'py4cytoscapeVersion': '1.11.0'}
+2025-04-11 15:29:35,185 [DEBUG] py4...: Returning 'cytoscape_ping': 'You are connected to Cytoscape!'
+2025-04-11 15:29:35,186 [DEBUG] py4...: --------------------
+2025-04-11 15:29:35,186 [DEBUG] py4...: Calling get_network_suid(None)
+2025-04-11 15:29:35,186 [DEBUG] py4...: ǀCalling commands_post('network get attribute network="current" namespace="default" columnList="SUID"', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:29:35,186 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/v1/commands/network/get%20attribute), json: {'network': 'current', 'namespace': 'default', 'columnList': 'SUID'}
+2025-04-11 15:29:35,236 [DEBUG] py4...: ǀOK[200], content: {
+ "data": [ {
+  "SUID": 155
+}
+],
+ "errors":[]
+}
+2025-04-11 15:29:35,237 [DEBUG] py4...: ǀReturning 'commands_post': [{'SUID': 155}]
+2025-04-11 15:29:35,237 [DEBUG] py4...: Returning 'get_network_suid': 155
+2025-04-11 15:29:35,237 [DEBUG] py4...: --------------------
+2025-04-11 15:29:35,238 [DEBUG] py4...: Calling get_network_name(155)
+2025-04-11 15:29:35,238 [DEBUG] py4...: ǀCalling cyrest_get('networks.names', {'column': 'suid', 'query': 155}, base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:29:35,238 [DEBUG] py4...: ǀHTTP GET(http://127.0.0.1:1234/v1/networks.names), params: {'column': 'suid', 'query': 155}
+2025-04-11 15:29:35,259 [DEBUG] py4...: ǀOK[200], content: [{"name":"test","SUID":155}]
+2025-04-11 15:29:35,259 [DEBUG] py4...: ǀReturning 'cyrest_get': [{'name': 'test', 'SUID': 155}]
+2025-04-11 15:29:35,259 [DEBUG] py4...: Returning 'get_network_name': 'test'
+2025-04-11 15:29:35,260 [DEBUG] py4...: --------------------
+2025-04-11 15:31:09,632 [DEBUG] py4...: Calling cytoscape_ping()
+2025-04-11 15:31:09,632 [DEBUG] py4...: ǀCalling cytoscape_version_info(base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:09,633 [DEBUG] py4...: ǀǀCalling cyrest_get('version', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:09,633 [DEBUG] py4...: Attempting to direct connect to Cytoscape on http://127.0.0.1:1234/v1
+2025-04-11 15:31:09,648 [DEBUG] py4...: Detected py4cytoscape running on Cytoscape workstation
+2025-04-11 15:31:09,649 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/version)
+2025-04-11 15:31:09,665 [DEBUG] py4...: ǀǀOK[200], content: {"apiVersion":"v1","cytoscapeVersion":"3.10.3"}
+2025-04-11 15:31:09,666 [DEBUG] py4...: ǀǀReturning 'cyrest_get': {'apiVersion': 'v1', 'cytoscapeVersion': '3.10.3'}
+2025-04-11 15:31:09,666 [DEBUG] py4...: ǀReturning 'cytoscape_version_info': {'apiVersion': 'v1', 'cytoscapeVersion': '3.10.3', 'automationAPIVersion': '1.11.0', 'py4cytoscapeVersion': '1.11.0'}
+2025-04-11 15:31:09,667 [DEBUG] py4...: Returning 'cytoscape_ping': 'You are connected to Cytoscape!'
+2025-04-11 15:31:09,667 [DEBUG] py4...: --------------------
+2025-04-11 15:31:09,667 [DEBUG] py4...: Calling get_network_suid(None)
+2025-04-11 15:31:09,668 [DEBUG] py4...: ǀCalling commands_post('network get attribute network="current" namespace="default" columnList="SUID"', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:09,668 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/v1/commands/network/get%20attribute), json: {'network': 'current', 'namespace': 'default', 'columnList': 'SUID'}
+2025-04-11 15:31:09,685 [DEBUG] py4...: ǀOK[200], content: {
+ "data": [ {
+  "SUID": 155
+}
+],
+ "errors":[]
+}
+2025-04-11 15:31:09,686 [DEBUG] py4...: ǀReturning 'commands_post': [{'SUID': 155}]
+2025-04-11 15:31:09,686 [DEBUG] py4...: Returning 'get_network_suid': 155
+2025-04-11 15:31:09,686 [DEBUG] py4...: --------------------
+2025-04-11 15:31:09,686 [DEBUG] py4...: Calling get_network_name(155)
+2025-04-11 15:31:09,686 [DEBUG] py4...: ǀCalling cyrest_get('networks.names', {'column': 'suid', 'query': 155}, base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:09,687 [DEBUG] py4...: ǀHTTP GET(http://127.0.0.1:1234/v1/networks.names), params: {'column': 'suid', 'query': 155}
+2025-04-11 15:31:09,703 [DEBUG] py4...: ǀOK[200], content: [{"name":"test","SUID":155}]
+2025-04-11 15:31:09,704 [DEBUG] py4...: ǀReturning 'cyrest_get': [{'name': 'test', 'SUID': 155}]
+2025-04-11 15:31:09,704 [DEBUG] py4...: Returning 'get_network_name': 'test'
+2025-04-11 15:31:09,704 [DEBUG] py4...: --------------------
+2025-04-11 15:31:09,704 [DEBUG] py4...: Calling get_table_column_names('node', network=155)
+2025-04-11 15:31:09,704 [DEBUG] py4...: ǀCalling get_network_suid(155, base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:09,705 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:09,705 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2025-04-11 15:31:09,721 [DEBUG] py4...: ǀǀOK[200], content: [3684,4954,155,2555,1358]
+2025-04-11 15:31:09,721 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [3684, 4954, 155, 2555, 1358]
+2025-04-11 15:31:09,722 [DEBUG] py4...: ǀReturning 'get_network_suid': 155
+2025-04-11 15:31:09,722 [DEBUG] py4...: ǀCalling cyrest_get('networks/155/tables/defaultnode/columns', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:09,722 [DEBUG] py4...: ǀHTTP GET(http://127.0.0.1:1234/v1/networks/155/tables/defaultnode/columns)
+2025-04-11 15:31:09,738 [DEBUG] py4...: ǀOK[200], content: [{"name":"SUID","type":"Long","immutable":true,"primaryKey":true},{"name":"shared name","type":"String","immutable":true,"primaryKey":false},{"name":"name","type":"String","immutable":true,"primaryKey":false},{"name":"selected","type":"Boolean","immutable":true,"primaryKey":false},{"name":"AverageShortestPathLength","type":"Double","immutable":false,"primaryKey":false},{"name":"BetweennessCentrality","type":"Double","immutable":false,"primaryKey":false},{"name":"ClosenessCentrality","type":"Double","immutable":false,"primaryKey":false},{"name":"ClusteringCoefficient","type":"Double","immutable":false,"primaryKey":false},{"name":"Degree","type":"Integer","immutable":false,"primaryKey":false},{"name":"Eccentricity","type":"Integer","immutable":false,"primaryKey":false},{"name":"IsSingleNode","type":"Boolean","immutable":false,"primaryKey":false},{"name":"NeighborhoodConnectivity","type":"Double","immutable":false,"primaryKey":false},{"name":"NumberOfDirectedEdges","type":"Integer","immutable":false,"primaryKey":false},{"name":"NumberOfUndirectedEdges","type":"Integer","immutable":false,"primaryKey":false},{"name":"PartnerOfMultiEdgedNodePairs","type":"Integer","immutable":false,"primaryKey":false},{"name":"Radiality","type":"Double","immutable":false,"primaryKey":false},{"name":"SelfLoops","type":"Integer","immutable":false,"primaryKey":false},{"name":"Stress","type":"Long","immutable":false,"primaryKey":false},{"name":"TopologicalCoefficient","type":"Double","immutable":false,"primaryKey":false}]
+2025-04-11 15:31:09,738 [DEBUG] py4...: ǀReturning 'cyrest_get': [{'name': 'SUID', 'type': 'Long', 'immutable': True, 'primaryKey': True}, {'name': 'shared name', 'type': 'String', 'immutable': True, 'primaryKey': False}, {'name': 'name', 'type': 'String', 'immutable': True, 'primaryKey': False}, {'name': 'selected', 'type': 'Boolean', 'immutable': True, 'primaryKey': False}, {'name': 'AverageShortestPathLength', 'type': 'Double', 'immutable': False, 'primaryKey': False}, {'name': 'BetweennessCentrality', 'type': 'Double', 'immutable': False, 'primaryKey': False}, {'name': 'ClosenessCentrality', 'type': 'Double', 'immutable': False, 'primaryKey': False}, {'name': 'ClusteringCoefficient', 'type': 'Double', 'immutable': False, 'primaryKey': False}, {'name': 'Degree', 'type': 'Integer', 'immutable': False, 'primaryKey': False}, {'name': 'Eccentricity', 'type': 'Integer', 'immutable': False, 'primaryKey': False}, {'name': 'IsSingleNode', 'type': 'Boolean', 'immutable': False, 'primaryKey': False}, {'name': 'NeighborhoodConnectivity', 'type': 'Double', 'immutable': False, 'primaryKey': False}, {'name': 'NumberOfDirectedEdges', 'type': 'Integer', 'immutable': False, 'primaryKey': False}, {'name': 'NumberOfUndirectedEdges', 'type': 'Integer', 'immutable': False, 'primaryKey': False}, {'name': 'PartnerOfMultiEdgedNodePairs', 'type': 'Integer', 'immutable': False, 'primaryKey': False}, {'name': 'Radiality', 'type': 'Double', 'immutable': False, 'primaryKey': False}, {'name': 'SelfLoops', 'type': 'Integer', 'immutable': False, 'primaryKey': False}, {'name': 'Stress', 'type': 'Long', 'immutable': False, 'primaryKey': False}, {'name': 'TopologicalCoefficient', 'type': 'Double', 'immutable': False, 'primaryKey': False}]
+2025-04-11 15:31:09,738 [DEBUG] py4...: Returning 'get_table_column_names': ['SUID', 'shared name', 'name', 'selected', 'AverageShortestPathLength', 'BetweennessCentrality', 'ClosenessCentrality', 'ClusteringCoefficient', 'Degree', 'Eccentricity', 'IsSingleNode', 'NeighborhoodConnectivity', 'NumberOfDirectedEdges', 'NumberOfUndirectedEdges', 'PartnerOfMultiEdgedNodePairs', 'Radiality', 'SelfLoops', 'Stress', 'TopologicalCoefficient']
+2025-04-11 15:31:09,739 [DEBUG] py4...: --------------------
+2025-04-11 15:31:09,739 [DEBUG] py4...: Calling commands_post('network-analyzer FindComponents network=SUID:"155" createColumn="MyComponentID"', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:09,739 [DEBUG] py4...: HTTP POST(http://127.0.0.1:1234/v1/commands/network-analyzer/FindComponents), json: {'network': 'SUID:155', 'createColumn': 'MyComponentID'}
+2025-04-11 15:31:09,772 [DEBUG] py4...: Internal Server Error[500], content: {
+ "data": {},
+ "errors":[{"status":500,"type":"urn:cytoscape:ci:cyrest-core:v1:handle-json-command:errors:2","message":"Failed to find command namespace: \u0027network-analyzer\u0027","link":"file:/home/aibio/CytoscapeConfiguration/3/framework-cytoscape.log"}]
+}
+2025-04-11 15:31:09,773 [DEBUG] py4...: 'commands_post' exception CyError("In commands_post(): Failed to find command namespace: 'network-analyzer'")
+2025-04-11 15:31:09,773 [DEBUG] py4...: --------------------
+2025-04-11 15:31:09,773 [DEBUG] py4...: Calling get_table_column_names('node', network=155)
+2025-04-11 15:31:09,773 [DEBUG] py4...: ǀCalling get_network_suid(155, base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:09,773 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:09,773 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2025-04-11 15:31:09,786 [DEBUG] py4...: ǀǀOK[200], content: [3684,4954,155,2555,1358]
+2025-04-11 15:31:09,786 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [3684, 4954, 155, 2555, 1358]
+2025-04-11 15:31:09,787 [DEBUG] py4...: ǀReturning 'get_network_suid': 155
+2025-04-11 15:31:09,787 [DEBUG] py4...: ǀCalling cyrest_get('networks/155/tables/defaultnode/columns', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:09,787 [DEBUG] py4...: ǀHTTP GET(http://127.0.0.1:1234/v1/networks/155/tables/defaultnode/columns)
+2025-04-11 15:31:09,806 [DEBUG] py4...: ǀOK[200], content: [{"name":"SUID","type":"Long","immutable":true,"primaryKey":true},{"name":"shared name","type":"String","immutable":true,"primaryKey":false},{"name":"name","type":"String","immutable":true,"primaryKey":false},{"name":"selected","type":"Boolean","immutable":true,"primaryKey":false},{"name":"AverageShortestPathLength","type":"Double","immutable":false,"primaryKey":false},{"name":"BetweennessCentrality","type":"Double","immutable":false,"primaryKey":false},{"name":"ClosenessCentrality","type":"Double","immutable":false,"primaryKey":false},{"name":"ClusteringCoefficient","type":"Double","immutable":false,"primaryKey":false},{"name":"Degree","type":"Integer","immutable":false,"primaryKey":false},{"name":"Eccentricity","type":"Integer","immutable":false,"primaryKey":false},{"name":"IsSingleNode","type":"Boolean","immutable":false,"primaryKey":false},{"name":"NeighborhoodConnectivity","type":"Double","immutable":false,"primaryKey":false},{"name":"NumberOfDirectedEdges","type":"Integer","immutable":false,"primaryKey":false},{"name":"NumberOfUndirectedEdges","type":"Integer","immutable":false,"primaryKey":false},{"name":"PartnerOfMultiEdgedNodePairs","type":"Integer","immutable":false,"primaryKey":false},{"name":"Radiality","type":"Double","immutable":false,"primaryKey":false},{"name":"SelfLoops","type":"Integer","immutable":false,"primaryKey":false},{"name":"Stress","type":"Long","immutable":false,"primaryKey":false},{"name":"TopologicalCoefficient","type":"Double","immutable":false,"primaryKey":false}]
+2025-04-11 15:31:09,806 [DEBUG] py4...: ǀReturning 'cyrest_get': [{'name': 'SUID', 'type': 'Long', 'immutable': True, 'primaryKey': True}, {'name': 'shared name', 'type': 'String', 'immutable': True, 'primaryKey': False}, {'name': 'name', 'type': 'String', 'immutable': True, 'primaryKey': False}, {'name': 'selected', 'type': 'Boolean', 'immutable': True, 'primaryKey': False}, {'name': 'AverageShortestPathLength', 'type': 'Double', 'immutable': False, 'primaryKey': False}, {'name': 'BetweennessCentrality', 'type': 'Double', 'immutable': False, 'primaryKey': False}, {'name': 'ClosenessCentrality', 'type': 'Double', 'immutable': False, 'primaryKey': False}, {'name': 'ClusteringCoefficient', 'type': 'Double', 'immutable': False, 'primaryKey': False}, {'name': 'Degree', 'type': 'Integer', 'immutable': False, 'primaryKey': False}, {'name': 'Eccentricity', 'type': 'Integer', 'immutable': False, 'primaryKey': False}, {'name': 'IsSingleNode', 'type': 'Boolean', 'immutable': False, 'primaryKey': False}, {'name': 'NeighborhoodConnectivity', 'type': 'Double', 'immutable': False, 'primaryKey': False}, {'name': 'NumberOfDirectedEdges', 'type': 'Integer', 'immutable': False, 'primaryKey': False}, {'name': 'NumberOfUndirectedEdges', 'type': 'Integer', 'immutable': False, 'primaryKey': False}, {'name': 'PartnerOfMultiEdgedNodePairs', 'type': 'Integer', 'immutable': False, 'primaryKey': False}, {'name': 'Radiality', 'type': 'Double', 'immutable': False, 'primaryKey': False}, {'name': 'SelfLoops', 'type': 'Integer', 'immutable': False, 'primaryKey': False}, {'name': 'Stress', 'type': 'Long', 'immutable': False, 'primaryKey': False}, {'name': 'TopologicalCoefficient', 'type': 'Double', 'immutable': False, 'primaryKey': False}]
+2025-04-11 15:31:09,807 [DEBUG] py4...: Returning 'get_table_column_names': ['SUID', 'shared name', 'name', 'selected', 'AverageShortestPathLength', 'BetweennessCentrality', 'ClosenessCentrality', 'ClusteringCoefficient', 'Degree', 'Eccentricity', 'IsSingleNode', 'NeighborhoodConnectivity', 'NumberOfDirectedEdges', 'NumberOfUndirectedEdges', 'PartnerOfMultiEdgedNodePairs', 'Radiality', 'SelfLoops', 'Stress', 'TopologicalCoefficient']
+2025-04-11 15:31:09,807 [DEBUG] py4...: --------------------
+2025-04-11 15:31:36,421 [DEBUG] py4...: Calling cytoscape_ping()
+2025-04-11 15:31:36,421 [DEBUG] py4...: ǀCalling cytoscape_version_info(base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:36,421 [DEBUG] py4...: ǀǀCalling cyrest_get('version', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:36,421 [DEBUG] py4...: Attempting to direct connect to Cytoscape on http://127.0.0.1:1234/v1
+2025-04-11 15:31:36,436 [DEBUG] py4...: Detected py4cytoscape running on Cytoscape workstation
+2025-04-11 15:31:36,437 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/version)
+2025-04-11 15:31:36,447 [DEBUG] py4...: ǀǀOK[200], content: {"apiVersion":"v1","cytoscapeVersion":"3.10.3"}
+2025-04-11 15:31:36,447 [DEBUG] py4...: ǀǀReturning 'cyrest_get': {'apiVersion': 'v1', 'cytoscapeVersion': '3.10.3'}
+2025-04-11 15:31:36,447 [DEBUG] py4...: ǀReturning 'cytoscape_version_info': {'apiVersion': 'v1', 'cytoscapeVersion': '3.10.3', 'automationAPIVersion': '1.11.0', 'py4cytoscapeVersion': '1.11.0'}
+2025-04-11 15:31:36,448 [DEBUG] py4...: Returning 'cytoscape_ping': 'You are connected to Cytoscape!'
+2025-04-11 15:31:36,448 [DEBUG] py4...: --------------------
+2025-04-11 15:31:36,449 [DEBUG] py4...: Calling get_network_suid(None)
+2025-04-11 15:31:36,449 [DEBUG] py4...: ǀCalling commands_post('network get attribute network="current" namespace="default" columnList="SUID"', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:36,449 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/v1/commands/network/get%20attribute), json: {'network': 'current', 'namespace': 'default', 'columnList': 'SUID'}
+2025-04-11 15:31:36,470 [DEBUG] py4...: ǀOK[200], content: {
+ "data": [ {
+  "SUID": 155
+}
+],
+ "errors":[]
+}
+2025-04-11 15:31:36,470 [DEBUG] py4...: ǀReturning 'commands_post': [{'SUID': 155}]
+2025-04-11 15:31:36,470 [DEBUG] py4...: Returning 'get_network_suid': 155
+2025-04-11 15:31:36,470 [DEBUG] py4...: --------------------
+2025-04-11 15:31:36,470 [DEBUG] py4...: Calling get_network_name(155)
+2025-04-11 15:31:36,471 [DEBUG] py4...: ǀCalling cyrest_get('networks.names', {'column': 'suid', 'query': 155}, base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:36,471 [DEBUG] py4...: ǀHTTP GET(http://127.0.0.1:1234/v1/networks.names), params: {'column': 'suid', 'query': 155}
+2025-04-11 15:31:36,485 [DEBUG] py4...: ǀOK[200], content: [{"name":"test","SUID":155}]
+2025-04-11 15:31:36,486 [DEBUG] py4...: ǀReturning 'cyrest_get': [{'name': 'test', 'SUID': 155}]
+2025-04-11 15:31:36,486 [DEBUG] py4...: Returning 'get_network_name': 'test'
+2025-04-11 15:31:36,486 [DEBUG] py4...: --------------------
+2025-04-11 15:31:36,486 [DEBUG] py4...: Calling get_all_nodes(network=155)
+2025-04-11 15:31:36,487 [DEBUG] py4...: ǀCalling get_network_suid(155, base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:36,487 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:36,487 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2025-04-11 15:31:36,498 [DEBUG] py4...: ǀǀOK[200], content: [3684,4954,155,2555,1358]
+2025-04-11 15:31:36,499 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [3684, 4954, 155, 2555, 1358]
+2025-04-11 15:31:36,499 [DEBUG] py4...: ǀReturning 'get_network_suid': 155
+2025-04-11 15:31:36,499 [DEBUG] py4...: ǀCalling get_node_count(155, base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:36,499 [DEBUG] py4...: ǀǀCalling get_network_suid(155, base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:36,499 [DEBUG] py4...: ǀǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:36,499 [DEBUG] py4...: ǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2025-04-11 15:31:36,512 [DEBUG] py4...: ǀǀǀOK[200], content: [3684,4954,155,2555,1358]
+2025-04-11 15:31:36,513 [DEBUG] py4...: ǀǀǀReturning 'cyrest_get': [3684, 4954, 155, 2555, 1358]
+2025-04-11 15:31:36,513 [DEBUG] py4...: ǀǀReturning 'get_network_suid': 155
+2025-04-11 15:31:36,513 [DEBUG] py4...: ǀǀCalling cyrest_get('networks/155/nodes/count', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:36,513 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks/155/nodes/count)
+2025-04-11 15:31:36,535 [DEBUG] py4...: ǀǀOK[200], content: {"count":68}
+2025-04-11 15:31:36,536 [DEBUG] py4...: ǀǀReturning 'cyrest_get': {'count': 68}
+2025-04-11 15:31:36,536 [DEBUG] py4...: ǀReturning 'get_node_count': 68
+2025-04-11 15:31:36,536 [DEBUG] py4...: ǀCalling cyrest_get('networks/155/tables/defaultnode/columns/name', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:31:36,536 [DEBUG] py4...: ǀHTTP GET(http://127.0.0.1:1234/v1/networks/155/tables/defaultnode/columns/name)
+2025-04-11 15:31:36,551 [DEBUG] py4...: ǀOK[200], content: {"name":"name","values":["7pbd_B","7a5v_A","6qfa_E","6qfa_D","6qfa_C","6qfa_A","6qfa_B","6fu4_D","6fu4_C","6fu4_A","6fu4_B","3g7x_B","3g7x_A","2x45_C","2x45_A","2x45_B","2qeb_A","2qeb_B","1u18_B","1u18_A","1qfv_B","1qfv_A","1qft_A","1qft_B","1np1_B","1ike_A","1np1_A","1kar_A","1kar_B","1jqd_A","1jqd_B","8yn5_R","8yuu_R","8yn9_R","8yn4_R","8pok_A","8yn3_R","7dfl_R","8yn2_R","8ucn_A","8jt5_A","8tgk_A","8pvb_A","8jxt_R","7yfc_R","8hn8_R","7qnd_D","7qnd_C","7qnd_B","7qnd_A","7qnc_D","7qnc_C","7qnc_B","7qn9_D","7qn9_C","7qn9_B","7qn8_D","7qn8_C","7qn8_B","7qn8_A","7qn7_D","7qn7_C","7qn7_B","7pc0_D","7pc0_C","7pbz_D","7pbz_C","7pbd_C"]}
+2025-04-11 15:31:36,552 [DEBUG] py4...: ǀReturning 'cyrest_get': {'name': 'name', 'values': ['7pbd_B', '7a5v_A', '6qfa_E', '6qfa_D', '6qfa_C', '6qfa_A', '6qfa_B', '6fu4_D', '6fu4_C', '6fu4_A', '6fu4_B', '3g7x_B', '3g7x_A', '2x45_C', '2x45_A', '2x45_B', '2qeb_A', '2qeb_B', '1u18_B', '1u18_A', '1qfv_B', '1qfv_A', '1qft_A', '1qft_B', '1np1_B', '1ike_A', '1np1_A', '1kar_A', '1kar_B', '1jqd_A', '1jqd_B', '8yn5_R', '8yuu_R', '8yn9_R', '8yn4_R', '8pok_A', '8yn3_R', '7dfl_R', '8yn2_R', '8ucn_A', '8jt5_A', '8tgk_A', '8pvb_A', '8jxt_R', '7yfc_R', '8hn8_R', '7qnd_D', '7qnd_C', '7qnd_B', '7qnd_A', '7qnc_D', '7qnc_C', '7qnc_B', '7qn9_D', '7qn9_C', '7qn9_B', '7qn8_D', '7qn8_C', '7qn8_B', '7qn8_A', '7qn7_D', '7qn7_C', '7qn7_B', '7pc0_D', '7pc0_C', '7pbz_D', '7pbz_C', '7pbd_C']}
+2025-04-11 15:31:36,552 [DEBUG] py4...: Returning 'get_all_nodes': ['7pbd_B', '7a5v_A', '6qfa_E', '6qfa_D', '6qfa_C', '6qfa_A', '6qfa_B', '6fu4_D', '6fu4_C', '6fu4_A', '6fu4_B', '3g7x_B', '3g7x_A', '2x45_C', '2x45_A', '2x45_B', '2qeb_A', '2qeb_B', '1u18_B', '1u18_A', '1qfv_B', '1qfv_A', '1qft_A', '1qft_B', '1np1_B', '1ike_A', '1np1_A', '1kar_A', '1kar_B', '1jqd_A', '1jqd_B', '8yn5_R', '8yuu_R', '8yn9_R', '8yn4_R', '8pok_A', '8yn3_R', '7dfl_R', '8yn2_R', '8ucn_A', '8jt5_A', '8tgk_A', '8pvb_A', '8jxt_R', '7yfc_R', '8hn8_R', '7qnd_D', '7qnd_C', '7qnd_B', '7qnd_A', '7qnc_D', '7qnc_C', '7qnc_B', '7qn9_D', '7qn9_C', '7qn9_B', '7qn8_D', '7qn8_C', '7qn8_B', '7qn8_A', '7qn7_D', '7qn7_C', '7qn7_B', '7pc0_D', '7pc0_C', '7pbz_D', '7pbz_C', '7pbd_C']
+2025-04-11 15:31:36,552 [DEBUG] py4...: --------------------
+2025-04-11 15:38:07,403 [DEBUG] py4...: Calling cytoscape_ping()
+2025-04-11 15:38:07,404 [DEBUG] py4...: ǀCalling cytoscape_version_info(base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:38:07,405 [DEBUG] py4...: ǀǀCalling cyrest_get('version', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:38:07,405 [DEBUG] py4...: Attempting to direct connect to Cytoscape on http://127.0.0.1:1234/v1
+2025-04-11 15:38:07,430 [DEBUG] py4...: Detected py4cytoscape running on Cytoscape workstation
+2025-04-11 15:38:07,432 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/version)
+2025-04-11 15:38:07,454 [DEBUG] py4...: ǀǀOK[200], content: {"apiVersion":"v1","cytoscapeVersion":"3.10.3"}
+2025-04-11 15:38:07,457 [DEBUG] py4...: ǀǀReturning 'cyrest_get': {'apiVersion': 'v1', 'cytoscapeVersion': '3.10.3'}
+2025-04-11 15:38:07,458 [DEBUG] py4...: ǀReturning 'cytoscape_version_info': {'apiVersion': 'v1', 'cytoscapeVersion': '3.10.3', 'automationAPIVersion': '1.11.0', 'py4cytoscapeVersion': '1.11.0'}
+2025-04-11 15:38:07,466 [DEBUG] py4...: Returning 'cytoscape_ping': 'You are connected to Cytoscape!'
+2025-04-11 15:38:07,467 [DEBUG] py4...: --------------------
+2025-04-11 15:38:07,467 [DEBUG] py4...: Calling get_network_suid(None)
+2025-04-11 15:38:07,468 [DEBUG] py4...: ǀCalling commands_post('network get attribute network="current" namespace="default" columnList="SUID"', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:38:07,472 [DEBUG] py4...: ǀHTTP POST(http://127.0.0.1:1234/v1/commands/network/get%20attribute), json: {'network': 'current', 'namespace': 'default', 'columnList': 'SUID'}
+2025-04-11 15:38:07,501 [DEBUG] py4...: ǀOK[200], content: {
+ "data": [ {
+  "SUID": 155
+}
+],
+ "errors":[]
+}
+2025-04-11 15:38:07,502 [DEBUG] py4...: ǀReturning 'commands_post': [{'SUID': 155}]
+2025-04-11 15:38:07,503 [DEBUG] py4...: Returning 'get_network_suid': 155
+2025-04-11 15:38:07,503 [DEBUG] py4...: --------------------
+2025-04-11 15:38:07,504 [DEBUG] py4...: Calling get_network_name(155)
+2025-04-11 15:38:07,504 [DEBUG] py4...: ǀCalling cyrest_get('networks.names', {'column': 'suid', 'query': 155}, base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:38:07,505 [DEBUG] py4...: ǀHTTP GET(http://127.0.0.1:1234/v1/networks.names), params: {'column': 'suid', 'query': 155}
+2025-04-11 15:38:07,529 [DEBUG] py4...: ǀOK[200], content: [{"name":"test","SUID":155}]
+2025-04-11 15:38:07,531 [DEBUG] py4...: ǀReturning 'cyrest_get': [{'name': 'test', 'SUID': 155}]
+2025-04-11 15:38:07,532 [DEBUG] py4...: Returning 'get_network_name': 'test'
+2025-04-11 15:38:07,532 [DEBUG] py4...: --------------------
+2025-04-11 15:38:07,533 [DEBUG] py4...: Calling get_all_nodes(network=155)
+2025-04-11 15:38:07,534 [DEBUG] py4...: ǀCalling get_network_suid(155, base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:38:07,534 [DEBUG] py4...: ǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:38:07,535 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2025-04-11 15:38:07,552 [DEBUG] py4...: ǀǀOK[200], content: [3684,4954,155,2555,1358]
+2025-04-11 15:38:07,554 [DEBUG] py4...: ǀǀReturning 'cyrest_get': [3684, 4954, 155, 2555, 1358]
+2025-04-11 15:38:07,554 [DEBUG] py4...: ǀReturning 'get_network_suid': 155
+2025-04-11 15:38:07,555 [DEBUG] py4...: ǀCalling get_node_count(155, base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:38:07,555 [DEBUG] py4...: ǀǀCalling get_network_suid(155, base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:38:07,556 [DEBUG] py4...: ǀǀǀCalling cyrest_get('networks', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:38:07,557 [DEBUG] py4...: ǀǀǀHTTP GET(http://127.0.0.1:1234/v1/networks)
+2025-04-11 15:38:07,575 [DEBUG] py4...: ǀǀǀOK[200], content: [3684,4954,155,2555,1358]
+2025-04-11 15:38:07,576 [DEBUG] py4...: ǀǀǀReturning 'cyrest_get': [3684, 4954, 155, 2555, 1358]
+2025-04-11 15:38:07,577 [DEBUG] py4...: ǀǀReturning 'get_network_suid': 155
+2025-04-11 15:38:07,577 [DEBUG] py4...: ǀǀCalling cyrest_get('networks/155/nodes/count', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:38:07,578 [DEBUG] py4...: ǀǀHTTP GET(http://127.0.0.1:1234/v1/networks/155/nodes/count)
+2025-04-11 15:38:07,595 [DEBUG] py4...: ǀǀOK[200], content: {"count":68}
+2025-04-11 15:38:07,596 [DEBUG] py4...: ǀǀReturning 'cyrest_get': {'count': 68}
+2025-04-11 15:38:07,596 [DEBUG] py4...: ǀReturning 'get_node_count': 68
+2025-04-11 15:38:07,596 [DEBUG] py4...: ǀCalling cyrest_get('networks/155/tables/defaultnode/columns/name', base_url='http://127.0.0.1:1234/v1')
+2025-04-11 15:38:07,597 [DEBUG] py4...: ǀHTTP GET(http://127.0.0.1:1234/v1/networks/155/tables/defaultnode/columns/name)
+2025-04-11 15:38:07,610 [DEBUG] py4...: ǀOK[200], content: {"name":"name","values":["7pbd_B","7a5v_A","6qfa_E","6qfa_D","6qfa_C","6qfa_A","6qfa_B","6fu4_D","6fu4_C","6fu4_A","6fu4_B","3g7x_B","3g7x_A","2x45_C","2x45_A","2x45_B","2qeb_A","2qeb_B","1u18_B","1u18_A","1qfv_B","1qfv_A","1qft_A","1qft_B","1np1_B","1ike_A","1np1_A","1kar_A","1kar_B","1jqd_A","1jqd_B","8yn5_R","8yuu_R","8yn9_R","8yn4_R","8pok_A","8yn3_R","7dfl_R","8yn2_R","8ucn_A","8jt5_A","8tgk_A","8pvb_A","8jxt_R","7yfc_R","8hn8_R","7qnd_D","7qnd_C","7qnd_B","7qnd_A","7qnc_D","7qnc_C","7qnc_B","7qn9_D","7qn9_C","7qn9_B","7qn8_D","7qn8_C","7qn8_B","7qn8_A","7qn7_D","7qn7_C","7qn7_B","7pc0_D","7pc0_C","7pbz_D","7pbz_C","7pbd_C"]}
+2025-04-11 15:38:07,611 [DEBUG] py4...: ǀReturning 'cyrest_get': {'name': 'name', 'values': ['7pbd_B', '7a5v_A', '6qfa_E', '6qfa_D', '6qfa_C', '6qfa_A', '6qfa_B', '6fu4_D', '6fu4_C', '6fu4_A', '6fu4_B', '3g7x_B', '3g7x_A', '2x45_C', '2x45_A', '2x45_B', '2qeb_A', '2qeb_B', '1u18_B', '1u18_A', '1qfv_B', '1qfv_A', '1qft_A', '1qft_B', '1np1_B', '1ike_A', '1np1_A', '1kar_A', '1kar_B', '1jqd_A', '1jqd_B', '8yn5_R', '8yuu_R', '8yn9_R', '8yn4_R', '8pok_A', '8yn3_R', '7dfl_R', '8yn2_R', '8ucn_A', '8jt5_A', '8tgk_A', '8pvb_A', '8jxt_R', '7yfc_R', '8hn8_R', '7qnd_D', '7qnd_C', '7qnd_B', '7qnd_A', '7qnc_D', '7qnc_C', '7qnc_B', '7qn9_D', '7qn9_C', '7qn9_B', '7qn8_D', '7qn8_C', '7qn8_B', '7qn8_A', '7qn7_D', '7qn7_C', '7qn7_B', '7pc0_D', '7pc0_C', '7pbz_D', '7pbz_C', '7pbd_C']}
+2025-04-11 15:38:07,612 [DEBUG] py4...: Returning 'get_all_nodes': ['7pbd_B', '7a5v_A', '6qfa_E', '6qfa_D', '6qfa_C', '6qfa_A', '6qfa_B', '6fu4_D', '6fu4_C', '6fu4_A', '6fu4_B', '3g7x_B', '3g7x_A', '2x45_C', '2x45_A', '2x45_B', '2qeb_A', '2qeb_B', '1u18_B', '1u18_A', '1qfv_B', '1qfv_A', '1qft_A', '1qft_B', '1np1_B', '1ike_A', '1np1_A', '1kar_A', '1kar_B', '1jqd_A', '1jqd_B', '8yn5_R', '8yuu_R', '8yn9_R', '8yn4_R', '8pok_A', '8yn3_R', '7dfl_R', '8yn2_R', '8ucn_A', '8jt5_A', '8tgk_A', '8pvb_A', '8jxt_R', '7yfc_R', '8hn8_R', '7qnd_D', '7qnd_C', '7qnd_B', '7qnd_A', '7qnc_D', '7qnc_C', '7qnc_B', '7qn9_D', '7qn9_C', '7qn9_B', '7qn8_D', '7qn8_C', '7qn8_B', '7qn8_A', '7qn7_D', '7qn7_C', '7qn7_B', '7pc0_D', '7pc0_C', '7pbz_D', '7pbz_C', '7pbd_C']
+2025-04-11 15:38:07,612 [DEBUG] py4...: --------------------
