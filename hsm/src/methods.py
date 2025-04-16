@@ -5,7 +5,7 @@ import os
 import subprocess
 import timeit
 
-from bio import  Protein
+from bio import Protein, MAX_BSITE_DIST
 
 
 def timed(func):
@@ -75,7 +75,7 @@ def csv_formatter(mode, cutoff = 0):
 			writer.writerows(out)
 
 @timed
-def extract_bsites(combined=False):
+def extract_bsites(combined=False, dist=MAX_BSITE_DIST):
 	"""Extracts the binding sites of a given ligand from a PDB file
 	and stores them in separate files.
 
@@ -94,7 +94,7 @@ def extract_bsites(combined=False):
 		prot = Protein(f"hsm/pdbs/{p}")
 		if combined:
 			ligs = prot.get_ligand('HSM')
-			bsites = [prot.get_bsite(lig, True) for lig in ligs]
+			bsites = [prot.get_bsite(lig, True, dist) for lig in ligs]
 
 			combined_bsite = []
 			for site in bsites:
@@ -113,7 +113,7 @@ def extract_bsites(combined=False):
 			# TODO ligands in chains with no other atoms not recognized
 
 			ligs = prot.get_ligand('HSM')
-			bsites = [prot.get_bsite(lig, True) for lig in ligs]
+			bsites = [prot.get_bsite(lig, True, dist) for lig in ligs]
 
 			for i, lig in enumerate(ligs):
 				if len(lig["atoms"]) == 0:
