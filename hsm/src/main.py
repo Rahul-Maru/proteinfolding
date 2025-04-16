@@ -9,11 +9,14 @@ def main():
     args = parser.parse_args()
     mode = args.mode
 
-    if mode == "seq":
-        # ———sequence alignment———
+    if mode == "extract":
+        # ———extract binding sites———
 
-        extract_bsites(False)
-        extract_bsites(True)
+        extract_bsites(False, 5.5)
+        extract_bsites(True, 5.5)
+
+    elif mode == "seq":
+        # ———sequence alignment———
 
         # identifies which chains have binding sites
         pdbs2fasta("hsm/bsites_combined", "bchain_identifier")
@@ -69,7 +72,10 @@ def main():
         csv_formatter("struct", cutoff)
 
         print("\n——INPUT \033[1mstruct_edge_list.csv\033[0m INTO CYTOSCAPE——")
+
     elif mode == 'filter':
+        # ———filter binding sites into bsites_split———
+
         filter_bsites()
 
 

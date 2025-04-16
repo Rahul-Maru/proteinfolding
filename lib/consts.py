@@ -45,8 +45,16 @@ AA_MAP = {'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D', 'CYS': 'C',
 		  'LEU': 'L', 'LYS': 'K', 'MET': 'M', 'PHE': 'F', 'PRO': 'P',
 		  'SER': 'S', 'THR': 'T', 'TRP': 'W', 'TYR': 'Y', 'VAL': 'V',
 		  'MSE': 'SeM', '___': '-', 'TER' : '|\n'}
+
 # to invert, uncomment the following line:
 # AA_MAP_INV = {v: k for k, v in AA_MAP.items()}
+
+def amino_acid_map(code: str) -> str:
+	"""Returns the 1-letter code of the amino acid."""
+	if code in AA_MAP:
+		return AA_MAP[code]
+	else:
+		return f"\033[92m{code.lower()}\033[0m"
 
 #——DISPLAY PROPERTIES——
 # radius of the atoms

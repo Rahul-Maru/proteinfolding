@@ -197,7 +197,7 @@ class Protein:
 
 		for i in range(len(residues)-1):
 			# Add current residue
-			seq.append(AA_MAP[residues[i]['code']])
+			seq.append(amino_acid_map(residues[i]['code']))
 
 			# Check for gap to next residue
 			curr_chain, curr_num_str = residues[i]['id'].split('_')
@@ -218,7 +218,7 @@ class Protein:
 					seq.extend(['-'] * (next_num - 1))
 
 		# Add final residue
-		seq.append(AA_MAP[residues[-1]['code']])
+		seq.append(amino_acid_map(residues[-1]['code']))
 
 		return ''.join(seq)
 

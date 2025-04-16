@@ -1,6 +1,6 @@
 import csv
 
-CUTOFF = 0
+CUTOFF = 0.4
 
 def mdistmin_extractor():
 	mode = "directed"
@@ -14,7 +14,7 @@ def mdistmin_extractor():
 						if dat[0] < dat[1]:
 							final_list.append([dat[0], dat[1], mdist_min])
 				elif mode == "directed":
-					if (mdist_min := float((dat:=pair.split("\t"))[2].split(" ")[2])):
+					if (mdist_min := float((dat:=pair.split("\t"))[2].split(" ")[2])) >= CUTOFF:
 						if dat[0] != dat[1]:
 							final_list.append([dat[0], dat[1], mdist_min])
 			except:
