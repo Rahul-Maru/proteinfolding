@@ -26,7 +26,8 @@ def main():
         print("Running clustalo on bchains.fa")
         t = timeit.Timer(lambda: subprocess.run(
             ['clustalo', '-i', 'hsm/outs/PDB2Fasta/bchains.fa', '-o',
-            'hsm/outs/Clustal/bchains.txt', '--distmat-out=hsm/outs/Clustal/sequence_identity_matrix.txt',
+            'hsm/outs/Clustal/bchains.txt',
+            '--distmat-out=hsm/outs/Clustal/sequence_identity_matrix.txt',
             '--full', '--force']))
         print(f"done in {t.timeit(1):.3f}s\n")
 
