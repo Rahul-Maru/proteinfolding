@@ -15,7 +15,7 @@ def load_sitemotif_files(path):
     
 
 def main():
-    DEF = "hsm/bsites_final"
+    DEF = "hsm/bsites_split"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--path", type=str, default=DEF, dest="path")
