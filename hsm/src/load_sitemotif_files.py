@@ -8,7 +8,7 @@ def load_sitemotif_files(path):
 
     try:
         run(["rm", "-r", "hsm/tools/MAPP-3D/MultipleSiteAlignment/hsm/"])
-    except Exception:
+    except:
         pass
 
     run(["cp", "-r", path, "hsm/tools/MAPP-3D/MultipleSiteAlignment/hsm/"])

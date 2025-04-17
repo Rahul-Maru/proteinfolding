@@ -9,6 +9,12 @@ def main():
     args = parser.parse_args()
     mode = args.mode
 
+    print(f"running in mode: \033[1m{mode}\033[0m")
+    i = input("press y to change mode, press any other key to continue. ")
+
+    if i == "y":
+        mode = input("enter mode: ")
+
     if mode == "extract":
         # ———extract binding sites———
 
@@ -74,9 +80,12 @@ def main():
         print("\n——INPUT \033[1mstruct_edge_list.csv\033[0m INTO CYTOSCAPE——")
 
     elif mode == 'filter':
-        # ———filter binding sites into bsites_split———
+        # ———filter binding sites into bsites_final———
 
-        filter_bsites()
+        filter_bsites("hsm/bsites", "hsm/bchains_seq")
+        l = input("load sitemotif files? (y/n) ")
+        if l == "y":
+            load_sitemotif_files("hsm/bsites_final")
 
 
 if __name__ == "__main__":

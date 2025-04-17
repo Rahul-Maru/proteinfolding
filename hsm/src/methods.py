@@ -123,29 +123,40 @@ def extract_bsites(combined=False, dist=MAX_BSITE_DIST):
 					f.writelines(sum([res['atoms'] for res in bsites[i]], []))
 
 @timed
-def filter_bsites():
-	"""Moves binding sites to the destination directory if their chain is present in the final chains directory."""
+def filter_bsites(src="hsm/bsites", ref="hsm/bchains_final", dst="hsm/bsites_final"):
+	"""Moves binding sites from the source directory
+	to the destination directory if their chain is present in the reference directory."""
 
-	src = "hsm/bsites"
-	dst = "hsm/bsites_split"
-
-	print(f"Filtering binding sites from {src} to {dst}")
+	print(f"Filtering binding sites from \033[1m{src}\033[0m to \033[1m{dst}\033[0m if their chain is in \033[1m{ref}\033[0m")
 
 	bsites = os.listdir(src)
 	bsites.sort()
 
-	bchains_final = os.listdir("hsm/bchains_final")
-	bchains_final.sort()
+	reference = os.listdir(ref)
+	reference.sort()
 
 	i = 0
-	# for every binding site in src, check if its chain is in bchains_final
+	# for every binding site in src, check if its chain is in reference
 	# if so, copy it to dst
 	for s in bsites:
-		if s[:6] + s[7:] in bchains_final:
+		if s[:6] + s[7:] in reference:
 			print(s)
 			i += 1
 			subprocess.run(['cp', f'{src}/{s}', f'{dst}/{s}'])
 	print(f"final count: {i}")
+
+@timed
+def load_sitemotif_files(path):
+    """
+    Moves the given directory to the sitemotif directory.
+    """
+
+    try:
+        subprocess.run(["rm", "-r", "hsm/tools/MAPP-3D/MultipleSiteAlignment/hsm/"],)
+    except:
+        pass
+
+    subprocess.run(["cp", "-r", path, "hsm/tools/MAPP-3D/MultipleSiteAlignment/hsm/"])
 
 @timed
 def mdistmin_extractor():
