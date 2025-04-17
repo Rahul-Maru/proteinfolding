@@ -1,6 +1,6 @@
 import csv
 
-CUTOFF = 0.4
+CUTOFF = 0
 
 def mdistmin_extractor():
 	mode = "directed"

@@ -57,7 +57,7 @@ def run_mapp3d_comparisons(query_site, sites_dir, output_dir):
 
 def main():
 	# Run comparisons
-	query_site = os.path.abspath(os.path.join("hsm", "bsites_final", "2x45_C6.pdb"))
+	query_site = os.path.abspath(os.path.join("hsm", "bsites_final", "2x45_C7.pdb"))
 	sites_dir = os.path.abspath(os.path.join("hsm", "bsites_final"))
 	output_dir = os.path.abspath(os.path.join("hsm", "outs", "mapp3d_results"))
 
