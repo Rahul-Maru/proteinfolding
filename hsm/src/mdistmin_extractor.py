@@ -1,6 +1,7 @@
 import csv
 
-CUTOFF = 0
+MD_CUTOFF = 0
+RES_CUTOFF = 4
 
 def mdistmin_extractor():
 	mode = "directed"
@@ -9,15 +10,20 @@ def mdistmin_extractor():
 		pairs = f.readlines()
 		for pair in pairs:
 			try:
+				dat = pair.split("\t")
+				mdist_min = float(dat[2].split(" ")[2])
+				nres = int(dat[2].split('/')[0])
+
 				if mode == "filter":
-					if (mdist_min := float((dat:=pair.split("\t"))[2].split(" ")[2])) >= CUTOFF:
+					if mdist_min >= MD_CUTOFF and nres > RES_CUTOFF:
 						if dat[0] < dat[1]:
 							final_list.append([dat[0], dat[1], mdist_min])
 				elif mode == "directed":
-					if (mdist_min := float((dat:=pair.split("\t"))[2].split(" ")[2])) >= CUTOFF:
-						if dat[0] != dat[1]:
+					if mdist_min >= MD_CUTOFF and nres > RES_CUTOFF:
+						if dat[0] != dat[1] :
 							final_list.append([dat[0], dat[1], mdist_min])
 			except:
+				# If the alignment is None, move on
 				continue
 	
 	with open("hsm/outs/SiteMotif/mdist.csv", 'w') as f2:
