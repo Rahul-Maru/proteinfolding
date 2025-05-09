@@ -14,7 +14,6 @@ def main():
                             shade_below=.5,
                             fade_below=.5,
                             font_name="Comic Sans MS")
-    print(crp_logo.has_been_drawn)
 
     # style using Logo methods
     crp_logo.style_spines(visible=False)

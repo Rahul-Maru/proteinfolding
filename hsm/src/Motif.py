@@ -1,3 +1,4 @@
+#!/home/acer/.asdf/shims/python2
 import os
 import time
 import sys
@@ -150,8 +151,6 @@ def SeqWeights(arr):
 			arr1.append(i[:3])
 	#print arr1
 	maxi = Counter(arr1).most_common(1)[0][1]
-	print arr1
-	print Counter(arr1).most_common(1)[0][1]
 	arr2 = []
 	count1, count2 = 0, 0
 	for i in Counter(arr1).items():
@@ -208,7 +207,7 @@ def Motifs(seqs):
 		#print arr[i],residue_conserv[arr[i]][:10]
 		Counter, ResPattern, ResFreq = SeqWeights(residue_conserv[arr[i]])
 		Frequencies.append(Counter)
-		print Counter, ResPattern, ResFreq
+		print ResPattern, ResFreq
 		#time.sleep(11)
 		distance = AvgDistance(residue_conserv[arr[i]], residue_conserv[arr[i+1]])
 		#print distance
@@ -239,7 +238,6 @@ legend = []
 for r in res_list:
 	legend.append(res_dict[r])
 
-print(res_list, legend)
 
 f = open('../../../outs/logo/repr.csv', 'w')
 f.write('pos,'+','.join(legend)+'\n')
