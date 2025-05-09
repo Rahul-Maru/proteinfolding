@@ -2,6 +2,8 @@
 
 from typing import TypedDict, List
 
+#TODO do this
+
 class Residue(TypedDict):
     """
     A TypedDict representing a residue in a protein structure.

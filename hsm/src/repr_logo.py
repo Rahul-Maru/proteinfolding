@@ -28,9 +28,8 @@ def main():
 
     # style and show figure
     crp_logo.fig.show()
-    print(crp_logo.has_been_drawn)
 
-    input("press any key to quit. ")
+    input("press enter to quit. ")
 
 
 if __name__ == "__main__":

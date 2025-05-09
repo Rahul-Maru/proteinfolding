@@ -15,11 +15,11 @@ def mdistmin_extractor():
 				nres = int(dat[2].split('/')[0])
 
 				if mode == "filter":
-					if mdist_min >= MD_CUTOFF and nres > RES_CUTOFF:
+					if mdist_min > MD_CUTOFF and nres >= RES_CUTOFF:
 						if dat[0] < dat[1]:
 							final_list.append([dat[0], dat[1], mdist_min])
 				elif mode == "directed":
-					if mdist_min >= MD_CUTOFF and nres > RES_CUTOFF:
+					if mdist_min > MD_CUTOFF and nres >= RES_CUTOFF:
 						if dat[0] != dat[1] :
 							final_list.append([dat[0], dat[1], mdist_min])
 			except:
