@@ -1,4 +1,3 @@
-#!/home/acer/.asdf/shims/python2
 import os
 import time
 import sys
@@ -20,12 +19,14 @@ arr = []
 for line in aline:
 	line = line.strip()
 	l = line.split('\t')
-	if len(l[2].split(' ')) == 5: 
+	if len(l[2].split(' ')) == 5:
 		if l[0] == pdb:
 			score = l[2].split(' ')[0].split('/')[0]
 			if int(score) >= nos:
 				arr.append(l[3])
 				#print '\n'
+
+print len(arr)
 
 res_dict = {'GLY':'G' ,'ALA':'A' ,'LEU':'L' ,'ILE':'I' ,'TRP':'W' ,'SER':'S' ,'THR':'T' ,'TYR':'Y', 'PHE':'F' ,'PRO':'P' ,'ASP':'D' ,\
 		   'GLU':'E' ,'HIS':'H' ,'CYS':'C' ,'MET':'M' ,'VAL':'V' ,'ASN':'N' ,'GLN':'Q' ,'ARG':'R' ,'LYS':'K' }
@@ -39,7 +40,7 @@ def AvgDistance(arr1, arr2):
 	#print '\n'
 	#print arr1[0:6], arr2[0:6]
 	for i in zip(arr1, arr2):
-		if i[0] != '-' and i[1] != '-': 
+		if i[0] != '-' and i[1] != '-':
 			#print i
 			count_arr.append(abs(int(i[0].split('-')[-1]) - (int(i[1].split('-')[-1])-1)))
 	ln = len(count_arr)
@@ -52,20 +53,20 @@ def AvgDistance(arr1, arr2):
 	#print maxi,' maxis'
 	for i, j in Counter(count_arr).items():
 		arr.append([i, j])
-		
-	'''	
-	arr = []	
-	arr.append([3,93])	
-	arr.append([2,93])	
-	
-	arr.append([4,93])	
-	arr.append([5,93])	
-	arr.append([6,93])	
-	arr.append([9,93])	
-	arr.append([11,93])	
-	arr.append([12,93])	
-	'''	
-	gap_arr = []	
+
+	'''
+	arr = []
+	arr.append([3,93])
+	arr.append([2,93])
+
+	arr.append([4,93])
+	arr.append([5,93])
+	arr.append([6,93])
+	arr.append([9,93])
+	arr.append([11,93])
+	arr.append([12,93])
+	'''
+	gap_arr = []
 	arr = sorted(arr, key = lambda x:int(x[1]), reverse=True)
 	for i in arr:
 		if float(i[1])/maxi >= .3:
@@ -74,9 +75,9 @@ def AvgDistance(arr1, arr2):
 	gap_arr = map(int, gap_arr)
 	gap_arr = sorted(gap_arr)
 	#print gap_arr
-	
+
 	gap_val = None
-	
+
 	if gap_arr[0] == 0:
 		#gap_val = "NO"
 		return None
@@ -89,24 +90,24 @@ def AvgDistance(arr1, arr2):
 			gap_val += 'x'
 			gap_val += '-'
 		#print gap_val,'---'
-		return gap_val[:-1]	
-		
+		return gap_val[:-1]
+
 	else:
-		
+
 		arr1, arr2 = [], []
 		#gap_arr.append(gap_arr[-1])
 		#if len(gap_arr)> 1:
 		#	print 'got it', gap_arr
 		#	time.sleep(11)
 		count = 0
-		
+
 		if len(gap_arr) == 1:
 			arr1.append(str(gap_arr[0]))
 			#break
 		for i in range(len(gap_arr)-1):
 			count += 1
 			#print gap_arr[i] - gap_arr[i+1], gap_arr[i],']]]', count, len(gap_arr)
-			
+
 			if abs(gap_arr[i] - gap_arr[i+1]) <= 1:
 				#print gap_arr[i],'++'
 				arr2.append(gap_arr[i])
@@ -125,7 +126,7 @@ def AvgDistance(arr1, arr2):
 				else:
 					#print gap_arr[i+1], arr1
 					arr1.append(str(gap_arr[i+1]))
-				break	
+				break
 	#print arr2
 	#print arr1,'arr1'
 	#time.sleep(1)
@@ -133,14 +134,11 @@ def AvgDistance(arr1, arr2):
 	#if len(arr1) > 1:
 	#	print arr1
 	arr1 = arr1[0]
-	
-	#gap_val = 'x'+'('+''.join(arr1)+')'		
-	gap_val = 'x'+'('+arr1+')'		
+
+	#gap_val = 'x'+'('+''.join(arr1)+')'
+	gap_val = 'x'+'('+arr1+')'
 	#print gap_arr
 	return gap_val
-
-
-
 
 
 
@@ -172,12 +170,12 @@ def SeqWeights(arr):
 def Motifs(seqs):
 	arr = []
 	#print seqs
-	for i in seqs:		
+	for i in seqs:
 		for j in i.split('_'):
 			arr.append(j.split(' ')[0])
 			#print j
 			#print j.split(' ')[0]
-			
+
 	arr = sorted(set(arr))
 	arr = sorted(arr, key = lambda x:int(x.split('-')[-1]))
 	#print arr
@@ -192,15 +190,15 @@ def Motifs(seqs):
 		dic = copy.deepcopy(dic1)
 		for j in i.split('_'):
 			dic[j.split(' ')[0]] = j.split(' ')[1]
-		#print residue_conserv,'\n\n';time.sleep(1)	
+		#print residue_conserv,'\n\n';time.sleep(1)
 		for j in arr:
 			#print j, dic[j]
 			#motif.append([j, dic[j]])
 			residue_conserv[j].append(dic[j])
-		#motifs.append(motif)	
+		#motifs.append(motif)
 	MotifRange = []
 	Frequencies = []
-	for i in range(0, len(arr)-1):
+	for i in range(0, len(arr)):
 		#print arr[i],' he'
 		#print residue_conserv[arr[i]]
 		#print residue_conserv[arr[i+1]]
@@ -208,23 +206,22 @@ def Motifs(seqs):
 		Counter, ResPattern, ResFreq = SeqWeights(residue_conserv[arr[i]])
 		Frequencies.append(Counter)
 		print ResPattern, ResFreq
+		MotifRange.append(ResPattern)
 		#time.sleep(11)
-		distance = AvgDistance(residue_conserv[arr[i]], residue_conserv[arr[i+1]])
-		#print distance
-		#print '\n'
-		#time.sleep(1)
-		if distance:
-			#print ResPattern+'-'+distance
-			MotifRange.append(ResPattern)
-			MotifRange.append(distance)
-		else:
-			MotifRange.append(ResPattern)
-		#print ResPattern,distance
-		
-		#print residue_conserv[arr[i]]
-		#print MotifRange
-		#print '\n\n'
-		#time.sleep(1)
+		if i != len(arr)-1:
+			distance = AvgDistance(residue_conserv[arr[i]], residue_conserv[arr[i+1]])
+			#print distance
+			#print '\n'
+			#time.sleep(1)
+			if distance:
+				#print ResPattern+'-'+distance
+				MotifRange.append(distance)
+			#print ResPattern,distance
+
+			#print residue_conserv[arr[i]]
+			#print MotifRange
+			#print '\n\n'
+			#time.sleep(1)
 	return "-".join(MotifRange), Frequencies
 
 

@@ -2,12 +2,15 @@ import csv
 
 MD_CUTOFF = 0
 RES_CUTOFF = 4
+REPR = "2x45_C6.pdb"
+mode = "repr"
+
 
 def mdistmin_extractor():
-	mode = "directed"
 	final_list = [["Source", "Target", "Score"]]
 	with open("hsm/tools/MAPP-3D/MultipleSiteAlignment/align_output.txt") as f:
 		pairs = f.readlines()
+		aligns = []
 		for pair in pairs:
 			try:
 				dat = pair.split("\t")
@@ -22,14 +25,26 @@ def mdistmin_extractor():
 					if mdist_min > MD_CUTOFF and nres >= RES_CUTOFF:
 						if dat[0] != dat[1] :
 							final_list.append([dat[0], dat[1], mdist_min])
+				elif mode == "repr":
+					if dat[0] == REPR:
+						if nres >= RES_CUTOFF:
+							print(pair)
+							aligns += ['\n'.join([dat[1], *dat[-1].split('_')])]
+							final_list.append([dat[0], dat[1], mdist_min])
+							
 			except:
 				# If the alignment is None, move on
 				continue
 	
+	print(''.join([f"{x}\n" for x in final_list]))
+
 	with open("hsm/outs/SiteMotif/mdist.csv", 'w') as f2:
 		writer = csv.writer(f2)
 		writer.writerows(final_list)
 
+	with open("hsm/outs/SiteMotif/aligns.txt", 'w') as f3:
+		print(aligns)
+		f3.writelines(aligns)
 
 
 if __name__ == "__main__":
