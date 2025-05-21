@@ -45,7 +45,7 @@ def render(p: Protein):
 
 	if show_bsite:
 		ligand = p.get_ligand(DEF_LIG)
-		x, y, z = p.get_xyzlist(ligand, qtype="res")
+		x, y, z = p.get_coords(ligand, qtype="res")
 		for i, atom in enumerate(ligand['atoms']):
 			spr = vp.sphere()
 			spr.pos = vect(x[i], y[i], z[i])
@@ -61,7 +61,7 @@ def render(p: Protein):
 		print(p.seq(bsite))
 
 		for res in bsite:
-			coords = p.get_xyzlist(res, triplet=True)
+			coords = p.get_coords(res, triplet=True)
 
 			for x, y, z in coords:
 				spr = vp.sphere()
@@ -127,7 +127,7 @@ def render(p: Protein):
 
 
 		if show_hetatms and len(p.hetatms) > 0:
-			hx, hy, hz = p.get_xyzlist(qtype="het")
+			hx, hy, hz = p.get_coords(qtype="het")
 
 			for hi, hj, hk in zip(hx, hy, hz):
 				spr = vp.sphere()

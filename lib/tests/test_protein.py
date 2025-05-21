@@ -42,7 +42,7 @@ class MockProtein(Protein):
     def get_record(self, record: str) -> list[str]:
         return [] # Return empty list to avoid errors if called
 
-    def get_xyzlist(self, query=None, qtype="", triplet = False):
+    def get_coords(self, query=None, qtype="", triplet = False):
          # Return dummy value to avoid errors if called unexpectedly
          return ([], [], []) if not triplet else []
 

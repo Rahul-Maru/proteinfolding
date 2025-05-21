@@ -34,7 +34,7 @@ class Protein:
 		self.display_mode[1] = dp_mode[1] and len(self.hetatms)
 
 		# store the coordinates to avoid recalculating unnecessarily
-		self.x, self.y, self.z = self.get_xyzlist()
+		self.x, self.y, self.z = self.get_coords()
 
 
 	@cached_property
@@ -103,14 +103,15 @@ class Protein:
 				for elmt in ELEMS]
 		return (h, c, n, o, s)
 
-	def get_xyzlist(self, query=None, qtype="", triplet = False):
+	def get_coords(self, query=None, qtype="", triplet = False):
 		"""Extracts 3D coordinates from an atom or set of atoms.
 
 		Args:
 			query (optional): Residue, record, or chain to get coordinates from.
-			qtype (str, optional): Type of `query`. Can be `'all'`, which extracts from all atoms \
-				in the protein; `'het'`, which extracts from the hetatms; `'res'`, which extracts \
-				from a given residue/molecule; `'lin'`, which extracts from a given line of the PDB file; \
+			qtype (str, optional): Type of `query`. Can be `'atm'`, which extracts from all atoms \
+				in the protein; `'het'`, which extracts from the hetatms; `all`, which extracts from both atoms and hetatms;
+				`'res'`, which extracts from a given residue/molecule; \
+				`'lin'`, which extracts from a given line of the PDB file; \
 				or a number `n`, which extracts from the n-th chain. \
 				Defaults to `"res"` if `query` else `"all"`.
 			triplet (bool, optional): If `True`, returns the coordinates in triplets of the form \
@@ -121,10 +122,13 @@ class Protein:
 		# default value
 		# TODO make this work for chains
 		if not qtype:
-			qtype = "res" if query  else "all"
+			qtype = "res" if query  else ("all" if self.display_mode[1] else "atm")
 
 		match qtype:
 			case "all":
+				x, y, z = [[float(atom[coord]) for atom in (self.atoms + self.hetatms)]
+						for coord in [X_COORD, Y_COORD, Z_COORD]]
+			case "atm":
 				x, y, z = [[float(atom[coord]) for atom in self.atoms]
 						for coord in [X_COORD, Y_COORD, Z_COORD]]
 			case "het":
@@ -164,7 +168,7 @@ class Protein:
 	def centroid(self, query = None, qtype=""):
 		"""Calculates the centroid of a given set of atoms."""
 
-		coords = self.get_xyzlist(query, qtype=qtype)
+		coords = self.get_coords(query, qtype=qtype)
 		if n := len(coords[0]):
 			sum = np.zeros(3)
 			for x, y, z in zip(*coords):
@@ -271,13 +275,13 @@ class Protein:
 		#TODO try out different cutoff values
 		bsite = []
 
-		lig_coords = self.get_xyzlist(lig, triplet=True)
+		lig_coords = self.get_coords(lig, triplet=True)
 
 		aminos = [res for res in self.residues if res['type'] == 'atom']
 
 		for res in aminos:
 			for atom in res['atoms']:
-				atom_coords = self.get_xyzlist(atom, "lin")
+				atom_coords = self.get_coords(atom, "lin")
 				# if the atom is close to the ligand add it to the binding
 				# 	site and move on to the next residue
 				for coords in lig_coords:
@@ -348,7 +352,7 @@ class Protein:
 
 		# TODO remove this probably
 
-		coords1, coords2 = *self.get_xyzlist(query, qtype, True), *self.get_xyzlist(query2, qtype2, True)
+		coords1, coords2 = *self.get_coords(query, qtype, True), *self.get_coords(query2, qtype2, True)
 
 		d = []
 		for i in coords2:
