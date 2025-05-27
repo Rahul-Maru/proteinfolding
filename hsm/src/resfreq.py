@@ -46,16 +46,15 @@ def main():
 
 
 	pdb_dir = "hsm/bsites_final"
-	aa_freq, n = count_amino_acid_frequencies(pdb_dir)
-	n = sum(aa_freq.values())
-	aa_freq = {k: round(v/n, 3) for k, v in sorted(aa_freq.items(), key=lambda item: item[1], reverse=True)}
+	aa_counts, n = count_amino_acid_frequencies(pdb_dir)
+	aa_freq = {k: round(v/n, 3) for k, v in sorted(aa_counts.items(), key=lambda item: item[1], reverse=True)}
 	print(aa_freq)
 
 	with open("hsm/outs/resfreq.csv", 'w') as f:
 		writer = csv.writer(f)
-		writer.writerows(aa_freq.items())
+		writer.writerows(aa_counts.items())
 
-	plt.bar(aa_freq.keys(), aa_freq.values(), color=[get_color(aa) for aa in aa_freq.keys()])
+	plt.bar(*zip(*aa_freq.items()), color=[get_color(aa) for aa in aa_freq.keys()])
 	plt.ylabel("frequency")
 	plt.xlabel("residue")
 	plt.title(f"{n=} residues over {len(os.listdir(pdb_dir))} binding sites")

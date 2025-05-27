@@ -1,9 +1,9 @@
 import csv
 
-MD_CUTOFF = 0
+MD_CUTOFF = 0.4
 RES_CUTOFF = 4
 REPR = "2x45_C6.pdb"
-mode = "repr"
+mode = "directed"
 
 
 def mdistmin_extractor():
