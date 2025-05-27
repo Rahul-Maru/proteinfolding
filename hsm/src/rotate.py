@@ -2,8 +2,8 @@ import subprocess
 import os
 import bio
 
-QUERIES = ['2x45_C6', '2x45_C8', '3bu1_A0', '4xmf_A0', "1u18_A0", "6dyn_A0"]
-TEMPLATE = '2x45_C7_HSM.mol2'
+QUERIES = ['2x45_C7', '2x45_C8', '3bu1_A0', '1qft_B2']
+TEMPLATE = '2x45_C6_HSM.mol2'
 IN = 'hsm/ligtest'
 OUT = 'hsm/outs/LSalign'
 
