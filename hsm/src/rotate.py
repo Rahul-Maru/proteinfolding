@@ -2,14 +2,27 @@ import subprocess
 import os
 import bio
 
-QUERIES = ['2x45_C7', '2x45_C8', '3bu1_A0', '1qft_B2']
-TEMPLATE = '2x45_C6_HSM.mol2'
+# QUERIES = ['2x45_C6', '2x45_C8', '3bu1_A0', '4xmf_A0', "1u18_A0", "6dyn_A0"]
+TEMPLATE = '2x45_C7'
 IN = 'hsm/ligtest'
 OUT = 'hsm/outs/LSalign'
 
 def main():
+	queries = [q.split('.')[0] for q in os.listdir(f"hsm/bsites_final")]
+	print(len(queries))
 
-	for q in QUERIES:
+	temp = bio.Protein(f"hsm/bsites_final/{TEMPLATE}.pdb", [0, 1])
+
+	if not os.path.isfile(f"{IN}/{TEMPLATE}_HSM.pdb"):
+		print(f"extracting HSM to ligtest from {TEMPLATE}")
+		with open(f"{IN}/{TEMPLATE}_HSM.pdb", 'w') as hf:
+			hf.writelines(temp.hetatms)
+	if not os.path.isfile(f"{IN}/{TEMPLATE}_HSM.mol2"):
+		# print("hi")
+		subprocess.run(["obabel", "-i", "pdb", f"{IN}/{TEMPLATE}_HSM.pdb", "-o", "mol2", "-O" f"{IN}/{TEMPLATE}_HSM.mol2"])
+
+
+	for q in queries:
 		q_path = f"hsm/bsites/{q}.pdb"
 		prot = bio.Protein(q_path, [0, 1])
 
@@ -22,7 +35,7 @@ def main():
 			subprocess.run(["obabel", "-i", "pdb", f"{IN}/{q}_HSM.pdb", "-o", "mol2", "-O" f"{IN}/{q}_HSM.mol2"])
 
 		subprocess.run(["./hsm/tools/LSalign/src/LSalign", f"{IN}/{q}_HSM.mol2",
-				  f"{IN}/{TEMPLATE}", "-m", (outpath:=f"{OUT}/mat_{q}"), "-rf", "1"])
+				  f"{IN}/{TEMPLATE}_HSM.mol2", "-m", (outpath:=f"{OUT}/mat_{q}"), "-rf", "1"])
 
 		with open(outpath) as f:
 			lines = [[c for c in l.split() if c][1:] for l in f.readlines()][1:4]
