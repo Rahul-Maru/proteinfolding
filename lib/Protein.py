@@ -1,6 +1,7 @@
 """PROTEIN CLASS."""
 
 from functools import cached_property
+from os.path import basename
 import numpy as np
 from typing import Literal
 
@@ -18,7 +19,7 @@ class Protein:
 		het_atms: `False` (only shows normal atoms), `True` (shows hetatms as well)."""
 
 		self.path = prot_path
-		self.id = prot_path[-8:-4].upper()
+		self.id = basename(prot_path).upper().split('.')[0]
 
 		self.display_mode = dp_mode
 
