@@ -10,9 +10,9 @@ def main():
     mode = args.mode
 
     print(f"running in mode: \033[1m{mode}\033[0m")
-    i = input("press y to change mode, press any other key to continue. ")
+    i = input("press c to change mode, press any other key to continue. ")
 
-    if i == "y":
+    if i == "c":
         mode = input("enter mode: ")
 
     if mode == "extract":
