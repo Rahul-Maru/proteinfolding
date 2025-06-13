@@ -2,6 +2,7 @@ import csv
 import os
 import bio
 import matplotlib.pyplot as plt
+from collections import defaultdict
 
 def count_amino_acid_frequencies(pdb_dir):
 	"""
@@ -10,6 +11,7 @@ def count_amino_acid_frequencies(pdb_dir):
 	"""
 	from collections import Counter
 	aa_counts = Counter()
+	aa_unique = defaultdict(set)
 	i = 0
 
 	for fname in os.listdir(pdb_dir):
@@ -25,10 +27,10 @@ def count_amino_acid_frequencies(pdb_dir):
 			if 65 <= ord(aa) <= 90:
 				i += 1
 				aa_counts[aa] += 1
-
+				aa_unique[aa].add(p.id)
 	print(i)
 
-	return dict(aa_counts), i
+	return dict(aa_counts), dict(aa_unique), i
 
 aa_groups = {'polar': 'STNQ',
 			'non-polar': 'ILMGPVA',
@@ -43,12 +45,12 @@ aa_colors = {'polar': 'green',
 			'aromatic': 'purple'}
 
 def main():
-
-
 	pdb_dir = "hsm/bsites_final"
-	aa_counts, n = count_amino_acid_frequencies(pdb_dir)
+	aa_counts, aa_unique, n = count_amino_acid_frequencies(pdb_dir)
 	aa_freq = {k: round(v/n, 3) for k, v in sorted(aa_counts.items(), key=lambda item: item[1], reverse=True)}
+	aa_unique_count = {k: len(v) for k, v in sorted(aa_unique.items(), key=lambda item: len(item[1]), reverse=True)}
 	print(aa_freq)
+	print(aa_unique_count)
 
 	with open("hsm/outs/resfreq.csv", 'w') as f:
 		writer = csv.writer(f)

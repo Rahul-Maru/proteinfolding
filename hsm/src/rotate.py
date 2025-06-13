@@ -3,7 +3,7 @@ import os
 import bio
 
 # QUERIES = ['2x45_C6', '2x45_C8', '3bu1_A0', '4xmf_A0', "1u18_A0", "6dyn_A0"]
-TEMPLATE = '2x45_C7'
+TEMPLATE = '8yuu_R0'
 IN = 'hsm/ligtest'
 OUT = 'hsm/outs/LSalign'
 
