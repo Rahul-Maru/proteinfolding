@@ -1,0 +1,6 @@
+1. convert all the files in pdb structures folder to pdb 
+2. extract bsites by ligand (ignore monoatoms and h2o)
+3. map each entity in cluster data to chains
+4. pick one repr per cluster per ligand by resolution (obtain in #3) 
+5. remove the rest of the data if its in the same cluster (consider separately for each ligand)
+
