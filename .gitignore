@@ -5,5 +5,8 @@ flowchart.jpeg
 .~lock.resolution_clustering.ods#
 *.log
 flowchart
-filt/dat/
+filt/dat/*.xz
+filt/dat/struct/pdb
+filt/dat/struct/sites
+filt/dat/struct/binding-sites
 

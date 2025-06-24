@@ -2,8 +2,7 @@ import os
 import re
 from sys import float_info
 
-PDBDIR = 1/0 # <INSERT PDB DIR HERE>
-
+PDBDIR = "filt/dat/struct/pdb"
 def get_res(pdb):
 	with open(f'{PDBDIR}/{pdb}', 'r') as f:
 		lines = ''.join(f.readlines())
@@ -18,9 +17,10 @@ def get_res(pdb):
 	return res
 
 def main():
-	for pdb in os.listdir(PDBDIR):
-		print(f"{pdb}: ", end="")
-		print(get_res(pdb))
+	for dir in os.listdir(PDBDIR):
+		for pdb in os.listdir(f'{PDBDIR}/{dir}'):
+			print(f"{pdb}: ", end="")
+			print(get_res(f'{dir}/{pdb}'))
 
 if __name__ == "__main__":
 	main()

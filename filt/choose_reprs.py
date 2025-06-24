@@ -1,21 +1,19 @@
 from collections import defaultdict
+from filt import clusterize
 from res import get_res
 
 
 def main():
-	format_pdb = lambda x : x
+	clusters = clusterize()
 
-	with open("clusters-by-entity-70.txt", "r") as f:
-		lines = f.readlines()
-
-	clusters = [format_pdb(ent) for clust in lines for ent in clust.split(" ") if ent[:5] != "AF_AF"]
-
+	reprs = []
 	for cluster in clusters:
 		res = defaultdict([])
 		for ent in cluster:
 			res[ent] = get_res(ent)
 		
 		repr = min(res, res.get)
+		reprs.append(repr)
 	
 
 
