@@ -8,4 +8,4 @@ for d in pdb/*; do
 			fi
 		done
 	fi
-done
+done < "$f"

@@ -1,3 +1,5 @@
+from collections import defaultdict
+import os
 import re
 
 def clusterize():
@@ -13,16 +15,22 @@ def clusterize():
 	clusters = [[enty.strip() for enty in clust.split(" ") if len(enty) <= 8] for clust in lines]
 	clusters = [clust for clust in clusters if len(clust) > 0]
 
-	for clust in clusters:
-		for enty in clust:
-			pdb_id = f"pdb{enty[:4].lower()}.ent"
-			enty = enty[5:]
-			print('---')
-			print(pdb_id, enty)
-			get_lig(pdb_id, enty_to_bsites(pdb_id, enty))
+	with open("filt/dat/clusters-by-bsites-70.txt", "w") as f:
+		for clust in clusters:
+			ligs = defaultdict(list)
+			for entry in clust:
+				pdb_id = f"pdb{entry[:4].lower()}.ent"
+				enty_n = entry[5:]
+				chains = enty_to_chains(pdb_id, enty_n)
+				print('---')
+				print(pdb_id, enty_n)
+				print(chains)
+				for chain in chains:
+					ligs = get_lig(pdb_id, chain)
+					print(f"{chain}: {ligs}")
 
 
-def enty_to_bsites(pdb, enty):
+def enty_to_chains(pdb, enty):
 	enty_pattern = re.compile(rf"COMPND\s+\d*\s*MOL_ID:\s*{enty};")
 	chain_pattern = re.compile(rf"COMPND\s+\d*\s*CHAIN:")
 
@@ -36,15 +44,23 @@ def enty_to_bsites(pdb, enty):
 		if f:
 			if chain_pattern.search(line):
 				chains = line.replace(';', '').split("CHAIN:")[1].strip()
-				print(f"{pdb}: {chains.split(', ')}")
 				break
 	else:
 		raise ValueError(f"{"Chains" if f else f"MOL_ID {enty}"} not found in {pdb}")
 
 	return chains.split(', ')
 	
-def get_lig(pdb, chain): pass
+def get_lig(pdb, chain):
+	pdb = pdb[:-4]
+	mid = f"{pdb[4:6]}"
+	dir = os.listdir(f"filt/dat/struct/binding-sites/{mid}")
+	ligs = []
+	for f in dir:
+		fsplit = f.split("_")
+		if pdb == fsplit[0] and chain == fsplit[1]:
+			ligs.append(fsplit[3][:-4])
 
+	return ligs
 
 if __name__ == "__main__":
 	clusterize()

@@ -1,16 +1,32 @@
-for dir in pdb/*; do
-	d=$(basename "$dir")
-	echo "$d"
-	mkdir "binding-sites/$d"
-done
-for f in binding-sites/*; do
+inf="xa$1"
+echo "reading from $inf"
+
+mkdr=false
+
+if [ "$mkdr" = true ]; then
+	for dir in pdb/*; do
+		d=$(basename "$dir")
+		echo "$d"
+		mkdir "binding-sites/$d"
+	done
+fi
+
+
+while read f; do
+	echo "$f"
+	f="binding-sites/$f"
 	if [ -f "$f" ]; then
 		name=$(basename "$f")
 		mid=${name:4:2}
 		mv "$f" "binding-sites/$mid"
 		echo "$name moved to $mid/"
 	fi
-done
+done < "$inf"
 
-shutdown
+c=$(ls -p "binding-sites" | grep -v "/" | wc -w)
+echo "$c"
+if [ $c -eq 0 ]; then
+	shutdown
+fi
+
 
