@@ -15,20 +15,30 @@ def clusterize():
 	clusters = [[enty.strip() for enty in clust.split(" ") if len(enty) <= 8] for clust in lines]
 	clusters = [clust for clust in clusters if len(clust) > 0]
 
-	with open("filt/dat/clusters-by-bsites-70.txt", "w") as f:
-		for clust in clusters:
-			ligs = defaultdict(list)
-			for entry in clust:
-				pdb_id = f"pdb{entry[:4].lower()}.ent"
-				enty_n = entry[5:]
-				chains = enty_to_chains(pdb_id, enty_n)
-				print('---')
-				print(pdb_id, enty_n)
-				print(chains)
-				for chain in chains:
-					ligs = get_lig(pdb_id, chain)
-					print(f"{chain}: {ligs}")
+	new_clusters = []
+	for i, clust in enumerate(clusters):
+		lig_clusters = defaultdict(list)
+		for entry in clust:
+			pdb_id = f"pdb{entry[:4].lower()}.ent"
+			enty_n = entry[5:]
+			chains = enty_to_chains(pdb_id, enty_n)
 
+			print('---')
+			print(f"{pdb_id} - entity {enty_n}")
+
+			all_ligs = []
+			for chain in chains:
+				ligs = get_lig(pdb_id, chain)
+				all_ligs.extend(ligs)
+				print(f"{chain}: {ligs}")
+
+			for lig in all_ligs:
+				lig_clusters[lig].append(entry)
+
+		new_clusters.extend(lig_clusters.values())
+		print(f"done with cluster {i}")
+
+	return new_clusters
 
 def enty_to_chains(pdb, enty):
 	enty_pattern = re.compile(rf"COMPND\s+\d*\s*MOL_ID:\s*{enty};")
@@ -49,8 +59,9 @@ def enty_to_chains(pdb, enty):
 		raise ValueError(f"{"Chains" if f else f"MOL_ID {enty}"} not found in {pdb}")
 
 	return chains.split(', ')
-	
+
 def get_lig(pdb, chain):
+	# TODO filter out unwanted ligands
 	pdb = pdb[:-4]
 	mid = f"{pdb[4:6]}"
 	dir = os.listdir(f"filt/dat/struct/binding-sites/{mid}")
@@ -58,6 +69,7 @@ def get_lig(pdb, chain):
 	for f in dir:
 		fsplit = f.split("_")
 		if pdb == fsplit[0] and chain == fsplit[1]:
+			print(f)
 			ligs.append(fsplit[3][:-4])
 
 	return ligs
