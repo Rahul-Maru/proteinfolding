@@ -2,6 +2,9 @@ from collections import defaultdict
 import os
 import re
 
+CLUSTF = "filt/dat/clusters-by-entity-70.txt"
+PDBDIR = "filt/dat/struct/pdb"
+
 def clusterize():
 	"""
 	map entities to binding sites
@@ -9,34 +12,45 @@ def clusterize():
 	  go through each enty and add it to the lig-cluster
 	"""
 
-	with open("filt/dat/clusters-by-entity-70.txt", "r") as f:
+	# mirror: https://cdn.rcsb.org/resources/sequence/clusters/clusters-by-entity-70.txt
+	with open(CLUSTF, "r") as f:
 		lines = f.readlines()
 
 	clusters = [[enty.strip() for enty in clust.split(" ") if len(enty) <= 8] for clust in lines]
 	clusters = [clust for clust in clusters if len(clust) > 0]
 
 	new_clusters = []
+	elim = []
 	for i, clust in enumerate(clusters):
 		lig_clusters = defaultdict(list)
 		for entry in clust:
 			pdb_id = f"pdb{entry[:4].lower()}.ent"
 			enty_n = entry[5:]
-			chains = enty_to_chains(pdb_id, enty_n)
 
 			print('---')
-			print(f"{pdb_id} - entity {enty_n}")
+			try:
+				chains = enty_to_chains(pdb_id, enty_n)
 
-			all_ligs = []
-			for chain in chains:
-				ligs = get_lig(pdb_id, chain)
-				all_ligs.extend(ligs)
-				print(f"{chain}: {ligs}")
+				print(f"{pdb_id} - entity {enty_n}")
 
-			for lig in all_ligs:
-				lig_clusters[lig].append(entry)
+				all_ligs = []
+				for chain in chains:
+					ligs = get_lig(pdb_id, chain)
+					all_ligs.extend(ligs)
+					print(f"{chain}: {ligs}")
+
+				for lig in all_ligs:
+					lig_clusters[lig].append(entry)
+
+			except FileNotFoundError:
+				elim.append(pdb_id)
+				print(f"file not found: {pdb_id}")
 
 		new_clusters.extend(lig_clusters.values())
-		print(f"done with cluster {i}")
+		print(f"\n------done with cluster {i}------\n")
+
+	with open('notfound', 'w'):
+		f.write(', '.join(elim))
 
 	return new_clusters
 
@@ -44,7 +58,7 @@ def enty_to_chains(pdb, enty):
 	enty_pattern = re.compile(rf"COMPND\s+\d*\s*MOL_ID:\s*{enty};")
 	chain_pattern = re.compile(rf"COMPND\s+\d*\s*CHAIN:")
 
-	with open(f"filt/dat/struct/pdb/{pdb[4:6]}/{pdb}", "r") as f:
+	with open(f"{PDBDIR}/{pdb[4:6]}/{pdb}", "r") as f:
 		lines = f.readlines()
 
 	f = False
