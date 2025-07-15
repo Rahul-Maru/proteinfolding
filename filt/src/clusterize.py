@@ -7,6 +7,9 @@ import time
 CLUSTF = "filt/dat/clusters-by-entity-70.txt"
 PDBDIR = "filt/dat/struct/pdb"
 
+# CLUSTF = "filt/dat/clusters-by-entity-70.txt"
+# PDBDIR = "filt/dat/struct/pdb"
+
 def clusterize():
 	"""
 	map entities to binding sites
@@ -56,6 +59,7 @@ def clusterize():
 					lig_clusters[lig].append(entry)
 
 			except FileNotFoundError:
+				# weeds out entries not available in the PDB format (or are otherwise absent from the dir) 
 				elim.append(pdb_id)
 				print(f"file not found: {pdb_id}")
 
@@ -72,17 +76,21 @@ def clusterize():
 	return new_clusters
 
 def enty_to_chains(pdb, enty):
+	# match entity section in pdb file
 	enty_pattern = re.compile(rf"COMPND\s+\d*\s*MOL_ID:\s*{enty};")
+	# match chain lists under the entity section
 	chain_pattern = re.compile(rf"COMPND\s+\d*\s*CHAIN:")
 
 	with open(f"{PDBDIR}/{pdb[4:6]}/{pdb}", "r") as f:
 		lines = f.readlines()
 
 	f = False
+	# go through the lines in the pdb file one by one
 	for i, line in enumerate(lines):
 		if enty_pattern.match(line):
 			f = True
 		if f:
+			# once the right entity section is found, find the chain list and break
 			if chain_pattern.search(line):
 				chains = line.replace(';', '').split("CHAIN:")[1].strip()
 				break
@@ -99,8 +107,10 @@ def get_lig(pdb, chain):
 	ligs = []
 	for f in dir:
 		fsplit = f.split("_")
+		# get the corresponding binding site
 		if pdb == fsplit[0] and chain == fsplit[1]:
 			print(f)
+			# get the ligand name
 			ligs.append(fsplit[3][:-4])
 
 	return ligs
