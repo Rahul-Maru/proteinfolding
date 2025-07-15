@@ -1,6 +1,8 @@
 from collections import defaultdict
+import json
 import os
 import re
+import time
 
 CLUSTF = "filt/dat/clusters-by-entity-70.txt"
 PDBDIR = "filt/dat/struct/pdb"
@@ -16,13 +18,24 @@ def clusterize():
 	with open(CLUSTF, "r") as f:
 		lines = f.readlines()
 
+	# ignore non-PDB entries
 	clusters = [[enty.strip() for enty in clust.split(" ") if len(enty) <= 8] for clust in lines]
 	clusters = [clust for clust in clusters if len(clust) > 0]
 
 	new_clusters = []
 	elim = []
+
+	print(f"{len(clusters)}")
+	time.sleep(2)
+
+	st = time.time()
 	for i, clust in enumerate(clusters):
+		print(f"{len(clust)}")
+		# time.sleep(0.3)
+	
 		lig_clusters = defaultdict(list)
+	
+		st2 = time.time()
 		for entry in clust:
 			pdb_id = f"pdb{entry[:4].lower()}.ent"
 			enty_n = entry[5:]
@@ -47,10 +60,14 @@ def clusterize():
 				print(f"file not found: {pdb_id}")
 
 		new_clusters.extend(lig_clusters.values())
-		print(f"\n------done with cluster {i}------\n")
+		# print(f"\n------done with cluster {i} in {time.time() - st2}s------\n")
+		time.sleep(1)
 
+	print(f"DONE IN {time.time() - st}")
 	with open('notfound', 'w'):
 		f.write(', '.join(elim))
+
+	json.dump(new_clusters, open("../dat/clusters-by-bsite-70.txt", "r"))
 
 	return new_clusters
 
