@@ -35,9 +35,9 @@ def clusterize():
 	for i, clust in enumerate(clusters):
 		print(f"{len(clust)}")
 		# time.sleep(0.3)
-	
+
 		lig_clusters = defaultdict(list)
-	
+
 		st2 = time.time()
 		for entry in clust:
 			pdb_id = f"pdb{entry[:4].lower()}.ent"
@@ -59,7 +59,7 @@ def clusterize():
 					lig_clusters[lig].append(entry)
 
 			except FileNotFoundError:
-				# weeds out entries not available in the PDB format (or are otherwise absent from the dir) 
+				# weeds out entries not available in the PDB format (or are otherwise absent from the dir)
 				elim.append(pdb_id)
 				print(f"file not found: {pdb_id}")
 
