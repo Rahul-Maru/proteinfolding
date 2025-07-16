@@ -4,8 +4,8 @@ import os
 import re
 import time
 
-CLUSTF = "filt/dat/clusters-by-entity-70.txt"
-PDBDIR = "filt/dat/struct/pdb"
+CLUSTF = "test_hsm/clusters-by-entity-70.txt"
+PDBDIR = "hsm/pdb"
 
 # CLUSTF = "filt/dat/clusters-by-entity-70.txt"
 # PDBDIR = "filt/dat/struct/pdb"

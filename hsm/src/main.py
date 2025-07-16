@@ -40,7 +40,7 @@ def main():
             '--full', '--force']))
         print(f"done in {t.timeit(1):.3f}s\n")
 
-        print("Creating plot of sequence similarity scores (close plot to continue)")
+        print("Creating plot of sequence similarity scores (close plot and enter cutoff to continue)")
         csv_formatter("seq")
         scoreplotter("seq")
         try:
@@ -86,6 +86,8 @@ def main():
         l = input("load sitemotif files? (y/n) ")
         if l == "y":
             load_sitemotif_files("hsm/bsites_final")
+    elif mode == 'test':
+        pdbs2fasta('hsm/pdbs', 'test_hsm')
 
 
 if __name__ == "__main__":

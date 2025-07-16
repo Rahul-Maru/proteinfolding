@@ -177,7 +177,8 @@ def mdistmin_extractor():
 
 @timed
 def pdbs2fasta(dir, out):
-	print(f"Converting {dir} → {dir}.fa")
+	outf = f"hsm/outs/PDB2Fasta/{out}.fa"
+	print(f"Converting {dir} → {outf}")
 
 	CMD = './hsm/tools/PDB2Fasta/pdb2fasta.sh'
 
@@ -186,7 +187,7 @@ def pdbs2fasta(dir, out):
 
 	fasta = ''.join([subprocess.run([CMD, f'{dir}/{f}'], capture_output=True, text=True).stdout for f in files])
 
-	with open(f"hsm/outs/PDB2Fasta/{out}.fa", "w") as f:
+	with open(outf, "w") as f:
 		f.write(fasta)
 
 def scoreplotter(mode):
