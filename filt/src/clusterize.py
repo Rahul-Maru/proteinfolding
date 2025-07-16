@@ -5,7 +5,9 @@ import re
 import time
 
 CLUSTF = "test_hsm/clusters-by-entity-70.txt"
-PDBDIR = "hsm/pdb"
+PDBDIR = "hsm/pdbs"
+NF_FILE = 'test_hsm/notfound'
+OUT_FILE = "test_hsm/clusters-by-bsite-70.json"
 
 # CLUSTF = "filt/dat/clusters-by-entity-70.txt"
 # PDBDIR = "filt/dat/struct/pdb"
@@ -26,16 +28,17 @@ def clusterize():
 	clusters = [clust for clust in clusters if len(clust) > 0]
 
 	new_clusters = []
-	elim = []
+	elim = set()
 
-	print(f"{len(clusters)}")
-	time.sleep(2)
+	# print(f"{len(clusters)} clusters")
+	time.sleep(0.6)
 
 	st = time.time()
 	for i, clust in enumerate(clusters):
-		print(f"{len(clust)}")
+		# print(f"{len(clust)}")
 		# time.sleep(0.3)
 
+		# current cluster broken into sub-clusters by ligand
 		lig_clusters = defaultdict(list)
 
 		st2 = time.time()
@@ -49,29 +52,27 @@ def clusterize():
 
 				print(f"{pdb_id} - entity {enty_n}")
 
-				all_ligs = []
 				for chain in chains:
-					ligs = get_lig(pdb_id, chain)
-					all_ligs.extend(ligs)
-					print(f"{chain}: {ligs}")
+					sites = get_ligs_bsites(pdb_id, chain)
+					for lig, site in sites:
+						lig_clusters[lig].append(site)
+					print(f"{chain}: {sites}")
 
-				for lig in all_ligs:
-					lig_clusters[lig].append(entry)
-
-			except FileNotFoundError:
+			except (FileNotFoundError, ValueError) as e:
 				# weeds out entries not available in the PDB format (or are otherwise absent from the dir)
-				elim.append(pdb_id)
-				print(f"file not found: {pdb_id}")
+				elim.add(pdb_id)
+				print(e)
 
 		new_clusters.extend(lig_clusters.values())
-		# print(f"\n------done with cluster {i} in {time.time() - st2}s------\n")
-		time.sleep(1)
+		print(f"\n------done with cluster {i} in {time.time() - st2}s------\n")
 
 	print(f"DONE IN {time.time() - st}")
-	with open('notfound', 'w'):
-		f.write(', '.join(elim))
 
-	json.dump(new_clusters, open("../dat/clusters-by-bsite-70.txt", "r"))
+	with open(NF_FILE, 'w') as f2:
+		f2.write(', '.join(elim))
+
+	json.dump(new_clusters, open(OUT_FILE, "w"))
+	print(new_clusters)
 
 	return new_clusters
 
@@ -81,8 +82,12 @@ def enty_to_chains(pdb, enty):
 	# match chain lists under the entity section
 	chain_pattern = re.compile(rf"COMPND\s+\d*\s*CHAIN:")
 
-	with open(f"{PDBDIR}/{pdb[4:6]}/{pdb}", "r") as f:
-		lines = f.readlines()
+	path = f"{PDBDIR}/{pdb[4:6]}/{pdb}"
+	try:
+		with open(path, "r") as f:
+			lines = f.readlines()
+	except FileNotFoundError:
+		raise FileNotFoundError(f"file not found: {PDBDIR}/{pdb}")
 
 	f = False
 	# go through the lines in the pdb file one by one
@@ -99,21 +104,22 @@ def enty_to_chains(pdb, enty):
 
 	return chains.split(', ')
 
-def get_lig(pdb, chain):
+def get_ligs_bsites(pdb, chain):
 	# TODO filter out unwanted ligands
 	pdb = pdb[:-4]
 	mid = f"{pdb[4:6]}"
 	dir = os.listdir(f"filt/dat/struct/binding-sites/{mid}")
-	ligs = []
+	sites = []
 	for f in dir:
 		fsplit = f.split("_")
 		# get the corresponding binding site
 		if pdb == fsplit[0] and chain == fsplit[1]:
-			print(f)
+			# print("hi", f)
 			# get the ligand name
-			ligs.append(fsplit[3][:-4])
+			sites.append((fsplit[3][:-4], f))
 
-	return ligs
+
+	return sites
 
 if __name__ == "__main__":
 	clusterize()
