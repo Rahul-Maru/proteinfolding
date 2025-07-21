@@ -4,13 +4,17 @@ import os
 import re
 import time
 
-CLUSTF = "test_hsm/clusters-by-entity-70.txt"
-PDBDIR = "hsm/pdbs"
-NF_FILE = 'test_hsm/notfound'
-OUT_FILE = "test_hsm/clusters-by-bsite-70.json"
+# CLUSTF = "test_hsm/clusters-by-entity-70.txt"
+# PDBDIR = "hsm/pdbs"
+# NF_FILE = 'test_hsm/notfound'
+# OUT_FILE = "test_hsm/clusters-by-bsite-70.json"
 
-# CLUSTF = "filt/dat/clusters-by-entity-70.txt"
-# PDBDIR = "filt/dat/struct/pdb"
+CLUSTF = "filt/dat/clusters-by-entity-70.txt"
+PDBDIR = "filt/dat/struct/pdb"
+NF_FILE = 'filt/dat/notfound.txt'
+OUT_FILE = "filt/dat/clusters-by-bsite-70.json"
+
+
 
 def clusterize():
 	"""
@@ -31,11 +35,10 @@ def clusterize():
 	elim = set()
 
 	# print(f"{len(clusters)} clusters")
-	time.sleep(0.6)
 
 	st = time.time()
 	for i, clust in enumerate(clusters):
-		# print(f"{len(clust)}")
+		print(f"beginning cluster {i}")
 		# time.sleep(0.3)
 
 		# current cluster broken into sub-clusters by ligand
@@ -46,17 +49,17 @@ def clusterize():
 			pdb_id = f"pdb{entry[:4].lower()}.ent"
 			enty_n = entry[5:]
 
-			print('---')
+			# print('---')
 			try:
 				chains = enty_to_chains(pdb_id, enty_n)
 
-				print(f"{pdb_id} - entity {enty_n}")
+				# print(f"{pdb_id} - entity {enty_n}")
 
 				for chain in chains:
 					sites = get_ligs_bsites(pdb_id, chain)
 					for lig, site in sites:
 						lig_clusters[lig].append(site)
-					print(f"{chain}: {sites}")
+					# print(f"{chain}: {sites}")
 
 			except (FileNotFoundError, ValueError) as e:
 				# weeds out entries not available in the PDB format (or are otherwise absent from the dir)
