@@ -51,6 +51,7 @@ def clusterize():
 
 			# print('---')
 			try:
+				# all the chains in this entity
 				chains = enty_to_chains(pdb_id, enty_n)
 
 				# print(f"{pdb_id} - entity {enty_n}")
@@ -97,6 +98,7 @@ def enty_to_chains(pdb, enty):
 	for i, line in enumerate(lines):
 		if enty_pattern.match(line):
 			f = True
+			continue
 		if f:
 			# once the right entity section is found, find the chain list and break
 			if chain_pattern.search(line):

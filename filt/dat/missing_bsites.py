@@ -17,7 +17,13 @@ clust = set(clust)
 print(len(clust))
 
 with open("filt/dat/bsites_missing_b.txt", 'w') as f:
-	f.write(f"{bsites - clust}")
+	f.write(f"{(sites_m:=bsites - clust)}")
+
+with open("filt/dat/bsites_missing_pdbs.txt", "w") as f:
+	site_pdbs = set()
+	for site in sites_m:
+		site_pdbs.add(site[3:7])
+	f.write(f"{site_pdbs}")
 
 # ———————————
 print('———————————')
@@ -43,7 +49,7 @@ print(len(clusters))
 
 
 with open("filt/dat/pdbs_missing_p.txt", 'w') as f:
-	f.write(f"{pdbs - clusters}")
+	f.write(f"{(s2:=pdbs - clusters)}")
 
 with open("filt/dat/pdbs_missing_c.txt", 'w') as f:
 	f.write(f"{clusters - pdbs}")
@@ -57,7 +63,6 @@ with open('filt/dat/notfound.txt') as f:
 sites = []
 for i, pdb in enumerate(pdbs - clusters):
 	pdb = pdb.lower()
-	print(f"{i} - {pdb}")
 	mid = f"{pdb[1:3]}"
 	dir = os.listdir(f"filt/dat/struct/binding-sites/{mid}")
 	# print(dir)
@@ -67,9 +72,10 @@ for i, pdb in enumerate(pdbs - clusters):
 		# get the corresponding binding site
 		if pdb == fsplit[0][3:]:
 			sites.append(f)
-			print(f)
 
 print(len(sites))
 
 with open("filt/dat/pdbs_missing_sites.txt", 'w') as f:
 	f.write(f"{sites}")
+
+print(len(s2-{k.upper() for k in site_pdbs}))
