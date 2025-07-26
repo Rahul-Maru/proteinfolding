@@ -11,9 +11,10 @@ import time
 
 CLUSTF = "filt/dat/clusters-by-entity-70.txt"
 PDBDIR = "filt/dat/struct/pdb"
+SITEDIR = "filt/dat/struct/binding-sites"
+
 NF_FILE = 'filt/dat/notfound.txt'
 OUT_FILE = "filt/dat/clusters-by-bsite-70.json"
-
 
 
 def clusterize():
@@ -113,12 +114,12 @@ def get_ligs_bsites(pdb, chain):
 	# TODO filter out unwanted ligands
 	pdb = pdb[:-4]
 	mid = f"{pdb[4:6]}"
-	dir = os.listdir(f"filt/dat/struct/binding-sites/{mid}")
+	dir = os.listdir(f"{SITEDIR}/{mid}")
 	sites = []
 	for f in dir:
 		fsplit = f.split("_")
 		# get the corresponding binding site
-		if pdb == fsplit[0] and chain == fsplit[1]:
+		if pdb == fsplit[0] and chain.casefold() == fsplit[1].casefold():
 			# print("hi", f)
 			# get the ligand name
 			sites.append((fsplit[3][:-4], f))
