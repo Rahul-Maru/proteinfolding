@@ -11,10 +11,10 @@ import time
 
 CLUSTF = "filt/dat/clusters-by-entity-70.txt"
 PDBDIR = "filt/dat/struct/pdb"
-SITEDIR = "filt/dat/struct/binding-sites"
+SITEDIR = "filt/dat/struct/filtered-binding-sites"
 
-NF_FILE = 'filt/dat/notfound.txt'
-OUT_FILE = "filt/dat/clusters-by-bsite-70.json"
+NF_FILE = 'filt/dat/f-notfound.txt'
+OUT_FILE = "filt/dat/f-clusters-by-bsite-70.json"
 
 
 def clusterize():
