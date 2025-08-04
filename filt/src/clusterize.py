@@ -6,13 +6,14 @@ import time
 
 # CLUSTF = "test_hsm/clusters-by-entity-70.txt"
 # PDBDIR = "hsm/pdbs"
+
 # NF_FILE = 'test_hsm/notfound'
 # OUT_FILE = "test_hsm/clusters-by-bsite-70.json"
 
+SITEF = "filt/dat/struct/f_bsites.txt"
+
 CLUSTF = "filt/dat/clusters-by-entity-70.txt"
 PDBDIR = "filt/dat/struct/pdb"
-SITEDIR = "filt/dat/struct/filtered-binding-sites"
-SITEF = "filt/dat/struct/f_bsites.txt"
 
 NF_FILE = "filt/dat/f-notfound.txt"
 OUT_FILE = "filt/dat/f-clusters-by-bsite-70.json"
@@ -32,11 +33,11 @@ def load_bsites():
         lines = f.readlines()
 
     for line in lines:
+        line = line.strip()
         tokens = line.split("_")
-        bsites[(tokens[0][3:], tokens[2])].append((tokens[3][:-4], line))
+        bsites[(tokens[0][3:], tokens[1])].append((tokens[3][:-4], line))
 
     print(f"loaded bsites in {time.time() - t}s")
-    print(len(bsites))
 
 
 def clusterize():
@@ -117,7 +118,7 @@ def enty_to_chains(pdb, enty):
                     continue
                 if found:
                     # once the right entity section is found, find the chain list and break
-                    if CHAIN_PATTERN.search(line):
+                    if CHAIN_PATTERN.match(line):
                         chains = line.replace(";", "").split("CHAIN:")[1].strip()
                         break
             else:
