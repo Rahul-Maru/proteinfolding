@@ -1,5 +1,5 @@
 from collections import defaultdict
-from clusterize import clusterize
+import json
 from res import get_res
 
 # binding site: 
@@ -12,20 +12,43 @@ from res import get_res
 
 # #### = pdb id, C = chain, **** = residue number, LIG = ligand code
 
-
+def fwrite(fp, x):
+	with open(f"filt/dat/{fp}", 'w') as f:
+		f.write(f"{x}")
 
 def main():
-	clusters = clusterize()
+	clusters = json.load(open("filt/dat/f-clusters-by-bsite-70.json"))
+	print(len(clusters))
 
 	reprs = []
+	nores = []
+	c= 0
 	for cluster in clusters:
-		res = defaultdict([])
-		for ent in cluster:
-			res[ent] = get_res(ent)
+		c+=1
+		if not c%500:
+			print(c)
+		resl = defaultdict(list)
+		for bsite in cluster:
+			path = f"{bsite[4:6]}/{bsite[:7]}.ent"
+			try:
+				resl[bsite] = get_res(path)
+
+			except ValueError as e:
+				nores.append(bsite)
+				# print(e)
+
+		if len(resl):	
+			repr = min(resl, key=resl.get)
+			reprs.append(repr)
+		else:
+			print(f"no repr for cluster {c}")
 		
-		repr = min(res, res.get)
-		reprs.append(repr)
 	
+	print(len(reprs))
+	print(len(nores))
+	json.dump(reprs, open("filt/dat/reprs.json", 'w'))
+	fwrite("missing_resolution.txt", nores)
+
 
 
 if __name__ == "__main__":

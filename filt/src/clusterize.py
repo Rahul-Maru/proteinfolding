@@ -21,7 +21,9 @@ OUT_FILE = "filt/dat/f-clusters-by-bsite-70.json"
 # match entity section in pdb file, load for all possible entity numbers
 ENTY_PATTERN = [re.compile(rf"COMPND\s+\d*\s*MOL_ID:\s*{enty};") for enty in range(166)]
 # match chain lists under the entity section
-CHAIN_PATTERN = re.compile(rf"COMPND\s+\d*\s*CHAIN:")
+CHAIN_PATTERN = re.compile(r"COMPND\s+\d*\s*CHAIN:")
+# match the source section, implying that all relevant lines have been searched
+SOURCE_PATTERN = re.compile(r"SOURCE")
 
 bsites = defaultdict(list)
 # pdbs = {}

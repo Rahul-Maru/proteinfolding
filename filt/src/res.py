@@ -1,3 +1,4 @@
+from multiprocessing import Value
 import os
 import re
 from sys import float_info
@@ -5,14 +6,23 @@ from sys import float_info
 PDBDIR = "filt/dat/struct/pdb"
 
 def get_res(pdb):
+	RESPATTERN = re.compile(r'REMARK\s{3}2\sRESOLUTION\.\s+(.*)\sANGSTROMS\.')
+	REMARKxPATTERN = re.compile(r'REMARK\s{3}[3-5]')
 	with open(f'{PDBDIR}/{pdb}', 'r') as f:
-		lines = ''.join(f.readlines())
-		pattern = re.search(r'RESOLUTION\.\s{4}(\d+\.\d{2})\sANGSTROMS\.', lines)
-		if pattern:
-			res = float(pattern.group(1))
+		for line in f:
+			if REMARKxPATTERN.match(line):
+				raise ValueError(f"Resolution not found for {pdb} (0)")
+
+			pattern = RESPATTERN.match(line)
+			if pattern:
+				try: 
+					res = float(pattern.group(1))			
+				except:
+					raise ValueError(f"Resolution {pattern.group(1)} for {pdb}")
+
+				break
 		else:
-			print("Resolution not found")
-			res = float_info.max
+			raise ValueError(f"Resolution not found for {pdb} (1)")
 
 	return res
 
@@ -21,6 +31,7 @@ def main():
 		for pdb in os.listdir(f'{PDBDIR}/{dir}'):
 			print(f"{pdb}: ", end="")
 			print(get_res(f'{dir}/{pdb}'))
+
 
 if __name__ == "__main__":
 	main()
