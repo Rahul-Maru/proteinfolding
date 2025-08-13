@@ -27,6 +27,11 @@ def main():
 		c+=1
 		if not c%500:
 			print(c)
+
+		if len(cluster) == 1:
+			reprs.append(cluster[0])
+			continue
+
 		resl = defaultdict(list)
 		for bsite in cluster:
 			path = f"{bsite[4:6]}/{bsite[:7]}.ent"
@@ -41,9 +46,10 @@ def main():
 			repr = min(resl, key=resl.get)
 			reprs.append(repr)
 		else:
-			print(f"no repr for cluster {c}")
+			print(f"no res-based repr for cluster {c}")
+			reprs.append(cluster[0])
 		
-	
+	print("---------")
 	print(len(reprs))
 	print(len(nores))
 	json.dump(reprs, open("filt/dat/reprs.json", 'w'))
