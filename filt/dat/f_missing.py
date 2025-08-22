@@ -4,6 +4,7 @@ import re
 import time
 
 def fwrite(fp, x):
+	"""Easier way to write files"""
 	with open(f"filt/dat/{fp}", 'w') as f:
 		f.write(f"{x}")
 
