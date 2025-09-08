@@ -1,0 +1,131 @@
+* 5e515de initial commit
+* bdc889f transition to vpython
+* 12cfe9c show hetatms
+* 32bcac5 move proteins to new folder
+* 04d3afd fix path
+* 4633b05 add different colorings for chains
+* ddf7dc6 Create README.md
+* 0782135 add rainbow mode, counting number and length of chains, opacity control for hetatms
+* a56ade5 allow user to change params using command line input. add 2 new proteins
+* 5fba41e move protein data to separate class
+* 580dee9 add centroid
+* 88e2a69 add centroid for hetatms
+* 2304bc6 allow splitting of PDB file into chains
+* 0a06343 add Protein.residues property, Protein.res_subset(), which returns a subset of the Protein.residues, and Protein.seq() which returns the 1 letter sequence. begin implementing extraction of secondary structures
+* a59d288 move some code into new files main.py and consts.py
+* 1069d8e fix bug where future chains collapsed into the first, add hydrogen
+* 3727c5d fix a helix b sheet sequencing, other minor changes
+* 5ba8f79 add main.cpython
+* c9bd8ae add ligand recognition, binding-site display mode
+* 18b4073 add binding site recognition, Protein.print_res() function
+* dd4fe9d add binding site label to terminal output
+* 87e5633 structural alignment of HSM-binding proteins
+* 141439b structural align all the proteins
+* 537d8b6 many changes
+* 3f547f2 add sequence alignment program
+* 7b926be Restructure repo part 1.
+* 3f5021d fix paths that were broken by the restructuring
+* f771e21 rerun sequence alignment, add score plotter to plot cumulative distribution of clustal scores
+* 1171ba3 add folder and extraction script for chains containing binding sites, make Protein.chains into a letter-keyed dict rather than a list
+* 02f0918 sequence alignment of filtered chains
+* 5e4eebf add 3 pdbs
+* b849cb8 incorporate 3 proteins into dataset
+* 8fe3406 find motif
+* 8df7eb9 refactor files; merge consts.py, proteins.py into lib/bio.py; begin work on hsm/src/main.py to run all scripts together
+* 0ed2331 update readme with PYTHONPATH instructions
+* f3e6b35 modify readme
+* 533f460 make main.py work for streamlined sequence alignment
+* cbea9c4 streamline structural alignment too
+* 2d68932 make motif_aligner that repeatedly aligns binding sites with the representative
+* d5e6bc6 modify alignment algorithm output, remove hardcoded path in sim-main, add option for string ligand in get_bsite
+* 29fee6f align representative sites in pymol
+* f0f701b split bio.py back into consts.py, Protein.py. Add slices to get fields from a PDB record
+* 42c9de3 fix broken logic
+|/  
+* | 39255e0 readability changes
+* | 7c627f6 rework Protein.residues' algorithm to use CHAIN-SEQ as the residue id rather than a universal number
+* | ee01df6 neaten code a bit
+* | 8feafe0 add include_ligand toggle to Protein.get_bsites(), make Protein.get_ligand() return a list of residues, move all the methods in hsm/src to a new folder, hsm/src/indiv
+|/|   
+| |/  
+* | | 880a6bd add residue typed_dict
+| * | e2fb8b0 update binding site obtaining logic
+| |\  
+| *   730f4aa resolve merge conflict
+| * e8a63d9 move main.py out of indiv
+| * c500e70 fix Protein.seq() logic, add file to anlayze cytoscape directly. add legend to scoreplotter
+|\  
+*   a7efe79 merge commit
+* 7875c5e test fixing sort
+* 2dc6b3d rename output files
+* 1955316 remove unnecessary todo
+* 1ca82a4 rework filter_bsites() to handle single-histamine bsites, moving them to a bsites_split for further processing
+* 3a62c2a run motif_aligner on all the split binding sites. add param for max bsite distance to get_bsite(), create network of align_output
+* cbd5cde save network
+|/  
+* | fd62faa add file to move final directory to mapp-3d folder
+| * 26031c0 minor formatting change
+|\  
+*   9cce399 Merge branch 'dev' of https://github.com/Rahul-Maru/proteinfolding into dev
+* b400cd5 rerun analysis with 5.5 intsead of 4.5 as distance cutoff for bsites
+* c6ce34b stuff
+* 1cc079e resolve merge conflict
+* 5194cad update logo maker
+* eebd9ee add residue number filter to mdist_extractor, finish logomaker
+* 86e73ec update mdsit network
+* de7f344 automate logo-ing
+* 00cdaa8 remove prints
+* e35408e different logo
+* 625aaea fix off-by-one in motif.py, add repr mode to mdistmin, create motif overlaps
+* 65ff064 attempting alignment of ligands
+* b30bcc0 add rotate.py to rotate bsites based on ligand superposition
+|/  
+* | 81fb2b6 minor changes
+| * b76d9c2 add resfreq.py for caculating residue frequencies rotate all 23 proteins using rotate.py
+|\  
+*   f22306c merge commits
+|/  
+* | 18dadc9 ligand superpose pymol, get resfreq to output absolute n into the csv
+| * e3418af minor changes
+| * bc6c2dd remove unresolved merge conflicts
+|\  
+*   91eb70a Merge branch 'dist5' of https://github.com/Rahul-Maru/proteinfolding into dist5
+* efabead ligand superposition of first sitetype
+* 9e4c0fb analyze bsites further
+* be51b8b lig site 2, add unique counter to res_freq
+* 4a38036 further analyse site2
+* 5cd400d create pipeline
+* 0ace22d create skeletons of programs along the pipeline
+* 786309d test shell script
+* 6c4d651 further work on filtration, remove stuff from gitignore
+* 494692a move files to src dir, finish enty_to_bsites, add shell script to sort binding-sites into subdirs
+* b178479 add chain-ligand mapping to clusterize, shell script to cd into directory
+* 73a36c6 finish clusterize; add script to run sitextract from up here
+* f531fa2 rename shell script to be consistent with actual program name
+* 51fedd7 add file to delete empty bsites
+* ca17b34 extracting bsites
+|/  
+* | 92219b4 merge commit
+| * 0f79507 add commments
+|\  
+*   5660132 Merge branch 'filter' of https://github.com/Rahul-Maru/proteinfolding into filter
+* aa2256b remove whitespace
+* 94757c4 add histamine test case for filt, modify pdbs2fasta
+* 90c0616 prepare for hsm test
+|/  
+| * 7782910 fix bugs
+|\  
+*   4cf4450 merge commit
+* 59330c2 clusterize bsites, attempt to explore mismatch in site numbers
+* aa80e82 bugwork
+* 4d5145f remove chain-case bug
+* 30172d3 begin to remove unwanted bsites
+* cb7a1ed remove unwanted bsites
+* f6c824f optimize cluster
+* 11a88fe recluster (remove bug)
+* fc657ae remove removed pdbs from bsite, work on analysing cluster
+* e2a5e67 resolve cluster bug...?
+* 52cac8d remove the removed
+* 3ac4dfa finish analysing bug
+* 20f5f19 fix choose_reprs, remove non-amino-acid atoms from bsites
+* 850a0f8 enable choosereprs to pick repr without resolution.  clcluster newly filtered BSITES
