@@ -3,56 +3,65 @@ import os
 import re
 import time
 
-def fwrite(fp, x):
+def fwrite(fp, x, text):
 	"""Easier way to write files"""
 	with open(f"filt/dat/{fp}", 'w') as f:
+		print(f"\nwriting to {fp}: {text}")
 		f.write(f"{x}")
 
+print("––f_bsites.txt––")
+print(" - filtered list of all binding sites")
 
 with open("filt/dat/struct/f_bsites.txt") as f:
 	lins = f.readlines()
-	print(len(lins))
+	print("number of lines in f_bsites.txt: ", len(lins))
 	f_bsites = {b.strip() for b in lins}
-	print(len(f_bsites))
+	print("^ without whitespace (number of binding sites): ", len(f_bsites))
 
+print("\n––clusters-by-bsite-70.json––")
+print("- clustered list of filtered binding sites")
 clust = json.load(open("filt/dat/f-clusters-by-bsite-70.json"))
-print(len(clust))
+print("number of ligand-clusters: ", len(clust))
 clust_list = [site for c in clust for site in c]
-print(len(clust_list))
+print("number of clustered sites: ", len(clust_list))
 clust_set = set(clust_list)
-print(len(clust_set))
+print("^ without duplicates: ", len(clust_set))
 
 print() #-----------------
 
-fwrite("bsites_missing_f.txt", (sites_m := f_bsites-clust_set))
-print(len(sites_m))
+sites_m = f_bsites - clust_set
 
+print("filtered binding sites that were not clustered: ", len(sites_m))
+fwrite("bsites_missing_f.txt", sites_m, "^")
+
+print("\n––nonentities.txt––")
+print(" - list of binding sites whose chains do not belong to a named entity")
 with open("filt/dat/nonentities.txt") as f:
 	nonentities = set(f.readlines()[0][2:-2].split("', '"))
-	print(len(nonentities))
+	print("number of binding sites not in an entity: ", len(nonentities))
 
+print("\n––pdbs_missing_sites.txt––")
+print(" - list of binding sites whose parent PDBs are not in the clusterfile")
 with open("filt/dat/pdbs_missing_sites.txt") as f:
 	unclustered_pdbs_sites = set(f.readlines()[0][2:-2].split("', '"))
-	print(len(unclustered_pdbs_sites))
+	print("number of such binding sites: ", len(unclustered_pdbs_sites))
 
-c =0
 unclust_fsites = set()
-for i, site in enumerate(unclustered_pdbs_sites):
+for site in unclustered_pdbs_sites:
 	if site in f_bsites:
 		unclust_fsites.add(site)
 
-print(len(unclust_fsites))
-fwrite("unclustered_fsites.txt", unclust_fsites)
+print("number filtered binding sites with unclustered parent PDBs: ", len(unclust_fsites))
+fwrite("unclustered_fsites.txt", unclust_fsites, "^")
 
-print(len(nonentities) + len(unclust_fsites))
-print(len(nonentities|unclust_fsites))
-print(len(nonentities&unclust_fsites))
-fwrite("nonentity_noncluster.txt", nonentities&unclust_fsites)
-print(len(sites_m - (nonentities|unclust_fsites)))
+print(f"{len(nonentities) + len(unclust_fsites)=}")
+print("union of nonentities and unclustered f binding sites: ", len(nonentities|unclust_fsites))
+print("intersection of nonentities and unclustered filtered binding sites: ", len(nonentities&unclust_fsites))
+fwrite("nonentity_noncluster.txt", nonentities&unclust_fsites, "^")
 
 fsites_m = sites_m - (nonentities|unclust_fsites)
-
-fwrite("fbsites_missing.txt", fsites_m)
+print("number of missing binding sites except nonentities or those with unclustered parent PDBs: ", len(fsites_m))
+fwrite("fbsites_missing.txt", fsites_m, "^ (fsites_m)")
 
 SOURCE_PATTERN = re.compile(r"SOURCE")
 ENTY_PATTERN = re.compile(r"COMPND\s+\d*\s*MOL_ID:\s*(\d+)")
@@ -88,9 +97,9 @@ for bsite in fsites_m:
 # 	print(f"\n---{nam[0]} –– {nam[1]}---")
 # 	print(nam[2])
 
-print(len(enty_names))
+print("number of entities represented by ^: ", len(enty_names))
 enties, _, names = map(list, zip(*enty_names))
-fwrite("entities_missing_names.txt", '\n'.join(names))
+fwrite("entities_missing_names.txt", '\n'.join(names), "list of names of aforementioned entities")
 
 
 CLUSTF = "filt/dat/clusters-by-entity-70.txt"
@@ -99,19 +108,22 @@ with open(CLUSTF, "r") as f:
 	# ignore non-PDB entries
 	clusters = [[enty.strip() for enty in clust.split(" ") if len(enty) <= 8] for clust in lines]
 	clusters = [clust for clust in clusters if len(clust) > 0]
-	print(len(clusters))
+	print("number of clusters: ", len(clusters))
 
-clusters = [enty for c in clusters for enty in c]
-print(len(clusters), clusters[0])
+clusters = [enty[:4] for c in clusters for enty in c]
+print("number of entities in cluster-file (only PDB): ", len(clusters))
+print("sample item:", clusters[0])
 clusters = set(clusters)
-print(len(clusters))
+print("number of PDBs in cluster-file: ", len(clusters))
+
+print()
 
 missing_enties = []
 for ent in enties:
 	if ent not in clusters:
 		missing_enties.append(ent)
 
-print(len(missing_enties))
+print("number of unaccounted-for entities not in the clusterfile: ", len(missing_enties))
 
 
 # CHAIN_PATTERN = re.compile(rf"COMPND\s+\d*\s*CHAIN:")

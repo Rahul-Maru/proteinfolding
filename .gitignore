@@ -4,11 +4,9 @@ TODO
 flowchart.jpeg
 .~lock.resolution_clustering.ods#
 *.log
+*.zip
+*.sh.swp
 flowchart
 filt/dat/*.xz
-filt/dat/struct/pdb
-filt/dat/struct/sites
-filt/dat/struct/binding-sites
-filt/dat/struct/logs
-filt/dat/struct/filtered-binding-sites/
-filt/dat/struct/representative-binding-sites/
+filt/dat/struct/*/
+

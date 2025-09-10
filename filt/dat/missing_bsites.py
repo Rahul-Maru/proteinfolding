@@ -14,7 +14,7 @@ with open("filt/dat/struct/bsites.txt") as f:
 print("\n––clusters-by-bsite-70.json––")
 print("- clustered list of binding sites")
 clust = json.load(open("filt/dat/clusters-by-bsite-70.json"))
-print("number of clusters: ", len(clust))
+print("number of ligand-clusters: ", len(clust))
 clust = [site for c in clust for site in c]
 print("number of clustered sites: ", len(clust))
 clust = set(clust)
@@ -59,7 +59,7 @@ clusters = [enty[:4] for c in clusters for enty in c]
 print("number of entities in cluster-file (only PDB): ", len(clusters))
 print("sample item:", clusters[0])
 clusters = set(clusters)
-print("^ without duplicates: ", len(clusters))
+print("number of PDBs in cluster-file: ", len(clusters))
 
 
 with open("filt/dat/pdbs_missing_p.txt", 'w') as f:
