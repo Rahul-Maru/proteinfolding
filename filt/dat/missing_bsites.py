@@ -28,7 +28,7 @@ with open("filt/dat/bsites_missing_pdbs.txt", "w") as f:
 	site_pdbs = set()
 	for site in sites_m:
 		site_pdbs.add(site[3:7])
-	
+
 	print("wrote to bsites_missing_pdbs: parent pdbs of ^")
 	f.write(f"{site_pdbs}")
 

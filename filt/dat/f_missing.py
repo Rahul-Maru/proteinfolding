@@ -126,9 +126,6 @@ for ent in enties:
 print("number of unaccounted-for entities not in the clusterfile: ", len(missing_enties))
 
 
-# CHAIN_PATTERN = re.compile(rf"COMPND\s+\d*\s*CHAIN:")
-# SOURCE_PATTERN = re.compile(r"SOURCE")
-
 # removed = []
 # nonentities = []
 
