@@ -78,7 +78,7 @@ for bsite in fsites_m:
 	with open(f"filt/dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
 		for line in f:
 			if SOURCE_PATTERN.match(line):
-				print("FAILED - ", bsite, enty_n)
+				print("FAILED - ", bsite)
 				break
 
 			if (ent := ENTY_PATTERN.match(line)):
