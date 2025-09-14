@@ -55,10 +55,11 @@ with open(CLUSTF, "r") as f:
 	clusters = [clust for clust in clusters if len(clust) > 0]
 	print("number of clusters: ", len(clusters))
 
-clusters = [enty[:4] for c in clusters for enty in c]
-print("number of entities in cluster-file (only PDB): ", len(clusters))
+clusters = [enty for c in clusters for enty in c]
+print("number of entities in cluster-file (only PDB ID): ", len(clusters))
+json.dump(clusters, open("filt/dat/clusters-by-entity-70.json", "w"))
 print("sample item:", clusters[0])
-clusters = set(clusters)
+clusters = {enty[:4] for enty in clusters}
 print("number of PDBs in cluster-file: ", len(clusters))
 
 
