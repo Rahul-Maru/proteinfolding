@@ -32,18 +32,21 @@ for d in os.listdir(INDIR):
 						break
 
 					if (ent := ENTY_PATTERN.match(line)):
-						if flag: print("matched")
 						enty_n = int(ent.group(1))
 						entys.append(f"{nam[3:7]}_{enty_n}")
 						# print(f"{nam[:4]}_{enty_n}")
+						if flag: 
+							print("matched")
+							print(f"{nam[3:7]}_{enty_n}")
 						c+=1
 			i+=1
 			if not i%2000:
 				print(i)
 
-if failures:
-	with open("failedents.txt", "w") as f:
-		f.write("\n".join(failures))
+if not debug:
+	if failures:
+		with open("failedents.txt", "w") as f:
+			f.write("\n".join(failures))
 
-with open(OUTF, "w") as f:
-	f.write("\n".join(entys))
+	with open(OUTF, "w") as f:
+		f.write("\n".join(entys))
