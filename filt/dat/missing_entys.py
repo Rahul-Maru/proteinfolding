@@ -17,10 +17,10 @@ with open("filt/dat/missing_entys.txt", "w") as f_out:
 
 missing_entys_pdbs = {ent[:4] for ent in missing_entys}
 
-INDIR = "pdb"
+INDIR = "filt/dat/struct/pdb"
 missing_pdbs = set()
-for ent in missing_entys_pdbs:
-	if not os.path.exists(f"{INDIR}/{ent}"):
-		missing_pdbs.add(ent)
+for pdb in missing_entys_pdbs:
+    if not os.path.exists(f"{INDIR}/{pdb[1:3]}/{pdb}"):
+        missing_pdbs.add(pdb)
 
 print(len(missing_entys), len(missing_entys_pdbs), len(missing_pdbs))
