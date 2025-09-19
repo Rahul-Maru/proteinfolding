@@ -1,7 +1,7 @@
 inf="xa$1"
 echo "reading from $inf"
 
-mkdr=false
+mkdr=:
 
 if [ "$mkdr" = true ]; then
 	for dir in pdb/*; do
@@ -13,13 +13,11 @@ fi
 
 
 while read f; do
-	echo "$f"
 	f="binding-sites/$f"
 	if [ -f "$f" ]; then
 		name=$(basename "$f")
 		mid=${name:4:2}
 		mv "$f" "binding-sites/$mid"
-		echo "$name moved to $mid/"
 	fi
 done < "$inf"
 
