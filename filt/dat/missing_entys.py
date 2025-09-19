@@ -11,11 +11,14 @@ pdb_ents = {ent.strip().upper() for ent in pdb_ents}
 
 
 missing_entys = cluster_ents-pdb_ents
+missing_entys2 = pdb_ents-cluster_ents
+print(len(cluster_ents), len(pdb_ents), len(missing_entys), len(missing_entys2), len(pdb_ents&cluster_ents))
 
 with open("filt/dat/missing_entys.txt", "w") as f_out:
 	f_out.write(str(missing_entys))
 
 missing_entys_pdbs = {ent[:4] for ent in missing_entys}
+missing_entys_pdbs2 = {ent[:4] for ent in missing_entys2}
 
 INDIR = "filt/dat/struct/pdb"
 missing_pdbs = set()
@@ -24,3 +27,5 @@ for pdb in missing_entys_pdbs:
         missing_pdbs.add(pdb)
 
 print(len(missing_entys), len(missing_entys_pdbs), len(missing_pdbs))
+
+print(len(missing_entys2), len(missing_entys_pdbs2))
