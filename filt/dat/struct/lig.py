@@ -20,7 +20,7 @@ def main():
         og_nam = f"{ligArr[0]}.ent"
         subdir = og_nam[4:6]
 
-        print(n, og_nam, subdir)
+        # print(n, og_nam, subdir)
 
         pdb_file = Path(f"pdb/{subdir}/{og_nam}")
 
