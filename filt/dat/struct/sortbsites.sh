@@ -1,9 +1,12 @@
+#!/bin/bash
+
 inf="xa$1"
 echo "reading from $inf"
 
-mkdr=:
+mkdr=""
 
-if [ "$mkdr" = true ]; then
+if [[ -n "$mkdr" ]]; then
+	echo hi
 	for dir in pdb/*; do
 		d=$(basename "$dir")
 		echo "$d"
@@ -17,6 +20,10 @@ while read f; do
 	if [ -f "$f" ]; then
 		name=$(basename "$f")
 		mid=${name:4:2}
+		if ! [ -d "binding-sites/$mid" ]; then
+			echo oh noes $mid
+			exit
+		fi
 		mv "$f" "binding-sites/$mid"
 	fi
 done < "$inf"
