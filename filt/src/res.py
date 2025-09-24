@@ -5,10 +5,10 @@ from sys import float_info
 
 PDBDIR = "filt/dat/struct/pdb"
 
-def get_res(pdb):
+def get_res(pdb, dir=PDBDIR):
 	RESPATTERN = re.compile(r'REMARK\s{3}2\sRESOLUTION\.\s+(.*)\sANGSTROMS\.')
 	REMARKxPATTERN = re.compile(r'REMARK\s{3}[3-5]')
-	with open(f'{PDBDIR}/{pdb}', 'r') as f:
+	with open(f'{dir}/{pdb}', 'r') as f:
 		for line in f:
 			if REMARKxPATTERN.match(line):
 				raise ValueError(f"Resolution not found for {pdb} (0)")

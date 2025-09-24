@@ -1,24 +1,21 @@
+"""Picks representatives from binding site cluster @ filt/dat/clusters-by-bsite70.json and 
+stores them in filt/dat/reprs.json
+stores binding sites with no resolution in filt/dat/missing_resolution.txt  
+"""
+
 from collections import defaultdict
 import json
 from res import get_res
+from bio import fwrite
 
-# binding site: 
-# pdb####_C_****_LIG.pdb
-# eg pdb1g29_1_0377_NA.pdb
 
-# pdb file:
-# pdb####.ent
-# eg pdb1avn.ent
-
-# #### = pdb id, C = chain, **** = residue number, LIG = ligand code
-
-def fwrite(fp, x):
-	with open(f"filt/dat/{fp}", 'w') as f:
-		f.write(f"{x}")
+INF = "filt/dat/f-clusters-by-bsite-70.json"
+OUTF = "filt/dat/reprs.json"
+NORESF = "missing_resolution.txt" # filt/dat/_
 
 def main():
-	clusters = json.load(open("filt/dat/f-clusters-by-bsite-70.json"))
-	print(len(clusters))
+	clusters = json.load(open(INF))
+	print("number of clusters: ", len(clusters))
 
 	reprs = []
 	nores = []
@@ -52,8 +49,8 @@ def main():
 	print("---------")
 	print(len(reprs))
 	print(len(nores))
-	json.dump(reprs, open("filt/dat/reprs.json", 'w'))
-	fwrite("missing_resolution.txt", nores)
+	json.dump(reprs, open(OUTF, 'w'))
+	fwrite(NORESF, nores, "binding sites with no resolution")
 
 
 

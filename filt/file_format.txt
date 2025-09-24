@@ -1,0 +1,18 @@
+files in filt/dat/[pdb, binding-sites, filtered-binding-sites] are sorted into sub-directories 
+by their PDB ID's middle 2 characters.
+eg. pdbxaby.ent would be found at filt/dat/pdb/ab/pdbxaby.ent
+
+binding site (filt/dat/struct/(filtered-)binding-sites/ab/):
+pdbxaby_C_****_Lig.pdb
+eg pdb1g29_1_0377_NA.pdb
+
+pdb file (filt/dat/struct/pdb/ab/):
+pdbxaby.ent
+eg pdb1avn.ent
+
+cluster entry (filt/dat/clusters-by-entity-70.txt):
+XABY_N
+
+XABY/xaby = PDB ID (upper/lower-case), C = chain identifier, **** = residue sequence number,
+Lig = ligand name (abbreviated) [1-3 chars], ab = middle two characters of the PDB ID,
+N = molecular entity number

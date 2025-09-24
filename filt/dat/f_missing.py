@@ -1,13 +1,11 @@
+"""_summary_
+"""
+
 import json
 import os
 import re
 import time
-
-def fwrite(fp, x, text):
-	"""Easier way to write files"""
-	with open(f"filt/dat/{fp}", 'w') as f:
-		print(f"writing to {fp}: {text}\n")
-		f.write(f"{x}")
+from bio import fwrite
 
 print("––f_bsites.txt––")
 print(" - filtered list of all binding sites")
@@ -32,7 +30,7 @@ print() #-----------------
 sites_m = f_bsites - clust_set
 
 print("filtered binding sites that were not clustered: ", len(sites_m))
-fwrite("bsites_missing_f.txt", sites_m, "^")
+fwrite("bsites_missing_f.txt", sites_m)
 
 print("\n––nonentities.txt––")
 print(" - list of binding sites whose chains do not belong to a named entity")
@@ -52,12 +50,12 @@ for site in unclustered_pdbs_sites:
 		unclust_fsites.add(site)
 
 print("number filtered binding sites with unclustered parent PDBs: ", len(unclust_fsites))
-fwrite("unclustered_fsites.txt", unclust_fsites, "^")
+fwrite("unclustered_fsites.txt", unclust_fsites)
 
 print(f"{len(nonentities) + len(unclust_fsites)=}")
 print("union of nonentities and unclustered f binding sites: ", len(nonentities|unclust_fsites))
 print("intersection of nonentities and unclustered filtered binding sites: ", len(nonentities&unclust_fsites))
-fwrite("nonentity_noncluster.txt", nonentities&unclust_fsites, "^")
+fwrite("nonentity_noncluster.txt", nonentities&unclust_fsites)
 
 fsites_m = sites_m - (nonentities|unclust_fsites)
 print("number of missing binding sites except nonentities or those with unclustered parent PDBs: ", len(fsites_m))

@@ -63,7 +63,7 @@ for d in "${bsites_base}/"*; do
 			lig=${lig%.*}
 			len=$(filter_file "$f" | awk '/^ATOM/ {print substr($0, 22,5)}' | sort -n | uniq | wc -l )
 			outf="${outd}/${fbase}"
-			if (( len >= 4 )) && ! grep -qw $lig unwanted-ligs; then
+			if (( len >= 4 )) && ! grep -qw $lig unwanted-ligs.txt; then
 				filter_file "$f" > "$outf"
 			else
 				if [ -f "$outf" ]; then

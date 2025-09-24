@@ -241,7 +241,6 @@ pdb8tfp_B_0301_84K.pdb
 pdb9g6r_H_0301_RBR.pdb
 pdb4lfb_L_0092_0TD.pdb
 pdb8cgj_L_0089_D2T.pdb
-pdb1uk4_A_1006_ATO.pdb
 pdb1wof_A_1145_I12.pdb
 pdb2a5i_A_0307_AZP.pdb
 pdb2alv_A_1145_CY6.pdb
@@ -432,7 +431,6 @@ pdb7adw_A_0504_R7Q.pdb
 pdb7aeh_A_0405_R8H.pdb
 pdb7aga_A_0401_LZE.pdb
 pdb7aha_A_0409_SIN.pdb
-pdb7aku_A_0401_RN2.pdb
 pdb7amj_A_0409_RMZ.pdb
 pdb7ans_A_0405_RNW.pdb
 pdb7aol_A_0403_RQH.pdb
@@ -1165,7 +1163,6 @@ pdb7urb_B_0401_O5O.pdb
 pdb8u3o_A_0401_O69.pdb
 pdb7uue_A_0401_I65.pdb
 pdb7v1t_A_0401_5IL.pdb
-pdb7vh8_A_0403_H2S.pdb
 pdb8h6i_A_0401_ODN.pdb
 pdb7vth_A_0501_7XB.pdb
 pdb8h3g_A_0401_7YY.pdb
@@ -1275,6 +1272,7 @@ pdb8igx_A_0401_PQL.pdb
 pdb8jcj_A_0401_PBP.pdb
 pdb8jck_A_0401_A8J.pdb
 pdb8jcl_A_0401_AIE.pdb
+pdb8jcl_A_0402_H2S.pdb
 pdb8jcm_A_0401_AJF.pdb
 pdb8jcn_A_0401_AO0.pdb
 pdb8jco_A_0401_B7Y.pdb
@@ -1457,7 +1455,7 @@ pdb3kam_A_0301_CMO.pdb
 pdb2q0m_X_0136_TFS.pdb
 pdb4owh_A_0201_6BP.pdb
 pdb2ybm_A_1130_NO.pdb
-pdb2ydg_A_1131_A5C.pdb
+pdb2ydg_A_1131_ASC.pdb
 pdb2z18_A_0130_HDZ.pdb
 pdb2zyp_A_0201_AYE.pdb
 pdb3a92_A_0137_RH3.pdb
@@ -1478,7 +1476,6 @@ pdb4baf_A_1130_IKX.pdb
 pdb4bap_A_1130_DCJ.pdb
 pdb4c3w_A_1130_AIV.pdb
 pdb4fjr_A_0203_0UF.pdb
-pdb4hp0_A_0201_NOJ.pdb
 pdb4ii8_A_0210_010.pdb
 pdb4kxi_A_0202_SNF.pdb
 pdb4kxi_A_0203_LCP.pdb
@@ -1497,7 +1494,7 @@ pdb4w96_A_0201_DMF.pdb
 pdb4w96_A_0207_RU1.pdb
 pdb4xyy_A_0203_EDN.pdb
 pdb4z41_A_0201_4KV.pdb
-pdb5b59_A_0201_KTO.pdb
+pdb5b59_A_0062_TRO.pdb
 pdb5b5j_A_0201_UTX.pdb
 pdb5e9r_A_0201_5LN.pdb
 pdb6a4n_A_0203_GAI.pdb
@@ -2307,7 +2304,6 @@ pdb5ezy_B_0505_TAJ.pdb
 pdb5gon_B_0508_6ZR.pdb
 pdb5h74_B_0505_7LG.pdb
 pdb5h7o_B_0504_7Q7.pdb
-pdb5j2u_B_0504_6DO.pdb
 pdb5jcb_B_0505_NV4.pdb
 pdb5jh7_B_0503_6K9.pdb
 pdb5jvd_B_0501_6NL.pdb
@@ -2721,10 +2717,6 @@ pdb1k6v_B_0252_XN2.pdb
 pdb1kzk_A_0701_JE2.pdb
 pdb1lzq_A_0201_0ZQ.pdb
 pdb1mrw_A_1001_K57.pdb
-pdb2fgv_A_0508_QNC.pdb
-pdb2fgv_A_0510_HPH.pdb
-pdb2fgv_A_0511_DIQ.pdb
-pdb2fgv_A_0512_NTB.pdb
 pdb6dj1_B_0201_AB1.pdb
 pdb1npa_A_0100_3NH.pdb
 pdb1npv_A_0479_L27.pdb
@@ -2768,6 +2760,10 @@ pdb2cem_B_1200_2AH.pdb
 pdb2cen_B_1200_4AH.pdb
 pdb2f3k_A_0506_RO1.pdb
 pdb2fdd_B_0501_385.pdb
+pdb2fgv_A_0508_QNC.pdb
+pdb2fgv_A_0510_HPH.pdb
+pdb2fgv_A_0511_DIQ.pdb
+pdb2fgv_A_0512_NTB.pdb
 pdb2fle_B_0845_AI.pdb
 pdb2hb3_B_0201_GRL.pdb
 pdb2pc0_A_0907_PGR.pdb
@@ -3189,7 +3185,6 @@ pdb5hlf_A_0602_64A.pdb
 pdb5hp1_A_0602_PPF.pdb
 pdb5j1e_C_0603_6FT.pdb
 pdb5j2m_A_0604_6FN.pdb
-pdb5j2p_A_0602_6FM.pdb
 pdb5k14_A_0601_IB1.pdb
 pdb6x4a_A_0601_7AY.pdb
 pdb5tuq_A_0601_J63.pdb
@@ -3311,7 +3306,6 @@ pdb1rq4_B_0093_CSO.pdb
 pdb1sdk_D_0300_TMM.pdb
 pdb1thb_B_0315_IHP.pdb
 pdb2d5x_B_1201_L35.pdb
-pdb2h35_B_0147_HEC.pdb
 pdb2hbc_B_0148_ENC.pdb
 pdb2hbd_B_0148_MNC.pdb
 pdb2hbe_B_0148_NBN.pdb
@@ -3349,6 +3343,7 @@ pdb2n2k_A_0101_MTN.pdb
 pdb6isu_C_0027_SLZ.pdb
 pdb6w9r_M_0101_FLC.pdb
 pdb4ium_B_0076_3CN.pdb
+pdb3prp_B_0076_4LJ.pdb
 pdb3rul_A_0101_TLA.pdb
 pdb8st7_D_0901_AYE.pdb
 pdb7sol_B_1101_AMP.pdb
@@ -3363,6 +3358,7 @@ pdb5lrv_C_0076_ABU.pdb
 pdb5nlj_B_0107_ETF.pdb
 pdb6b7o_B_0401_AR6.pdb
 pdb6e2b_A_0105_PT7.pdb
+pdb6k2u_B_0101_APR.pdb
 pdb6o82_B_0101_JZU.pdb
 pdb6qml_B_0001_NLE.pdb
 pdb8c07_K_0101_SY8.pdb
@@ -3371,7 +3367,6 @@ pdb7mey_D_0201_Z3V.pdb
 pdb7ooj_A_0053_DTH.pdb
 pdb8dms_C_0501_1PE.pdb
 pdb9avt_B_0102_DTT.pdb
-pdb9c5e_B_0076_4LJ.pdb
 pdb4i8h_A_0302_BEN.pdb
 pdb1an1_E_0115_DAS.pdb
 pdb1auj_A_0247_PPB.pdb
@@ -3490,7 +3485,7 @@ pdb1yyy_1_0001_0KV.pdb
 pdb1zzz_A_0246_0IV.pdb
 pdb2a32_A_0802_PBC.pdb
 pdb2a32_A_0807_CXS.pdb
-pdb2ayw_A_0501_ONO.pdb
+pdb2ayw_A_0501_1NJ.pdb
 pdb2d8w_A_0048_IYR.pdb
 pdb2d8w_A_0171_TYI.pdb
 pdb2fx4_A_0246_C1R.pdb
@@ -3673,7 +3668,7 @@ pdb4q02_A_0203_2XG.pdb
 pdb4q03_A_0203_2XE.pdb
 pdb4ury_R_1167_RV1.pdb
 pdb4urz_R_1167_VJP.pdb
-pdb4us0_R_1167_NEQ.pdb
+pdb4us0_R_1167_NEN.pdb
 pdb4us1_R_1167_L71.pdb
 pdb4us2_R_1167_L7S.pdb
 pdb5f2e_A_0204_5UT.pdb
@@ -4612,7 +4607,6 @@ pdb2dn1_A_1001_MBN.pdb
 pdb1y01_B_0144_CHK.pdb
 pdb1ygd_A_0142_ZNH.pdb
 pdb2d5x_A_1200_L35.pdb
-pdb2h35_A_0142_HEC.pdb
 pdb2hbc_A_0143_ENC.pdb
 pdb2hbd_A_0143_MNC.pdb
 pdb2hbe_A_0143_NBN.pdb
@@ -4820,7 +4814,7 @@ pdb5kd1_A_0206_3QM.pdb
 pdb5ojc_A_0093_MHS.pdb
 pdb5xl0_A_0201_89R.pdb
 pdb5zzg_A_0202_T6C.pdb
-pdb6e04_A_0202_NP0.pdb
+pdb8f9j_A_0201_XEM.pdb
 pdb6g5a_A_0202_EEE.pdb
 pdb6krf_A_0202_JZ3.pdb
 pdb6z4r_A_0093_Q78.pdb
@@ -4831,7 +4825,6 @@ pdb7ylk_A_0068_BP5.pdb
 pdb7ylk_A_0201_KKC.pdb
 pdb7ylk_A_0202_IRQ.pdb
 pdb8ess_A_0205_WRK.pdb
-pdb8f9j_A_0201_XEM.pdb
 pdb8f9n_A_0201_XEP.pdb
 pdb8fb0_A_0202_ACM.pdb
 pdb8j4k_A_0202_9UU.pdb
@@ -6865,10 +6858,10 @@ pdb4yfk_D_2004_4C6.pdb
 pdb4yfn_D_2004_4C2.pdb
 pdb4yfx_D_2004_4C4.pdb
 pdb4zh3_D_1504_4OD.pdb
+pdb6byu_J_1501_ECJ.pdb
 pdb6xlj_D_1504_1N7.pdb
 pdb6rh3_D_1503_CTP.pdb
 pdb6vjs_D_1501_QZY.pdb
-pdb6z9t_Y_1505_DA.pdb
 pdb7mko_D_2004_2TM.pdb
 pdb8sy5_J_1504_X0F.pdb
 pdb8sy6_J_1504_UTP.pdb
@@ -8829,7 +8822,7 @@ pdb1r4l_A_0804_XX5.pdb
 pdb3d0g_A_0616_NDG.pdb
 pdb2gfc_A_0000_OCT.pdb
 pdb1rdq_E_0600_ATP.pdb
-pdb1bkx_A_0351_A.pdb
+pdb6esa_A_0401_AMP.pdb
 pdb1bx6_A_0351_BA1.pdb
 pdb4dfx_E_0402_ANP.pdb
 pdb4dfx_E_0401_MYR.pdb
@@ -8906,7 +8899,7 @@ pdb3mvj_A_0351_XFE.pdb
 pdb3nx8_A_0292_LGY.pdb
 pdb3oog_A_2001_YTP.pdb
 pdb3ovv_A_2001_1SB.pdb
-pdb3ow3_A_0351_SMY.pdb
+pdb3ow3_A_0401_SMY.pdb
 pdb3owp_A_2001_2SB.pdb
 pdb3oxt_A_2001_3SB.pdb
 pdb3p0m_A_0351_4SB.pdb
@@ -8990,7 +8983,6 @@ pdb5vib_A_0401_9D1.pdb
 pdb6c0u_A_0400_EE4.pdb
 pdb6e99_A_0601_J0G.pdb
 pdb6e9l_A_0401_J0P.pdb
-pdb6esa_A_0401_AMP.pdb
 pdb6eh3_A_0401_B4Z.pdb
 pdb6ert_A_0401_BVZ.pdb
 pdb6ypp_A_0401_ISQ.pdb
@@ -9076,6 +9068,7 @@ pdb2mpg_B_0008_AIB.pdb
 pdb5bqq_B_0027_NVA.pdb
 pdb5bqq_D_0030_HIX.pdb
 pdb2omh_F_0602_URE.pdb
+pdb2omg_B_0001_ING.pdb
 pdb2omh_D_0702_ARF.pdb
 pdb4cy7_B_0008_MAA.pdb
 pdb2ws6_F_0026_YNM.pdb
@@ -9099,6 +9092,7 @@ pdb5uu3_B_0028_PDF.pdb
 pdb6gnq_B_0102_IS8.pdb
 pdb6s4j_B_0102_KUT.pdb
 pdb7ac4_B_0101_PGR.pdb
+pdb7ins_D_0045_UNL.pdb
 pdb2axt_L_0210_MGE.pdb
 pdb5b66_l_0101_SQD.pdb
 pdb5b66_L_0101_LHG.pdb
@@ -9118,7 +9112,7 @@ pdb1q4v_A_0002_IIL.pdb
 pdb1tyl_C_0100_TYL.pdb
 pdb2juu_A_0003_ALO.pdb
 pdb2omh_A_0601_URE.pdb
-pdb2omg_A_0704_ARF.pdb
+pdb2omg_A_0001_EJJ.pdb
 pdb3mth_A_0200_MPB.pdb
 pdb3fq9_A_0001_DAL.pdb
 pdb4ajx_A_1022_16E.pdb
@@ -9483,7 +9477,7 @@ pdb7qpv_A_0803_EHI.pdb
 pdb8di4_A_0903_S9I.pdb
 pdb1a18_A_0117_NPH.pdb
 pdb1a2d_A_0117_PYX.pdb
-pdb1adl_A_0132_O.pdb
+pdb1adl_A_0040_MHO.pdb
 pdb7wj1_A_0200_ACD.pdb
 pdb1adl_A_0136_PPI.pdb
 pdb7wkb_A_0201_HXA.pdb
@@ -10162,14 +10156,13 @@ pdb8ev1_A_0601_WVW.pdb
 pdb8ev1_A_0602_WVR.pdb
 pdb8ev2_A_0601_LYQ.pdb
 pdb8ev2_A_0603_WVE.pdb
-pdb4ek2_A_0203_DA.pdb
+pdb4ek2_A_0203_D5M.pdb
 pdb4hr2_A_0601_ADP.pdb
 pdb5v6d_A_0201_CIT.pdb
 pdb6ay1_A_0201_IPA.pdb
 pdb4qvp_N_0201_BO2.pdb
 pdb3gpw_N_0000_SA1.pdb
 pdb2zcy_N_7710_SRG.pdb
-pdb3d29_N_0000_FEB.pdb
 pdb3gpt_N_0224_GPT.pdb
 pdb3hye_N_0300_HYE.pdb
 pdb4qzx_N_0201_04C.pdb
@@ -10201,7 +10194,6 @@ pdb3gpw_H_0000_SA1.pdb
 pdb2gpl_H_1000_BIQ.pdb
 pdb5cz6_H_0301_SRG.pdb
 pdb3bdm_H_0500_GDT.pdb
-pdb3d29_H_0000_FEB.pdb
 pdb3dy4_H_0301_SLA.pdb
 pdb3gpj_H_7710_SY2.pdb
 pdb3gpt_H_0224_GPT.pdb
@@ -10616,7 +10608,7 @@ pdb5b66_D_0406_DGD.pdb
 pdb3wu2_D_0336_HSK.pdb
 pdb5b66_D_0410_UNL.pdb
 pdb5b66_D_0417_HTG.pdb
-pdb5mx2_D_0410_LFA.pdb
+pdb5mx2_D_0411_LFA.pdb
 pdb5v2c_D_0336_MHS.pdb
 pdb5v2c_D_0416_P6G.pdb
 pdb7pi0_D_0402_DGA.pdb
@@ -10869,12 +10861,12 @@ pdb8zi3_D_0501_ADP.pdb
 pdb8dbs_D_0502_ATP.pdb
 pdb5b66_C_0501_CLA.pdb
 pdb5b66_C_0514_BCR.pdb
+pdb5b66_C_0523_UNL.pdb
 pdb5b66_C_0516_DGD.pdb
 pdb5b66_C_0519_LMG.pdb
 pdb7n8o_C_0501_SQD.pdb
 pdb5b66_c_0523_LMT.pdb
 pdb5b66_C_0520_HTG.pdb
-pdb5b66_C_0523_UNL.pdb
 pdb5h2f_C_0522_LHG.pdb
 pdb5mx2_C_0521_LFA.pdb
 pdb5v2c_c_0541_P6G.pdb
@@ -11261,7 +11253,6 @@ pdb4qvp_K_0301_BO2.pdb
 pdb3gpw_K_0000_SA1.pdb
 pdb2zcy_K_7710_SRG.pdb
 pdb3bdm_K_0500_GDT.pdb
-pdb3d29_K_0000_FEB.pdb
 pdb3dy3_K_0301_SLR.pdb
 pdb3dy4_K_0301_SLA.pdb
 pdb3e47_K_2000_ESY.pdb
@@ -11423,7 +11414,7 @@ pdb207l_A_0200_SC2.pdb
 pdb7xf7_A_0201_NDG.pdb
 pdb6k9j_A_0201_HEC.pdb
 pdb1ycc_A_0072_M3L.pdb
-pdb4ye1_A_0201_HEM.pdb
+pdb3tyi_A_0104_HEM.pdb
 pdb1i54_A_1105_ZNH.pdb
 pdb1lfm_A_0104_COH.pdb
 pdb1m60_A_0105_HES.pdb
@@ -11955,11 +11946,11 @@ pdb3rer_A_0105_ADP.pdb
 pdb3qui_D_0101_ANP.pdb
 pdb3qui_F_0101_ADE.pdb
 pdb4j6w_A_0101_CTP.pdb
-pdb4j6w_A_0102_C.pdb
+pdb4j6w_A_0102_C5P.pdb
 pdb4j6w_D_0103_P6G.pdb
 pdb4j6w_F_0101_CDP.pdb
 pdb4j6x_A_0101_UTP.pdb
-pdb4mml_A_0103_U.pdb
+pdb4mml_A_0103_U5P.pdb
 pdb6qlb_E_0101_GUN.pdb
 pdb3q2f_A_0001_OAM.pdb
 pdb4cup_A_2971_ZYB.pdb
@@ -12224,7 +12215,7 @@ pdb6ocl_A_0601_M5A.pdb
 pdb6ock_A_0601_9KL.pdb
 pdb8bsg_A_0609_POG.pdb
 pdb6ock_A_0610_2J3.pdb
-pdb6qip_A_0602_HDW.pdb
+pdb6qio_A_0603_JG5.pdb
 pdb7jwn_A_2307_JGE.pdb
 pdb6r7s_A_0604_SAS.pdb
 pdb6u5a_A_0605_PWY.pdb
@@ -12883,7 +12874,7 @@ pdb4nkc_A_0401_2HZ.pdb
 pdb4pr4_A_0402_2W8.pdb
 pdb4prr_A_0402_2W9.pdb
 pdb4prt_A_0402_2WB.pdb
-pdb4puu_A_0402_2WR.pdb
+pdb6txp_A_0403_2WR.pdb
 pdb4puw_A_0401_2WQ.pdb
 pdb4q7b_A_0402_2YZ.pdb
 pdb8auu_A_0402_30L.pdb
@@ -13211,7 +13202,7 @@ pdb4chn_A_1217_ONZ.pdb
 pdb4cho_A_1220_U2Z.pdb
 pdb4chq_A_1217_CWU.pdb
 pdb4chy_A_1217_C5Q.pdb
-pdb4chz_A_1220_H75.pdb
+pdb4chz_A_0310_H75.pdb
 pdb4cie_A_1215_Y7N.pdb
 pdb4cif_A_1216_JDX.pdb
 pdb4cig_A_1217_X0P.pdb
@@ -13438,7 +13429,6 @@ pdb5zg0_B_1001_9C3.pdb
 pdb5zg2_A_0902_9C0.pdb
 pdb5zg3_A_1001_9C6.pdb
 pdb6faz_B_0301_D45.pdb
-pdb6fqg_A_0301_GGL.pdb
 pdb6fqh_A_0301_E2Q.pdb
 pdb6hcc_A_0301_FXW.pdb
 pdb6q54_A_0307_HJ8.pdb
@@ -13871,7 +13861,6 @@ pdb6qxk_B_0401_JKW.pdb
 pdb6vru_A_0402_ROY.pdb
 pdb6vrv_A_0401_WFY.pdb
 pdb6ykd_A_0400_OWB.pdb
-pdb7oov_A_0401_6ID.pdb
 pdb7qb2_A_0402_A7X.pdb
 pdb7qfm_A_0402_AY3.pdb
 pdb7xsv_A_0401_I4M.pdb
@@ -14801,7 +14790,6 @@ pdb6ujh_A_0401_QBS.pdb
 pdb6ujj_A_0401_QBP.pdb
 pdb6ujl_A_0401_QBM.pdb
 pdb6uoz_A_0401_QF1.pdb
-pdb7axx_A_0401_ALQ.pdb
 pdb7jto_B_0406_VKA.pdb
 pdb7jtp_A_0402_X6M.pdb
 pdb7q2j_D_0401_8KH.pdb
@@ -15842,7 +15830,7 @@ pdb1y54_A_0400_FDT.pdb
 pdb5joc_A_0400_CIT.pdb
 pdb2hdq_A_0501_C21.pdb
 pdb2hdr_A_0501_4A3.pdb
-pdb2hds_A_1601_4MB.pdb
+pdb2hds_A_1302_4MB.pdb
 pdb2hdu_A_1004_F12.pdb
 pdb2i72_A_0964_VA1.pdb
 pdb2pu2_A_0702_DK2.pdb
@@ -16352,7 +16340,7 @@ pdb1zjp_A_0001_DR4.pdb
 pdb4y63_A_0401_BHE.pdb
 pdb2rj4_A_0356_AD7.pdb
 pdb5c47_A_0402_DA8.pdb
-pdb3i0f_A_0001_U.pdb
+pdb5m79_A_0402_U5P.pdb
 pdb3ioi_A_0355_1GW.pdb
 pdb3u0y_A_0401_GTI.pdb
 pdb3v0l_A_0450_2GW.pdb
@@ -16370,7 +16358,6 @@ pdb5c3d_A_0402_PG0.pdb
 pdb5c3a_A_0402_URM.pdb
 pdb5c49_A_0402_4YA.pdb
 pdb5c4d_A_0403_UPG.pdb
-pdb5m79_A_0402_U5P.pdb
 pdb5vcc_A_0601_HEM.pdb
 pdb5a1r_A_0600_STR.pdb
 pdb6ma6_A_0603_MYT.pdb
@@ -16642,7 +16629,7 @@ pdb8eq8_B_0130_NIY.pdb
 pdb8wf6_C_0301_SIN.pdb
 pdb9uj2_B_0189_OCY.pdb
 pdb5le5_E_0148_6V1.pdb
-pdb8bzl_E_0304_NEN.pdb
+pdb5lf6_E_0304_NEN.pdb
 pdb3rkk_B_0287_ACY.pdb
 pdb3sfp_A_0281_CIT.pdb
 pdb5zio_A_0303_X8Z.pdb
@@ -16821,7 +16808,7 @@ pdb8w5c_A_0801_VZO.pdb
 pdb5le5_G_0047_6V1.pdb
 pdb5le5_G_0137_YCM.pdb
 pdb5le5_G_0303_1PE.pdb
-pdb8bzl_G_0305_NEN.pdb
+pdb5lf6_G_0304_NEN.pdb
 pdb2jhf_A_0403_NAD.pdb
 pdb4nfs_A_0378_ETF.pdb
 pdb1a72_A_0378_PAD.pdb
@@ -18006,7 +17993,6 @@ pdb6wij_A_0203_U3A.pdb
 pdb6ya5_A_0203_LU2.pdb
 pdb6yem_A_0205_OOH.pdb
 pdb7mty_A_0404_W5V.pdb
-pdb7kl3_A_0201_A.pdb
 pdb7knr_A_0203_WTD.pdb
 pdb7kny_A_0203_WTG.pdb
 pdb7kop_A_0203_WTM.pdb
@@ -18053,7 +18039,6 @@ pdb6dy6_B_0202_1PE.pdb
 pdb6dyl_A_0201_V.pdb
 pdb6dyk_E_0202_NO.pdb
 pdb6ot4_A_0203_HAE.pdb
-pdb7lrb_B_0203_O.pdb
 pdb7rww_C_0202_MRD.pdb
 pdb3uh4_A_0001_XAV.pdb
 pdb3mhj_A_0002_M3F.pdb
@@ -18175,7 +18160,7 @@ pdb7nz1_B_0301_SF4.pdb
 pdb7nz1_B_0102_CSX.pdb
 pdb7z7s_B_0302_DCQ.pdb
 pdb7p7l_B_0302_UQ8.pdb
-pdb3ijj_A_0901_ENO.pdb
+pdb3ijj_A_0900_EN1.pdb
 pdb1gd0_A_0551_CIT.pdb
 pdb1gcz_A_0900_YZ9.pdb
 pdb1ljt_A_0115_HDI.pdb
@@ -18185,11 +18170,11 @@ pdb2oow_A_0200_OX4.pdb
 pdb3djh_A_0802_IPA.pdb
 pdb2ooz_A_0200_OX5.pdb
 pdb3b9s_A_0118_RW1.pdb
-pdb3ce4_A_0200_PMS.pdb
+pdb3ce4_A_0200_PMF.pdb
 pdb3dji_B_0201_3E1.pdb
 pdb3hof_C_0123_DHC.pdb
 pdb3ijj_C_0200_AVR.pdb
-pdb3ijj_A_0900_EN1.pdb
+pdb3ijj_A_0901_ENO.pdb
 pdb3jsf_A_0123_XV1.pdb
 pdb3jsg_A_0123_0IN.pdb
 pdb3jtu_A_0123_ZIN.pdb
@@ -18290,10 +18275,6 @@ pdb6q8s_A_0304_AR.pdb
 pdb6qbu_A_1001_HVZ.pdb
 pdb6qen_A_1001_J05.pdb
 pdb6qeo_A_1001_J02.pdb
-pdb6th7_A_0304_O4Q.pdb
-pdb6th7_A_0305_5XU.pdb
-pdb6th7_A_0308_PHA.pdb
-pdb6th7_A_0309_AA4.pdb
 pdb7est_E_0001_0Z2.pdb
 pdb8b04_A_0303_OU0.pdb
 pdb8b1y_A_0301_OTO.pdb
@@ -18302,6 +18283,7 @@ pdb8b53_A_0301_OVV.pdb
 pdb8est_E_0269_GIS.pdb
 pdb9est_A_0600_IBR.pdb
 pdb5le5_J_0091_6V1.pdb
+pdb5lf6_J_0302_NEN.pdb
 pdb3i33_A_0388_ADP.pdb
 pdb1kax_A_0486_ATP.pdb
 pdb7f50_A_0404_ANP.pdb
@@ -18505,6 +18487,7 @@ pdb1s9f_A_4010_DDY.pdb
 pdb2ibk_A_0405_POP.pdb
 pdb2jej_A_1346_DGT.pdb
 pdb2bqu_A_1342_DAD.pdb
+pdb2br0_A_1000_DG.pdb
 pdb2imw_P_0401_DDS.pdb
 pdb2rdj_A_0355_TMP.pdb
 pdb3fds_A_0370_1PE.pdb
@@ -19737,7 +19720,7 @@ pdb2oph_A_1001_277.pdb
 pdb2oqi_B_0901_GGO.pdb
 pdb2oqv_A_0901_MA9.pdb
 pdb2p8s_A_1001_417.pdb
-pdb2qjr_A_0900_PZF.pdb
+pdb2qjr_A_0802_PZF.pdb
 pdb2qky_A_0767_13Z.pdb
 pdb2qoe_A_1282_448.pdb
 pdb2qt9_A_1522_524.pdb
@@ -19752,7 +19735,7 @@ pdb3ccc_A_0800_7AC.pdb
 pdb3d4l_A_1521_605.pdb
 pdb3eio_A_0001_AJH.pdb
 pdb3f8s_A_0900_PF2.pdb
-pdb3g0b_A_0800_T22.pdb
+pdb3g0b_A_0805_T22.pdb
 pdb3g0c_A_0800_RUF.pdb
 pdb3g0d_A_0800_XIH.pdb
 pdb3g0g_A_0800_RUM.pdb
@@ -19791,7 +19774,7 @@ pdb4pv7_A_1000_CJP.pdb
 pdb5i7u_A_0812_6AJ.pdb
 pdb5ism_A_0811_6DG.pdb
 pdb5j3j_A_0801_HL1.pdb
-pdb5kby_A_1510_6RL.pdb
+pdb5kby_A_0804_6RL.pdb
 pdb5lls_A_0809_6Z8.pdb
 pdb5t4b_A_0810_75N.pdb
 pdb5t4e_A_0810_75L.pdb
@@ -19952,9 +19935,8 @@ pdb5lhi_A_0902_6X5.pdb
 pdb5yjb_A_0902_8WC.pdb
 pdb6k3e_A_0901_CW0.pdb
 pdb6k3e_A_0902_DTT.pdb
-pdb6k3e_A_0904_MLA.pdb
-pdb6k3e_A_0911_D3U.pdb
-pdb6k3e_A_0929_CVO.pdb
+pdb6k3e_A_0905_MLA.pdb
+pdb6k3e_A_0912_D3U.pdb
 pdb6kgo_A_0908_DJ0.pdb
 pdb6kgo_A_0907_TLA.pdb
 pdb6kgq_A_0902_DJC.pdb
@@ -20626,14 +20608,13 @@ pdb3k1x_A_0131_DBX.pdb
 pdb4qc4_A_0201_FLC.pdb
 pdb4xki_B_0206_2PE.pdb
 pdb3llf_A_0229_UP6.pdb
-pdb1klz_A_2001_U.pdb
+pdb3w07_A_0301_U5P.pdb
 pdb1km6_A_2001_OMP.pdb
 pdb1lol_A_2001_XMP.pdb
 pdb1lol_A_5001_BU2.pdb
 pdb1loq_A_0065_CSO.pdb
 pdb3sj3_A_0229_BMP.pdb
 pdb1lp6_A_2001_C5P.pdb
-pdb3w07_A_0301_U5P.pdb
 pdb2zz2_A_0301_6CN.pdb
 pdb2zz6_A_0301_6AZ.pdb
 pdb3g1f_A_0229_2OM.pdb
@@ -20860,7 +20841,6 @@ pdb1s3w_A_0188_TQT.pdb
 pdb1yho_A_0200_TRR.pdb
 pdb2c2s_A_1188_34B.pdb
 pdb2c2t_A_1188_39B.pdb
-pdb2c2t_A_1189_39E.pdb
 pdb2dhf_A_0187_DZF.pdb
 pdb2fzj_A_0188_DH3.pdb
 pdb2w3a_A_1190_TOP.pdb
@@ -21161,7 +21141,7 @@ pdb3ntb_A_0003_T1N.pdb
 pdb3ntg_A_0701_D72.pdb
 pdb3q7d_A_1591_NPX.pdb
 pdb3qh0_A_0625_PLM.pdb
-pdb3qmo_A_0619_NS4.pdb
+pdb3qmo_A_0704_NS4.pdb
 pdb3rr3_A_0700_FLR.pdb
 pdb4cox_A_0701_IMN.pdb
 pdb4e1g_A_0701_LNL.pdb
@@ -21865,9 +21845,8 @@ pdb8img_B_0601_7XZ.pdb
 pdb8sj8_A_0602_OKR.pdb
 pdb9c8t_A_0604_ANP.pdb
 pdb1qtq_A_0998_QSI.pdb
-pdb1exd_A_0998_A.pdb
-pdb4jxx_A_0601_ATP.pdb
 pdb1zjw_A_0998_AMP.pdb
+pdb4jxx_A_0601_ATP.pdb
 pdb2re8_A_0998_GSU.pdb
 pdb1cvw_H_0301_0GE.pdb
 pdb1dan_H_0001_0Z6.pdb
@@ -22507,7 +22486,7 @@ pdb6r6w_A_0612_JUB.pdb
 pdb6rua_B_0620_KJT.pdb
 pdb6sam_A_0603_L3H.pdb
 pdb6t9p_A_0607_MXB.pdb
-pdb6t9s_A_0612_MXK.pdb
+pdb6t9s_A_0605_MXK.pdb
 pdb6xta_A_0612_O0Z.pdb
 pdb6zwi_A_0604_QRH.pdb
 pdb6zwi_A_0605_LEA.pdb
@@ -22814,11 +22793,10 @@ pdb3dxj_D_1529_NE6.pdb
 pdb3eql_D_1527_MXP.pdb
 pdb4oio_D_2005_ATP.pdb
 pdb7eh0_D_2006_2TM.pdb
-pdb5d4d_D_2005_C.pdb
+pdb5d4d_N_2005_C5P.pdb
 pdb5d4d_D_2006_CTP.pdb
-pdb5d4d_D_2008_NAD.pdb
+pdb5d4d_D_2005_C.pdb
 pdb5d4e_D_2006_DPO.pdb
-pdb5d4e_D_2008_COD.pdb
 pdb6ow3_D_1602_POP.pdb
 pdb6oy5_D_2004_GTP.pdb
 pdb6p71_D_2005_UTP.pdb
@@ -23495,7 +23473,6 @@ pdb4g8n_A_0301_G8M.pdb
 pdb4h8i_A_0301_11W.pdb
 pdb4igr_A_0901_3ZA.pdb
 pdb4mf3_A_0301_SXI.pdb
-pdb4mh5_A_0301_GGL.pdb
 pdb4nwc_A_0905_2QE.pdb
 pdb4nwd_A_0301_2QD.pdb
 pdb4qf9_A_0301_35K.pdb
@@ -23519,7 +23496,6 @@ pdb1w4n_A_0382_TCQ.pdb
 pdb2e2v_A_0382_3TY.pdb
 pdb2cfg_A_1630_R4A.pdb
 pdb2cfk_A_1631_R5A.pdb
-pdb2cfk_A_1632_R5B.pdb
 pdb2cfl_A_1631_R6A.pdb
 pdb2cfw_A_0705_R7U.pdb
 pdb2cg0_A_0705_R9A.pdb
@@ -23894,8 +23870,7 @@ pdb8sv4_A_0201_FWN.pdb
 pdb1cbq_A_0200_RE9.pdb
 pdb2fr3_A_0300_REA.pdb
 pdb2cbs_A_0200_R13.pdb
-pdb4yko_A_0201_RET.pdb
-pdb2g7b_A_0138_AZE.pdb
+pdb2g7b_A_0138_RET.pdb
 pdb3cbs_A_0200_R12.pdb
 pdb3cr6_A_0138_LSR.pdb
 pdb3d97_A_0138_B3P.pdb
@@ -24124,13 +24099,15 @@ pdb1r3j_C_0501_DGA.pdb
 pdb5vk6_C_2001_F09.pdb
 pdb2hvk_C_0201_L2C.pdb
 pdb2h8p_C_0079_GOA.pdb
+pdb2h8p_C_0207_B3H.pdb
 pdb2ih3_C_0077_DAL.pdb
 pdb2ih3_C_0301_1EM.pdb
 pdb2jk5_C_1134_HP6.pdb
 pdb2w0f_C_1128_HX0.pdb
 pdb3stz_C_0201_MTN.pdb
-pdb4msw_C_0078_TYF.pdb
+pdb4msw_C_0077_YTL.pdb
 pdb5ec2_C_0076_LHV.pdb
+pdb8thn_C_0078_TYF.pdb
 pdb8uz2_D_0302_ACO.pdb
 pdb4gqb_A_0701_0XU.pdb
 pdb6v0p_A_0704_SFG.pdb
@@ -24191,7 +24168,7 @@ pdb4g6w_X_0600_PBX.pdb
 pdb5fct_A_0402_C2F.pdb
 pdb5hs3_A_0401_KI3.pdb
 pdb5m4z_A_0401_7K8.pdb
-pdb5wrn_B_0400_DC.pdb
+pdb5wrn_B_0400_DCM.pdb
 pdb5x66_A_0402_MTX.pdb
 pdb5x67_A_0402_7Z9.pdb
 pdb5x69_A_0401_7ZC.pdb
@@ -24304,11 +24281,11 @@ pdb2qpk_A_0616_SHA.pdb
 pdb2qqt_A_0596_AIN.pdb
 pdb3gck_A_0800_BHO.pdb
 pdb3i6n_A_0607_ISZ.pdb
-pdb3sxv_A_0597_3TR.pdb
+pdb3sxv_A_0620_3TR.pdb
 pdb3krq_A_0609_MRD.pdb
 pdb3py4_A_0598_TYL.pdb
 pdb3qf1_A_6951_PZE.pdb
-pdb3r4x_A_0597_PZA.pdb
+pdb3r4x_A_0618_PZA.pdb
 pdb3r5o_A_0597_EUG.pdb
 pdb3rke_A_0610_MZZ.pdb
 pdb3tgy_A_0800_ASC.pdb
@@ -24565,7 +24542,7 @@ pdb8ov1_A_7229_SAM.pdb
 pdb5ynm_A_0402_GTA.pdb
 pdb5ynn_A_0402_GTG.pdb
 pdb6w4h_A_7105_BDF.pdb
-pdb6wq3_A_7103_8NK.pdb
+pdb6wq3_A_7103_M7G.pdb
 pdb9emj_A_7103_MGP.pdb
 pdb7jhe_A_7103_V9G.pdb
 pdb7l6t_A_7105_GLC.pdb
@@ -24737,7 +24714,7 @@ pdb8akm_A_0306_N9X.pdb
 pdb8g2t_A_0301_YOZ.pdb
 pdb8rws_A_0304_MER.pdb
 pdb9f0u_A_0304_XR9.pdb
-pdb1bo7_A_0317_U.pdb
+pdb1bo7_A_0317_U5P.pdb
 pdb6qya_A_0401_UMP.pdb
 pdb1tvv_A_0318_CB3.pdb
 pdb1lcb_A_0317_TMP.pdb
@@ -25030,7 +25007,8 @@ pdb6ly5_i_0102_CLA.pdb
 pdb8bcw_I_0101_BCR.pdb
 pdb4y28_I_6018_LUT.pdb
 pdb6ly5_i_0104_LHG.pdb
-pdb1kdo_A_5407_C.pdb
+pdb1kdo_A_5407_C5P.pdb
+pdb1kdp_A_5407_DCM.pdb
 pdb1kdr_A_5407_CAR.pdb
 pdb1kdt_A_5407_DOC.pdb
 pdb2cmk_A_0407_CDP.pdb
@@ -25057,10 +25035,6 @@ pdb4pnu_A_0405_2VD.pdb
 pdb4pnw_A_0401_2VM.pdb
 pdb8pay_A_0405_1PE.pdb
 pdb6p81_A_0401_PG5.pdb
-pdb7az8_B_0403_TCA.pdb
-pdb7azc_A_0401_QU8.pdb
-pdb7azd_A_0403_SGZ.pdb
-pdb7azf_A_0403_SGK.pdb
 pdb3gu4_A_0296_ANP.pdb
 pdb1p4f_A_0295_86Q.pdb
 pdb1wvx_A_1001_BD4.pdb
@@ -25956,6 +25930,7 @@ pdb2i22_B_0900_I22.pdb
 pdb4l4t_A_0600_6FP.pdb
 pdb4l4v_A_0301_1VY.pdb
 pdb6puf_A_0301_2LJ.pdb
+pdb6puc_A_0301_Q87.pdb
 pdb4nqe_A_0301_2L4.pdb
 pdb4pje_A_0306_30W.pdb
 pdb4pjx_A_0304_B3P.pdb
@@ -25965,7 +25940,6 @@ pdb5u1r_C_0305_DIF.pdb
 pdb5u2v_A_0302_7WQ.pdb
 pdb5u6q_C_0301_7ZS.pdb
 pdb5u72_C_0301_7ZV.pdb
-pdb6puc_A_0301_Q87.pdb
 pdb6pud_A_0801_OYD.pdb
 pdb6pue_A_0302_Q7J.pdb
 pdb6pug_A_0302_OZD.pdb
@@ -26000,7 +25974,7 @@ pdb3div_A_0196_NIY.pdb
 pdb2hrg_A_3001_4MA.pdb
 pdb2hzh_A_0501_NDG.pdb
 pdb2hzh_A_0503_MAN.pdb
-pdb2qt6_A_3610_TLA.pdb
+pdb2qt6_A_0506_TLA.pdb
 pdb2xyb_A_0518_AS8.pdb
 pdb6ri6_A_0511_OXY.pdb
 pdb5e9n_A_0610_PG6.pdb
@@ -26101,7 +26075,7 @@ pdb1u1d_A_3400_181.pdb
 pdb1u1e_A_3400_182.pdb
 pdb1u1f_A_3300_183.pdb
 pdb1u1g_A_3300_BBB.pdb
-pdb1y1q_C_8003_U.pdb
+pdb1y1q_C_8003_U5P.pdb
 pdb6rca_A_0302_BJE.pdb
 pdb2pga_B_7016_ANU.pdb
 pdb4ogl_A_0301_TDR.pdb
@@ -26245,6 +26219,7 @@ pdb2adp_A_0034_NIY.pdb
 pdb5ag2_A_0128_OCS.pdb
 pdb5gxo_A_0068_ALY.pdb
 pdb6s0d_A_0128_CSO.pdb
+pdb7kkw_A_0501_D8U.pdb
 pdb9bwq_A_0202_PEO.pdb
 pdb8css_X_0503_GDP.pdb
 pdb8css_X_0501_ATP.pdb
@@ -26356,7 +26331,7 @@ pdb3u8q_A_7231_NPU.pdb
 pdb3ugw_A_0677_DCZ.pdb
 pdb3usd_A_0005_IDL.pdb
 pdb3vdf_A_0711_API.pdb
-pdb4dig_A_0714_NDG.pdb
+pdb4dig_A_0710_NDG.pdb
 pdb4dxu_A_0711_ACA.pdb
 pdb4fim_A_0711_CEL.pdb
 pdb4fjp_A_0711_NPS.pdb
@@ -26508,7 +26483,7 @@ pdb1sup_A_0278_PMS.pdb
 pdb1tm5_E_0495_1PE.pdb
 pdb1y4a_E_2001_CIT.pdb
 pdb1to2_E_0454_15P.pdb
-pdb1ubn_A_0221_SOC.pdb
+pdb1ubn_A_0221_SE7.pdb
 pdb3vyv_A_0221_SEB.pdb
 pdb7am6_C_0301_TAR.pdb
 pdb7am8_A_0302_AKR.pdb
@@ -26811,7 +26786,7 @@ pdb2c65_A_0601_4CR.pdb
 pdb2c66_A_1503_RM2.pdb
 pdb2c67_A_1503_RM1.pdb
 pdb2c70_A_0601_PNZ.pdb
-pdb2v5z_A_1503_SAG.pdb
+pdb2v5z_A_0601_SAG.pdb
 pdb2v60_A_1503_C17.pdb
 pdb2v61_A_1503_C18.pdb
 pdb2vrl_A_0601_MBN.pdb
@@ -26985,7 +26960,7 @@ pdb3lf3_A_0065_NFA.pdb
 pdb3ned_A_0067_EYG.pdb
 pdb4q7r_A_0066_OFM.pdb
 pdb4q7u_A_0066_OIM.pdb
-pdb4zin_A_0143_4OO.pdb
+pdb4zin_A_0143_4II.pdb
 pdb4zio_A_0143_HOX.pdb
 pdb5fhv_A_0066_MCQ.pdb
 pdb5fhv_A_0305_P6G.pdb
@@ -27347,7 +27322,6 @@ pdb6fo9_A_0500_E0E.pdb
 pdb6fob_A_0501_DZW.pdb
 pdb6fod_A_4000_E05.pdb
 pdb6t2m_A_4000_M9Q.pdb
-pdb6xzi_A_0502_URL.pdb
 pdb7b39_A_0501_T0H.pdb
 pdb7bo6_A_0500_FKC.pdb
 pdb7oxu_A_4000_2QI.pdb
@@ -27388,7 +27362,6 @@ pdb1rhm_A_0501_NA4.pdb
 pdb1rhq_A_0551_0ZZ.pdb
 pdb1rhr_A_0501_CNE.pdb
 pdb1rhu_A_0501_3CY.pdb
-pdb2cno_A_1180_M60.pdb
 pdb2xyg_A_1176_TQ8.pdb
 pdb2xyh_A_1175_TQ9.pdb
 pdb2xyp_A_1175_XVE.pdb
@@ -27479,12 +27452,11 @@ pdb1bhn_A_0160_35G.pdb
 pdb3bbf_A_0160_GDP.pdb
 pdb8pie_A_0122_HIP.pdb
 pdb8qw3_A_0201_ADP.pdb
-pdb3bbb_B_0153_DG.pdb
 pdb3bbf_B_0162_DTT.pdb
 pdb4uof_A_1152_DAT.pdb
 pdb4uog_A_1152_YYY.pdb
 pdb5ui4_A_0201_A7Z.pdb
-pdb7kpf_A_0201_WYV.pdb
+pdb7kpf_A_0201_MYA.pdb
 pdb7zl8_A_0201_SCA.pdb
 pdb7ztk_A_0201_COA.pdb
 pdb8oov_A_0201_PAP.pdb
@@ -28182,9 +28154,9 @@ pdb6si5_A_0401_LEQ.pdb
 pdb6szz_A_0008_4FW.pdb
 pdb6t00_A_0009_PFF.pdb
 pdb1mdo_A_0394_PMP.pdb
-pdb8su6_A_0401_PLP.pdb
 pdb1mdx_A_0401_AKG.pdb
 pdb1mdz_A_0400_DCS.pdb
+pdb8su6_A_0401_PLP.pdb
 pdb4oca_A_0400_2QR.pdb
 pdb7ejc_C_0401_ANP.pdb
 pdb8pbc_A_0401_ATP.pdb
@@ -28461,7 +28433,7 @@ pdb1i0v_A_0106_2GP.pdb
 pdb1det_A_0058_CGA.pdb
 pdb4gsp_A_0106_SGP.pdb
 pdb1lov_A_0106_3GP.pdb
-pdb1rga_A_0106_G.pdb
+pdb1rga_A_0106_GMP.pdb
 pdb6rnt_A_0105_2AM.pdb
 pdb2rnt_A_0105_GPG.pdb
 pdb3urp_A_0105_PGP.pdb
@@ -28537,10 +28509,10 @@ pdb4xj7_A_0303_ADN.pdb
 pdb7ph3_A_0601_ANP.pdb
 pdb7bcw_A_0602_ADP.pdb
 pdb6bpl_A_0603_FTT.pdb
-pdb6bpl_B_0613_DAO.pdb
+pdb6bpl_B_0608_DAO.pdb
 pdb7ph3_A_0604_3PE.pdb
 pdb6bpl_A_0602_AU7.pdb
-pdb6bpl_B_0615_MYR.pdb
+pdb6bpl_A_0606_MYR.pdb
 pdb6bpp_A_0601_E1M.pdb
 pdb7bcw_A_0604_POV.pdb
 pdb7mew_A_0601_Z5Y.pdb
@@ -29247,7 +29219,6 @@ pdb1z5m_A_0501_LI8.pdb
 pdb2pe0_A_0501_39Z.pdb
 pdb2pe1_A_0501_517.pdb
 pdb2pe2_A_0501_464.pdb
-pdb2r7b_A_0361_PSE.pdb
 pdb2r7b_A_0701_253.pdb
 pdb2xch_A_1360_CKG.pdb
 pdb2xck_A_1360_MH4.pdb
@@ -29804,7 +29775,7 @@ pdb4wel_A_0601_3LE.pdb
 pdb5df7_A_0601_59H.pdb
 pdb5df8_A_0601_59F.pdb
 pdb5df9_A_0603_59J.pdb
-pdb6hr9_A_0900_NEF.pdb
+pdb6hr9_A_1201_NEF.pdb
 pdb6i1e_A_0701_AXL.pdb
 pdb6un1_A_0601_TJ7.pdb
 pdb6un3_A_0602_XT8.pdb
@@ -29993,7 +29964,7 @@ pdb4ro2_A_0201_3P8.pdb
 pdb7oph_A_0209_MRD.pdb
 pdb8ctu_B_0201_GAL.pdb
 pdb4c8e_A_1163_C5P.pdb
-pdb3ieq_A_0901_C.pdb
+pdb3p10_A_0165_CTN.pdb
 pdb3iew_A_0901_CDP.pdb
 pdb3iew_B_0901_CTP.pdb
 pdb3mbm_A_0164_CYT.pdb
@@ -30003,7 +29974,6 @@ pdb3k14_A_0164_535.pdb
 pdb3k2x_A_0164_I5A.pdb
 pdb3ke1_A_0164_829.pdb
 pdb3qhd_A_0166_MSR.pdb
-pdb3p10_A_0165_CTN.pdb
 pdb3p10_A_0170_F69.pdb
 pdb3q8h_A_0164_AO9.pdb
 pdb3qhd_A_0167_795.pdb
@@ -30792,7 +30762,6 @@ pdb8xra_B_0604_SIA.pdb
 pdb2fhh_H_0273_M1N.pdb
 pdb3mi0_C_0038_DMF.pdb
 pdb3h6i_C_0301_OZT.pdb
-pdb3krd_C_0300_FEB.pdb
 pdb3mi0_C_0300_SA6.pdb
 pdb5tho_H_0301_7C7.pdb
 pdb5trg_H_0301_7HJ.pdb
@@ -31113,19 +31082,17 @@ pdb6xp6_B_1008_IPA.pdb
 pdb9ejg_B_0201_NAG.pdb
 pdb8shk_C_0601_ATP.pdb
 pdb4k98_A_0604_GTP.pdb
-pdb4k98_A_0605_G.pdb
+pdb4k98_A_0605_5GP.pdb
 pdb4k99_A_0604_GH3.pdb
 pdb4k99_A_0605_GDO.pdb
-pdb4k9a_A_0604_A.pdb
+pdb4k9a_A_0604_AMP.pdb
 pdb4lez_A_0602_1SY.pdb
 pdb5xzb_A_0602_A9Y.pdb
 pdb5xze_A_0602_AE7.pdb
 pdb5xzg_A_0602_AEV.pdb
-pdb7buj_A_0605_5GP.pdb
 pdb7utt_A_0601_APC.pdb
 pdb7v0c_A_0601_OKR.pdb
 pdb7v0r_A_0601_OKX.pdb
-pdb7v0w_A_0603_AMP.pdb
 pdb8eae_A_0601_VLO.pdb
 pdb8ecc_C_0601_VWX.pdb
 pdb8sj0_A_0601_DTP.pdb
@@ -31158,7 +31125,7 @@ pdb9f5k_A_0201_ONQ.pdb
 pdb9f7f_A_0201_WNM.pdb
 pdb9f7h_A_0201_JFM.pdb
 pdb9hql_A_0201_VZM.pdb
-pdb2po6_C_0208_AGH.pdb
+pdb2po6_C_0301_AGH.pdb
 pdb7n2r_D_0301_NAG.pdb
 pdb2jgr_A_1300_POP.pdb
 pdb8gn2_Y_0301_UNL.pdb
@@ -31179,6 +31146,7 @@ pdb9d39_B_0901_2JL.pdb
 pdb9iyq_B_0901_7RC.pdb
 pdb4cfp_A_1365_P6G.pdb
 pdb4cfp_B_1364_CIT.pdb
+pdb4chx_A_0401_NAG.pdb
 pdb2qxx_A_0203_1PE.pdb
 pdb2qxx_A_0201_TTP.pdb
 pdb5j89_C_0201_6GX.pdb
@@ -31439,7 +31407,7 @@ pdb6ukb_A_0601_Q9V.pdb
 pdb6ul9_B_0601_Q9M.pdb
 pdb6ula_A_0601_QA4.pdb
 pdb6ulj_B_0601_QAA.pdb
-pdb6umc_A_0601_U27.pdb
+pdb6umc_B_0601_U27.pdb
 pdb6umd_B_0601_QAJ.pdb
 pdb6umf_B_0601_QAM.pdb
 pdb8bsl_A_0601_R90.pdb
@@ -31544,7 +31512,7 @@ pdb6h91_A_0302_UVW.pdb
 pdb6qzg_A_0302_JLT.pdb
 pdb6ydm_A_0301_CIT.pdb
 pdb8q1e_A_0301_FBP.pdb
-pdb2i4m_B_0439_PSD.pdb
+pdb2i4m_B_0439_P5A.pdb
 pdb2i4n_A_0439_5CA.pdb
 pdb2i4o_A_0442_ATP.pdb
 pdb1ghb_E_0651_HEX.pdb
@@ -31926,7 +31894,7 @@ pdb8ke3_A_0504_FXC.pdb
 pdb8ke4_A_0504_FXF.pdb
 pdb8ke5_A_0504_FXL.pdb
 pdb8ke6_A_0504_FCL.pdb
-pdb6cgn_A_0801_DA.pdb
+pdb6cgn_A_0801_D5M.pdb
 pdb9bw3_A_0801_TTP.pdb
 pdb6mt9_A_0802_ADP.pdb
 pdb9bw3_A_0803_ATP.pdb
@@ -32122,7 +32090,7 @@ pdb8hu2_A_0301_M8R.pdb
 pdb4hao_A_0401_ACY.pdb
 pdb6iur_F_0601_TME.pdb
 pdb6nts_A_0601_L2J.pdb
-pdb1af2_A_0295_U.pdb
+pdb1af2_A_0295_U5P.pdb
 pdb1aln_A_0295_CTD.pdb
 pdb1ctt_A_0295_DHZ.pdb
 pdb1ctu_A_0295_ZEB.pdb
@@ -32332,7 +32300,7 @@ pdb1yni_A_1001_SUG.pdb
 pdb6u1a_A_0063_NRQ.pdb
 pdb1uis_A_1001_ACY.pdb
 pdb3bxa_B_0234_CIT.pdb
-pdb7qgk_A_0069_NRP.pdb
+pdb7qgk_A_0068_NRP.pdb
 pdb3m24_A_0501_DTT.pdb
 pdb6u1a_A_0064_PQ4.pdb
 pdb6xwy_A_0302_MLA.pdb
@@ -32554,7 +32522,6 @@ pdb4pnc_A_0301_7NP.pdb
 pdb4z7m_A_0302_4L9.pdb
 pdb4po5_B_0071_MEN.pdb
 pdb4po5_B_0201_CYC.pdb
-pdb1b33_B_0202_BLA.pdb
 pdb2buo_A_1231_ACY.pdb
 pdb7r7p_G_0301_IHP.pdb
 pdb7r7p_I_0301_2I4.pdb
@@ -32837,6 +32804,7 @@ pdb6jv9_B_0601_DTT.pdb
 pdb1iak_A_0197_NAG.pdb
 pdb6blq_A_0205_IPA.pdb
 pdb1gkj_A_0142_MDO.pdb
+pdb1gkm_B_0142_ZRF.pdb
 pdb7u24_E_2001_GBM.pdb
 pdb6jb1_B_1602_AGS.pdb
 pdb7w4o_B_1601_ADP.pdb
@@ -33689,7 +33657,6 @@ pdb1pov_0_0001_MYR.pdb
 pdb5dtf_B_0301_5CT.pdb
 pdb7ra7_B_0304_1PE.pdb
 pdb8to2_D_0200_CYC.pdb
-pdb1b33_A_0201_BLA.pdb
 pdb2a5j_A_2696_GDP.pdb
 pdb4rke_A_0201_GNP.pdb
 pdb4rke_A_0203_1PE.pdb
@@ -33930,7 +33897,6 @@ pdb3zmh_A_0401_L62.pdb
 pdb3zmh_A_0402_78C.pdb
 pdb3zmi_A_0401_L6C.pdb
 pdb3zmj_A_0401_L61.pdb
-pdb6xro_A_0501_B2A.pdb
 pdb1m6w_A_4378_12H.pdb
 pdb2fzw_A_1377_NAD.pdb
 pdb1ma0_A_5378_DAO.pdb
@@ -34344,8 +34310,6 @@ pdb2afz_A_0381_NVI.pdb
 pdb3si2_A_0999_PBD.pdb
 pdb6gbx_A_0403_S77.pdb
 pdb6yi1_A_0412_DIO.pdb
-pdb6yi1_A_0419_ORT.pdb
-pdb6yi1_A_0421_66N.pdb
 pdb7cm0_A_0701_G5R.pdb
 pdb7coz_A_0402_Q39.pdb
 pdb7d8e_A_1008_GYO.pdb
@@ -34369,6 +34333,9 @@ pdb2xe5_B_1350_ASZ.pdb
 pdb2xe5_B_1354_HP6.pdb
 pdb2xe5_C_1345_HEX.pdb
 pdb5fvn_A_0412_KDO.pdb
+pdb5fvn_A_0413_FTT.pdb
+pdb5fvn_C_0420_DAO.pdb
+pdb5fvn_F_0411_MYR.pdb
 pdb5nup_B_0405_LMT.pdb
 pdb6rck_C_0402_P6L.pdb
 pdb7pzf_A_0403_C14.pdb
@@ -35286,7 +35253,6 @@ pdb5h0h_A_0601_OOV.pdb
 pdb5eze_A_0018_CG6.pdb
 pdb5f2y_A_0018_HCS.pdb
 pdb5w0j_A_0023_PHI.pdb
-pdb5w0j_A_0101_LYN.pdb
 pdb6eiz_F_0101_FOF.pdb
 pdb7bas_A_0019_4BF.pdb
 pdb7nfk_A_0101_IPA.pdb
@@ -35463,7 +35429,6 @@ pdb7bsr_A_0402_F7C.pdb
 pdb1aky_A_0301_AP5.pdb
 pdb1dvr_A_0230_ATF.pdb
 pdb3i4w_A_0332_SNN.pdb
-pdb5d13_C_0501_56J.pdb
 pdb5mz7_A_0341_AZH.pdb
 pdb3cxo_A_0501_3LR.pdb
 pdb3cxo_B_0502_1N5.pdb
@@ -35474,7 +35439,7 @@ pdb6wm2_0_0304_CLR.pdb
 pdb6xbw_b_0301_POV.pdb
 pdb9b8o_b_0301_PC1.pdb
 pdb2hw1_A_0301_ANP.pdb
-pdb6p2d_A_0301_FRU.pdb
+pdb6p2d_A_0502_FRU.pdb
 pdb3nbw_A_0301_TR4.pdb
 pdb3nc2_A_0299_QUZ.pdb
 pdb3nc9_B_0299_TR3.pdb
@@ -35490,7 +35455,7 @@ pdb5wbp_A_0301_A2J.pdb
 pdb5wbq_A_0301_A3J.pdb
 pdb5wbr_A_0301_A3Y.pdb
 pdb5wbz_A_0301_A4J.pdb
-pdb6p2d_A_0302_ADP.pdb
+pdb6p2d_A_0501_ADP.pdb
 pdb6ul7_A_0302_A0O.pdb
 pdb6w0n_A_0301_RYS.pdb
 pdb6w0w_A_0301_RZA.pdb
@@ -35698,7 +35663,6 @@ pdb1mg3_B_0057_TRW.pdb
 pdb2j56_L_0057_TQQ.pdb
 pdb3sxt_C_0057_TOQ.pdb
 pdb5nb4_A_0166_PEB.pdb
-pdb1eyx_A_0166_BLA.pdb
 pdb8u0f_B_0201_CYC.pdb
 pdb8u0y_A_0201_PUB.pdb
 pdb3t4e_A_0289_NAD.pdb
@@ -35758,6 +35722,7 @@ pdb6gpv_A_0081_NFK.pdb
 pdb6gpv_A_0085_HOO.pdb
 pdb6gpv_A_0085_OHI.pdb
 pdb6gpv_A_1004_LUM.pdb
+pdb7aby_A_0491_SNN.pdb
 pdb8a4e_A_0601_FMA.pdb
 pdb8vs6_A_1101_NAG.pdb
 pdb3eau_A_1001_NDP.pdb
@@ -36407,10 +36372,6 @@ pdb9mex_A_0104_CSP.pdb
 pdb1yqc_A_1001_GLV.pdb
 pdb5jmo_A_0601_NAG.pdb
 pdb5mim_A_0609_1N.pdb
-pdb6yd4_A_0611_2UE.pdb
-pdb6yd4_A_0612_ON8.pdb
-pdb6yd4_A_0613_TBG.pdb
-pdb6yd4_A_0615_00S.pdb
 pdb7lcu_A_0605_XTA.pdb
 pdb7o1u_A_0601_UYN.pdb
 pdb7o1y_A_0601_UYQ.pdb
@@ -37183,7 +37144,7 @@ pdb7puu_A_0302_84O.pdb
 pdb7puv_A_0304_84Z.pdb
 pdb7puw_A_0302_84I.pdb
 pdb8co3_A_0302_V8O.pdb
-pdb6e1h_C_0023_PLM.pdb
+pdb6e1h_C_0204_PLM.pdb
 pdb6rvd_C_0202_CLR.pdb
 pdb6tc2_C_0101_HC4.pdb
 pdb5i6x_A_0701_NAG.pdb
@@ -37547,11 +37508,11 @@ pdb5xvt_A_0709_8FL.pdb
 pdb8frx_A_0503_NAG.pdb
 pdb6be1_A_0509_PX4.pdb
 pdb8frz_A_0501_SRO.pdb
-pdb6his_A_0508_TKT.pdb
-pdb6np0_A_0508_CWB.pdb
+pdb6his_A_0501_TKT.pdb
+pdb6np0_A_0503_CWB.pdb
 pdb6w1j_A_0508_S7Y.pdb
 pdb6w1m_A_0508_S87.pdb
-pdb6y1z_A_0509_O7B.pdb
+pdb6y1z_A_0504_O7B.pdb
 pdb8aw2_A_0503_VTX.pdb
 pdb8cc6_A_0502_U9L.pdb
 pdb8cc7_A_0502_U9Q.pdb
@@ -37651,8 +37612,8 @@ pdb8il7_A_0501_2OP.pdb
 pdb8p8b_b_0303_SPM.pdb
 pdb2qdv_A_0028_MHO.pdb
 pdb1k4y_A_2001_4PN.pdb
-pdb1mx1_A_0001_THA.pdb
 pdb2h7c_D_0482_SIA.pdb
+pdb1mx1_A_1603_THA.pdb
 pdb5a7g_A_1553_NAG.pdb
 pdb1mx5_A_0001_HTQ.pdb
 pdb1mx9_A_0001_NLX.pdb
@@ -37665,15 +37626,15 @@ pdb2dqy_A_0001_CHD.pdb
 pdb2dqz_A_0111_PLM.pdb
 pdb2h7c_A_0001_COA.pdb
 pdb2dr0_A_0101_TCH.pdb
-pdb2hrq_A_0001_GD7.pdb
-pdb2hrr_A_0001_NTJ.pdb
+pdb2hrq_A_1601_GD7.pdb
+pdb2hrr_A_1601_NTJ.pdb
 pdb3k9b_A_0193_WW2.pdb
 pdb8rw1_k_0601_GCP.pdb
 pdb3smt_A_0498_ARS.pdb
 pdb6wk2_A_0601_SAM.pdb
 pdb6mbk_A_0601_SAH.pdb
 pdb6ox0_A_1001_SFG.pdb
-pdb1fzc_E_0470_NAG.pdb
+pdb1fzc_E_0501_NAG.pdb
 pdb1n86_B_0470_NDG.pdb
 pdb4pfk_A_0323_F6P.pdb
 pdb4i7e_A_0401_PEP.pdb
@@ -37891,7 +37852,6 @@ pdb5mi4_A_0801_7NQ.pdb
 pdb5mi7_A_0802_7NT.pdb
 pdb7k41_A_2602_VUA.pdb
 pdb8qu5_v_0101_PNS.pdb
-pdb7oi6_v_0101_4S8.pdb
 pdb2fkn_A_5555_NAD.pdb
 pdb8q7b_B_0706_BWQ.pdb
 pdb7neq_A_1001_NAG.pdb
@@ -38391,7 +38351,7 @@ pdb1fga_A_0147_SE4.pdb
 pdb5x1o_A_0201_I3P.pdb
 pdb1e8m_A_0724_P0H.pdb
 pdb1h2y_A_0791_ZPR.pdb
-pdb1o6g_A_0724_SIN.pdb
+pdb1o6g_A_0801_SIN.pdb
 pdb1qfm_A_0025_CSX.pdb
 pdb1qfm_A_0781_SGL.pdb
 pdb1qfm_A_0783_SGM.pdb
@@ -38971,7 +38931,7 @@ pdb6x9a_A_2004_UY7.pdb
 pdb6x9b_A_2006_UYA.pdb
 pdb6x9c_A_1301_NAI.pdb
 pdb7my9_A_1301_UJD.pdb
-pdb7mya_A_1301_UJJ.pdb
+pdb7mya_A_2201_UJJ.pdb
 pdb7myb_A_1301_UJM.pdb
 pdb7myb_A_1302_UJP.pdb
 pdb7myc_A_2201_UJG.pdb
@@ -38985,7 +38945,7 @@ pdb3glc_A_0400_R5P.pdb
 pdb3gnd_A_0984_5RP.pdb
 pdb4p2v_A_0301_26T.pdb
 pdb1avd_A_0400_BTN.pdb
-pdb6xnd_A_0201_NAG.pdb
+pdb3vgw_A_1125_NAG.pdb
 pdb1ij8_A_0501_BNI.pdb
 pdb1ldo_A_0150_SNR.pdb
 pdb1ldq_A_0402_SHM.pdb
@@ -39006,7 +38966,7 @@ pdb5iru_A_0202_B9P.pdb
 pdb5irw_A_0202_D9P.pdb
 pdb5lur_A_0201_STR.pdb
 pdb5myq_A_0301_HBF.pdb
-pdb6xnd_A_0202_V8M.pdb
+pdb6xnd_A_0201_V8M.pdb
 pdb7zyl_A_0201_KFL.pdb
 pdb8ck7_A_0203_TEP.pdb
 pdb6ik8_B_0803_NAG.pdb
@@ -39475,6 +39435,7 @@ pdb7ct7_A_1502_GF9.pdb
 pdb7ctc_A_1502_GFO.pdb
 pdb4u0g_H_0301_ZIL.pdb
 pdb6iw7_B_0301_AV3.pdb
+pdb6iw7_B_0303_S0R.pdb
 pdb7x8x_B_0201_AI4.pdb
 pdb9jvp_T_0201_BO2.pdb
 pdb4eq1_A_0501_PE5.pdb
@@ -39540,6 +39501,7 @@ pdb8pvm_A_0607_74C.pdb
 pdb8pvm_A_0610_FOR.pdb
 pdb2zuq_A_0177_UQ1.pdb
 pdb2k74_A_0201_UQ2.pdb
+pdb2ltq_A_0201_UQ8.pdb
 pdb3q7e_A_0001_SAH.pdb
 pdb1or8_A_0582_UNL.pdb
 pdb6nt2_A_0402_KZS.pdb
@@ -40077,11 +40039,11 @@ pdb5o84_A_0047_MHO.pdb
 pdb5o84_A_0065_OCS.pdb
 pdb5o84_A_0110_CSO.pdb
 pdb5fiw_C_0150_CSO.pdb
+pdb1d2v_C_0604_HEM.pdb
 pdb5fiw_C_0620_NAG.pdb
-pdb1dnu_C_0010_HEM.pdb
-pdb1dnu_C_0015_ACY.pdb
+pdb1dnu_C_0606_ACY.pdb
 pdb3zs0_C_1579_ZS0.pdb
-pdb4dl1_G_0610_0KY.pdb
+pdb4dl1_C_0601_0KY.pdb
 pdb5fiw_C_0644_BMA.pdb
 pdb5wdj_B_0606_MAN.pdb
 pdb5qj2_B_0613_JXS.pdb
@@ -40089,10 +40051,10 @@ pdb6wyd_B_0605_FUC.pdb
 pdb5qj3_B_0613_JXP.pdb
 pdb5wdj_E_0611_AEY.pdb
 pdb6wy7_B_0601_HEC.pdb
-pdb6wxz_B_0606_UEY.pdb
-pdb6wy0_B_0612_UFA.pdb
-pdb6wy5_B_0611_UF7.pdb
-pdb6wy7_B_0612_UFD.pdb
+pdb6wxz_B_0605_UEY.pdb
+pdb6wy0_B_0606_UFA.pdb
+pdb6wy5_B_0603_UF7.pdb
+pdb6wy7_B_0606_UFD.pdb
 pdb6wyd_B_0611_7GD.pdb
 pdb7lae_B_0611_XRV.pdb
 pdb7lag_B_0605_XSD.pdb
@@ -40346,6 +40308,7 @@ pdb3t4y_B_0303_KDO.pdb
 pdb7t0g_H_0301_BTB.pdb
 pdb2y3q_A_0200_HEM.pdb
 pdb2y3q_D_1161_BTB.pdb
+pdb3e1n_A_0400_UNL.pdb
 pdb6p8k_A_0202_ZNH.pdb
 pdb3b9x_A_0401_NOS.pdb
 pdb3b9x_D_0402_TAM.pdb
@@ -40559,7 +40522,6 @@ pdb5fiw_A_0605_HEM.pdb
 pdb1mhl_A_0620_NAG.pdb
 pdb3zs1_A_0606_PVW.pdb
 pdb4c1m_A_0606_NIH.pdb
-pdb4dl1_A_1602_0KY.pdb
 pdb5wdj_A_0201_AEY.pdb
 pdb6wy7_D_0201_HEC.pdb
 pdb6wyd_H_0201_7GD.pdb
@@ -40763,7 +40725,7 @@ pdb3ps9_A_0670_SAM.pdb
 pdb5vwg_A_0075_CSO.pdb
 pdb5vwg_A_0201_9QG.pdb
 pdb6w4z_A_0201_SZS.pdb
-pdb6z6y_A_0201_QAH.pdb
+pdb6z6y_A_0201_L4L.pdb
 pdb7aen_A_0201_R8B.pdb
 pdb7p11_A_0201_5KM.pdb
 pdb7p1m_A_0201_4IU.pdb
@@ -40904,6 +40866,7 @@ pdb1qyx_A_0500_ASD.pdb
 pdb3dhe_A_0400_AND.pdb
 pdb3hb5_X_0700_E2B.pdb
 pdb3klp_X_0328_B81.pdb
+pdb3km0_A_0401_AOM.pdb
 pdb6cgc_A_0402_F0A.pdb
 pdb6cge_A_0402_F0D.pdb
 pdb6dtp_A_0408_EM9.pdb
@@ -40919,9 +40882,11 @@ pdb5few_A_0411_SAH.pdb
 pdb5few_A_0402_CPS.pdb
 pdb5few_A_0401_SF4.pdb
 pdb5ff3_A_0409_FES.pdb
+pdb3iix_A_0311_CSS.pdb
 pdb3iix_A_1501_5AD.pdb
-pdb5ff3_A_0412_H2S.pdb
+pdb3iix_A_1801_S3H.pdb
 pdb5fes_A_0408_SAM.pdb
+pdb5ff3_A_0412_H2S.pdb
 pdb4jyf_A_0403_1N7.pdb
 pdb4jye_A_0408_F3S.pdb
 pdb5few_A_0412_41K.pdb
@@ -41641,7 +41606,7 @@ pdb1a9x_A_1920_ORN.pdb
 pdb1a9x_A_1950_NET.pdb
 pdb1bxr_A_1083_ANP.pdb
 pdb1ce8_A_5012_IMP.pdb
-pdb1t36_A_1091_U.pdb
+pdb1t36_A_1091_U5P.pdb
 pdb3sjl_A_0500_HEC.pdb
 pdb3pxt_A_0376_CMO.pdb
 pdb3pxw_A_0375_NO.pdb
@@ -41800,6 +41765,7 @@ pdb1zsq_A_3632_PIB.pdb
 pdb1zvr_A_3632_3PI.pdb
 pdb2qaa_A_0931_ACY.pdb
 pdb4u0g_A_0301_ZIL.pdb
+pdb6iw7_A_0301_S0R.pdb
 pdb7x8x_F_0301_AI4.pdb
 pdb9jvp_M_0301_BO2.pdb
 pdb3kaz_A_0189_BU2.pdb
@@ -41984,12 +41950,12 @@ pdb5hut_A_0506_1PE.pdb
 pdb5hvl_A_0501_UDP.pdb
 pdb5huu_A_0502_G6P.pdb
 pdb5hvl_A_0502_VDM.pdb
-pdb7k0k_B_0601_PLP.pdb
+pdb7yiy_B_0601_PLP.pdb
 pdb7cqi_T_0601_PLS.pdb
 pdb7cqi_T_0602_GE0.pdb
-pdb7k0k_B_0602_VSD.pdb
+pdb7k0k_B_0601_VSD.pdb
 pdb7k0q_B_0602_VRP.pdb
-pdb7k0m_B_0602_POV.pdb
+pdb7k0m_B_0601_POV.pdb
 pdb2fxa_A_0304_1PE.pdb
 pdb2fxa_B_0302_P6G.pdb
 pdb9etz_c_0301_PEF.pdb
@@ -42073,7 +42039,6 @@ pdb4f7i_A_0950_MPO.pdb
 pdb3kic_A_0999_D5M.pdb
 pdb3ng9_A_0737_ADE.pdb
 pdb3ng9_A_0738_CYT.pdb
-pdb4rso_A_0801_DA.pdb
 pdb1tgj_A_0113_DIO.pdb
 pdb5ev2_A_0401_DIO.pdb
 pdb3vaj_B_0404_CPQ.pdb
@@ -42321,11 +42286,10 @@ pdb1uzr_A_1294_CIT.pdb
 pdb2r2f_A_0320_FEO.pdb
 pdb3n3b_B_0322_PEO.pdb
 pdb1ffq_A_0003_AMI.pdb
-pdb1x6n_A_0601_AO3.pdb
 pdb2wlz_A_1569_NGT.pdb
 pdb2wlz_A_1562_DIO.pdb
 pdb2wly_A_1571_SN5.pdb
-pdb2wlz_A_1570_NAG.pdb
+pdb5z7n_A_0601_NAG.pdb
 pdb6jmn_A_0601_BV0.pdb
 pdb7fd6_A_0601_4QU.pdb
 pdb7vrg_A_0601_7U8.pdb
@@ -42453,7 +42417,6 @@ pdb8i96_B_0901_GJX.pdb
 pdb8s9h_A_0908_ZWV.pdb
 pdb8tty_A_0908_QEC.pdb
 pdb8ttz_A_0926_QCX.pdb
-pdb1llo_A_0003_AMI.pdb
 pdb9fl8_B_0301_BU1.pdb
 pdb3ze3_A_1122_78N.pdb
 pdb3ze3_A_1126_78M.pdb
@@ -42553,6 +42516,7 @@ pdb7z5j_E_0305_IX3.pdb
 pdb7zse_A_0305_UNL.pdb
 pdb8ci6_A_0601_ALX.pdb
 pdb8ci6_A_0602_BNX.pdb
+pdb4zeb_A_0601_ARA.pdb
 pdb8caw_A_0601_C84.pdb
 pdb4zed_A_0601_AGW.pdb
 pdb8cke_A_0604_LAO.pdb
@@ -42679,9 +42643,6 @@ pdb4my6_A_0201_3VH.pdb
 pdb5naj_A_0201_8SE.pdb
 pdb5naj_B_0202_8SB.pdb
 pdb5nbf_A_0201_8S8.pdb
-pdb5nbx_A_0202_2L5.pdb
-pdb5nbx_A_0205_ACY.pdb
-pdb5nbx_A_0206_8SN.pdb
 pdb5ncf_A_0201_8T5.pdb
 pdb5ncg_A_0201_8TB.pdb
 pdb5ncp_A_0201_EG5.pdb
@@ -43125,7 +43086,6 @@ pdb5yvt_A_0402_NAI.pdb
 pdb8gru_A_0401_NAD.pdb
 pdb6l59_A_0401_ATP.pdb
 pdb8gru_A_0403_ICT.pdb
-pdb5l8w_A_0401_AYE.pdb
 pdb1gzr_B_1067_C15.pdb
 pdb1imx_A_0101_CPQ.pdb
 pdb2qo4_A_0130_CHD.pdb
@@ -43531,7 +43491,8 @@ pdb2z7h_A_1302_GG3.pdb
 pdb2z7i_A_1302_742.pdb
 pdb2zeu_A_1201_B71.pdb
 pdb7yg2_B_0601_NAG.pdb
-pdb1c9n_A_0221_SEB.pdb
+pdb1q5p_A_0215_SEB.pdb
+pdb1c9n_A_0304_PMS.pdb
 pdb5aqe_A_1276_VOD.pdb
 pdb5arc_A_1277_EI3.pdb
 pdb9kok_A_0301_SCY.pdb
@@ -43893,6 +43854,7 @@ pdb5lht_A_0301_TIH.pdb
 pdb5u99_A_0306_ATP.pdb
 pdb2qjy_A_0501_HEM.pdb
 pdb2qjy_A_1001_SMA.pdb
+pdb1zrt_C_0504_UNL.pdb
 pdb2qjy_A_1021_LOP.pdb
 pdb2qjy_G_1043_BGL.pdb
 pdb2qjp_A_0504_ANJ.pdb
@@ -44041,8 +44003,8 @@ pdb7exp_A_0805_05M.pdb
 pdb3fky_A_0371_FLC.pdb
 pdb6zfx_A_0801_S1N.pdb
 pdb7cm7_A_1000_NAD.pdb
+pdb7djt_A_0311_VI3.pdb
 pdb7djt_A_1001_H8L.pdb
-pdb7djt_A_1101_O.pdb
 pdb7nak_D_0801_1QD.pdb
 pdb7nal_A_0801_NMN.pdb
 pdb5lky_A_0165_KPI.pdb
@@ -44792,7 +44754,7 @@ pdb3l0v_A_0485_724.pdb
 pdb3le9_A_0485_727.pdb
 pdb3lea_A_0001_Z93.pdb
 pdb3lgp_A_0485_50X.pdb
-pdb3o64_B_0002_786.pdb
+pdb3o64_B_0501_786.pdb
 pdb2i5p_O_1952_GLC.pdb
 pdb7xzg_A_0401_NAD.pdb
 pdb3pym_A_0334_MRY.pdb
@@ -45856,7 +45818,7 @@ pdb7xmd_A_0705_JYR.pdb
 pdb8qqk_A_0701_POV.pdb
 pdb7buh_A_0501_FES.pdb
 pdb3dlh_B_0687_ACY.pdb
-pdb4ncb_A_0701_DT.pdb
+pdb4ncb_A_0701_TMP.pdb
 pdb2wlk_B_1302_SPM.pdb
 pdb2x6c_A_1300_PC.pdb
 pdb6o9t_A_0403_6E3.pdb
@@ -46012,7 +45974,6 @@ pdb9fk0_A_0500_CPL.pdb
 pdb2e39_A_0401_HEM.pdb
 pdb1ck6_A_0350_BMA.pdb
 pdb1ck6_A_0900_SHA.pdb
-pdb1h3j_A_0183_HSO.pdb
 pdb1hsr_A_0800_BHO.pdb
 pdb1lyk_A_0500_NAG.pdb
 pdb2e39_A_0404_MAN.pdb
@@ -46350,7 +46311,7 @@ pdb5xz9_A_0401_ATP.pdb
 pdb5xza_A_0401_ADP.pdb
 pdb5xza_A_0402_FLC.pdb
 pdb3ckk_A_0301_SAM.pdb
-pdb7ogj_A_0301_SAH.pdb
+pdb7ogj_A_0302_SAH.pdb
 pdb7pl1_A_0307_SFG.pdb
 pdb8d58_A_0303_IPA.pdb
 pdb7zm0_A_0301_JMF.pdb
@@ -46390,6 +46351,7 @@ pdb5jcm_A_0501_NAD.pdb
 pdb5jcl_A_0501_NDP.pdb
 pdb5jcm_A_0502_ISD.pdb
 pdb5jcn_A_0502_ASC.pdb
+pdb7btj_A_0602_FDA.pdb
 pdb4xxv_B_0400_NAD.pdb
 pdb8eyo_A_0701_NAP.pdb
 pdb7x11_A_0602_NDP.pdb
@@ -46487,7 +46449,7 @@ pdb8pb7_A_0402_XPN.pdb
 pdb8pb8_A_0402_P6G.pdb
 pdb8qxq_A_0402_X8Q.pdb
 pdb8zig_A_0401_SAM.pdb
-pdb1g8m_A_2001_G.pdb
+pdb1g8m_A_2001_5GP.pdb
 pdb5uz0_A_0601_AMZ.pdb
 pdb1pkx_A_1901_XMP.pdb
 pdb1oz0_A_1002_MS1.pdb
@@ -46563,7 +46525,6 @@ pdb1nun_B_0370_15P.pdb
 pdb3npe_A_0001_OXY.pdb
 pdb1gpx_A_0107_GA.pdb
 pdb1xlq_A_0107_FES.pdb
-pdb6nbl_D_0202_1N0.pdb
 pdb1z6f_A_0401_BO9.pdb
 pdb3beb_A_1000_HJ3.pdb
 pdb3bec_A_0500_HJ2.pdb
@@ -47157,7 +47118,7 @@ pdb5yfj_A_0401_RUB.pdb
 pdb5yft_A_0401_RI2.pdb
 pdb5yft_A_0404_MRD.pdb
 pdb5yfu_A_0403_AMP.pdb
-pdb5yg6_A_0404_G.pdb
+pdb5yg6_A_0404_5GP.pdb
 pdb4qez_B_0301_ADE.pdb
 pdb6nep_A_0189_PHI.pdb
 pdb7o71_K_0301_SF4.pdb
@@ -47795,8 +47756,8 @@ pdb2g09_A_0905_PIN.pdb
 pdb2g07_A_0049_BFD.pdb
 pdb2g08_A_0501_AF3.pdb
 pdb4fe3_A_0305_U5P.pdb
-pdb4kx3_A_0301_DT.pdb
-pdb4kx5_A_0301_C.pdb
+pdb4kx3_A_0301_TMP.pdb
+pdb4kx5_A_0301_C5P.pdb
 pdb6x6z_A_0801_DCP.pdb
 pdb7t18_A_0805_TTP.pdb
 pdb7t19_A_0802_DGT.pdb
@@ -48581,7 +48542,6 @@ pdb3mk1_A_0911_NPO.pdb
 pdb4kjg_A_1006_4NP.pdb
 pdb7yxu_H_0401_TMO.pdb
 pdb3ziy_A_0600_HEC.pdb
-pdb6fja_A_0502_HEM.pdb
 pdb7v3b_A_0602_PMB.pdb
 pdb7v3c_B_0602_HGB.pdb
 pdb9dqy_D_0501_NAG.pdb
@@ -48624,7 +48584,7 @@ pdb6nc4_A_0501_GNP.pdb
 pdb6cs8_A_0501_F9Y.pdb
 pdb6cvd_A_0501_4ME.pdb
 pdb6dlx_A_0501_GXY.pdb
-pdb7o9h_A_0601_C1Z.pdb
+pdb7o9h_A_0601_0O2.pdb
 pdb2veb_A_0200_HEM.pdb
 pdb2veb_A_0350_OXY.pdb
 pdb3zjj_A_1198_IPA.pdb
@@ -49754,7 +49714,6 @@ pdb8pn9_A_0805_OTP.pdb
 pdb8pn9_A_0806_ZXT.pdb
 pdb7jro_b_0302_3PE.pdb
 pdb5o8y_A_0301_PE4.pdb
-pdb6zj2_B_0301_BFD.pdb
 pdb6xq1_A_0306_V74.pdb
 pdb6xq3_A_0305_V6Y.pdb
 pdb6xq5_A_0306_V6M.pdb
@@ -50036,7 +49995,7 @@ pdb3ivt_A_1000_AKG.pdb
 pdb2xtz_A_0152_CSS.pdb
 pdb2xtz_A_1382_GSP.pdb
 pdb8vgb_A_0500_GDP.pdb
-pdb6ea4_A_1021_NAG.pdb
+pdb6ea4_A_1007_NAG.pdb
 pdb4jbs_A_1009_P52.pdb
 pdb5j6s_A_1015_6GA.pdb
 pdb5k1v_A_1002_6PX.pdb
@@ -50588,7 +50547,7 @@ pdb4xqc_A_0502_13D.pdb
 pdb4xqe_A_0505_AG2.pdb
 pdb4xr4_A_0199_MHO.pdb
 pdb8scx_A_0301_CDL.pdb
-pdb1gis_A_0438_DA.pdb
+pdb1gis_A_0438_D5M.pdb
 pdb1giu_A_0300_ADE.pdb
 pdb1mrj_A_0300_ADN.pdb
 pdb1mrk_A_0300_FMC.pdb
@@ -50636,7 +50595,7 @@ pdb6m17_A_0702_NAG.pdb
 pdb6m18_A_0705_3PH.pdb
 pdb8wby_A_0701_WM8.pdb
 pdb8wbz_A_0703_XF0.pdb
-pdb3ra8_A_0001_A.pdb
+pdb3ra8_A_0001_AMP.pdb
 pdb3qna_A_0121_BIO.pdb
 pdb4ntk_A_0202_ZSP.pdb
 pdb4ntm_A_0202_2K8.pdb
@@ -50719,12 +50678,14 @@ pdb3sx6_A_0500_FAD.pdb
 pdb3sx6_A_0501_LMT.pdb
 pdb3sx6_A_0505_H2S.pdb
 pdb3kpk_A_0504_PGR.pdb
+pdb3sx6_A_0160_TSY.pdb
 pdb3sx6_A_0502_DCQ.pdb
 pdb3sz0_A_0503_6SE.pdb
 pdb3sz0_A_0505_SE.pdb
 pdb3t0k_A_0503_S3H.pdb
 pdb3t14_A_0505_S2H.pdb
 pdb3t2z_A_0502_BU2.pdb
+pdb3t31_A_0160_CSS.pdb
 pdb2cbi_A_1627_GBL.pdb
 pdb2cbj_A_1625_OAN.pdb
 pdb2j62_A_1626_GSZ.pdb
@@ -50904,7 +50865,7 @@ pdb2y2q_A_1000_Z06.pdb
 pdb6q7r_A_0301_AC0.pdb
 pdb6q7r_A_0023_MHS.pdb
 pdb6njm_A_0901_ZK1.pdb
-pdb6njm_A_0905_NAG.pdb
+pdb6njm_A_0902_NAG.pdb
 pdb9cs0_A_0901_4NE.pdb
 pdb3k4d_A_0604_EVA.pdb
 pdb3lpf_A_0604_Z77.pdb
@@ -50937,7 +50898,7 @@ pdb7p46_A_0303_KYN.pdb
 pdb7zyi_A_0701_CLR.pdb
 pdb7zyi_A_0702_CHO.pdb
 pdb8xcd_A_0401_TCH.pdb
-pdb1ii7_A_0401_DA.pdb
+pdb1ii7_A_0401_D5M.pdb
 pdb5i78_A_0404_NAG.pdb
 pdb7r2c_A_0401_P9P.pdb
 pdb7r2c_A_0402_BGC.pdb
@@ -50984,7 +50945,7 @@ pdb8gru_B_0401_NAD.pdb
 pdb6x3s_A_0405_J94.pdb
 pdb6x3t_C_0404_NAG.pdb
 pdb6x3t_A_0405_ABU.pdb
-pdb6x3v_A_0406_V8D.pdb
+pdb6x3v_A_0403_V8D.pdb
 pdb6x3w_C_0501_UQA.pdb
 pdb6x3x_A_0406_DZP.pdb
 pdb8dd2_A_0402_R5R.pdb
@@ -51120,7 +51081,6 @@ pdb5pah_A_0600_LDP.pdb
 pdb6pah_A_0600_DAH.pdb
 pdb3t5o_A_1007_MAN.pdb
 pdb4a5w_B_1324_NAG.pdb
-pdb4a5w_B_1568_BMA.pdb
 pdb7nyc_B_1001_FUC.pdb
 pdb3e6i_A_0500_HEM.pdb
 pdb3e4e_A_0501_4PZ.pdb
@@ -51184,7 +51144,7 @@ pdb6uy0_A_1602_ADP.pdb
 pdb8vux_A_1601_Y01.pdb
 pdb8vux_B_1601_1SY.pdb
 pdb6ur8_B_0401_NAG.pdb
-pdb6cnj_B_0504_Y01.pdb
+pdb6cnj_B_0501_Y01.pdb
 pdb8ssz_E_0502_OCT.pdb
 pdb6fic_T_1701_DKH.pdb
 pdb7k03_A_1701_VJM.pdb
@@ -51302,13 +51262,11 @@ pdb6hae_K_0414_2PE.pdb
 pdb1kre_A_0901_DMJ.pdb
 pdb1krf_A_0901_KIF.pdb
 pdb1b1y_A_0552_BGC.pdb
-pdb6f9j_A_0601_NOJ.pdb
-pdb2xg9_A_1491_GLC.pdb
 pdb2xgb_A_1500_EPG.pdb
 pdb2xgi_A_1500_J5B.pdb
 pdb2xgi_A_1501_EBQ.pdb
 pdb6f9h_A_0601_SGJ.pdb
-pdb6f9j_A_0602_MAN.pdb
+pdb6f9h_A_0602_GLC.pdb
 pdb1x3s_A_0300_GNP.pdb
 pdb1rhs_A_0247_CSS.pdb
 pdb1dp2_A_0900_LPB.pdb
@@ -51453,7 +51411,7 @@ pdb1o6z_A_3001_NAD.pdb
 pdb4bgu_A_1342_1PE.pdb
 pdb4bgu_A_1343_P33.pdb
 pdb1z2m_A_0400_OS4.pdb
-pdb3pse_B_0157_3CN.pdb
+pdb3pse_B_0157_4LJ.pdb
 pdb3rt3_B_0161_SIN.pdb
 pdb8se9_B_1101_AMP.pdb
 pdb1pz2_A_0550_AHR.pdb
@@ -51937,7 +51895,7 @@ pdb7cko_A_0601_G5L.pdb
 pdb7ckr_A_0601_G5O.pdb
 pdb8chf_A_0701_29L.pdb
 pdb1wbf_A_0501_NAG.pdb
-pdb1wbl_A_0400_AMG.pdb
+pdb1wbl_A_0301_AMG.pdb
 pdb2d3s_A_0509_A2G.pdb
 pdb2dtw_A_1401_2GS.pdb
 pdb2du0_A_1401_GLA.pdb
@@ -52263,7 +52221,7 @@ pdb5hpe_A_1104_NCO.pdb
 pdb5ui1_A_0503_8D4.pdb
 pdb5wg8_A_0503_LB1.pdb
 pdb2fhi_A_0301_IB2.pdb
-pdb3fit_A_0400_A.pdb
+pdb3fit_A_0400_AMP.pdb
 pdb5fit_A_0200_AP2.pdb
 pdb6fit_A_0148_AMW.pdb
 pdb7p8p_A_0201_6BI.pdb
@@ -52345,7 +52303,7 @@ pdb8umn_A_0502_GPJ.pdb
 pdb8umn_A_0501_S3P.pdb
 pdb2vjm_A_1169_COA.pdb
 pdb1vgq_A_0429_CAO.pdb
-pdb1t4c_B_0169_OXX.pdb
+pdb1t4c_B_1002_OXD.pdb
 pdb2vjm_B_0169_A0A.pdb
 pdb8a7s_A_1301_NAP.pdb
 pdb8j2c_A_2001_TLA.pdb
@@ -52795,9 +52753,8 @@ pdb8beh_l_0201_3PH.pdb
 pdb6nml_A_0801_APC.pdb
 pdb1kny_A_0558_KAN.pdb
 pdb6un8_A_0300_NMY.pdb
-pdb6nmn_A_0302_A.pdb
+pdb6nmn_A_0302_AMP.pdb
 pdb6p08_A_0302_PPV.pdb
-pdb6p08_A_0305_AMP.pdb
 pdb4lq4_A_0301_TLA.pdb
 pdb5goz_A_0301_GTP.pdb
 pdb5wxb_A_1001_SAH.pdb
@@ -52971,7 +52928,7 @@ pdb6k80_A_0301_ZCW.pdb
 pdb3x2l_A_0201_40S.pdb
 pdb3x2o_A_0092_41Q.pdb
 pdb1b37_A_0800_FAD.pdb
-pdb1b5q_A_0590_MD2.pdb
+pdb1b5q_A_0502_MD2.pdb
 pdb1h82_A_0590_GZZ.pdb
 pdb1h83_A_0590_DIA.pdb
 pdb1h84_A_0591_NBA.pdb
@@ -53095,10 +53052,10 @@ pdb1nco_A_0114_MRD.pdb
 pdb1nco_B_0114_CHR.pdb
 pdb2cbo_A_0120_TH2.pdb
 pdb2g0l_A_0114_FLN.pdb
+pdb5u97_A_0605_BEZ.pdb
 pdb5u8z_A_0602_83D.pdb
 pdb5u90_A_0602_STL.pdb
 pdb5u97_A_0602_PIT.pdb
-pdb8fu2_A_0604_BEZ.pdb
 pdb5goe_A_0901_GDP.pdb
 pdb5gof_A_0901_GTP.pdb
 pdb6jfk_A_0802_CIT.pdb
@@ -53388,8 +53345,8 @@ pdb7u8w_A_0601_KUC.pdb
 pdb7u8x_A_0601_UJV.pdb
 pdb7ulk_A_0601_42C.pdb
 pdb7z52_B_2001_ANP.pdb
-pdb6ieh_B_1102_ATP.pdb
 pdb6ro1_A_1106_ADP.pdb
+pdb6ieh_B_1102_ATP.pdb
 pdb2qlx_A_0300_RM4.pdb
 pdb3bsn_A_0514_N5C.pdb
 pdb3bso_A_0514_CTP.pdb
@@ -53445,9 +53402,9 @@ pdb1epv_A_1001_DCS.pdb
 pdb1ftx_A_1001_EPC.pdb
 pdb1l6f_A_0390_PP3.pdb
 pdb1l6g_A_0390_PDD.pdb
-pdb1xql_A_0504_PLP.pdb
 pdb1xql_A_0503_PMH.pdb
 pdb1xql_A_0501_PMP.pdb
+pdb1xql_A_0504_PLP.pdb
 pdb1xql_A_0602_ACY.pdb
 pdb1xql_A_0605_4AX.pdb
 pdb2sfp_A_0400_PPI.pdb
@@ -53579,7 +53536,7 @@ pdb7zcu_A_0103_IRM.pdb
 pdb7ze3_A_0103_ZE0.pdb
 pdb3o6t_A_0117_PX5.pdb
 pdb8tr6_A_0602_GDP.pdb
-pdb6u9v_A_0711_Q3G.pdb
+pdb6u9v_A_0707_Q3G.pdb
 pdb8tr6_A_0608_PLM.pdb
 pdb6u9w_A_0715_ATP.pdb
 pdb8tr6_A_0606_NAG.pdb
@@ -53640,7 +53597,7 @@ pdb8w5k_I_0401_46E.pdb
 pdb6ucu_A_0401_LMT.pdb
 pdb6ucv_I_0401_MC3.pdb
 pdb1gyk_A_1207_CDG.pdb
-pdb1lgn_A_0401_DA.pdb
+pdb1lgn_A_0401_D5M.pdb
 pdb1sac_A_0300_ACY.pdb
 pdb2a3y_A_0610_CPJ.pdb
 pdb2a3x_C_0402_CPK.pdb
@@ -53748,7 +53705,7 @@ pdb5mrm_A_0401_Q9T.pdb
 pdb5mro_A_0401_Q9P.pdb
 pdb5vbl_B_1102_OLC.pdb
 pdb7sus_A_1102_8EH.pdb
-pdb4um9_C_3044_NAG.pdb
+pdb4um9_C_0707_NAG.pdb
 pdb6pbd_A_0501_SFG.pdb
 pdb5jp1_B_0096_AYE.pdb
 pdb4usa_A_0908_FES.pdb
@@ -53845,7 +53802,7 @@ pdb2q9o_A_0098_OHI.pdb
 pdb3fu7_A_3900_3DM.pdb
 pdb3fu7_B_2100_D2M.pdb
 pdb3fu7_B_2910_KIA.pdb
-pdb3fu9_A_1001_KIB.pdb
+pdb3fu9_A_0610_KIB.pdb
 pdb6f5k_A_0628_2PE.pdb
 pdb2wy3_A_1176_PEU.pdb
 pdb5hk7_A_0302_VVA.pdb
@@ -53957,7 +53914,7 @@ pdb2o1u_A_0755_ANP.pdb
 pdb2o1v_A_0301_ADP.pdb
 pdb2jjs_C_1117_NAG.pdb
 pdb6h04_D_0901_NAG.pdb
-pdb7nyc_C_0901_BMA.pdb
+pdb7nyc_C_0901_MAN.pdb
 pdb1q51_A_0501_CAA.pdb
 pdb1rjm_A_0315_EP1.pdb
 pdb1rjn_B_1210_COA.pdb
@@ -54414,8 +54371,8 @@ pdb3orq_B_0378_POP.pdb
 pdb7yvd_C_0601_SEC.pdb
 pdb7z21_E_0522_CSX.pdb
 pdb7te8_C_0201_P0T.pdb
-pdb2y2b_A_1000_AH0.pdb
-pdb2y2b_A_1001_MHI.pdb
+pdb2y2b_A_0201_AH0.pdb
+pdb2y2b_A_0202_MHI.pdb
 pdb3zje_A_0103_CSO.pdb
 pdb3zjg_B_0103_OCS.pdb
 pdb5v3p_A_0103_YCM.pdb
@@ -54439,7 +54396,7 @@ pdb4b8m_A_1359_VX6.pdb
 pdb4c2v_A_1357_YJA.pdb
 pdb4c2w_A_1001_ANP.pdb
 pdb5eyk_A_0401_5U5.pdb
-pdb5k3y_A_0402_6Q4.pdb
+pdb5k3y_A_0401_6Q4.pdb
 pdb7lbg_A_0804_NAG.pdb
 pdb8q2o_A_0501_FLC.pdb
 pdb8pz4_A_1012_78M.pdb
@@ -54531,7 +54488,7 @@ pdb7vkx_A_0801_BGC.pdb
 pdb7vkz_A_0801_NOJ.pdb
 pdb7vl0_A_0801_PNG.pdb
 pdb7vl1_A_0801_GYP.pdb
-pdb7vl2_A_0801_OGT.pdb
+pdb7vl2_A_0801_BW3.pdb
 pdb7vl3_A_0801_7OL.pdb
 pdb7vl4_A_0801_MGL.pdb
 pdb7vl6_A_0801_7OQ.pdb
@@ -55445,7 +55402,7 @@ pdb8u1w_A_0204_FHR.pdb
 pdb9d9t_A_0201_AG7.pdb
 pdb3q24_A_1106_GTP.pdb
 pdb3q23_A_1108_G2P.pdb
-pdb3q24_A_1107_G.pdb
+pdb3q24_A_1107_5GP.pdb
 pdb3q24_A_1109_POP.pdb
 pdb4ff2_A_1201_ATP.pdb
 pdb4ff4_A_1201_AMP.pdb
@@ -55847,7 +55804,9 @@ pdb3l0b_A_0300_1PG.pdb
 pdb3pgl_A_0257_RZX.pdb
 pdb2vzc_B_1373_MRD.pdb
 pdb3ojy_B_0540_BMA.pdb
+pdb7nyc_D_0602_MAN.pdb
 pdb3ojy_A_0556_BMA.pdb
+pdb7nyc_E_0601_MAN.pdb
 pdb7nyc_E_0604_NAG.pdb
 pdb1bin_A_0144_HEM.pdb
 pdb1fsl_A_0145_NIO.pdb
@@ -55887,7 +55846,7 @@ pdb7op6_B_0932_VKH.pdb
 pdb7op7_A_0911_VEE.pdb
 pdb4po5_A_0201_CYC.pdb
 pdb1ksk_A_0232_URA.pdb
-pdb1ksv_A_0232_U.pdb
+pdb1ksv_A_0232_U5P.pdb
 pdb4kx7_A_1015_NAG.pdb
 pdb4kxb_A_1017_BES.pdb
 pdb4s35_A_0201_ACP.pdb
@@ -56573,7 +56532,7 @@ pdb4nru_A_1101_2NG.pdb
 pdb4o4r_A_0601_20V.pdb
 pdb8iye_A_0501_GDP.pdb
 pdb4f97_A_0502_VDO.pdb
-pdb1t7v_A_0301_P6G.pdb
+pdb1t7v_A_0302_P6G.pdb
 pdb6r2u_A_0305_11D.pdb
 pdb2o28_A_0401_COA.pdb
 pdb2o28_A_0501_16G.pdb
@@ -56793,7 +56752,7 @@ pdb4bem_E_1084_HTG.pdb
 pdb7yf2_A_0401_SAH.pdb
 pdb7r8a_A_0701_CLR.pdb
 pdb6wmt_D_1704_G4P.pdb
-pdb6kpf_R_0401_8D0.pdb
+pdb6kpf_R_0401_E3R.pdb
 pdb6pt0_R_0401_WI5.pdb
 pdb6pt0_R_0402_PLM.pdb
 pdb6pt0_R_0403_CLR.pdb
@@ -57706,11 +57665,11 @@ pdb3u9f_A_0221_CLM.pdb
 pdb1j78_A_0459_OLA.pdb
 pdb1j78_B_0500_VDY.pdb
 pdb1j7e_A_0501_JY.pdb
-pdb1nd6_D_5015_NAG.pdb
-pdb1nd5_A_6000_2BF.pdb
-pdb1nd6_A_6000_1PE.pdb
+pdb1nd6_D_3401_NAG.pdb
+pdb1nd5_A_0401_2BF.pdb
+pdb1nd6_A_0402_1PE.pdb
 pdb1rpa_A_0343_TAR.pdb
-pdb2hpa_A_1345_PT3.pdb
+pdb2hpa_A_1402_PT3.pdb
 pdb7r89_B_0901_ERG.pdb
 pdb7r8b_B_0801_CLR.pdb
 pdb1loa_A_0182_GYP.pdb
@@ -57748,7 +57707,6 @@ pdb7wxg_A_0801_NAP.pdb
 pdb3vvg_A_0501_ZGB.pdb
 pdb6psy_E_0404_NAG.pdb
 pdb8q6r_D_0501_MAN.pdb
-pdb7b26_B_0506_BMA.pdb
 pdb1dk0_A_0200_HEM.pdb
 pdb4zqd_B_0401_0X3.pdb
 pdb6e3s_B_0401_79A.pdb
@@ -57757,6 +57715,7 @@ pdb6e3u_B_0401_HNJ.pdb
 pdb7w80_B_0401_72Q.pdb
 pdb1bei_A_0022_DNP.pdb
 pdb2k9e_A_0000_PFX.pdb
+pdb2k9e_A_-001_ZV4.pdb
 pdb2k9e_A_0021_NLE.pdb
 pdb5i5b_A_0013_ALO.pdb
 pdb5coa_A_2001_P6G.pdb
@@ -58113,7 +58072,6 @@ pdb4fiz_A_0301_CUE.pdb
 pdb4fj0_B_0302_HHF.pdb
 pdb4fj1_B_0302_GEN.pdb
 pdb4fj2_B_0302_QSO.pdb
-pdb4air_A_1328_FGA.pdb
 pdb8b9y_A_0703_PLP.pdb
 pdb8b9y_A_0701_OAS.pdb
 pdb8b9y_A_0702_RIB.pdb
@@ -58458,7 +58416,7 @@ pdb5owc_A_0202_AYZ.pdb
 pdb6g5j_A_0202_EM8.pdb
 pdb8ono_A_0701_SPM.pdb
 pdb7ywp_A_0701_TCK.pdb
-pdb3hsy_A_0383_NAG.pdb
+pdb3hsy_A_0401_NAG.pdb
 pdb4r1q_A_0501_SST.pdb
 pdb7cyy_B_0501_RB0.pdb
 pdb2kwo_B_0001_SAC.pdb
@@ -58601,8 +58559,8 @@ pdb2vzw_B_1210_OXY.pdb
 pdb4ynr_A_0302_CMO.pdb
 pdb4yof_A_0302_NO.pdb
 pdb7c43_A_0405_AMP.pdb
-pdb7c47_A_0403_C.pdb
-pdb7c4b_A_0405_U.pdb
+pdb7c47_A_0403_C5P.pdb
+pdb7c4b_A_0405_U5P.pdb
 pdb7c4c_A_0413_5GP.pdb
 pdb5hbp_A_0063_SNC.pdb
 pdb5hbp_A_0063_CSS.pdb
@@ -58737,7 +58695,6 @@ pdb2e4x_A_1001_C5B.pdb
 pdb2e4y_A_1001_52A.pdb
 pdb3sm9_A_0485_Z99.pdb
 pdb4xar_A_0601_40F.pdb
-pdb5cnk_A_0601_GGL.pdb
 pdb5cnm_A_0601_52Q.pdb
 pdb6b7h_A_0806_CWY.pdb
 pdb8br4_A_0401_NAD.pdb
@@ -58781,7 +58738,7 @@ pdb8wb4_2_0616_IHT.pdb
 pdb8wb4_2_0617_LMG.pdb
 pdb8xlp_2_0621_LHG.pdb
 pdb8wb4_2_0610_KC2.pdb
-pdb2n63_A_0001_PTL.pdb
+pdb2n63_A_0101_LEA.pdb
 pdb2zat_A_1261_NAP.pdb
 pdb4lzj_B_0401_22H.pdb
 pdb8jew_A_0601_ASC.pdb
@@ -59023,11 +58980,11 @@ pdb2gmh_A_0611_FAD.pdb
 pdb2gmh_A_0612_UQ5.pdb
 pdb2gmh_A_0616_BHG.pdb
 pdb2gmj_A_0621_TBU.pdb
-pdb7avo_A_0200_LYR.pdb
 pdb7avp_A_0301_LFA.pdb
 pdb8rso_A_0501_OLC.pdb
-pdb7avn_A_0314_OLB.pdb
 pdb7avp_A_0319_RET.pdb
+pdb7avn_A_0314_OLB.pdb
+pdb7avo_A_0200_LYR.pdb
 pdb7q37_A_0001_FME.pdb
 pdb7q37_A_0321_KR.pdb
 pdb8rss_A_0501_OLA.pdb
@@ -59130,6 +59087,7 @@ pdb7mjw_A_0501_ZKP.pdb
 pdb7mjw_A_0503_5AD.pdb
 pdb7mjy_A_0613_SAH.pdb
 pdb7mjz_A_0503_PS5.pdb
+pdb5ft8_Q_0061_CSS.pdb
 pdb2yk3_A_0083_M3L.pdb
 pdb2yk3_A_0200_HEC.pdb
 pdb4dy9_A_0201_HEM.pdb
@@ -59147,7 +59105,7 @@ pdb3njz_A_0370_SAL.pdb
 pdb3nkt_A_0370_1HN.pdb
 pdb3nw4_A_0370_GTQ.pdb
 pdb6tqh_A_0901_NAD.pdb
-pdb6tqm_B_0902_TXE.pdb
+pdb6tqm_B_0902_NAI.pdb
 pdb8r3s_A_0701_TPP.pdb
 pdb7ld9_A_0601_NAG.pdb
 pdb7l1v_R_0401_XGD.pdb
@@ -59180,7 +59138,7 @@ pdb3kvy_A_0312_URA.pdb
 pdb3kvy_A_0313_R2B.pdb
 pdb5yx4_A_0301_HCC.pdb
 pdb8v8p_A_0301_DFV.pdb
-pdb2dxd_A_0501_ANP.pdb
+pdb2dxd_A_0501_AMP.pdb
 pdb2dxe_A_0501_GDP.pdb
 pdb2dxf_A_0501_GNP.pdb
 pdb2dya_A_0501_ADP.pdb
@@ -59363,7 +59321,7 @@ pdb7moi_A_0501_HPS.pdb
 pdb4cnq_A_0018_ASB.pdb
 pdb2ymq_A_0018_ASL.pdb
 pdb2yn4_A_1237_39J.pdb
-pdb2eak_A_0278_DTV.pdb
+pdb2eak_A_0201_DTV.pdb
 pdb3wlu_A_0201_LSE.pdb
 pdb6iu3_A_0301_OLC.pdb
 pdb2vc2_B_1477_180.pdb
@@ -59748,6 +59706,7 @@ pdb4ly0_A_0302_DAU.pdb
 pdb4ly3_A_0301_1YJ.pdb
 pdb4ly3_B_0302_1YF.pdb
 pdb6xi0_D_0501_HEC.pdb
+pdb1zrt_Q_0502_PG6.pdb
 pdb7svq_A_0401_NAD.pdb
 pdb4maf_A_0900_ADX.pdb
 pdb5tcx_A_0080_YCM.pdb
@@ -59985,12 +59944,10 @@ pdb4dvk_A_1107_NAG.pdb
 pdb4dvl_A_1117_JKM.pdb
 pdb4dvn_A_1118_U2P.pdb
 pdb4dw3_A_1117_C5P.pdb
-pdb4dw4_A_1118_U5P.pdb
-pdb4dw5_A_1117_CSQ.pdb
-pdb4dw5_A_1118_CSV.pdb
-pdb4dw5_A_1119_1PE.pdb
-pdb4dw5_B_1116_U.pdb
-pdb4dw7_A_1111_C.pdb
+pdb4dw5_B_0207_U5P.pdb
+pdb4dw5_A_0207_CSQ.pdb
+pdb4dw5_A_0208_CSV.pdb
+pdb4dw5_A_0209_1PE.pdb
 pdb8g7z_C_0502_NAG.pdb
 pdb1iss_A_1001_MCG.pdb
 pdb3ks9_A_0001_Z99.pdb
@@ -60024,7 +59981,7 @@ pdb2o06_A_0601_PUT.pdb
 pdb2o07_A_0601_SPD.pdb
 pdb2o0l_A_0501_S4M.pdb
 pdb3rw9_A_0303_DSH.pdb
-pdb2wnb_A_1344_C5P.pdb
+pdb2wnb_A_0401_C5P.pdb
 pdb8sql_A_1601_PTY.pdb
 pdb8sq0_A_1602_GP7.pdb
 pdb8sq0_A_1603_LPP.pdb
@@ -60293,10 +60250,10 @@ pdb8tve_A_0602_NAG.pdb
 pdb7s04_A_0501_F98.pdb
 pdb7s04_A_0503_NDP.pdb
 pdb3r9v_B_0001_DXC.pdb
+pdb6i3l_A_0617_OXY.pdb
 pdb6i3k_A_0611_FC6.pdb
 pdb6i3k_A_0613_SIN.pdb
 pdb6i3j_B_0621_PGR.pdb
-pdb6i3l_A_0617_OXY.pdb
 pdb6iqx_A_0608_NAG.pdb
 pdb3otb_A_0301_DGT.pdb
 pdb3otb_A_0302_3PO.pdb
@@ -60954,8 +60911,8 @@ pdb1gvg_A_0332_HOA.pdb
 pdb6vwq_A_0401_VVO.pdb
 pdb6vwq_A_0402_SIN.pdb
 pdb6vwq_A_0403_RQJ.pdb
+pdb1xmz_C_0065_CRK.pdb
 pdb2a50_B_0065_NRQ.pdb
-pdb1xmz_A_0065_CRK.pdb
 pdb6sj8_A_0901_44V.pdb
 pdb6sk4_A_0901_THH.pdb
 pdb4i5i_A_0601_4I5.pdb
@@ -61004,8 +60961,6 @@ pdb4q36_A_0404_GCS.pdb
 pdb6iix_A_0401_CO8.pdb
 pdb4q38_A_0404_TEC.pdb
 pdb3dfl_A_0308_GBS.pdb
-pdb3e0n_B_0273_DPN.pdb
-pdb3e0n_B_0275_ARM.pdb
 pdb3e0p_B_0001_B3C.pdb
 pdb3e16_B_0001_B4C.pdb
 pdb3fvf_B_0001_1JZ.pdb
@@ -61456,7 +61411,8 @@ pdb4ms4_A_0501_2C0.pdb
 pdb7jgs_D_0901_ATP.pdb
 pdb3zok_A_1381_NAD.pdb
 pdb3zok_B_1383_2PE.pdb
-pdb1m8v_A_0410_U.pdb
+pdb7kl1_C_1401_ATP.pdb
+pdb1m8v_A_0410_U5P.pdb
 pdb4fo0_A_0702_ATP.pdb
 pdb6sqw_A_0202_5CM.pdb
 pdb6sqy_A_0202_DCM.pdb
@@ -61707,7 +61663,6 @@ pdb6njs_A_0701_KQV.pdb
 pdb6qhd_A_0685_ALY.pdb
 pdb2d8a_A_0401_NAD.pdb
 pdb3phx_A_0193_ACY.pdb
-pdb3prm_C_0179_3CN.pdb
 pdb5v5g_A_0040_CSX.pdb
 pdb3vc1_A_0302_SAH.pdb
 pdb3vc1_A_0303_GST.pdb
@@ -61839,7 +61794,7 @@ pdb2aq6_A_0401_PLP.pdb
 pdb4qvb_A_0304_PDO.pdb
 pdb4qvb_A_0310_PGO.pdb
 pdb4qvb_B_0201_F42.pdb
-pdb1z68_A_3141_NAG.pdb
+pdb1z68_A_4902_NAG.pdb
 pdb6y0f_A_0806_356.pdb
 pdb2xod_A_1119_FMN.pdb
 pdb7z3e_B_0201_FNR.pdb
@@ -62060,9 +62015,9 @@ pdb2oci_A_0401_TYC.pdb
 pdb4m7f_A_0503_BM3.pdb
 pdb6zqx_B_0504_ACY.pdb
 pdb6zqx_A_0506_NAG.pdb
-pdb6zqy_A_0507_SLB.pdb
+pdb6zqy_A_0504_SLB.pdb
 pdb6zr0_A_0506_AYA.pdb
-pdb6zr3_A_0506_ASG.pdb
+pdb6zr3_A_0504_ASG.pdb
 pdb7sze_A_0501_FES.pdb
 pdb6wnb_A_0504_U5A.pdb
 pdb7sze_A_0502_9SL.pdb
@@ -62395,8 +62350,8 @@ pdb8wcl_9_0308_CLA.pdb
 pdb8wcl_9_0310_KC2.pdb
 pdb8wcl_9_0315_KC1.pdb
 pdb8wcl_9_0317_LMG.pdb
-pdb5icx_E_0001_SC2.pdb
 pdb5hyq_E_0012_CY3.pdb
+pdb5icx_E_0001_SC2.pdb
 pdb5u5f_D_0005_2GX.pdb
 pdb7yg5_A_2401_Y01.pdb
 pdb7yg5_A_2403_R16.pdb
@@ -62440,6 +62395,7 @@ pdb6deb_B_0306_DTT.pdb
 pdb2wzm_A_1284_NA7.pdb
 pdb7r3g_B_0301_K5G.pdb
 pdb8b4a_C_0301_HL4.pdb
+pdb6fdk_A_0502_AYE.pdb
 pdb6fdq_A_0501_2UQ.pdb
 pdb6fdu_B_0501_D5W.pdb
 pdb6gzt_A_0506_COA.pdb
@@ -62609,7 +62565,7 @@ pdb3h80_A_0223_ANP.pdb
 pdb3o6o_A_0214_94M.pdb
 pdb3o6o_B_1300_1PE.pdb
 pdb3omu_A_0215_IBD.pdb
-pdb3opd_A_0214_HIE.pdb
+pdb3opd_A_0214_E0G.pdb
 pdb3q5j_A_0214_D1S.pdb
 pdb3q5k_A_0214_D1U.pdb
 pdb3q5l_A_0801_KX2.pdb
@@ -62803,7 +62759,7 @@ pdb9ewz_C_1302_SAM.pdb
 pdb1qs7_B_0004_TRF.pdb
 pdb3obh_A_0201_CIT.pdb
 pdb3obh_B_0102_ACY.pdb
-pdb4g06_A_0101_DT.pdb
+pdb4g06_A_0101_TMP.pdb
 pdb6jip_A_0100_1PE.pdb
 pdb8g05_R_0401_YI9.pdb
 pdb8g05_R_0402_CLR.pdb
@@ -63018,7 +62974,6 @@ pdb8fg8_A_1203_BTB.pdb
 pdb8uf5_A_1102_WIJ.pdb
 pdb5bur_A_0506_ATP.pdb
 pdb5x8f_A_0502_AMP.pdb
-pdb5gtd_A_0505_A.pdb
 pdb5gtd_A_0506_OSB.pdb
 pdb5x8f_A_0501_S0N.pdb
 pdb4y4n_A_0302_48H.pdb
@@ -63307,6 +63262,7 @@ pdb7sec_A_0402_8WP.pdb
 pdb7sed_A_0401_8VD.pdb
 pdb2czc_A_0501_NAD.pdb
 pdb8gmp_C_0401_POV.pdb
+pdb6fbt_A_0706_NAG.pdb
 pdb6fcq_A_0701_BUL.pdb
 pdb6edh_B_0303_TAU.pdb
 pdb1gy9_A_0351_AKG.pdb
@@ -63679,6 +63635,7 @@ pdb1hav_B_0172_OCS.pdb
 pdb1qa7_A_0301_IVF.pdb
 pdb2a4o_A_0308_NFA.pdb
 pdb2hal_A_0901_BBL.pdb
+pdb1qy9_B_0072_CSO.pdb
 pdb5hcc_A_2007_DIO.pdb
 pdb8ayh_A_1701_H1H.pdb
 pdb8coe_A_2000_NAG.pdb
@@ -63796,7 +63753,7 @@ pdb4c0n_A_1157_HEM.pdb
 pdb4mtk_A_0749_TAM.pdb
 pdb2qkm_B_0267_ATP.pdb
 pdb5kq4_E_0301_6VQ.pdb
-pdb5n2v_B_0304_8NK.pdb
+pdb5n2v_B_0304_M7G.pdb
 pdb1o68_A_0275_KIV.pdb
 pdb5wed_B_0601_FAD.pdb
 pdb5kms_A_0602_NAD.pdb
@@ -64036,7 +63993,7 @@ pdb1rqi_A_0606_DPO.pdb
 pdb1rqj_A_0900_IPE.pdb
 pdb1rqj_A_0901_RIS.pdb
 pdb1ksi_A_0387_TPQ.pdb
-pdb1ksi_A_0657_NAG.pdb
+pdb1ksi_A_0701_NAG.pdb
 pdb5lc0_A_1201_6T8.pdb
 pdb7m1v_A_1201_YO1.pdb
 pdb4ls7_A_0504_1X9.pdb
@@ -64567,6 +64524,7 @@ pdb4kuk_A_0097_NMM.pdb
 pdb4kuk_A_0201_RBF.pdb
 pdb4kuk_A_0202_ACY.pdb
 pdb6gbv_A_0500_FMN.pdb
+pdb4s0n_A_0201_TMP.pdb
 pdb3pua_A_0454_OGA.pdb
 pdb3pu8_B_0002_OXY.pdb
 pdb8j6z_G_0201_CLA.pdb
@@ -64691,6 +64649,7 @@ pdb8iqu_A_0601_649.pdb
 pdb6kc2_A_0409_RAM.pdb
 pdb6li7_A_0411_NGA.pdb
 pdb6lik_A_0411_GLA.pdb
+pdb6t0q_A_0402_NAG.pdb
 pdb1n8v_A_0501_BDD.pdb
 pdb6lft_A_0202_APR.pdb
 pdb6lfs_A_0202_CXS.pdb
@@ -65753,7 +65712,6 @@ pdb2czf_A_0209_XMP.pdb
 pdb8orj_B_0601_NAD.pdb
 pdb8orj_B_0602_FDA.pdb
 pdb6hd8_B_0501_LMT.pdb
-pdb6azi_A_0068_SEE.pdb
 pdb7y7b_M_0101_8CT.pdb
 pdb8wm6_M_0101_WVN.pdb
 pdb7y7b_K_0101_CLA.pdb
@@ -66293,7 +66251,7 @@ pdb1ofe_A_2511_ONL.pdb
 pdb3l7m_A_0738_EDT.pdb
 pdb3l7l_D_0730_C2G.pdb
 pdb4w85_B_0501_BGC.pdb
-pdb2z1y_A_1400_PLP.pdb
+pdb2z1y_A_0402_PLP.pdb
 pdb2zyj_A_0500_PGU.pdb
 pdb3cbf_A_0500_N5F.pdb
 pdb1ct9_A_1100_AMP.pdb
@@ -66836,7 +66794,7 @@ pdb6mel_B_0501_CIT.pdb
 pdb4f0x_B_0501_0OR.pdb
 pdb4mnk_A_0407_B3P.pdb
 pdb4mnm_A_0402_NAG.pdb
-pdb4r5e_A_0403_AO3.pdb
+pdb4r5e_A_0403_AMI.pdb
 pdb1yfr_A_1500_ATP.pdb
 pdb5dn8_A_0501_GDP.pdb
 pdb7d06_A_0301_PGV.pdb
@@ -67923,7 +67881,7 @@ pdb6e0y_A_0202_HOA.pdb
 pdb8hc5_C_0701_NAG.pdb
 pdb2ga9_D_0482_AGS.pdb
 pdb3er9_B_0800_3AT.pdb
-pdb3erc_C_0600_U.pdb
+pdb3erc_C_0600_U5P.pdb
 pdb3epm_A_1001_HMH.pdb
 pdb3epn_A_1001_IRN.pdb
 pdb3epo_A_1001_MP5.pdb
@@ -68047,8 +68005,8 @@ pdb6uqc_C_0507_NAG.pdb
 pdb6uqc_F_0501_FUC.pdb
 pdb1yqq_A_0400_GUN.pdb
 pdb3odg_A_0288_XAN.pdb
-pdb1ibv_B_0082_PYR.pdb
-pdb1ibv_B_0482_PVH.pdb
+pdb1ibv_B_0483_PYR.pdb
+pdb1ibv_B_0801_PVH.pdb
 pdb5bse_A_0301_MPO.pdb
 pdb5bsf_A_0301_NAD.pdb
 pdb5bsg_A_0301_NAP.pdb
@@ -68297,7 +68255,6 @@ pdb1q55_A_0801_NAG.pdb
 pdb1q55_A_0804_NDG.pdb
 pdb4xaq_A_0601_40F.pdb
 pdb4xas_A_0601_40H.pdb
-pdb5cni_A_0601_GGL.pdb
 pdb5cnj_A_0602_52Q.pdb
 pdb5kzq_A_0601_6YS.pdb
 pdb5kzq_A_0602_NAG.pdb
@@ -68470,7 +68427,7 @@ pdb7tuo_A_0801_KL9.pdb
 pdb8p14_A_0601_VIS.pdb
 pdb1h4q_A_1478_ATP.pdb
 pdb1h4q_A_1480_PRI.pdb
-pdb1h4s_A_1478_PSD.pdb
+pdb1h4s_A_1478_P5A.pdb
 pdb3tr5_A_0527_GDP.pdb
 pdb1xco_A_0401_UVW.pdb
 pdb2d5n_B_0381_NDP.pdb
@@ -68496,7 +68453,7 @@ pdb1fo3_A_0704_KIF.pdb
 pdb1x9d_A_1004_BU1.pdb
 pdb5kij_A_0715_1PS.pdb
 pdb5ms4_A_0301_TBU.pdb
-pdb2c7l_A_1163_BLA.pdb
+pdb2c7l_A_1163_CYC.pdb
 pdb2j96_A_1163_PVN.pdb
 pdb8r70_A_0701_P4K.pdb
 pdb3n7s_A_0001_3N6.pdb
@@ -68633,6 +68590,7 @@ pdb4jhi_A_0202_EMU.pdb
 pdb7qb6_A_0201_A8I.pdb
 pdb1wri_A_0096_FES.pdb
 pdb1wri_A_0501_BEN.pdb
+pdb1gul_A_0301_IBG.pdb
 pdb3ik7_A_0501_BOB.pdb
 pdb6c32_A_0301_ACO.pdb
 pdb6c37_A_0301_5NG.pdb
@@ -68954,6 +68912,7 @@ pdb8sm0_C_0602_NAG.pdb
 pdb1jbm_A_1002_ACY.pdb
 pdb1loj_A_9010_U.pdb
 pdb1loj_B_9007_URI.pdb
+pdb1loj_N_9013_U5P.pdb
 pdb3r5z_A_0201_F42.pdb
 pdb7kl8_A_0401_6J4.pdb
 pdb3ktm_A_0001_BU4.pdb
@@ -69009,8 +68968,7 @@ pdb4v2o_B_1079_CLQ.pdb
 pdb6slr_B_0203_AOQ.pdb
 pdb4am9_A_1161_BU3.pdb
 pdb2ad6_A_0701_PQQ.pdb
-pdb6j5t_I_0501_BQL.pdb
-pdb6j5t_I_0502_BQO.pdb
+pdb6j5t_I_0501_U5P.pdb
 pdb1ady_A_0423_HAM.pdb
 pdb4rdx_A_0501_AMP.pdb
 pdb1oxu_A_1486_ADP.pdb
@@ -69344,7 +69302,7 @@ pdb2r9e_A_0700_SDX.pdb
 pdb8wuw_A_0602_ANP.pdb
 pdb2a9d_A_1501_MTE.pdb
 pdb2a9d_A_2501_MO.pdb
-pdb6s0a_B_0203_MAN.pdb
+pdb6s0a_B_0202_MAN.pdb
 pdb4u1b_A_0404_Q08.pdb
 pdb4u69_A_0404_Q07.pdb
 pdb4u6c_A_0404_Q06.pdb
@@ -70065,7 +70023,7 @@ pdb5jd4_A_0406_PE3.pdb
 pdb5jd4_A_0407_BEN.pdb
 pdb6i8d_A_0401_H7N.pdb
 pdb6rb0_A_0403_MHH.pdb
-pdb6rky_A_0161_K7K.pdb
+pdb6rky_A_0402_ZK8.pdb
 pdb7ks4_B_0308_ADP.pdb
 pdb5wzf_B_0052_CSO.pdb
 pdb2ntk_A_0205_IMP.pdb
@@ -70152,7 +70110,7 @@ pdb2g8y_A_1001_NAD.pdb
 pdb6g0z_B_0301_GDP.pdb
 pdb6g12_A_0301_GNP.pdb
 pdb6g14_B_0301_G4P.pdb
-pdb6g15_A_0301_C1Z.pdb
+pdb6g15_A_0301_0O2.pdb
 pdb8ahx_C_0500_FMN.pdb
 pdb8ahx_C_0501_SF4.pdb
 pdb8ahx_B_0201_SF4.pdb
@@ -70165,7 +70123,7 @@ pdb5ud7_A_0201_NAG.pdb
 pdb6b8o_B_0204_PSF.pdb
 pdb8e83_A_0600_HEM.pdb
 pdb4js1_A_0510_CTN.pdb
-pdb4js2_A_0511_C.pdb
+pdb4js2_A_0511_C5P.pdb
 pdb4mps_A_0501_NAG.pdb
 pdb6qvt_A_0501_NCC.pdb
 pdb4zoh_C_0201_FES.pdb
@@ -70806,7 +70764,7 @@ pdb4ava_A_1334_ACO.pdb
 pdb4avb_A_0400_CMP.pdb
 pdb6kyy_A_0501_FAD.pdb
 pdb2hbl_A_2001_AMP.pdb
-pdb2hbm_A_3001_U.pdb
+pdb2hbm_A_3001_U5P.pdb
 pdb8d8l_0_0701_SF4.pdb
 pdb2pa7_A_0141_TYD.pdb
 pdb2v77_A_0400_PAY.pdb
@@ -71049,7 +71007,7 @@ pdb6d32_A_1201_CY8.pdb
 pdb7zi0_A_0701_V0S.pdb
 pdb3vt1_B_0601_GAL.pdb
 pdb3vt2_A_0601_IPT.pdb
-pdb5ein_C_0102_UN1.pdb
+pdb5ein_C_0054_R0K.pdb
 pdb2vcd_A_0138_RAP.pdb
 pdb8bje_A_0203_WRL.pdb
 pdb8bk5_A_0201_9QN.pdb
@@ -71243,7 +71201,7 @@ pdb7nox_B_0602_TAM.pdb
 pdb7o8c_A_0601_HED.pdb
 pdb6ewz_A_0301_GTP.pdb
 pdb6ewz_A_0302_APC.pdb
-pdb6ex0_A_0301_C1Z.pdb
+pdb6ex0_A_0301_0O2.pdb
 pdb1mky_A_0500_GDP.pdb
 pdb1zy5_A_0303_ANP.pdb
 pdb1zyd_A_0303_ATP.pdb
@@ -73050,7 +73008,6 @@ pdb8j0d_4_0307_KC2.pdb
 pdb8j0d_4_0317_LMT.pdb
 pdb7doo_A_0301_NXL.pdb
 pdb5vte_B_0022_PHI.pdb
-pdb5eon_A_0030_LYN.pdb
 pdb2o6i_A_0505_HED.pdb
 pdb4lrl_A_0502_DGT.pdb
 pdb3irh_B_0459_DTP.pdb
@@ -73569,9 +73526,8 @@ pdb8etf_H_0401_WU5.pdb
 pdb8fao_H_0401_XLK.pdb
 pdb4cvk_A_1452_UDP.pdb
 pdb4cvk_A_1453_MUB.pdb
-pdb4cvk_A_1455_FGA.pdb
-pdb4cvk_A_1456_API.pdb
 pdb4cvl_A_1452_ACP.pdb
+pdb4cvm_A_1455_FGA.pdb
 pdb4cvm_A_1456_ANP.pdb
 pdb2xwp_A_1259_SIR.pdb
 pdb1lv9_A_0027_MLE.pdb
@@ -73937,7 +73893,7 @@ pdb1u7w_A_0500_CTP.pdb
 pdb1u7z_A_0500_PMT.pdb
 pdb1u80_A_0500_C5P.pdb
 pdb4fbg_A_1001_NAD.pdb
-pdb3taz_B_0453_DA.pdb
+pdb3taz_B_0453_D5M.pdb
 pdb1c2r_A_0120_HEC.pdb
 pdb1vyd_A_1117_HEM.pdb
 pdb4wct_A_0500_FAD.pdb
@@ -74621,7 +74577,6 @@ pdb4zl4_A_0501_4PK.pdb
 pdb4zl4_B_0508_4PF.pdb
 pdb6c4g_A_0504_EQG.pdb
 pdb7xqp_H_0201_CLA.pdb
-pdb2bkd_N_0024_HSO.pdb
 pdb3qby_H_0020_M3L.pdb
 pdb3uvy_B_0016_ALY.pdb
 pdb5gud_A_0501_2IT.pdb
@@ -75093,6 +75048,7 @@ pdb5bv6_A_0501_35G.pdb
 pdb5jix_A_0510_PE5.pdb
 pdb5jix_A_0511_6J7.pdb
 pdb5jiz_A_0501_6FW.pdb
+pdb6bq8_A_0501_WNU.pdb
 pdb2yip_A_1135_YIO.pdb
 pdb4dep_C_0401_NAG.pdb
 pdb4ptv_A_0503_PE4.pdb
@@ -75744,6 +75700,7 @@ pdb3zfs_C_0285_F42.pdb
 pdb4omf_B_0401_SF4.pdb
 pdb4omf_B_0405_FAD.pdb
 pdb4omf_B_0403_KEN.pdb
+pdb4omf_B_0404_UNL.pdb
 pdb4omf_A_0502_NFU.pdb
 pdb4omf_G_0301_SF4.pdb
 pdb2wbv_A_1545_SIA.pdb
@@ -75838,7 +75795,7 @@ pdb7erq_A_0135_CSO.pdb
 pdb1qzu_A_0801_FMN.pdb
 pdb4pz6_B_0501_GMP.pdb
 pdb4pz7_A_0067_GPL.pdb
-pdb7oy3_B_0071_RGP.pdb
+pdb7oy3_B_0071_VHF.pdb
 pdb8h4j_A_0301_FMN.pdb
 pdb7n2w_A_0302_05G.pdb
 pdb8h4j_A_0302_1IE.pdb
@@ -75854,7 +75811,7 @@ pdb3n98_A_0569_DIO.pdb
 pdb2r10_A_0025_ALY.pdb
 pdb8r1e_B_0601_FAD.pdb
 pdb8png_B_0603_1PE.pdb
-pdb1cvj_A_0991_A.pdb
+pdb1cvj_A_0991_AMP.pdb
 pdb6tdy_A_0601_ATP.pdb
 pdb2gia_A_7401_ACY.pdb
 pdb6igk_A_1201_OLC.pdb
@@ -75882,8 +75839,7 @@ pdb1orn_A_0300_SF4.pdb
 pdb5z3i_A_0301_ADE.pdb
 pdb5z3j_A_0302_NCA.pdb
 pdb7dmx_A_0233_CR8.pdb
-pdb7dna_F_0301_NFA.pdb
-pdb7dna_F_0302_IEY.pdb
+pdb7dnb_C_0231_NFA.pdb
 pdb7sfj_A_0002_AYA.pdb
 pdb7sfj_A_0401_PEE.pdb
 pdb7w9w_A_0401_RET.pdb
@@ -75923,7 +75879,7 @@ pdb8xlp_z_0102_LMG.pdb
 pdb8xlp_z_0103_LHG.pdb
 pdb2z10_A_0111_IYR.pdb
 pdb7tlm_A_0375_CSS.pdb
-pdb7tlm_A_0501_PLP.pdb
+pdb7tlm_A_0600_PLP.pdb
 pdb7tlp_A_0501_PLG.pdb
 pdb6d6t_A_0405_ABU.pdb
 pdb6d6t_A_0406_Y01.pdb
@@ -76087,7 +76043,6 @@ pdb2zc3_B_0801_BMG.pdb
 pdb2zc4_B_0801_TEB.pdb
 pdb7vus_A_0101_3NY.pdb
 pdb5zjz_B_0008_MK8.pdb
-pdb4bea_B_0063_NME.pdb
 pdb9gh5_D_0501_NAG.pdb
 pdb4dmm_B_0301_NAP.pdb
 pdb3m7o_A_0163_BEN.pdb
@@ -76473,7 +76428,6 @@ pdb1moz_A_0184_GDP.pdb
 pdb8ezj_C_0301_GTP.pdb
 pdb1fvi_A_0501_AMP.pdb
 pdb5xsn_A_0703_2BA.pdb
-pdb5xsp_A_0703_A.pdb
 pdb5xt3_A_0703_C2E.pdb
 pdb4ad0_A_0500_B3P.pdb
 pdb7xtj_A_0801_NAG.pdb
@@ -77099,7 +77053,7 @@ pdb4eyg_A_0401_VNL.pdb
 pdb4eyg_A_0403_IPA.pdb
 pdb4eyk_A_0401_DHB.pdb
 pdb3ghm_A_0900_NAG.pdb
-pdb3vn4_A_0905_BMA.pdb
+pdb3vn4_A_0702_MAN.pdb
 pdb4ri6_A_0500_GSH.pdb
 pdb3bw2_A_0370_FMN.pdb
 pdb3bw3_A_0371_NIE.pdb
@@ -77410,10 +77364,10 @@ pdb3ndc_A_0300_SAH.pdb
 pdb6zxb_A_0301_GH3.pdb
 pdb6zxc_A_0056_BFD.pdb
 pdb6zxm_A_0301_C2E.pdb
-pdb6y0u_E_0006_DLY.pdb
-pdb6y0u_E_0101_ZDC.pdb
+pdb6y0u_E_0107_DLY.pdb
+pdb6y0u_E_0201_ZDC.pdb
 pdb6y14_A_0101_O65.pdb
-pdb6y14_B_0103_CIT.pdb
+pdb6y14_B_0201_CIT.pdb
 pdb7zm7_a_0301_LMT.pdb
 pdb7zmb_h_0201_CDL.pdb
 pdb2x41_A_1726_BGC.pdb
@@ -77595,8 +77549,7 @@ pdb6mea_A_0500_APR.pdb
 pdb6meb_A_0500_NAD.pdb
 pdb6men_A_0500_ADQ.pdb
 pdb4mzj_T_0801_NLE.pdb
-pdb4mzl_C_0799_BUA.pdb
-pdb4mzl_C_0802_2JC.pdb
+pdb4mzl_C_0802_X5H.pdb
 pdb1uzx_A_0090_MSO.pdb
 pdb7rom_A_0301_FAD.pdb
 pdb5n16_A_0401_8FN.pdb
@@ -77672,6 +77625,7 @@ pdb2yaj_A_1898_4HP.pdb
 pdb4iis_A_0402_FLC.pdb
 pdb1uz4_A_1432_IFL.pdb
 pdb8tec_C_0794_ALY.pdb
+pdb4ct3_E_0054_CMH.pdb
 pdb4olk_A_0202_B3P.pdb
 pdb4jn9_A_0401_FAD.pdb
 pdb8u1i_A_0501_HEM.pdb
@@ -77993,6 +77947,8 @@ pdb2o66_A_0201_FLC.pdb
 pdb2rd5_C_1000_ATP.pdb
 pdb8iey_A_0010_CSO.pdb
 pdb8ifx_A_0402_ADP.pdb
+pdb1qi9_A_0398_IYR.pdb
+pdb1qi9_A_0447_TYI.pdb
 pdb4k2x_A_0601_FAD.pdb
 pdb3ayx_B_0301_F4S.pdb
 pdb3ayx_B_0308_F3S.pdb
@@ -78124,6 +78080,7 @@ pdb6os6_A_0406_BEZ.pdb
 pdb6os5_B_0402_DPO.pdb
 pdb6os6_A_0401_DST.pdb
 pdb8gar_A_0201_HEC.pdb
+pdb1ml9_A_0320_UNL.pdb
 pdb1peg_A_0319_SAH.pdb
 pdb9h8m_A_0501_FAD.pdb
 pdb7s62_A_2102_NAG.pdb
@@ -78252,7 +78209,6 @@ pdb7fe1_A_0801_5II.pdb
 pdb7fe1_A_0802_MAN.pdb
 pdb7fe1_A_0805_ACY.pdb
 pdb5mte_A_0201_BB2.pdb
-pdb6zkz_A_0301_QM8.pdb
 pdb6ly5_O_0301_A86.pdb
 pdb6ly5_O_0304_DD6.pdb
 pdb6ly5_O_0306_CLA.pdb
@@ -78531,6 +78487,7 @@ pdb4pg2_A_0303_GSH.pdb
 pdb6fsg_A_1001_FMN.pdb
 pdb6ft1_A_1003_GLC.pdb
 pdb6noz_A_0042_CSO.pdb
+pdb7mc9_A_3704_AYE.pdb
 pdb5d79_A_0603_FAD.pdb
 pdb6dw2_B_0303_MLA.pdb
 pdb6dw2_B_0304_HD4.pdb
@@ -78644,7 +78601,7 @@ pdb4ncf_A_0901_GDP.pdb
 pdb7r49_H_0101_PNS.pdb
 pdb2n5h_A_0101_PNS.pdb
 pdb2n5i_A_0101_4EM.pdb
-pdb6o6e_E_0101_LOY.pdb
+pdb6o6e_E_0801_I5M.pdb
 pdb1phk_A_0381_ATP.pdb
 pdb1k2e_A_0210_ACY.pdb
 pdb3noj_A_0240_PYR.pdb
@@ -78962,7 +78919,7 @@ pdb8p2u_A_0401_SIW.pdb
 pdb3nrj_I_0190_UNL.pdb
 pdb6u60_B_1001_NAD.pdb
 pdb1x77_A_0200_FMN.pdb
-pdb5v01_B_0201_CSO.pdb
+pdb5v01_B_0142_CSO.pdb
 pdb4pkl_A_0201_1GH.pdb
 pdb5czg_A_0503_BMF.pdb
 pdb2qf7_A_1161_COA.pdb
@@ -79040,7 +78997,7 @@ pdb4wso_A_0301_NAD.pdb
 pdb5mr6_A_0601_FAD.pdb
 pdb5lvw_A_0402_IND.pdb
 pdb7q0g_H_0404_TAR.pdb
-pdb4ojx_A_0402_G.pdb
+pdb4ojx_A_0402_5GP.pdb
 pdb4wid_A_0061_MLZ.pdb
 pdb3i99_A_0358_FAD.pdb
 pdb4zv5_A_0101_MYR.pdb
@@ -79133,7 +79090,7 @@ pdb5l59_B_1327_NAG.pdb
 pdb8cx3_A_0701_NAG.pdb
 pdb4mda_A_0403_RLT.pdb
 pdb3hij_A_0163_KPI.pdb
-pdb6g8j_P_0201_B3A.pdb
+pdb6g8j_P_0130_B3A.pdb
 pdb2v95_A_1375_HCY.pdb
 pdb3ues_A_0501_DFU.pdb
 pdb4wk7_A_0505_3PQ.pdb
@@ -79537,8 +79494,8 @@ pdb7e0l_A_0602_SF4.pdb
 pdb8j59_A_0501_FMN.pdb
 pdb3ac0_A_5001_BGC.pdb
 pdb4ooz_A_0405_BMA.pdb
-pdb1sz0_A_0500_M6P.pdb
 pdb1sz0_A_0601_NAG.pdb
+pdb1sz0_A_0603_M6P.pdb
 pdb3f4r_A_0228_1PE.pdb
 pdb5w90_A_0306_UNL.pdb
 pdb2kin_A_0400_ADP.pdb
@@ -79905,7 +79862,7 @@ pdb5zqm_A_0501_AGS.pdb
 pdb3v2u_C_0522_GLA.pdb
 pdb3v2u_C_0523_ATP.pdb
 pdb1ffv_C_1922_FAD.pdb
-pdb1p16_A_1167_G.pdb
+pdb1p16_A_1167_5GP.pdb
 pdb1p16_B_5001_GTP.pdb
 pdb8hp7_A_0301_ABU.pdb
 pdb8b6n_A_0301_NHE.pdb
@@ -80199,7 +80156,7 @@ pdb5szd_A_0101_MRD.pdb
 pdb5szd_A_0104_GAI.pdb
 pdb1nlr_A_0122_MHO.pdb
 pdb8r5x_A_0301_PLM.pdb
-pdb6jmb_A_0501_AO3.pdb
+pdb6jmb_A_0501_AMI.pdb
 pdb4h6q_A_2001_FAD.pdb
 pdb4h6q_A_2002_TFB.pdb
 pdb4h6r_A_2001_FDA.pdb
@@ -80687,7 +80644,7 @@ pdb8iyo_A_0201_ACO.pdb
 pdb1r64_A_0906_NAG.pdb
 pdb1r64_B_1901_BTB.pdb
 pdb2id4_A_0190_CSO.pdb
-pdb2id4_A_0908_MLA.pdb
+pdb2id4_A_0705_MLA.pdb
 pdb7abb_A_0501_HEC.pdb
 pdb5ax0_A_0301_RET.pdb
 pdb5ax0_A_0302_OLB.pdb
@@ -80905,7 +80862,6 @@ pdb5ono_A_0202_4CS.pdb
 pdb3oa5_A_0543_2PE.pdb
 pdb5gp9_A_0203_PLM.pdb
 pdb1h8s_A_1000_AIC.pdb
-pdb6bsz_A_0601_GGL.pdb
 pdb6bt5_A_0601_E7P.pdb
 pdb6e5v_A_0601_HVG.pdb
 pdb8dgg_A_0503_NAG.pdb
@@ -80927,7 +80883,7 @@ pdb4je5_B_1000_PMP.pdb
 pdb4lmb_A_0403_PLP.pdb
 pdb4c7o_A_1003_GDP.pdb
 pdb7o9g_A_0401_G4P.pdb
-pdb7o9i_A_0401_C1Z.pdb
+pdb7o9i_A_0401_0O2.pdb
 pdb4tkm_B_0301_NAD.pdb
 pdb1htw_A_0560_ADP.pdb
 pdb4dns_A_0501_FAD.pdb
@@ -81626,7 +81582,7 @@ pdb2vpq_A_1449_ANP.pdb
 pdb7e6t_B_0905_NAG.pdb
 pdb7e6t_B_0907_TCR.pdb
 pdb1tl2_A_0237_NDG.pdb
-pdb6xtz_A_0703_O18.pdb
+pdb6xtz_A_0707_O18.pdb
 pdb3r0h_A_0005_DTT.pdb
 pdb3r0h_B_0002_DTV.pdb
 pdb3c5h_A_0301_GNP.pdb
@@ -81698,8 +81654,8 @@ pdb7bo8_B_0101_OXM.pdb
 pdb6z1h_B_0601_IPA.pdb
 pdb6z1m_A_0502_HEM.pdb
 pdb5lgp_E_0101_8ZB.pdb
-pdb5lgr_E_0102_LPD.pdb
 pdb5lgr_E_0101_QVR.pdb
+pdb5lgr_E_0102_LPD.pdb
 pdb6nyy_B_0801_ANP.pdb
 pdb6nyy_E_0801_ADP.pdb
 pdb3wds_A_0301_NAD.pdb
@@ -81726,7 +81682,7 @@ pdb8jbs_A_0301_B12.pdb
 pdb8jbs_A_0302_5AD.pdb
 pdb8jbt_A_0303_P6G.pdb
 pdb3wdq_A_0085_SME.pdb
-pdb3wdr_A_0405_BMA.pdb
+pdb3wdr_A_0401_BMA.pdb
 pdb5h6s_A_0600_HDH.pdb
 pdb5wvd_A_0402_7UX.pdb
 pdb8fvu_A_1501_ATP.pdb
@@ -81762,6 +81718,7 @@ pdb2chh_A_1118_BMA.pdb
 pdb3ott_A_0001_TBR.pdb
 pdb3dx5_A_0289_DHB.pdb
 pdb5g2v_A_1522_SGN.pdb
+pdb2a9n_A_0301_ORE.pdb
 pdb6oj1_A_0416_NAG.pdb
 pdb6ojb_A_0420_X6X.pdb
 pdb6ec8_A_0901_J4G.pdb
@@ -82444,9 +82401,9 @@ pdb4mo2_A_0405_FAD.pdb
 pdb8ic7_B_0911_BXX.pdb
 pdb8ibu_R_0601_ERY.pdb
 pdb6fkm_A_1000_NAG.pdb
+pdb6y1s_A_0001_O65.pdb
 pdb6y1s_A_0004_NLE.pdb
 pdb6y1s_A_0006_DAB.pdb
-pdb6y1s_A_0001_O65.pdb
 pdb5unq_B_0001_DYJ.pdb
 pdb4xc1_P_0673_41H.pdb
 pdb8qad_A_0301_12P.pdb
@@ -82518,6 +82475,7 @@ pdb1u3d_A_0511_ANP.pdb
 pdb2j9l_A_1752_ATP.pdb
 pdb2ja3_A_1752_ADP.pdb
 pdb4jno_A_0801_SIA.pdb
+pdb4dz4_A_0407_UNL.pdb
 pdb8ibo_C_0016_ILM.pdb
 pdb8adb_A_0501_CIT.pdb
 pdb8adb_A_0502_AYE.pdb
@@ -82654,7 +82612,7 @@ pdb2jap_A_1249_J01.pdb
 pdb8q1b_T_0101_PCF.pdb
 pdb3hqv_A_0946_LYZ.pdb
 pdb3hqv_B_0228_LYZ.pdb
-pdb2vq3_A_1210_NAP.pdb
+pdb2vq3_A_0301_NAP.pdb
 pdb6mfw_A_1301_JQG.pdb
 pdb6mfw_A_1302_FON.pdb
 pdb6mfx_A_2001_APC.pdb
@@ -82803,7 +82761,7 @@ pdb6bfg_A_0401_FMN.pdb
 pdb6bfg_A_0410_CIT.pdb
 pdb6bfg_B_0407_LMT.pdb
 pdb5erp_A_0802_MAN.pdb
-pdb5erp_A_0810_NAG.pdb
+pdb5erp_A_0806_NAG.pdb
 pdb9dfn_A_0401_SF4.pdb
 pdb9dfn_A_0402_SAM.pdb
 pdb9dfn_A_0403_CTP.pdb
@@ -82999,8 +82957,8 @@ pdb4m9q_A_0301_GNP.pdb
 pdb1t0o_A_0901_GAL.pdb
 pdb6o15_A_0402_NAD.pdb
 pdb7q5y_D_0301_SF4.pdb
-pdb1kqe_A_0000_SIN.pdb
-pdb1kqe_A_0006_DVA.pdb
+pdb1kqe_A_0005_X5P.pdb
+pdb1kqe_A_0008_DVA.pdb
 pdb3l60_A_0001_UNL.pdb
 pdb5zbf_A_0301_ENO.pdb
 pdb4boe_A_0575_CLR.pdb
@@ -83299,8 +83257,6 @@ pdb6x1t_J_0301_NAG.pdb
 pdb8ahq_C_7001_PNS.pdb
 pdb5jvb_A_0301_2PO.pdb
 pdb5lq1_A_0303_GB.pdb
-pdb5ocq_A_0402_G4S.pdb
-pdb5ocq_A_0403_9RN.pdb
 pdb5ocq_A_0405_CIT.pdb
 pdb4mc7_D_0501_NAG.pdb
 pdb6dgg_A_0301_DAO.pdb
@@ -83347,8 +83303,7 @@ pdb3vi3_A_2005_NAG.pdb
 pdb5dwu_A_0301_NAG.pdb
 pdb7kz9_A_0601_XN7.pdb
 pdb1k09_A_0001_MPT.pdb
-pdb1k09_A_0004_CLG.pdb
-pdb1k09_B_0016_CLH.pdb
+pdb1k09_A_0027_C55.pdb
 pdb1zx4_A_1585_CIT.pdb
 pdb7sxf_A_0501_6VL.pdb
 pdb7sxg_A_0501_D1E.pdb
@@ -83784,8 +83739,6 @@ pdb6h8l_A_0502_TLA.pdb
 pdb4ncl_A_1001_GDP.pdb
 pdb4ncn_A_1001_GTP.pdb
 pdb4ncn_B_1004_ACY.pdb
-pdb2ya2_A_1689_NOJ.pdb
-pdb2ya2_A_1690_GLC.pdb
 pdb1fao_A_0274_4IP.pdb
 pdb6nr6_A_0304_ADP.pdb
 pdb6f0c_A_0401_HEM.pdb
@@ -83801,7 +83754,7 @@ pdb2ics_A_1114_ADE.pdb
 pdb5uuu_A_0601_QRW.pdb
 pdb5uvc_A_0600_8PV.pdb
 pdb1kyq_A_0800_NAD.pdb
-pdb1f9k_A_0400_AMG.pdb
+pdb1f9k_A_0301_AMG.pdb
 pdb7yra_A_0201_FES.pdb
 pdb5eyi_A_0303_PG0.pdb
 pdb3dnf_A_2302_F3S.pdb
@@ -83911,8 +83864,7 @@ pdb8zjw_D_0102_CRT.pdb
 pdb5ahm_A_0501_IMP.pdb
 pdb4zrm_A_0401_NAD.pdb
 pdb4zrn_A_0402_UPG.pdb
-pdb2id5_A_0484_NAG.pdb
-pdb5eyf_A_0301_GGL.pdb
+pdb2id5_A_0501_NAG.pdb
 pdb8vxb_A_0401_5I0.pdb
 pdb6fah_B_0301_FAD.pdb
 pdb4ud8_A_0601_FAD.pdb
@@ -84231,6 +84183,7 @@ pdb5jm8_A_0600_ATP.pdb
 pdb7y10_A_0401_PX6.pdb
 pdb7y11_A_0401_D21.pdb
 pdb2hae_A_0501_NAD.pdb
+pdb7ay2_B_0802_AYE.pdb
 pdb7b9p_A_1001_DTP.pdb
 pdb5ajt_A_1243_TAR.pdb
 pdb5aju_A_1241_RP5.pdb
@@ -84675,7 +84628,7 @@ pdb4fk1_A_0500_FAD.pdb
 pdb4fk1_C_0068_MSO.pdb
 pdb7ufu_A_1102_MAN.pdb
 pdb6w6z_A_0201_FMN.pdb
-pdb6tme_A_0503_NAG.pdb
+pdb6tme_A_0501_NAG.pdb
 pdb8ipc_A_0150_SNN.pdb
 pdb1whe_A_0063_BHD.pdb
 pdb5yif_A_0501_8VR.pdb
@@ -85198,8 +85151,8 @@ pdb4gq7_A_0302_NAG.pdb
 pdb8ea1_A_3001_NPO.pdb
 pdb8wev_A_0501_AMP.pdb
 pdb6aek_A_1002_NAG.pdb
-pdb6aek_A_1007_A.pdb
-pdb6aek_A_1008_G.pdb
+pdb6aek_A_1007_AMP.pdb
+pdb6aek_A_1008_5GP.pdb
 pdb6ael_A_1007_4BW.pdb
 pdb6lpw_B_0501_SPD.pdb
 pdb5d6t_A_0403_NGA.pdb
@@ -85690,7 +85643,7 @@ pdb4uhq_A_1776_CIT.pdb
 pdb5zty_A_1201_9JU.pdb
 pdb5zty_A_1202_OLA.pdb
 pdb5zty_A_1203_OLC.pdb
-pdb6kpc_A_1201_8D0.pdb
+pdb6kpc_A_1201_E3R.pdb
 pdb4rl6_A_0501_NDP.pdb
 pdb1gqa_A_0131_HEC.pdb
 pdb7r27_A_0701_DAL.pdb
@@ -85896,8 +85849,8 @@ pdb7epe_A_1201_FMN.pdb
 pdb7epe_A_1202_J9R.pdb
 pdb7epf_A_1202_J9U.pdb
 pdb6m6b_M_2000_AGS.pdb
-pdb7shi_A_0401_HEM.pdb
-pdb7shi_A_0402_4UH.pdb
+pdb7shi_A_0397_HEM.pdb
+pdb7shi_A_0398_4UH.pdb
 pdb5a29_B_1018_SRT.pdb
 pdb6whg_A_0703_PWE.pdb
 pdb1qyf_A_0066_CRO.pdb
@@ -86188,8 +86141,6 @@ pdb5j74_A_0302_6GN.pdb
 pdb5j75_A_0303_6GQ.pdb
 pdb7dne_C_0019_DPR.pdb
 pdb9bt4_G_0900_SF4.pdb
-pdb5ngl_A_0501_NOJ.pdb
-pdb5ngl_A_0502_BGC.pdb
 pdb4ft6_A_0405_DMU.pdb
 pdb4cjx_A_1300_9L9.pdb
 pdb4cjx_A_1301_NAP.pdb
@@ -86204,7 +86155,7 @@ pdb3orf_A_0901_NAD.pdb
 pdb4mn7_B_0500_SME.pdb
 pdb4f0j_A_0400_2PE.pdb
 pdb9azo_A_0402_NAP.pdb
-pdb5veb_A_1001_SIN.pdb
+pdb5veb_A_0065_SLL.pdb
 pdb5aea_B_1100_FLC.pdb
 pdb4id8_A_0101_F3S.pdb
 pdb6uyd_E_0701_NAG.pdb
@@ -86579,7 +86530,7 @@ pdb2yq5_A_0000_NAD.pdb
 pdb7zc9_B_1101_NAG.pdb
 pdb2rsn_B_0009_M3L.pdb
 pdb4nsn_A_0146_CSO.pdb
-pdb4ns1_A_0301_DA.pdb
+pdb4ns1_A_0301_D5M.pdb
 pdb4nsn_A_0301_ADE.pdb
 pdb2ruj_A_0280_R1A.pdb
 pdb6pfj_T_0201_C2E.pdb
@@ -86659,9 +86610,9 @@ pdb8h4r_A_0401_1QK.pdb
 pdb3t34_A_1000_GDP.pdb
 pdb7jgu_A_0101_1PE.pdb
 pdb2azq_A_0954_PCF.pdb
-pdb4cvu_A_1946_NAG.pdb
-pdb4uoj_A_1997_1PE.pdb
-pdb4uoj_A_1998_PE4.pdb
+pdb4cvu_A_1001_NAG.pdb
+pdb4uoj_A_1023_1PE.pdb
+pdb4uoj_A_1024_PE4.pdb
 pdb6xg7_A_1140_CSO.pdb
 pdb6qp3_A_0802_PLP.pdb
 pdb1y7p_A_4182_RIP.pdb
@@ -87566,7 +87517,7 @@ pdb6r1e_A_0014_FOR.pdb
 pdb6r1e_A_0101_FMN.pdb
 pdb6r1e_A_0103_COA.pdb
 pdb5dgx_A_0701_ADP.pdb
-pdb7kp2_A_0201_NEO.pdb
+pdb7kp2_A_0201_NEU.pdb
 pdb6ncs_A_0302_CIT.pdb
 pdb6ncs_A_0305_TAR.pdb
 pdb8tgp_B_0101_MYR.pdb
@@ -87620,9 +87571,9 @@ pdb3qnq_A_0444_CIT.pdb
 pdb1lnz_B_0600_G4P.pdb
 pdb7uxi_B_0102_WHL.pdb
 pdb6r3e_A_0501_96H.pdb
-pdb5o0z_A_0002_DNP.pdb
-pdb5o0z_A_0003_CPI.pdb
-pdb5o0z_A_0009_2TL.pdb
+pdb5o0z_A_0003_DNP.pdb
+pdb5o0z_A_0004_CPI.pdb
+pdb5o0z_A_0010_2TL.pdb
 pdb5o0z_A_0101_9GB.pdb
 pdb2cb3_A_1345_MLD.pdb
 pdb4e4u_A_0501_DTU.pdb
@@ -88096,7 +88047,6 @@ pdb6hr1_A_0901_TLA.pdb
 pdb5gxd_A_0701_AMP.pdb
 pdb5gxd_A_0702_AKR.pdb
 pdb5gxd_A_0703_COA.pdb
-pdb5ulo_C_0201_LPD.pdb
 pdb6mcj_A_0201_45D.pdb
 pdb6mcj_A_0206_1PE.pdb
 pdb3pm9_A_0476_FAD.pdb
@@ -88165,7 +88115,7 @@ pdb2xua_H_1265_SHF.pdb
 pdb4lt6_A_0601_3AT.pdb
 pdb7tuy_R_1301_KKF.pdb
 pdb1zej_A_0283_PE8.pdb
-pdb1n6e_B_2213_CHM.pdb
+pdb1n6e_B_1214_0QE.pdb
 pdb3ff5_A_0001_DPW.pdb
 pdb2hxv_A_0400_NDP.pdb
 pdb4uw8_A_2397_FLC.pdb
@@ -88740,7 +88690,6 @@ pdb4cuo_A_0290_SNN.pdb
 pdb4cuo_A_1307_HEM.pdb
 pdb4cuo_A_1320_NAG.pdb
 pdb5vte_A_0022_PHI.pdb
-pdb5vte_A_0030_LYN.pdb
 pdb4jos_A_0301_ADE.pdb
 pdb6udz_A_0009_DLY.pdb
 pdb2xyk_A_0700_HEM.pdb
@@ -88974,6 +88923,7 @@ pdb7bv3_A_0501_UDP.pdb
 pdb2chg_A_1227_ANP.pdb
 pdb3iwf_A_0111_MXE.pdb
 pdb7tzh_D_0501_NAG.pdb
+pdb6xro_B_0501_B2A.pdb
 pdb2n0n_A_0002_AIB.pdb
 pdb2n0n_A_0011_PH8.pdb
 pdb4k29_A_0301_TLA.pdb
@@ -89518,7 +89468,7 @@ pdb8eqm_V_0201_HEM.pdb
 pdb7qpb_H_0002_9JC.pdb
 pdb7qpb_H_0003_ZY9.pdb
 pdb7qpb_H_0014_CCS.pdb
-pdb1l4x_A_0000_SIN.pdb
+pdb1l4x_A_0001_ZJU.pdb
 pdb5v4a_A_0301_UDP.pdb
 pdb3wmr_A_0402_P4G.pdb
 pdb4s1p_A_0501_UNL.pdb
@@ -90003,6 +89953,7 @@ pdb3i83_A_0319_ACY.pdb
 pdb7r2x_A_0801_NAG.pdb
 pdb3a9f_A_0207_HEC.pdb
 pdb3a9f_A_0501_P33.pdb
+pdb3h3m_B_0127_UNL.pdb
 pdb2w6t_C_0001_PVE.pdb
 pdb2w6t_C_0003_DSN.pdb
 pdb2w6t_C_0006_FHO.pdb
@@ -90631,7 +90582,7 @@ pdb6kfw_A_0505_D8L.pdb
 pdb2v5o_A_3131_NAG.pdb
 pdb2nzj_A_1001_GDP.pdb
 pdb3h6n_A_0002_ARS.pdb
-pdb3hz7_A_0101_SX.pdb
+pdb3hz7_A_0011_CSS.pdb
 pdb3teu_A_0099_DIO.pdb
 pdb2v5p_A_2991_NAG.pdb
 pdb7r5y_A_0501_IHS.pdb
@@ -90913,8 +90864,6 @@ pdb5c2k_A_0502_AF3.pdb
 pdb5c2k_A_0503_GDP.pdb
 pdb6kii_A_0501_FAD.pdb
 pdb6kii_A_0502_MHF.pdb
-pdb5k18_F_0201_COA.pdb
-pdb5k18_F_0202_ACY.pdb
 pdb1r2j_A_0399_FAD.pdb
 pdb8wcf_A_0201_NAD.pdb
 pdb3h9m_A_0437_DTU.pdb
@@ -91262,7 +91211,7 @@ pdb2d4e_C_1701_NAD.pdb
 pdb3umt_A_0300_NHE.pdb
 pdb5k21_A_0201_6QF.pdb
 pdb6o7g_A_0016_ALY.pdb
-pdb1z1n_X_0601_HEC.pdb
+pdb1z1n_X_0704_HEC.pdb
 pdb4nhw_A_0301_GSH.pdb
 pdb1j4x_D_0007_AHP.pdb
 pdb8jsk_A_0201_6SY.pdb
@@ -91484,7 +91433,7 @@ pdb7wol_A_0401_SIN.pdb
 pdb5l74_A_0901_NAG.pdb
 pdb5k2m_A_0301_ADP.pdb
 pdb5k2m_I_0303_UN1.pdb
-pdb5k2m_E_0101_UN1.pdb
+pdb5k2m_E_0053_R0K.pdb
 pdb4qvh_A_0602_COA.pdb
 pdb4qvh_A_0608_FLC.pdb
 pdb3upc_A_0002_1PE.pdb
@@ -91630,7 +91579,7 @@ pdb5d9e_A_0017_SME.pdb
 pdb8wfb_A_1501_IHP.pdb
 pdb2peb_A_0201_UNL.pdb
 pdb6ya2_B_0301_NAG.pdb
-pdb1hqj_A_0001_SIN.pdb
+pdb1hqj_A_0002_ZJU.pdb
 pdb6n63_A_0401_GOA.pdb
 pdb4ue8_B_1084_P4G.pdb
 pdb1ee7_A_0004_AIB.pdb
@@ -91952,7 +91901,7 @@ pdb8vc9_A_0401_ACP.pdb
 pdb4ufc_A_1809_GIV.pdb
 pdb3e18_A_0360_NAD.pdb
 pdb2qk4_A_0501_ATP.pdb
-pdb6idv_A_0505_SNN.pdb
+pdb6idv_A_0171_SNN.pdb
 pdb6idv_B_0701_NAG.pdb
 pdb8vc8_A_0302_HEM.pdb
 pdb2zmf_A_2001_CMP.pdb
@@ -92168,7 +92117,6 @@ pdb8z11_U_0310_BCR.pdb
 pdb5nc2_I_0002_2L5.pdb
 pdb1fl2_A_0522_FAD.pdb
 pdb3nwz_C_0270_COA.pdb
-pdb6jix_B_0501_GGL.pdb
 pdb6jix_B_0503_PLP.pdb
 pdb4q6s_D_0002_DAR.pdb
 pdb8byh_A_0605_SAM.pdb
@@ -92256,7 +92204,6 @@ pdb6bme_A_0201_HEM.pdb
 pdb5kzl_A_0301_HEM.pdb
 pdb7lir_B_0401_NAG.pdb
 pdb8edv_A_0501_PEF.pdb
-pdb3f7o_A_0285_HMB.pdb
 pdb6qfa_B_0501_NAG.pdb
 pdb6qfa_B_0502_HSM.pdb
 pdb6uvz_A_0301_2PE.pdb
@@ -92316,7 +92263,7 @@ pdb2qmm_A_0301_SAM.pdb
 pdb6e74_A_0201_3MI.pdb
 pdb4ccv_A_1238_GSH.pdb
 pdb2kwn_B_0016_ALY.pdb
-pdb3u0k_A_0213_NFA.pdb
+pdb3u0k_B_0213_NFA.pdb
 pdb3u0k_A_0214_CRK.pdb
 pdb3nyi_A_0301_STE.pdb
 pdb5vbl_A_0008_HRG.pdb
@@ -92705,7 +92652,7 @@ pdb7xzr_C_0013_BB9.pdb
 pdb7xzr_C_0014_DHA.pdb
 pdb7o4x_A_0201_ADP.pdb
 pdb3n91_A_0002_2PE.pdb
-pdb7mp3_L_0101_48V.pdb
+pdb7mp3_L_0011_48V.pdb
 pdb2pl3_A_0300_ADP.pdb
 pdb3l0a_A_0268_PE4.pdb
 pdb5j62_A_0301_FMN.pdb
@@ -93016,6 +92963,7 @@ pdb5i20_A_0301_OLC.pdb
 pdb4wt7_A_0401_X9X.pdb
 pdb5j5t_A_0901_6G2.pdb
 pdb4pz0_A_0401_PAV.pdb
+pdb7dna_J_0232_IEY.pdb
 pdb6ijo_G_0203_CLA.pdb
 pdb6ijo_G_0205_BCR.pdb
 pdb3tr9_A_1001_PT1.pdb
@@ -93037,6 +92985,8 @@ pdb6yfy_A_0001_ZAE.pdb
 pdb6yfy_A_0004_DAR.pdb
 pdb6yfy_A_0005_28J.pdb
 pdb6yfy_A_0008_DTH.pdb
+pdb6yfy_A_0101_2PO.pdb
+pdb6yfy_A_0103_P1W.pdb
 pdb7f2x_A_0501_ANP.pdb
 pdb5j6c_A_0201_FMN.pdb
 pdb7ntl_A_0010_SNN.pdb
@@ -93064,8 +93014,8 @@ pdb3ez0_B_0225_TLA.pdb
 pdb8h17_A_0202_HEM.pdb
 pdb6m7y_C_0003_J9A.pdb
 pdb6cth_A_0601_FE7.pdb
-pdb6hfa_C_0024_G2B.pdb
-pdb6hfa_C_0101_UCV.pdb
+pdb6hfa_C_0024_G2Z.pdb
+pdb6hfa_C_0026_URV.pdb
 pdb4mo9_A_0401_TMO.pdb
 pdb4mnx_B_0101_29N.pdb
 pdb3d45_A_0651_7MG.pdb
@@ -93140,8 +93090,8 @@ pdb8c29_R_0616_LHG.pdb
 pdb8c29_R_0617_LMG.pdb
 pdb8yvu_F_0301_CLR.pdb
 pdb8yvu_A_0301_CLR.pdb
-pdb5eeq_L_0011_73C.pdb
-pdb5eeq_L_0012_48V.pdb
+pdb5eeq_L_0008_73C.pdb
+pdb5eeq_L_0011_48V.pdb
 pdb4n04_A_0200_NHE.pdb
 pdb8a8k_A_0401_AMP.pdb
 pdb6xe6_A_1301_Y01.pdb
@@ -93160,7 +93110,6 @@ pdb1y89_B_0242_2PE.pdb
 pdb8ei7_C_0101_WHL.pdb
 pdb4umn_C_0020_0EH.pdb
 pdb4umn_C_0027_MK8.pdb
-pdb4umn_C_0028_NME.pdb
 pdb1fr3_A_0405_WO4.pdb
 pdb4dlo_B_0904_NAG.pdb
 pdb5j7x_A_0601_FAD.pdb
@@ -93190,7 +93139,7 @@ pdb6u7w_A_0101_WMH.pdb
 pdb7rcu_Q_0201_V7J.pdb
 pdb7rcu_V_0102_ACM.pdb
 pdb7rcu_F_0201_V7J.pdb
-pdb1kcg_C_0999_GSH.pdb
+pdb1kcg_C_0109_CGL.pdb
 pdb8ehz_C_0101_WHL.pdb
 pdb7w61_A_0301_NAP.pdb
 pdb3myr_A_2001_SF4.pdb
@@ -93304,7 +93253,6 @@ pdb8q4h_A_0603_SF4.pdb
 pdb8q4h_A_0605_MQ7.pdb
 pdb6d71_A_0201_GTP.pdb
 pdb7mqj_A_1202_ADP.pdb
-pdb4um9_E_0250_NHH.pdb
 pdb1h6h_A_0150_PIB.pdb
 pdb6cv0_A_1204_NAG.pdb
 pdb4ovy_A_0401_CIT.pdb
@@ -93749,8 +93697,8 @@ pdb3ly1_A_0500_PLP.pdb
 pdb3ly1_A_0501_CIT.pdb
 pdb4w66_A_0301_GSH.pdb
 pdb8y6t_A_0301_TLA.pdb
-pdb6qms_A_0273_J7H.pdb
-pdb6qms_A_0280_MKD.pdb
+pdb6qms_A_0273_L4R.pdb
+pdb6qms_A_0280_MH8.pdb
 pdb4f56_C_0101_CGK.pdb
 pdb4zbg_A_0201_ACO.pdb
 pdb7zf3_A_0301_IPA.pdb
@@ -93821,7 +93769,8 @@ pdb4ozq_A_0801_ADP.pdb
 pdb6l8q_A_0801_NAG.pdb
 pdb2axi_B_0023_6CW.pdb
 pdb2axi_B_0029_DPR.pdb
-pdb6qmq_A_0276_MKD.pdb
+pdb6qmq_A_0307_IC0.pdb
+pdb6qmq_A_0311_MH8.pdb
 pdb6j0e_A_0201_ARS.pdb
 pdb4iaj_C_0202_UNL.pdb
 pdb6gfx_D_0564_EX8.pdb
@@ -93832,10 +93781,12 @@ pdb4n31_B_0201_PTY.pdb
 pdb8pvw_A_0301_AP5.pdb
 pdb1wub_A_1001_OTP.pdb
 pdb6btm_E_0201_HEC.pdb
-pdb6btm_E_0202_E87.pdb
+pdb6btm_E_0202_DKA.pdb
+pdb6btm_E_0203_FAW.pdb
 pdb6btm_B_1101_F3S.pdb
 pdb6btm_B_1102_SF4.pdb
-pdb6btm_B_1103_E87.pdb
+pdb6btm_B_1103_DKA.pdb
+pdb6btm_B_1104_FAW.pdb
 pdb6btm_A_1000_HEC.pdb
 pdb5y2z_H_0602_NAG.pdb
 pdb5lc5_B_0201_SF4.pdb
@@ -93960,7 +93911,7 @@ pdb8h79_A_0306_OCT.pdb
 pdb8h79_A_0309_C14.pdb
 pdb8h79_A_0311_R16.pdb
 pdb2a6c_B_0072_CIT.pdb
-pdb5ejd_A_0101_5PD.pdb
+pdb5ejd_A_0101_PNS.pdb
 pdb7tps_A_0201_NAG.pdb
 pdb5gro_B_0201_BUA.pdb
 pdb2i51_A_0300_FMN.pdb
@@ -93985,7 +93936,7 @@ pdb5lde_R_0236_6ZS.pdb
 pdb4wz9_A_1004_NHE.pdb
 pdb8dik_A_0501_FAD.pdb
 pdb7knf_C_0001_DTY.pdb
-pdb7knf_C_0101_HOA.pdb
+pdb7knf_C_0014_HOA.pdb
 pdb1w3m_A_0002_VLL.pdb
 pdb1w3m_A_0009_VDL.pdb
 pdb1w3m_C_0003_CPI.pdb
@@ -93997,7 +93948,7 @@ pdb4zcf_C_1001_AMP.pdb
 pdb8g2y_R_1001_LPC.pdb
 pdb5woc_A_0100_B74.pdb
 pdb7lrn_A_0301_FAD.pdb
-pdb6xib_I_0001_B74.pdb
+pdb6xib_I_0002_YRV.pdb
 pdb6xib_I_0005_FTR.pdb
 pdb6xib_I_0010_3WX.pdb
 pdb6s4c_A_1302_EDT.pdb
@@ -94006,10 +93957,9 @@ pdb1moy_A_5001_MRD.pdb
 pdb6b35_A_0004_DPN.pdb
 pdb6b35_A_0009_ORN.pdb
 pdb2q37_A_0200_3AL.pdb
-pdb6xid_I_0001_V7M.pdb
-pdb6xid_I_0004_DAL.pdb
-pdb6xid_I_0005_FTR.pdb
-pdb6xid_I_0010_3WX.pdb
+pdb6xid_I_0001_ZLF.pdb
+pdb6xid_I_0004_FTR.pdb
+pdb6xid_I_0009_3WX.pdb
 pdb2ayd_A_0401_SIN.pdb
 pdb7v62_A_0901_CLR.pdb
 pdb7v62_A_0902_DTT.pdb
@@ -94019,8 +93969,6 @@ pdb3k30_A_0801_SF4.pdb
 pdb3k30_A_0802_FMN.pdb
 pdb3k30_A_0803_ADP.pdb
 pdb4o94_A_0403_SIN.pdb
-pdb6t7z_B_0002_MV5.pdb
-pdb6t7z_B_0003_ASA.pdb
 pdb6t7z_B_0004_4FB.pdb
 pdb3ocj_A_0305_PLM.pdb
 pdb9ish_D_0201_NAG.pdb
@@ -94144,7 +94092,6 @@ pdb9ffe_A_0602_FAD.pdb
 pdb9ffe_A_0603_OXY.pdb
 pdb9ffe_A_0607_MAN.pdb
 pdb2omk_A_0038_SNN.pdb
-pdb2omk_A_0039_ACY.pdb
 pdb7jid_A_0301_AWU.pdb
 pdb7jid_A_0302_NAP.pdb
 pdb5ug1_A_0701_03S.pdb

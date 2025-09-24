@@ -1,11 +1,7 @@
 import json
 import re
+from bio import fwrite
 
-def fwrite(fp, x, text = "^"):
-	"""Easier way to write files"""
-	with open(f"filt/dat/{fp}", 'w') as f:
-		print(f"writing to {fp}: {text}\n")
-		f.write(f"{x}")
 
 print("––f_bsites.txt––")
 print(" - filtered list of all binding sites")

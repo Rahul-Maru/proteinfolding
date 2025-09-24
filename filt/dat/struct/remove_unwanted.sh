@@ -13,7 +13,7 @@ for d in binding-sites/*; do
 		lig=${lig%.*}
 
 		len=$( awk '{print substr($0, 22,5)}' $f | sort -n | uniq | wc -l )
-		if (( len >= 4 )) && ! grep -qw $lig unwanted-ligs; then
+		if (( len >= 4 )) && ! grep -qw $lig unwanted-ligs.txt; then
 			mid=${nam:4:2}
 			cp $f filtered-binding-sites/$mid/$nam
 		fi
