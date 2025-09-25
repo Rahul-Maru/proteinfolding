@@ -30,7 +30,7 @@ with open("filt/dat/nonentities.txt") as f:
 	print("number of binding sites not in an entity: ", len(nonentities))
 
 sites_m2 = sites_m - nonentities
-print(len(sites_m2))
+print("still-unaccounted for bsites: ", len(sites_m2))
 
 
 
@@ -40,7 +40,7 @@ ENTY_PATTERN = re.compile(r"COMPND\s+\d*\s*MOL_ID:\s*(\d+)")
 MOL_PATTERN = re.compile(r"COMPND\s+\d*\s*MOLECULE:\s*(.*)")
 
 enty_names = []
-for bsite in f_bsites:
+for bsite in sites_m2:
 	tokens = bsite.strip().split("_")
 	pdb_id = f"{tokens[0]}.ent"
 	enty_n = -1
@@ -49,7 +49,7 @@ for bsite in f_bsites:
 	with open(f"filt/dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
 		for line in f:
 			if SOURCE_PATTERN.match(line):
-				# print("FAILED - ", bsite)
+				print("FAILED - ", bsite)
 				break
 
 			if (ent := ENTY_PATTERN.match(line)):
@@ -61,8 +61,6 @@ for bsite in f_bsites:
 				if tokens[1] in chains:
 					enty_names.append((f"{tokens[0][3:].upper()}_{enty_n}", bsite, enty_nam))
 					break
-		else:
-			print("UNFOUND ", bsite)
 
 # for nam in enty_names:
 # 	print(f"\n---{nam[0]} –– {nam[1]}---")
