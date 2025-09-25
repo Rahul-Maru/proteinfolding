@@ -124,33 +124,33 @@ for ent in enties:
 print("number of unaccounted-for entities not in the clusterfile: ", len(missing_enties))
 
 
-# removed = []
-# nonentities = []
+removed = []
+nonentities = []
 
-# c = 0
-# for bsite in sites_m:
-# 	c+=1
-# 	if c%1000 == 0:
-# 		print(c)
-# 	tokens = bsite.strip().split("_")
-# 	pdb_id = f"{tokens[0]}.ent"
-# 	chains = []
+c = 0
+for bsite in sites_m:
+	c+=1
+	if c%1000 == 0:
+		print(c)
+	tokens = bsite.strip().split("_")
+	pdb_id = f"{tokens[0]}.ent"
+	chains = []
 
-# 	try:
-# 		with open(f"filt/dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
-# 			for line in f:
-# 				if SOURCE_PATTERN.match(line):
-# 					break
-# 				if CHAIN_PATTERN.match(line):
-# 					chains.extend(line.replace(";", "").split("CHAIN:")[1].strip().split(', '))
-# 	except FileNotFoundError as e:
-# 		removed.append(bsite)
-# 		continue
+	try:
+		with open(f"filt/dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
+			for line in f:
+				if SOURCE_PATTERN.match(line):
+					break
+				if CHAIN_PATTERN.match(line):
+					chains.extend(line.replace(";", "").split("CHAIN:")[1].strip().split(', '))
+	except FileNotFoundError as e:
+		removed.append(bsite)
+		continue
 
-# 	if tokens[1] not in chains:
-# 		nonentities.append(bsite)
+	if tokens[1] not in chains:
+		nonentities.append(bsite)
 
-# fwrite("nonentities.txt", nonentities)
-# fwrite("removed.txt", removed)
-# print(len(nonentities))
-# print(len(removed))
+fwrite("nonentities.txt", nonentities)
+fwrite("removed.txt", removed)
+print(len(nonentities))
+print(len(removed))
