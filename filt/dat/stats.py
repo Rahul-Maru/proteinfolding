@@ -1,8 +1,9 @@
 """Statistical analysis of the representative binding sites"""
 
 import json
-import os
 from typing import Counter
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 INF = "filt/dat/reprs.json"
@@ -25,3 +26,16 @@ with open("filt/dat/struct/unwanted-ligs.txt") as f:
 
 interlopers = {l for l in ligset if l in bad_ligs}
 print(interlopers)
+
+x_dat = np.array(range(1, len(counter) + 1))
+y_dat = np.array([c[1] for c in counter])
+
+plt.plot(x_dat, y_dat)
+plt.xlabel("rank")
+plt.ylabel("frequency")
+plt.title("frequency of ligands")
+
+plt.yscale('log')
+
+plt.show()
+
