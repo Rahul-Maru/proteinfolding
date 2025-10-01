@@ -5,6 +5,8 @@ eg. pdbxaby.ent would be found at filt/dat/pdb/ab/pdbxaby.ent
 binding site (filt/dat/struct/(filtered-)binding-sites/ab/):
 pdbxaby_C_****_Lig.pdb
 eg pdb1g29_1_0377_NA.pdb
+when splitting by underscore:
+token 0: pdb id, token 1: chain id, token 2: ligand number, token 3: ligand name
 
 pdb file (filt/dat/struct/pdb/ab/):
 pdbxaby.ent

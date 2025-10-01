@@ -1,7 +1,5 @@
-from multiprocessing import Value
 import os
 import re
-from sys import float_info
 
 PDBDIR = "filt/dat/struct/pdb"
 

@@ -32,12 +32,10 @@ bsites = defaultdict(list)
 def load_bsites():
     t = time.time()
     with open(SITEF) as f:
-        lines = f.readlines()
-
-    for line in lines:
-        line = line.strip()
-        tokens = line.split("_")
-        bsites[(tokens[0][3:], tokens[1])].append((tokens[3][:-4], line))
+        for line in f:
+            line = line.strip()
+            tokens = line.split("_")
+            bsites[(tokens[0][3:], tokens[1])].append((tokens[3][:-4], line))
 
     print(f"loaded bsites in {time.time() - t}s")
 

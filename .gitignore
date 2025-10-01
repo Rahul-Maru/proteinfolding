@@ -5,6 +5,7 @@ flowchart.jpeg
 .~lock.resolution_clustering.ods#
 *.log
 *.zip
+*.tar.gz
 *.sh.swp
 flowchart
 filt/dat/*.xz
