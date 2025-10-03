@@ -68,6 +68,7 @@ KEYWDS   3 PROTEIN
 EXPDTA    ELECTRON MICROSCOPY                                                   
 AUTHOR    K.SCHNELLE,Z.KOECK,M.PERSECHINO,S.UMBACH,H.SCHIHADA,D.JANULIENE,      
 AUTHOR   2 K.PAREY,S.POCKES,P.KOLB,V.DOETSCH,A.MOELLER,D.HILGER,F.BERNHARD      
+REVDAT   4   02-JUL-25 8POK    1       REMARK                                   
 REVDAT   3   09-OCT-24 8POK    1       REMARK                                   
 REVDAT   2   13-MAR-24 8POK    1       JRNL                                     
 REVDAT   1   06-MAR-24 8POK    0                                                
@@ -84,8 +85,8 @@ REMARK   2
 REMARK   2 RESOLUTION.    3.40 ANGSTROMS.                                       
 REMARK   3                                                                      
 REMARK   3 REFINEMENT.                                                          
-REMARK   3   SOFTWARE PACKAGES      : CRYOSPARC, EPU, CRYOSPARC, CRYOSPARC,     
-REMARK   3                            CRYOSPARC, CRYOSPARC                      
+REMARK   3   SOFTWARE PACKAGES      : CRYOSPARC, EPU, CRYOSPARC, PHENIX,        
+REMARK   3                            CRYOSPARC, CRYOSPARC, CRYOSPARC           
 REMARK   3   RECONSTRUCTION SCHEMA  : NULL                                      
 REMARK   3                                                                      
 REMARK   3 EM MAP-MODEL FITTING AND REFINEMENT                                  

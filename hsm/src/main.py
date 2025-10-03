@@ -3,8 +3,10 @@ from methods import *
 import timeit
 
 def main():
+    DEF = "test"
+
     parser = argparse.ArgumentParser()
-    parser.add_argument('mode', type=str, nargs='?', default="seq")
+    parser.add_argument('mode', type=str, nargs='?', default=DEF)
 
     args = parser.parse_args()
     mode = args.mode
@@ -54,6 +56,8 @@ def main():
         # creates a csv file of the sequence similarity scores
         csv_formatter("seq", cutoff)
 
+
+
         print("\n——INPUT \033[1mseq_edge_list.csv\033[0m INTO CYTOSCAPE——")
 
     elif mode == "struct":
@@ -86,8 +90,12 @@ def main():
         l = input("load sitemotif files? (y/n) ")
         if l == "y":
             load_sitemotif_files("hsm/bsites_final")
+
     elif mode == 'test':
-        pdbs2fasta('hsm/pdbs', 'test_hsm')
+        choose_reprs()
+
+    else:
+        print("invalid. options are extract, seq, struct, filter")
 
 
 if __name__ == "__main__":

@@ -1,3 +1,4 @@
+from collections import defaultdict
 import csv
 from matplotlib import pyplot as plt
 import numpy as np
@@ -73,6 +74,54 @@ def csv_formatter(mode, cutoff = 0):
 		with open("hsm/outs/TMalign/struct_edge_list.csv", "w") as f2:
 			writer = csv.writer(f2)
 			writer.writerows(out)
+
+def choose_reprs():
+	with open("hsm/outs/Clustal/seq_edge_list.csv") as f:
+		reader = csv.reader(f)
+		next(reader)
+
+		c_ids = defaultdict(lambda:-1)
+		clusters = []
+		c = 0
+
+		for row in reader:
+			si, sj, _ = row
+			if c_ids[si] != -1 and c_ids[sj] != -1:
+				ci = c_ids[si]
+				cj = c_ids[sj]
+
+				if ci == cj:
+					continue
+
+				print(ci, cj, si, sj, clusters[ci], clusters[cj])
+
+				# merge sj's cluster ino si's clusters
+				for s in clusters[cj]:
+					c_ids[s] = ci
+				print(clusters[ci], clusters[cj], '\n')
+
+				if type(clusters[ci]) == list:
+					clusters[ci].extend(clusters[cj])
+					clusters[cj] = []
+
+			# add the unclustered site to the cluster of the clustered site
+			elif c_ids[si] != -1:
+				ci = c_ids[si]
+				c_ids[sj] = ci
+				clusters[ci].append(sj)
+			elif c_ids[sj] != -1:
+				cj = c_ids[sj]
+				c_ids[si] = cj
+				clusters[cj].append(si)
+			else:
+				c_ids[si] = c
+				c_ids[sj] = c
+				clusters.append([si, sj])
+				c += 1
+		
+		clusters = [c for c in clusters if c]
+		print(len(clusters), print([f"{i} - {len(c)}" for i, c in enumerate(clusters)]))
+
 
 @timed
 def extract_bsites(combined=False, dist=MAX_BSITE_DIST):

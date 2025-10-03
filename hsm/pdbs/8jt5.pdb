@@ -16,6 +16,7 @@ SOURCE   7 EXPRESSION_SYSTEM_TAXID: 9606
 KEYWDS    TRANSPORTERC, TRANSPORT PROTEIN                                       
 EXPDTA    ELECTRON MICROSCOPY                                                   
 AUTHOR    D.H.JIANG,D.WU                                                        
+REVDAT   3   25-JUN-25 8JT5    1       REMARK                                   
 REVDAT   2   20-NOV-24 8JT5    1       JRNL                                     
 REVDAT   1   08-MAY-24 8JT5    0                                                
 JRNL        AUTH   D.WU,Z.YU,Q.CHEN,J.ZHAO,B.HUANG,Y.WANG,J.SU,N.LI,D.JIANG,    
@@ -30,7 +31,7 @@ REMARK   2
 REMARK   2 RESOLUTION.    3.06 ANGSTROMS.                                       
 REMARK   3                                                                      
 REMARK   3 REFINEMENT.                                                          
-REMARK   3   SOFTWARE PACKAGES      : NULL                                      
+REMARK   3   SOFTWARE PACKAGES      : PHENIX                                    
 REMARK   3   RECONSTRUCTION SCHEMA  : NULL                                      
 REMARK   3                                                                      
 REMARK   3 EM MAP-MODEL FITTING AND REFINEMENT                                  
