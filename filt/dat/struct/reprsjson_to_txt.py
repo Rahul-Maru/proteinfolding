@@ -8,3 +8,4 @@ reprs = json.load(open(IN))
 with open(OUT, 'w') as f:
 	# needs newline at end of file or last entry gets discounted
 	f.writelines([r + '\n' for r in reprs])
+

@@ -1,3 +1,5 @@
+# OBSOLETE
+
 shopt -s nullglob
 
 for d in binding-sites/*; do
@@ -12,4 +14,3 @@ for d in binding-sites/*; do
 		fi
 	 done
 done
-
