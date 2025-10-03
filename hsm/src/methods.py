@@ -1,20 +1,27 @@
 from collections import defaultdict
 import csv
+import json
+import re
 from matplotlib import pyplot as plt
 import numpy as np
 import os
 import subprocess
-import timeit
+import time
 
-from bio import Protein, MAX_BSITE_DIST
+from bio import Protein, MAX_BSITE_DIST, fwrite
 
 
 def timed(func):
 	"""Decorator that times a function."""
 
 	def wrapper(*args, **kwargs):
-		t = timeit.Timer(lambda: func(*args, **kwargs))
-		print(f"done in {t.timeit(1):.3f}s")
+		t0 = time.time()
+		retval = func(*args, **kwargs)
+		t = time.time() - t0
+
+		print(f"done in {t:.3f}s")
+		return retval
+
 	return wrapper
 
 
@@ -75,8 +82,9 @@ def csv_formatter(mode, cutoff = 0):
 			writer = csv.writer(f2)
 			writer.writerows(out)
 
-def choose_reprs():
-	with open("hsm/outs/Clustal/seq_edge_list.csv") as f:
+@timed
+def clusterize(INF="hsm/outs/Clustal/seq_edge_list.csv"):
+	with open(INF) as f:
 		reader = csv.reader(f)
 		next(reader)
 
@@ -120,8 +128,73 @@ def choose_reprs():
 				c += 1
 		
 		clusters = [c for c in clusters if c]
-		print(len(clusters), print([f"{i} - {len(c)}" for i, c in enumerate(clusters)]))
+		print(len(clusters), [f"{i} - {len(c)}" for i, c in enumerate(clusters)])
+		print(clusters)
+		clust_flat = [s for c in clusters for s in c]
+		singles = [s[:-4] for s in os.listdir("hsm/bchains") if s[:-4] not in clust_flat]
+		# print(clust_flat, len(clust_flat))
+		# print(singles, len(singles))
+		clusters.extend([[s] for s in singles])
+		print(len(clusters), [f"{i} - {len(c)}" for i, c in enumerate(clusters)])
+		print(clusters)
+		json.dump(clusters, open("hsm/outs/Clustal/clusters.json", "w"))
 
+@timed
+def choose_reprs(INF="hsm/outs/Clustal/clusters.json"):
+	clusters = json.load(open(INF))
+	print("number of clusters: ", len(clusters))
+
+	reprs = []
+	for c, cluster in enumerate(clusters):
+		if len(cluster) == 1:
+			reprs.append(cluster[0])
+			continue
+
+		resl = defaultdict(list)
+		for bsite in cluster:
+			file_path = f"{bsite[:4]}.pdb"
+			try:
+				resl[bsite] = get_res(file_path)
+
+			except ValueError as e:	pass
+			except Exception as e:
+				print(e)
+				raise e
+
+		if len(resl):	
+			repr = min(resl, key=resl.get)
+			reprs.append(repr)
+		else:
+			print(f"no res-based repr for cluster {c}")
+			reprs.append(cluster[0])
+		
+	print("---------")
+	print(len(reprs))
+	reprs = sorted(reprs)
+	print(type(reprs))
+	return reprs
+
+def get_res(pdb, dir="hsm/pdbs"):
+	RESPATTERN = re.compile(r'REMARK\s{3}2\sRESOLUTION\.\s+(.*)\sANGSTROMS\.')
+	REMARKxPATTERN = re.compile(r'REMARK\s{3}[3-5]')
+
+	with open(f'{dir}/{pdb}', 'r') as f:
+		for line in f:
+			if REMARKxPATTERN.match(line):
+				raise ValueError(f"Resolution not found for {pdb} (0)")
+
+			pattern = RESPATTERN.match(line)
+			if pattern:
+				try: 
+					res = float(pattern.group(1))			
+				except:
+					raise ValueError(f"Resolution {pattern.group(1)} for {pdb}")
+
+				break
+		else:
+			raise ValueError(f"Resolution not found for {pdb} (1)")
+
+	return res
 
 @timed
 def extract_bsites(combined=False, dist=MAX_BSITE_DIST):

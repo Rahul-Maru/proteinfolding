@@ -1,4 +1,5 @@
 import argparse
+import shutil
 from methods import *
 import timeit
 
@@ -57,13 +58,12 @@ def main():
         csv_formatter("seq", cutoff)
 
 
-
         print("\n——INPUT \033[1mseq_edge_list.csv\033[0m INTO CYTOSCAPE——")
 
     elif mode == "struct":
         # ———structural alignment———
 
-        # all vs all structural alignment of bchain_seq/ using TMalign
+        # all vs all structural alignment of bchains_seq/ using TMalign
         tmalign()
 
         csv_formatter("struct")
@@ -92,7 +92,19 @@ def main():
             load_sitemotif_files("hsm/bsites_final")
 
     elif mode == 'test':
-        choose_reprs()
+        print("identifying clusters of sequentially similar binding sites")
+        clusterize()
+        reprs = choose_reprs()
+        print(reprs)
+
+        old_reprs = {f[:-4] for f in os.listdir("hsm/old/bchains_seq")}
+        print(old_reprs)
+        print()
+
+        print("diff: ", old_reprs^set(reprs), len(old_reprs^set(reprs)))
+
+        for repr in reprs:
+            shutil.copy(f"hsm/bchains/{repr}.pdb", f"hsm/bchains_seq/{repr}.pdb")
 
     else:
         print("invalid. options are extract, seq, struct, filter")
