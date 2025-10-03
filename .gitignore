@@ -1,12 +1,10 @@
 __pycache__/
 tools
 TODO
-flowchart.jpeg
 .~lock.resolution_clustering.ods#
 *.log
 *.zip
 *.tar.gz
 *.sh.swp
-flowchart
 filt/dat/*.xz
 filt/dat/struct/*/

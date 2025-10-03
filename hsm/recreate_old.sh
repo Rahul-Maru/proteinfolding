@@ -10,8 +10,11 @@ make_dirs() {
 #	fi
 
 	target=${2:4}
-	echo making $target
-	mkdir $target
+	if ! [ -d $target ]; then
+		echo making $target
+		mkdir $target
+	fi	
+
 	for d in $2/*; do
 		if [ -d $d ]; then
 		#	nam=$(basename $d)
