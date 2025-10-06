@@ -4,7 +4,7 @@ from methods import *
 import timeit
 
 def main():
-    DEF = "test"
+    DEF = "extract"
 
     parser = argparse.ArgumentParser()
     parser.add_argument('mode', type=str, nargs='?', default=DEF)
@@ -81,12 +81,19 @@ def main():
         # creates a csv file of the structural similarity scores
         csv_formatter("struct", cutoff)
 
-        print("\n——INPUT \033[1mstruct_edge_list.csv\033[0m INTO CYTOSCAPE——")
+        print("\n——INPUT \033[1mouts/Clustal/struct_edge_list.csv\033[0m INTO CYTOSCAPE——")
+
+        print("identifying clusters of sequentially similar binding sites")
+        clusterize()
+
+        print("picking representatives from clusters and moving them into bchains_seq")
+        reprs = choose_reprs()
 
     elif mode == 'filter':
         # ———filter binding sites into bsites_final———
 
         filter_bsites("hsm/bsites", "hsm/bchains_seq")
+
         l = input("load sitemotif files? (y/n) ")
         if l == "y":
             load_sitemotif_files("hsm/bsites_final")
