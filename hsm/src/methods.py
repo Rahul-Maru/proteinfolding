@@ -206,6 +206,7 @@ def extract_bsites(combined=False, dist=MAX_BSITE_DIST):
 			Defaults to False.
 	"""
 
+	LIG = "HSM"
 	print(f"Extracting Binding Sites ({"Combined" if combined else "Ligand-wise"})")
 
 	# Get PDB IDs from the directory
@@ -215,7 +216,7 @@ def extract_bsites(combined=False, dist=MAX_BSITE_DIST):
 	for p in pdb_ids:
 		prot = Protein(f"hsm/pdbs/{p}")
 		if combined:
-			ligs = prot.get_ligand('HSM')
+			ligs = prot.get_ligand(LIG)
 			bsites = [prot.get_bsite(lig, True, dist) for lig in ligs]
 
 			combined_bsite = []
@@ -234,7 +235,7 @@ def extract_bsites(combined=False, dist=MAX_BSITE_DIST):
 			# create a separate file for the binding site of each chain
 			# TODO ligands in chains with no other atoms not recognized
 
-			ligs = prot.get_ligand('HSM')
+			ligs = prot.get_ligand(LIG)
 			bsites = [prot.get_bsite(lig, True, dist) for lig in ligs]
 
 			for i, lig in enumerate(ligs):
