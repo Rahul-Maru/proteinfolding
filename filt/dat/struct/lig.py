@@ -8,7 +8,7 @@ import shutil
 from pathlib import Path
 
 def main():
-	INDR = "representative-binding-sites"
+	INDIR = "representative-binding-sites"
 	OUTDIR = "ligand-inclsv-binding-sites"
 
 	if not os.path.exists(OUTDIR):
@@ -17,27 +17,16 @@ def main():
 
 	i = 0
 	nf = []
-	for file_path in Path(INDR).iterdir():
-		nam = file_path.name
-		ligArr = nam.split('_')
-		n = ligArr[2]
-		og_nam = f"{ligArr[0]}.ent"
-		subdir = og_nam[4:6]
-
-		pdb_file = Path(f"pdb/{subdir}/{og_nam}")
+	for f in os.listdir(INDIR):
+		st = f[:-4].split("_")
+		_, ch, n, lig = st
 
 		found = False
-		output_file = Path(OUTDIR) / nam
-
-		with open(pdb_file, 'r') as pdb_f:
-			for line in pdb_f:
-				rec = line[:6].strip()
-				if rec == "HETATM":
-					num_str = line[22:26].strip()
-					num = f"{int(num_str):04d}" if num_str else ""
-
-					# found the match
-					if num == n:
+		with open(f"{INDIR}/{f}") as fl:
+			for l in fl:
+				if l[:6] == "HETATM":
+					rch, rn, rlig = (l[21], l[22:26], l[17:20])
+					if (ch, int(n), lig) == (rch, int(rn), rlig):
 						# if this is the first matching line
 						if not found:
 							found = True
@@ -49,14 +38,13 @@ def main():
 						# Append the HETATM line to output file
 						with open(output_file, 'a') as out_f:
 							out_f.write(line)
+
 					elif found:
 						# if the number doesn't match and we've already found the ligand, then we are done
 						break
-		if not found:
-			print(f"{i}: not found {nam} ({pdb_file}), {n}, {num}")
-			nf.append(nam)
-		elif not i % 1000:
-			print(i)
+			else:
+				nf.append(f)
+				print("lig not found: ", f)
 
 	print(len(nf))
 	with open("nf_lig.txt", 'w') as f:

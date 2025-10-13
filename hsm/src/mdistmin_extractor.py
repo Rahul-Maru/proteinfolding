@@ -4,18 +4,31 @@ MD_CUTOFF = 0.4
 RES_CUTOFF = 4
 REPR = "2x45_C6.pdb"
 mode = "directed"
+target = "flapp"
 
 
 def mdistmin_extractor():
+	inf = "hsm/tools/" + \
+		("MAPP-3D/MultipleSiteAlignment" if target == "sitemotif" else "FLAPP") + \
+		"/align_output.txt"
+	outdir = "hsm/outs/" + ("SiteMotif" if target == "sitemotif" else "FLAPP")
+
+
 	final_list = [["Source", "Target", "Score"]]
-	with open("hsm/tools/MAPP-3D/MultipleSiteAlignment/align_output.txt") as f:
+	with open(inf) as f:
 		pairs = f.readlines()
 		aligns = []
 		for pair in pairs:
 			try:
 				dat = pair.split("\t")
-				mdist_min = float(dat[2].split(" ")[2])
-				nres = int(dat[2].split('/')[0])
+				scores = dat[2].split(" ")
+				if target == "sitemotif":
+					mdist_min = float(scores[2])
+					nres = int(dat[2].split('/')[0])
+				else:
+					mdist_min = float(scores[3])
+					nres = int(scores[0])
+
 
 				if mode == "filter":
 					if mdist_min > MD_CUTOFF and nres >= RES_CUTOFF:
@@ -38,13 +51,14 @@ def mdistmin_extractor():
 	
 	print(''.join([f"{x}\n" for x in final_list]))
 
-	with open("hsm/outs/SiteMotif/mdist.csv", 'w') as f2:
+	with open(f"{outdir}/mdist.csv", 'w') as f2:
 		writer = csv.writer(f2)
 		writer.writerows(final_list)
 
-	with open("hsm/outs/SiteMotif/aligns.txt", 'w') as f3:
-		print(aligns)
-		f3.writelines(aligns)
+	if mode == "repr":
+		with open(f"{outdir}/aligns.txt", 'w') as f3:
+			print(aligns)
+			f3.writelines(aligns)
 
 
 if __name__ == "__main__":
