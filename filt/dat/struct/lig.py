@@ -5,9 +5,9 @@ ligand they bind to.
 
 import os
 import shutil
-from pathlib import Path
 
 def main():
+	INDIR = "representative-binding-sites"
 	INDIR = "representative-binding-sites"
 	OUTDIR = "ligand-inclsv-binding-sites"
 
@@ -36,9 +36,7 @@ def main():
 			for l in fl:
 				if l[:6] == "HETATM":
 					rch, rn, rlig = (l[21], l[22:26], l[17:20].strip())
-					if len(lig) == 2:
-						pass
-#						print((ch, int(n), lig), (rch, int(rn), rlig))
+					
 					if (ch, int(n), lig) == (rch, int(rn), rlig):
 						# if this is the first matching line
 						if not found:
@@ -59,10 +57,10 @@ def main():
 					nf.append(f)
 					print(f"{i}: not found {pdbid} ({f}), {n}, {rn}")
 
-
-	print(len(nf))
-	with open("nf_lig.txt", 'w') as f:
-		f.write("\n".join(nf))
+	if nf:
+		print(len(nf))
+		with open("nf_lig.txt", 'w') as f:
+			f.write("\n".join(nf))
 
 if __name__ == "__main__":
 	main()
