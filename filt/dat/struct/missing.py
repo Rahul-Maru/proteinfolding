@@ -12,7 +12,7 @@ for f in os.listdir(indir):
 	with open(f"{indir}/{f}") as fl:
 		for l in fl:
 			if l[:6] == "HETATM":
-				rch, rn, rlig = (l[21], l[22:26], l[17:20])
+				rch, rn, rlig = (l[21], l[22:26], l[17:20].strip())
 				if (ch, int(n), lig) == (rch, int(rn), rlig):
 					found = True
 					break
