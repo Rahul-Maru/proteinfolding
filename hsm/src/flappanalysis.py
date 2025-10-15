@@ -1,8 +1,8 @@
 from collections import defaultdict
 
 
-NRES = 4
-MDIST = 0.4
+NRES = 6
+MDIST = 0.6
 
 with open("hsm/tools/FLAPP/align_output.txt") as f:
 	next(f)
