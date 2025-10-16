@@ -1,10 +1,11 @@
 import os
 
+
 nrsites = os.listdir("hsm/tools/FLAPP/sites")
 hsmsites = [site for site in nrsites if 'HSM' in site]
 
-print(len(nrsites), len(hsmsites))
-print(len(nrsites)*len(hsmsites))
+# print(len(nrsites), len(hsmsites))
+# print(len(nrsites)*len(hsmsites))
 
 i = 0
 for site in hsmsites:

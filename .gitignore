@@ -8,3 +8,4 @@ TODO
 *.sh.swp
 filt/dat/*.xz
 filt/dat/struct/*/
+photorec.se*

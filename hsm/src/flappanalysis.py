@@ -1,20 +1,38 @@
 from collections import defaultdict
+import json
 
 
 NRES = 6
-MDIST = 0.6
+MDIST_MIN = 0.6
+MDIST_MAX = 0.4
+target = "motif"
 
-with open("hsm/tools/FLAPP/align_output.txt") as f:
-	next(f)
+inf = "hsm/tools/" + \
+		("MAPP-3D/MultipleSiteAlignment" if target == "motif" else "FLAPP") + \
+		"/align_output.txt"
+suffix = "2" if target == "motif" else ""
+
+with open(inf) as f:
 
 	sites = set()
 	sitegrps = defaultdict(list)
 	for l in f:
-		dat = l.split("\t")
-		scores = dat[2].split(" ")
-		mdist_min = float(scores[3])
-		nres = int(scores[0])
-		if mdist_min > MDIST and nres >= NRES:
+		try:
+			dat = l.split("\t")
+			scores = dat[2].split(" ")
+			
+			if target == "motif":
+				mdist_min = float(scores[2])
+				mdist_max = float(scores[3])
+				nres = int(dat[2].split('/')[0])
+			else:
+				mdist_min = float(scores[3])
+				mdist_max = float(scores[4])
+				nres = int(scores[0])
+		except:
+			continue
+
+		if mdist_min > MDIST_MIN and mdist_max > MDIST_MAX and nres >= NRES:
 			s0 = dat[0]
 			s1 = dat[1]
 			if "HSM" not in s0:
@@ -26,6 +44,11 @@ with open("hsm/tools/FLAPP/align_output.txt") as f:
 			sites.add(s1)
 			sitegrps[s0].append(s1)
 
-sitelist = [f"{k}: {v}" for k, v in sitegrps.items()]
-print("\n".join(sitelist))
+# sitelist = "\n".join([f"{k}: {v}" for k, v in sitegrps.items()])
 print(len(sites))
+
+json.dump(sitegrps, open(f"hsm/outs/FLAPP/alignedsites{suffix}.txt", 'w'))
+
+with open(f"hsm/outs/FLAPP/alignlist{suffix}.txt", 'w') as f3:
+	f3.write('\n'.join(sites))
+	f3.write("\n")
