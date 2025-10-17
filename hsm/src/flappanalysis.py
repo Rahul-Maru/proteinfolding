@@ -5,6 +5,7 @@ import json
 NRES = 6
 MDIST_MIN = 0.6
 MDIST_MAX = 0.4
+MDIST_SEQ = 0
 target = "motif"
 
 inf = "hsm/tools/" + \
@@ -24,6 +25,7 @@ with open(inf) as f:
 			if target == "motif":
 				mdist_min = float(scores[2])
 				mdist_max = float(scores[3])
+				mdist_seq = float(scores[4])
 				nres = int(dat[2].split('/')[0])
 			else:
 				mdist_min = float(scores[3])
@@ -32,7 +34,7 @@ with open(inf) as f:
 		except:
 			continue
 
-		if mdist_min > MDIST_MIN and mdist_max > MDIST_MAX and nres >= NRES:
+		if mdist_min > MDIST_MIN and mdist_max > MDIST_MAX and mdist_seq > MDIST_SEQ and nres >= NRES:
 			s0 = dat[0]
 			s1 = dat[1]
 			if "HSM" not in s0:
