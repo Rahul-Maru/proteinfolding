@@ -1,10 +1,10 @@
-"""_summary_
+"""OBSOLETE
+Program that tracks files present in the filtered binding sites directory but
+not in the final clustered list of binding sites.
 """
 
 import json
-import os
 import re
-import time
 from bio import fwrite
 
 print("––f_bsites.txt––")
@@ -75,15 +75,19 @@ for bsite in fsites_m:
 
 	with open(f"filt/dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
 		for line in f:
+			# if SOURCE record is found then we have gone past the relevent section
 			if SOURCE_PATTERN.match(line):
 				print("FAILED - ", bsite)
 				break
 
 			if (ent := ENTY_PATTERN.match(line)):
+				# we are now under entity x
 				enty_n = int(ent.group(1))
 			elif (mol := MOL_PATTERN.match(line)):
+				# stores the name of the entity
 				enty_nam = mol.group(1)
 			elif (ch := CHAIN_PATTERN.match(line)):
+				# gets the chains associated with the entity
 				chains = ch.group(1).replace(';', '').strip().split(', ')
 				if tokens[1] in chains:
 					enty_names.append((f"{tokens[0][3:].upper()}_{enty_n}", bsite, enty_nam))

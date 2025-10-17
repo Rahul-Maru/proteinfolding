@@ -1,6 +1,8 @@
-1. convert all the files in pdb structures folder to pdb 
-2. extract bsites by ligand (ignore monoatoms and h2o)
-3. map each entity in cluster data to chains
-4. pick one repr per cluster per ligand by resolution (obtain in #3) 
-5. remove the rest of the data if its in the same cluster (consider separately for each ligand)
+———Pipeline for filtering the database———
+
+Obtaining the binding sites and the entity cluster data.
+Filtration: discard all binding sites of unwanted ligands. The list of unwanted ligands can be found in the file unwanted-ligands.txt
+Clusterization: map each entity in the cluster file to the corresponding binding sites, and split each cluster by ligand.
+Choosing representatives: pick one representative per cluster per ligand based on resolution and discard the rest of the binding sites.
+
 
