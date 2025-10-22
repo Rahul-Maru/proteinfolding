@@ -1,8 +1,7 @@
 #!/bin/bash
 
-if [[ $1 == "sd" ]]; then
-	echo "hi"
-fi
+# pass 'sd' as the argument to shut down the machine after completion
+# next step: extractzip.sh
 
 ############################################################################
 #

@@ -21,7 +21,7 @@ print("3. number of entities in both pdb and cluster: ", len(pdb_ents&cluster_en
 
 with open("filt/dat/missing_entys.txt", "w") as f_out:
 	f_out.write(str(missing_entys))
-	print("writing 1. to missing_entys.txt")
+	print("writing 1. to missing_entys.txt\n")
 
 missing_entys_pdbs = {ent[:4] for ent in missing_entys}
 missing_entys_pdbs2 = {ent[:4] for ent in missing_entys2}

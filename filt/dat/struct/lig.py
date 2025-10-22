@@ -1,6 +1,6 @@
-"""Copies all representative binding sites from filt/dat/struct/representative-binding-sites to
-filt/dat/struct/ligand-inclsv-binding-sites, appending to each the HETATM records associated with the
-ligand they bind to.
+"""Copies all filt/dat/struct/representative-binding-sites intto
+filt/dat/struct/ligand-inclsv-binding-sites, appending to each site
+its ligand data
 """
 
 import os
@@ -11,6 +11,7 @@ def main():
 	INDIR = "representative-binding-sites"
 	OUTDIR = "ligand-inclsv-binding-sites"
 
+	# make output directory if it doesn't exist
 	if not os.path.exists(OUTDIR):
 		print(OUTDIR)
 		os.makedirs(OUTDIR)
@@ -21,10 +22,11 @@ def main():
 		i+=1
 		if not i%1000:
 			print (i)
-		
+
 		inf = f"{INDIR}/{f}"
 		outf = f"{OUTDIR}/{f}"
-		
+
+		# parses site name
 		st = f[:-4].split("_")
 		pdbid, ch, n, lig = st
 
@@ -35,8 +37,10 @@ def main():
 		with open(f"pdb/{mid}/{id}") as fl:
 			for l in fl:
 				if l[:6] == "HETATM":
+					# parses ligand info from record
 					rch, rn, rlig = (l[21], l[22:26], l[17:20].strip())
-					
+
+					# checks if the identifying info matches
 					if (ch, int(n), lig) == (rch, int(rn), rlig):
 						# if this is the first matching line
 						if not found:

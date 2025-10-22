@@ -1,6 +1,10 @@
+"""OBSOLETE (see f_missing2.py)
+Script that investigates why some sites present in the binding sites directory are
+not in the final clustered list of binding sites.
+"""
+
 import json
 import os
-import time
 
 
 with open("filt/dat/struct/bsites.txt") as f:
