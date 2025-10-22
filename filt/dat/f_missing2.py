@@ -1,3 +1,8 @@
+""" SECOND VER (supersedes f_mising.py)
+Script that investigates why some sites present in the filtered binding sites directory are
+not in the final clustered list of binding sites.
+"""
+
 import json
 import re
 from bio import fwrite
@@ -25,10 +30,14 @@ print("filtered binding sites that were not clustered: ", len(sites_m))
 
 print("\n––nonentities.txt––")
 print(" - list of binding sites whose chains do not belong to a named entity")
+
+# reads said list from file as computing it is time-consuming
 with open("filt/dat/nonentities.txt") as f:
 	nonentities = set(f.readlines()[0][2:-2].split("', '"))
 	print("number of binding sites not in an entity: ", len(nonentities))
 
+# unclustered binding sites whose chains ARE part of an entity
+# there must exist a different reason as to why these sites were not clustered
 sites_m2 = sites_m - nonentities
 print("still-unaccounted for bsites: ", len(sites_m2))
 
@@ -40,6 +49,7 @@ ENTY_PATTERN = re.compile(r"COMPND\s+\d*\s*MOL_ID:\s*(\d+)")
 MOL_PATTERN = re.compile(r"COMPND\s+\d*\s*MOLECULE:\s*(.*)")
 
 enty_names = []
+# gets all entities of the second set of missing binding sites
 for bsite in sites_m2:
 	tokens = bsite.strip().split("_")
 	pdb_id = f"{tokens[0]}.ent"

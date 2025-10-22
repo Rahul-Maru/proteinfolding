@@ -1,5 +1,5 @@
-"""OBSOLETE
-Program that tracks files present in the filtered binding sites directory but
+"""OBSOLETE (see f_missing2.py)
+Script that investigates why some sites present in the filtered binding sites directory are
 not in the final clustered list of binding sites.
 """
 
@@ -75,7 +75,7 @@ for bsite in fsites_m:
 
 	with open(f"filt/dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
 		for line in f:
-			# if SOURCE record is found then we have gone past the relevent section
+			# if a SOURCE record is found then we have gone past the relevent section
 			if SOURCE_PATTERN.match(line):
 				print("FAILED - ", bsite)
 				break
@@ -132,6 +132,7 @@ removed = []
 nonentities = []
 
 c = 0
+# finds all binding sites whose chains are not part of an entity
 for bsite in sites_m:
 	c+=1
 	if c%1000 == 0:
@@ -143,14 +144,18 @@ for bsite in sites_m:
 	try:
 		with open(f"filt/dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
 			for line in f:
+				# if a SOURCE record is found then we have gone past the relevent section
 				if SOURCE_PATTERN.match(line):
 					break
+
 				if CHAIN_PATTERN.match(line):
+					# find all the chains in the entity section
 					chains.extend(line.replace(";", "").split("CHAIN:")[1].strip().split(', '))
 	except FileNotFoundError as e:
 		removed.append(bsite)
 		continue
 
+	# check if the chain is not in the list
 	if tokens[1] not in chains:
 		nonentities.append(bsite)
 

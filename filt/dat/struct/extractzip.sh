@@ -1,3 +1,6 @@
+# unzips all pdb files
+# next step: bsites.sh
+
 for d in pdb/*; do
 	if [ -d "$d" ]; then
 		echo "$d"

@@ -1,4 +1,6 @@
-"Copies filt/dat/reprs.json into cluster_reprs.txt as a text list with one representative per line"
+"""Copies filt/dat/reprs.json into cluster_reprs.txt as a text list
+with one representative per line"""
+
 import json
 
 IN = "../reprs.json"

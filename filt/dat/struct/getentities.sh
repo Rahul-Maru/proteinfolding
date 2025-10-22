@@ -1,9 +1,13 @@
 #!/bin/bash
 
+# OBSOLETE (superseded by extractentities.py)
+
 shopt -s nullglob
 
 outf="ents.txt"
 errf="noents.txt"
+
+# clears output and error files
 > $outf
 > $errf
 
@@ -16,6 +20,7 @@ while IFS= read -r pdb; do
 		if mat=$(echo $line | grep -oP "^COMPND\s+\d*\s*MOL_ID:\s*(\d+)"); then
 			#echo found: $mat
 
+			# gets the entity number and writes it to outf
 			ent=$(echo $mat | cut -d : -f 2 | grep -oP "\d*")
 			#echo $i-${nam}_${ent}
 			echo ${nam}_${ent} >> $outf

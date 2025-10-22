@@ -1,4 +1,7 @@
-find representative-binding-sites -type f -delete
+# copies chosen representatives into new dir
+
+# empties directory first
+find "representative-binding-sites" -type f -delete
 
 while IFS= read -r repr; do
 
