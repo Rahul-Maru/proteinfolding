@@ -72,6 +72,7 @@ class Protein:
 
 		for atom in self.atoms + self.hetatms:
 			res_id = f'{atom[CHAIN]}_{atom[RES_SEQ].strip()}'
+			# if this is a new resiude, add it to the dict...
 			if res_id != last_res_id:
 				residues.append({
 					'code': atom[RESN],
@@ -80,6 +81,7 @@ class Protein:
 					'atoms': [atom]
 				})
 				last_res_id = res_id
+			# ...otherwise add the atom to the current residue
 			else:
 				residues[-1]['atoms'].append(atom)
 
@@ -167,10 +169,14 @@ class Protein:
 
 
 	def centroid(self, query = None, qtype=""):
-		"""Calculates the centroid of a given set of atoms."""
+		"""Calculates the centroid of a given set of atoms. The centroid is defined as:
+			`Σs_i / n` where `s_i` is the position of the i-th atom, and `n` is the
+			number of atoms in `query`"""
 
 		coords = self.get_coords(query, qtype=qtype)
-		if n := len(coords[0]):
+		n = len(coords[0])
+
+		if n:
 			sum = np.zeros(3)
 			for x, y, z in zip(*coords):
 				sum += np.array([x, y, z])
@@ -184,7 +190,6 @@ class Protein:
 		"""Returns the 1-letter sequence of the residues in the given list,
 		or in the whole protein if no list is given."""
 		# TODO test this
-
 
 		if not residues:
 			residues = self.residues
@@ -202,7 +207,7 @@ class Protein:
 
 		for i in range(len(residues)-1):
 			# Add current residue
-			seq.append(amino_acid_map(residues[i]['code']))
+			seq.append(aa_map(residues[i]['code']))
 
 			# Check for gap to next residue
 			curr_chain, curr_num_str = residues[i]['id'].split('_')
@@ -223,7 +228,7 @@ class Protein:
 					seq.extend(['-'] * (next_num - 1))
 
 		# Add final residue
-		seq.append(amino_acid_map(residues[-1]['code']))
+		seq.append(aa_map(residues[-1]['code']))
 
 		return ''.join(seq)
 

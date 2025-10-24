@@ -49,7 +49,7 @@ AA_MAP = {'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D', 'CYS': 'C',
 # to invert, uncomment the following line:
 # AA_MAP_INV = {v: k for k, v in AA_MAP.items()}
 
-def amino_acid_map(code: str) -> str:
+def aa_map(code: str) -> str:
 	"""Returns the 1-letter code of the amino acid."""
 	if code in AA_MAP:
 		return AA_MAP[code]
@@ -82,24 +82,34 @@ def chainlen(chain: str) -> int:
 	# TODO
 	pass
 
-
-def dist(p, q):
-    """Gets the distance between two triplets of coordinates.
-    
-    Args:
-        p: First triplet of coordinates
-        q: Second triplet of coordinates
-        
-    Returns:
-        float: Euclidean distance between the two points
-    """
-    return math.sqrt(sum([(p[i] - q[i])**2 for i in range(3)]))
-
 def hue_to_RGB(θ: float) -> tuple:
-	"""Given a hue value θ ∈ [0, 2π] and converts it to an RGB vector."""
+	"""Given a hue value `θ ∈ [0, 2π]` and converts it to an RGB vector."""
 
 	rcos = lambda x : min(1, max(0, np.cos(x) + 0.5))
 	gcos = lambda x : min(1, max(0, np.cos(x - 2*np.pi/3) + 0.5))
 	bcos = lambda x : min(1, max(0, np.cos(x + 2*np.pi/3) + 0.5))
 
 	return (rcos(θ), gcos(θ), bcos(θ))
+
+
+#——UTILS——
+
+def dist(p, q):
+    """Returns the euclidian distance between two triplets of coordinates, `p` and `q`."""
+
+    return math.sqrt(sum([(p[i] - q[i])**2 for i in range(3)]))
+
+
+def fwrite(fp, dat, text = "^", shortcut=True):
+	"""Writes to a file. (Defaults to filt/dat/fp)
+
+	Args:
+		fp (str): file path.
+		dat: data to write
+		text (str, optional): text to print. Defaults to "^".
+		shortcut (bool, optional): whether to write to filt/dat/fp. Defaults to True.
+	"""
+	fp = ("filt/dat/" if shortcut else "") + fp
+	with open(f"{fp}", 'w') as f:
+		print(f"writing to {fp}: {text}\n")
+		f.write(f"{dat}")
