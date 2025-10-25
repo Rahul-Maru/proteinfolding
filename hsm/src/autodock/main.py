@@ -3,7 +3,6 @@ import os
 import shlex
 import shutil
 import subprocess
-import sys
 import time
 from boxsize import boxsize
 
@@ -31,12 +30,12 @@ elif usr == 'aibio':
 lig = f"{autodir}/hsm.pdbqt"
 
 # params
-pt_space = 0.5
-padding = 8
+pt_space = 0.375
+padding = 12
 
-runs = 25
-pop = 150
-evals = 1000000
+runs = 50
+pop = 300
+evals = 2500000
 
 def main():
 	with open(inf) as sites:
@@ -49,10 +48,7 @@ def main():
 			mid = site[4:6]
 			receptor = f"{indir}/{site}"
 
-			print(f"Processing site: {site}")
-			site_start_time = time.time()
-
-			outdir = f"{ROOT}/outs/autodock/{mid}/{site}"
+			outdir = f"{ROOT}/outs/autodock/{mid}/{site[:-4]}"
 			os.makedirs(outdir, exist_ok=True)
 
 			# output files
@@ -62,9 +58,17 @@ def main():
 			dpf = f"{outdir}/1.dpf"
 			dlg = f"{outdir}/1.dlg"
 
-			# navigate to the output directory
+			# move on from already-processed site
+			if os.path.exists(dlg) and os.path.getsize(dlg) > 0:
+				continue
+
+			# navigate to the output directory and temporarily copy the ligand there
 			os.chdir(outdir)
 			shutil.copy(lig, ".")
+
+
+			print(f"{c}) processing site: {site}")
+			site_start_time = time.time()
 
 			# prepare receptor
 			run(f"pythonsh {mgldir}/prepare_receptor4.py -r {receptor} -o {outf} -A checkhydrogens")
