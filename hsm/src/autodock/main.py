@@ -1,4 +1,6 @@
 import getpass
+import math
+from mpi4py import MPI
 import os
 import shlex
 import shutil
@@ -31,19 +33,40 @@ lig = f"{autodir}/hsm.pdbqt"
 
 # params
 pt_space = 0.375
-padding = 12
+padding = 12 # Å
 
-runs = 50
-pop = 300
+runs = 25
+pop = 150
 evals = 2500000
 
-def main():
-	with open(inf) as sites:
-		c = 0
-		for site in sites:
-			if c == 1: break
-			c += 1
+comm = MPI.COMM_WORLD
+rank = comm.Get_rank()
+size = comm.Get_size()
 
+def main():
+	if rank == 0:
+		print(f"MPI Initiated. Running with {size} cores. \n")
+
+	failed = []
+	with open(inf) as f:
+		# split up the sites for each core
+		sites = f.readlines()
+		subsites = sites[::size]
+
+		if rank == 0:
+			print(f"processing {len(sites)} sites.")
+
+		for i in range(size):
+			if rank == i:
+				print(f"core {rank} processing {len(subsites)} sites.")
+			comm.Barrier()
+
+		if rank == 0:
+			print("————————————————\n")
+
+		comm.Barrier()
+
+		for c, site in enumerate(subsites):
 			site = site.strip()
 			mid = site[4:6]
 			receptor = f"{indir}/{site}"
@@ -67,41 +90,88 @@ def main():
 			shutil.copy(lig, ".")
 
 
-			print(f"{c}) processing site: {site}")
+			print(f"{rank}.{c}) processing site: {site}")
 			site_start_time = time.time()
 
-			# prepare receptor
-			run(f"pythonsh {mgldir}/prepare_receptor4.py -r {receptor} -o {outf} -A checkhydrogens")
+			try:
+				x = "preparing receptor"
+				# prepare receptor
+				run(f"pythonsh {mgldir}/prepare_receptor4.py -r {receptor} -o {outf} -A checkhydrogens")
 
-			# grid
-			cent, size = boxsize(receptor, pt_space, padding)
-			print("grid center, size: ", cent, size)
-			run(f"pythonsh {mgldir}/prepare_gpf4.py -l {lig} -r {outf} -p npts={size} -p gridcenter={cent} -o {gpf}")
+				x = "preparing grid file"
+				# grid
+				cent, dims = boxsize(receptor, pt_space, padding)
+				print(f"{site} ({rank}): grid center, size: ", cent, dims)
+				run(f"pythonsh {mgldir}/prepare_gpf4.py -l {lig} -r {outf} -p npts={dims} -p gridcenter={cent} -o {gpf}")
 
-			run(f"{autodir}/autogrid4 -p {gpf} -l {glg}")
+				x = "running autogrid"
+				run(f"{autodir}/autogrid4 -p {gpf} -l {glg}")
 
-			# docking
-			run(f"pythonsh {mgldir}/prepare_dpf42.py -l {lig} -r {outf} -p ga_run={runs} -p ga_pop_size={pop} -p ga_num_evals={evals} -o {dpf}")
+				x = "preparing dock"
+				# docking
+				run(f"pythonsh {mgldir}/prepare_dpf42.py -l {lig} -r {outf} -p ga_run={runs} -p ga_pop_size={pop} -p ga_num_evals={evals} -o {dpf}")
 
-			run(f"{autodir}/autodock4 -p {dpf} -l {dlg}")
+				x = "docking"
+				run(f"{autodir}/autodock4 -p {dpf} -l {dlg}")
 
-			os.remove("hsm.pdbqt")
+				os.remove("hsm.pdbqt")
+			except (ZeroDivisionError, ValueError) as e:
+				os.remove("hsm.pdbqt")
+				failed.append(site)
+				print(f"\033[093m{type(e).__name__} in {site}, while {x}, skipping\033[0m")
+				continue
 
 			site_end_time = time.time()
 			site_elapsed = site_end_time - site_start_time
 			print(f"Site {site} completed in {site_elapsed:.2f} seconds\n")
 
+	print("completed.")
+
+	with open(f"{ROOT}/outs/autodock/failed.txt", 'w') as f2:
+		f2.write('\n'.join(failed))
+		print(len(failed), "sites failed.")
+
+
 def run(cmd, **kwargs):
-	result = subprocess.run(
-		shlex.split(cmd), 
-		check=True, 
-		capture_output=True, 
-		text=True,
-		**kwargs
-	)
-	# Print stdout but filter stderr
-	if result.stdout and "setting PYTHONHOME" not in result.stdout:
-		print(result.stdout)
+	try:
+		result = subprocess.run(
+			shlex.split(cmd),
+			check=True,
+			capture_output=True,
+			text=True,
+			**kwargs
+		)
+		# Print stdout but filter stderr
+		if result.stdout and "setting PYTHONHOME" not in result.stdout:
+			print(result.stdout)
+
+		if result.returncode != 0:
+			print(f"\033[31m[ERROR IN CORE {rank}]\033[0m")
+			print(f"command {cmd} failed with error code {result.returncode}")
+			print(result.stderr)
+			comm.Abort(42)
+
+		if "WARNING" in result.stderr:
+			print(f"\033[93m[WARNING IN CORE {rank}]\033[0m")
+			print(result.stderr)
+
+	except subprocess.CalledProcessError as e:
+		print(f"\033[31m[ERROR IN CORE {rank}]\033[0m")
+		print(f"command {cmd} failed with error code {e.returncode}")
+		if e.stderr:
+			# these errors are likely due to malformed geometry and can be skipped
+			if "ZeroDivisionError" in e.stderr:
+				raise ZeroDivisionError
+			elif "ValueError" in e.stderr:
+				raise ValueError
+
+			print(f"Error output: {e.stderr}")
+
+		if e.stdout:
+			print(f"Standard output: {e.stdout}")
+		comm.Abort(42)
+
+	return result
 
 if __name__ == "__main__":
 	main()
