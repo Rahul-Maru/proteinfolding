@@ -5,7 +5,7 @@ import json
 NRES = 6
 MDIST_MIN = 0.6
 MDIST_MAX = 0.4
-MDIST_SEQ = 1
+MDIST_SEQ = 0.9
 target = "motif"
 
 inf = "hsm/tools/" + \
@@ -39,6 +39,7 @@ with open(inf) as f:
 			s1 = dat[1]
 			if "HSM" not in s0:
 				print("what", l)
+				raise Exception
 				break
 
 			sites.add(s1)
@@ -46,7 +47,7 @@ with open(inf) as f:
 			
 			als = dat[3].strip().split("_")
 			
-			print(any([al.split(" ")[0][:3] != al.split(" ")[1][:3] for al in als]))
+	#		print(any([al.split(" ")[0][:3] != al.split(" ")[1][:3] for al in als]))
 
 # sitelist = "\n".join([f"{k}: {v}" for k, v in sitegrps.items()])
 print(len(sites))

@@ -1,8 +1,7 @@
 import bio
 
-def boxsize(fp):
-	p = 16
-	s = 0.375
+def boxsize(fp, s, p):
+	"""Calculates an appropriate size for the autodock grid box given a receptor file path"""
 
 	prot = bio.Protein(fp)
 	cx, cy, cz = prot.centroid(qtype="atm")
