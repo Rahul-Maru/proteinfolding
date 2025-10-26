@@ -123,14 +123,17 @@ def main():
 
 			site_end_time = time.time()
 			site_elapsed = site_end_time - site_start_time
-			print(f"Site {site} completed in {site_elapsed:.2f} seconds\n")
+			print(f"{rank}.{c}) Site {site} completed in {site_elapsed:.2f} seconds\n")
 
 	print(f"completed on core {rank}.")
 
-	
-	with open(f"{ROOT}/outs/autodock/failed.txt", 'w') as f2:
-		f2.write('\n'.join(failed))
-		print(len(failed), "sites failed.")
+	dat = comm.gather(failed)
+
+	if rank == 0:
+		allfailed = sum(dat, [])
+		with open(f"{ROOT}/outs/autodock/failed.txt", 'w') as f2:
+			f2.write('\n'.join(allfailed))
+			print(len(allfailed), "sites failed.")
 
 
 def run(cmd, **kwargs):
