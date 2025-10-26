@@ -10,3 +10,4 @@ filt/dat/*.xz
 filt/dat/struct/*/
 photorec.se*
 filt/dat/struct/logs
+hsm/outs/autodock/*/

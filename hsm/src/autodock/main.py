@@ -68,10 +68,9 @@ def main():
 
 		for c, site in enumerate(subsites):
 			site = site.strip()
-			mid = site[4:6]
 			receptor = f"{indir}/{site}"
 
-			outdir = f"{ROOT}/outs/autodock/{mid}/{site[:-4]}"
+			outdir = f"{ROOT}/outs/autodock/{site[:-4]}"
 			os.makedirs(outdir, exist_ok=True)
 
 			# output files
