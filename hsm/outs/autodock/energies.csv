@@ -16,6 +16,7 @@ pdb1ai8_H_0002_T42, -5.64
 pdb1aix_H_0003_T19, -4.86
 pdb1auj_A_0247_PPB, -5.51
 pdb1aut_C_0001_0G6, -5.30
+pdb1avn_A_0264_HSM, -2.96
 pdb1awf_H_0001_GR4, -5.50
 pdb1awh_B_0001_GR3, -5.60
 pdb1ay6_H_0005_1ZV, -5.53
@@ -124,6 +125,7 @@ pdb1iqm_A_0401_XMK, -5.86
 pdb1iqn_A_0401_XMC, -5.79
 pdb1j17_T_0001_ZEN, -5.82
 pdb1jir_A_0301_AML, -5.25
+pdb1jqd_A_0600_HSM, -5.52
 pdb1jwt_A_0300_BLI, -5.35
 pdb1k1i_A_0999_FD1, -5.64
 pdb1k1j_A_0999_FD2, -5.71
@@ -135,6 +137,7 @@ pdb1k1p_A_0999_MEL, -5.69
 pdb1k21_H_0999_IGN, -5.34
 pdb1k22_H_0999_MEL, -5.58
 pdb1kae_A_1001_HSO, -5.40
+pdb1kar_A_0502_HSM, -4.46
 pdb1kli_H_0300_BEN, -5.40
 pdb1ksn_A_0401_FXV, -6.03
 pdb1kts_B_0999_C24, -4.78
@@ -205,6 +208,7 @@ pdb1qbn_A_0300_688, -5.62
 pdb1qbo_A_0300_711, -4.98
 pdb1qbv_H_0907_PPX, -5.16
 pdb1qcp_A_0300_RWJ, -5.64
+pdb1qft_A_0176_HSM, -5.28
 pdb1qhr_B_0500_157, -5.36
 pdb1qj1_B_1248_166, -5.78
 pdb1qj6_B_1248_167, -5.75
@@ -385,6 +389,7 @@ pdb2pks_C_0101_G44, -5.70
 pdb2pql_A_0145_TSS, -6.03
 pdb2pr3_A_1001_237, -5.83
 pdb2q1j_A_0801_FXI, -5.84
+pdb2qeb_A_0145_HSM, -5.59
 pdb2qeh_A_0145_SRO, -5.66
 pdb2qeo_A_0200_LNR, -6.08
 pdb2r2m_B_5000_I50, -5.41
@@ -417,6 +422,7 @@ pdb2w3i_A_1246_L1C, -5.79
 pdb2w3k_A_1245_L1D, -5.86
 pdb2wyg_A_1245_461, -5.68
 pdb2wyj_A_1244_898, -5.40
+pdb2x45_A_1160_HSM, -4.98
 pdb2xbv_A_1245_XBV, -5.65
 pdb2xbw_A_1245_455, -5.75
 pdb2xbx_A_1245_RR8, -5.72
@@ -473,6 +479,7 @@ pdb3aau_A_3001_GZC, -5.33
 pdb3aav_A_1001_A2C, -5.06
 pdb3biu_H_0999_10U, -5.36
 pdb3biv_H_0999_11U, -5.28
+pdb3bu1_A_0301_HSM, -5.20
 pdb3c1k_A_0403_T15, -4.94
 pdb3c27_B_5000_DKK, -5.36
 pdb3cen_A_0001_FXA, -5.81
@@ -540,6 +547,7 @@ pdb3rxb_A_0006_ALG, -5.34
 pdb3rxd_A_0006_SZ4, -5.02
 pdb3rxf_A_0009_4AP, -5.34
 pdb3rxg_A_0008_SZ3, -5.39
+pdb3rxh_A_0007_HSM, -4.95
 pdb3rxk_A_0008_SZ8, -5.35
 pdb3rxl_A_0006_SZ9, -5.31
 pdb3rxp_A_0007_SW3, -5.09
@@ -633,6 +641,7 @@ pdb4x1s_P_0100_MRZ, -5.39
 pdb4x8s_H_0301_3Z7, -5.99
 pdb4x8t_H_0301_3Z8, -5.43
 pdb4x8u_H_0301_3ZB, -5.84
+pdb4xmf_A_0202_HSM, -3.82
 pdb4y10_I_0015_OBF, -5.54
 pdb4y11_I_0015_3EG, -5.76
 pdb4y71_A_0302_48W, -5.70
@@ -685,6 +694,7 @@ pdb5pb0_B_0501_7LX, -5.25
 pdb5pb2_C_0505_9RP, -4.82
 pdb5pb4_C_0501_9RS, -4.86
 pdb5pb6_C_0505_9RV, -5.17
+pdb5rus_A_0201_HSM, -2.89
 pdb5tno_A_0301_UNL, -5.12
 pdb5tnt_A_0301_7GQ, -5.71
 pdb5tp0_A_0306_BRN, -5.71
@@ -720,6 +730,7 @@ pdb6bfp_A_0302_DJY, -5.79
 pdb6cha_C_0001_PBA, 
 pdb6cym_A_0300_71F, -4.71
 pdb6d6t_A_0405_ABU, -6.11
+pdb6dyn_A_0901_HSM, -4.18
 pdb6dyo_A_0901_LDP, -5.03
 pdb6dyr_A_0901_HJD, -4.84
 pdb6dys_A_0902_HJ1, -4.99
@@ -727,6 +738,7 @@ pdb6eo8_H_0307_2FN, -5.98
 pdb6eo9_H_0307_2OJ, -5.72
 pdb6f9g_A_0401_PUT, -5.35
 pdb6fjt_H_0303_DKQ, -5.80
+pdb6fu4_A_0401_HSM, -5.69
 pdb6gbw_H_0306_EU5, -6.00
 pdb6gwe_A_0301_ODB, -5.62
 pdb6hsx_H_0309_GOZ, -5.54
@@ -739,6 +751,7 @@ pdb6mv4_H_0310_PBZ, -5.60
 pdb6n4t_A_0304_KD7, -6.12
 pdb6nmb_A_0302_AMH, -5.03
 pdb6qf7_B_0702_0G6, -5.41
+pdb6qfa_B_0502_HSM, -5.56
 pdb6qfe_A_0305_J08, -5.30
 pdb6qff_A_0301_J08, -5.45
 pdb6qh9_A_0302_J2N, -5.43
@@ -802,6 +815,7 @@ pdb6zuw_H_1001_QQK, -5.78
 pdb6zux_H_1001_QQE, -5.69
 pdb6zv7_H_0302_QQW, -5.82
 pdb6zv8_H_1001_QQT, -5.98
+pdb7a5v_A_5408_HSM, -4.65
 pdb7ac9_H_0306_DAR, -5.24
 pdb7ahu_C_0301_0GJ, -5.62
 pdb7bs3_A_0302_F5R, -5.74
@@ -811,6 +825,7 @@ pdb7bs9_A_0302_SRO, -5.31
 pdb7bsa_A_0902_6SO, -5.63
 pdb7cmu_R_0500_G6L, -4.49
 pdb7cmv_R_0500_G6O, -4.71
+pdb7dfl_R_0900_HSM, -6.33
 pdb7e2y_R_0501_SRO, -4.22
 pdb7e32_R_0401_SRO, -4.79
 pdb7e33_R_0501_HVU, -4.59
@@ -836,6 +851,7 @@ pdb7wa2_A_0301_RKX, -5.66
 pdb7wba_A_0301_TSS, -5.31
 pdb7xtc_R_0501_8K3, -4.93
 pdb7y0f_C_0601_I9V, -5.66
+pdb7yfc_R_0601_HSM, -5.32
 pdb7yfd_R_0601_ITF, -5.55
 pdb7ym8_A_0501_J5C, -5.04
 pdb7ymh_A_0401_E5E, -5.36
@@ -849,6 +865,7 @@ pdb8fye_R_0501_YGH, -5.00
 pdb8fyt_R_0501_7LD, -5.05
 pdb8g1v_A_0912_YIL, -6.01
 pdb8gmn_A_0700_ZWK, -5.13
+pdb8hn8_R_0401_HSM, -4.93
 pdb8hoc_R_0401_ITF, -5.42
 pdb8iyv_A_0304_FO9, -5.42
 pdb8izi_A_0304_SD9, -5.43
@@ -856,16 +873,20 @@ pdb8izk_A_0305_GAI, -4.59
 pdb8jlz_R_0501_UQL, -3.75
 pdb8jsw_A_0501_SRO, -4.34
 pdb8jsx_A_0501_E5E, -4.02
+pdb8jt5_A_0501_HSM, -4.36
+pdb8jxt_R_0401_HSM, -4.85
 pdb8jxv_R_0401_VBU, -4.91
 pdb8jxw_R_0401_VCF, -5.03
 pdb8jxx_R_0401_VCL, -4.76
 pdb8kdu_A_0301_I4Q, -6.11
 pdb8oq7_A_0601_VZA, -5.87
 pdb8pm2_R_0402_8IA, -5.17
+pdb8pok_A_0401_HSM, -4.08
 pdb8rh8_A_0601_ABU, -6.03
 pdb8tgg_A_0601_WRF, -4.23
 pdb8tgh_A_0601_1WE, -4.03
 pdb8tgi_A_0601_LDP, -3.76
+pdb8tgk_A_0601_HSM, -4.30
 pdb8tgl_A_0601_LNR, -3.87
 pdb8tgn_A_0601_SRO, -4.32
 pdb8thk_R_0401_CGZ, -4.83
@@ -882,16 +903,23 @@ pdb8w8b_R_0507_UJL, -5.07
 pdb8wre_A_0601_LDP, -4.58
 pdb8xni_A_0305_E64, -5.97
 pdb8xoa_A_0601_WRF, -3.81
+pdb8yn2_R_0701_HSM, -6.21
+pdb8yn3_R_0701_HSM, -5.40
+pdb8yn5_R_0701_HSM, -5.58
 pdb8yn6_R_0701_ITF, -5.60
+pdb8yn9_R_0701_HSM, -5.85
+pdb8yuu_R_0501_HSM, -5.33
 pdb8zvx_A_0301_PMS, -5.14
 pdb9cbl_R_0501_ALE, 
 pdb9cbm_R_0501_CZX, -5.11
 pdb9crs_A_0501_ABU, -6.77
 pdb9e83_B_0602_VU4, -5.13
 pdb9faj_A_3907_ABU, -6.99
+pdb9ff0_A_0502_HSM, -5.28
 pdb9ffu_E_0501_ABU, -6.76
 pdb9fg0_B_0501_ABU, -6.02
 pdb9fre_A_0601_EI7, -5.83
 pdb9kk4_A_0306_UEG, -5.61
 pdb9kk5_A_0301_PXL, -5.50
 pdb9kq8_A_0601_XW7, -4.50
+pdb9lrc_R_0701_HSM, -5.59
