@@ -51,7 +51,7 @@ def main():
 	with open(inf) as f:
 		# split up the sites for each core
 		sites = f.readlines()
-		subsites = sites[::size]
+		subsites = sites[rank::size]
 
 		if rank == 0:
 			print(f"processing {len(sites)} sites.")
@@ -101,7 +101,7 @@ def main():
 				x = "preparing grid file"
 				# grid
 				cent, dims = boxsize(receptor, pt_space, padding)
-				print(f"{site} ({rank}): grid center, size: ", cent, dims)
+#				print(f"{site} ({rank}): grid center, size: ", cent, dims)
 				run(f"pythonsh {mgldir}/prepare_gpf4.py -l {lig} -r {outf} -p npts={dims} -p gridcenter={cent} -o {gpf}")
 
 				x = "running autogrid"
@@ -115,7 +115,7 @@ def main():
 				run(f"{autodir}/autodock4 -p {dpf} -l {dlg}")
 
 				os.remove("hsm.pdbqt")
-			except (ZeroDivisionError, ValueError) as e:
+			except Exception as e:
 				os.remove("hsm.pdbqt")
 				failed.append(site)
 				print(f"\033[093m{type(e).__name__} in {site}, while {x}, skipping\033[0m")
@@ -125,8 +125,9 @@ def main():
 			site_elapsed = site_end_time - site_start_time
 			print(f"Site {site} completed in {site_elapsed:.2f} seconds\n")
 
-	print("completed.")
+	print(f"completed on core {rank}.")
 
+	
 	with open(f"{ROOT}/outs/autodock/failed.txt", 'w') as f2:
 		f2.write('\n'.join(failed))
 		print(len(failed), "sites failed.")
@@ -141,7 +142,6 @@ def run(cmd, **kwargs):
 			text=True,
 			**kwargs
 		)
-		# Print stdout but filter stderr
 		if result.stdout and "setting PYTHONHOME" not in result.stdout:
 			print(result.stdout)
 
@@ -149,7 +149,8 @@ def run(cmd, **kwargs):
 			print(f"\033[31m[ERROR IN CORE {rank}]\033[0m")
 			print(f"command {cmd} failed with error code {result.returncode}")
 			print(result.stderr)
-			comm.Abort(42)
+#			comm.Abort(42)
+			raise Exception
 
 		if "WARNING" in result.stderr:
 			print(f"\033[93m[WARNING IN CORE {rank}]\033[0m")
@@ -164,12 +165,16 @@ def run(cmd, **kwargs):
 				raise ZeroDivisionError
 			elif "ValueError" in e.stderr:
 				raise ValueError
+			elif "RuntimeError" in e.stderr:
+				print(e.stderr)
+				raise RuntimeError
 
 			print(f"Error output: {e.stderr}")
 
 		if e.stdout:
 			print(f"Standard output: {e.stdout}")
-		comm.Abort(42)
+#		comm.Abort(42)
+		raise Exception
 
 	return result
 
