@@ -1,5 +1,4 @@
 import getpass
-import math
 from mpi4py import MPI
 import os
 import shlex
@@ -9,9 +8,17 @@ import time
 from boxsize import boxsize
 
 
-usr = getpass.getuser()
+# params
+pt_space = 0.375
+padding = 4 # Å
 
-# put rootdir here.
+runs = 25
+pop = 150
+evals = 2500000
+
+
+usr = getpass.getuser()
+# put rootdir here
 if usr == "rahul":
 	ROOT = "~/Desktop/programs/bio/hsm"
 elif usr == "aibio":
@@ -28,14 +35,6 @@ sitedir = f"{ROOT}/../filt/dat/struct/representative-binding-sites"
 pdbdir = f"{ROOT}/../filt/dat/struct/pdb"
 
 lig = f"{autodir}/hsm.pdbqt"
-
-# params
-pt_space = 0.375
-padding = 4 # Å
-
-runs = 25
-pop = 150
-evals = 2500000
 
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()

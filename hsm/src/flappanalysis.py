@@ -1,12 +1,13 @@
 from collections import defaultdict
 import json
 
+target = "motif"
+#target = "flapp"
 
-NRES = 6
+NRES = 6 if target == "motif" else 6
 MDIST_MIN = 0.6
 MDIST_MAX = 0.4
-MDIST_SEQ = 0.9
-target = "motif"
+MDIST_SEQ = 0.9 if target == "motif" else -1
 
 inf = "hsm/tools/" + \
 		("MAPP-3D/MultipleSiteAlignment" if target == "motif" else "FLAPP") + \
@@ -30,6 +31,7 @@ with open(inf) as f:
 			else:
 				mdist_min = float(scores[3])
 				mdist_max = float(scores[4])
+				mdist_seq = 1
 				nres = int(scores[0])
 		except:
 			continue
@@ -40,7 +42,6 @@ with open(inf) as f:
 			if "HSM" not in s0:
 				print("what", l)
 				raise Exception
-				break
 
 			sites.add(s1)
 			sitegrps[s0].append(s1)
