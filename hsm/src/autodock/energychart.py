@@ -41,10 +41,12 @@ def kde_curve(data, num_points=200):
     y = kernel_vals.mean(axis=0)
     return x, y
 
-print("non-hsm average energy: ", np.average(energies))
-print("non-hsm average energy (middle 50%): ", mid_avg(energies))
-print("hsm average energy: ", np.average(h_energies))
-print("hsm average energy (middle 50%): ", mid_avg(h_energies))
+print("# non-hsm: ", len(prots))
+print("# hsm  ", len(hsm))
+print("non-hsm avg energy: ", np.average(energies))
+print("non-hsm avg energy (middle 50%): ", mid_avg(energies))
+print("hsm avg energy: ", np.average(h_energies))
+print("hsm avg energy (middle 50%): ", mid_avg(h_energies))
 
 print("number of sites with energy < -5: ", len([v for v in prots.values() if v < -5]))
 
