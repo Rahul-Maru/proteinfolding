@@ -36,6 +36,7 @@ pdbdir = f"{ROOT}/../filt/dat/struct/pdb"
 
 lig = f"{autodir}/hsm.pdbqt"
 
+# use something better than MPI
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
@@ -76,6 +77,7 @@ def main():
 			nam = site[:7]
 			pdb = f"{pdbdir}/{site[4:6]}/{nam}.ent"
 
+			# create target directory
 			outdir = f"{ROOT}/outs/autodock/{site[:-4]}"
 			os.makedirs(outdir, exist_ok=True)
 
@@ -86,14 +88,17 @@ def main():
 			dpf = f"{outdir}/1.dpf"
 			dlg = f"{outdir}/1.dlg"
 
+			# navigate to the output directory
+			os.chdir(outdir)
+
 			# move on from already-processed site
-			if os.path.exists(dlg) and os.path.getsize(dlg) > 0:
+			if os.path.exists(dlg) and os.path.getsize(dlg) > 0 and not os.path.exists("lig.py"):
 				continue
 
-			# navigate to the output directory and temporarily copy the ligand there to match with the dpf file
-			os.chdir(outdir)
+			# temporarily copy the ligand there to match with the dpf file
 			shutil.copy(lig, ".")
-			# convert .ent into .pdb
+
+			# convert receptor pdb file from .ent into .pdb
 			run(f"cp {pdb} {nam}.pdb")
 
 			print(f"{rank}.{c}) processing site: {site}")
