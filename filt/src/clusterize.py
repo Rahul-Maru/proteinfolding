@@ -111,19 +111,28 @@ def enty_to_chains(pdb, enty):
 
 	path = f"{PDBDIR}/{pdb[4:6]}/{pdb}"
 	try:
-		with open(path, "r") as fil:
+		with open(path, "r") as f:
 			# go through the lines in the pdb file one by one
-			pattern = ENTY_PATTERN[enty]
+			enty_pattern = ENTY_PATTERN[enty]
 			found = False
-			for line in fil:
-				if not found and pattern.match(line):
+			for line in f:
+				if not found and enty_pattern.match(line):
 					found = True
 					continue
-				if found:
-					# once the right entity section is found, find the chain list and break
-					if CHAIN_PATTERN.match(line):
-						chains = line.replace(";", "").split("CHAIN:")[1].strip()
-						break
+				if found and CHAIN_PATTERN.match(line):
+					# once the right entity section is found, find the chain list and return it
+					l = line[18:].strip()
+					chains = []
+					if l[-1] == ';':
+						chains += l[:-1].split(', ')
+					else:
+						for line2 in f:
+							l2 = line2[11:].strip()
+							chains += l2[:-1].split(', ')
+							if l2[-1] == ';':
+								break
+
+					return chains
 			else:
 				raise ValueError(
 					f"{"Chains" if found else f"MOL_ID {enty}"} not found in {pdb}"
@@ -131,9 +140,6 @@ def enty_to_chains(pdb, enty):
 
 	except FileNotFoundError:
 		raise FileNotFoundError(f"file not found: {path}")
-
-	return chains.split(", ")
-
 
 if __name__ == "__main__":
 	clusterize()

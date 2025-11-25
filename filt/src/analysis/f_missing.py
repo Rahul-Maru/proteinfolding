@@ -150,7 +150,15 @@ for bsite in sites_m:
 
 				if CHAIN_PATTERN.match(line):
 					# find all the chains in the entity section
-					chains.extend(line.replace(";", "").split("CHAIN:")[1].strip().split(', '))
+					l = line.strip()
+					if l[-1] == ';':
+						chains += l[:-1].split(', ')
+					else:
+						for line2 in f:
+							l2 = line2[11:].strip()
+							chains += l2[:-1].split(', ')
+							if l2[-1] == ';':
+								break
 	except FileNotFoundError as e:
 		removed.append(bsite)
 		continue

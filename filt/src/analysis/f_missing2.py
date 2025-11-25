@@ -67,7 +67,17 @@ for bsite in sites_m2:
 			elif (mol := MOL_PATTERN.match(line)):
 				enty_nam = mol.group(1)
 			elif (ch := CHAIN_PATTERN.match(line)):
-				chains = ch.group(1).replace(';', '').strip().split(', ')
+				l = ch.group(1).strip()
+				chains = []
+				if l[-1] == ';':
+					chains += l[:-1].split(', ')
+				else:
+					for line2 in f:
+						l2 = line2[11:].strip()
+						chains += l2[:-1].split(', ')
+						if l2[-1] == ';':
+							break
+
 				if tokens[1] in chains:
 					enty_names.append((f"{tokens[0][3:].upper()}_{enty_n}", bsite, enty_nam))
 					break
