@@ -42,7 +42,6 @@ sites_m2 = sites_m - nonentities
 print("still-unaccounted for bsites: ", len(sites_m2))
 
 
-
 SOURCE_PATTERN = re.compile(r"SOURCE")
 CHAIN_PATTERN = re.compile(r"COMPND\s+\d*\s*CHAIN:(.*)")
 ENTY_PATTERN = re.compile(r"COMPND\s+\d*\s*MOL_ID:\s*(\d+)")
@@ -82,7 +81,6 @@ for bsite in sites_m2:
 							chains += l2.split(', ')
 						if l2[-1] != ',':
 							break
-
 					else:
 						print("NO BREAK -", bsite)
 			

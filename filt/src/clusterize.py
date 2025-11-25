@@ -123,14 +123,21 @@ def enty_to_chains(pdb, enty):
 					# once the right entity section is found, find the chain list and return it
 					l = line[18:].strip()
 					chains = []
-					if l[-1] == ';':
+					if l[-1] == ';' or l[-1] == ',':
 						chains += l[:-1].split(', ')
 					else:
+						chains += l.split(', ')
+					if l[-1] == ',':
 						for line2 in f:
 							l2 = line2[11:].strip()
-							chains += l2[:-1].split(', ')
-							if l2[-1] == ';':
+							if l2[-1] == ';' or l2[-1] == ',':
+								chains += l2[:-1].split(', ')
+							else:
+								chains += l2.split(', ')
+							if l2[-1] != ',':
 								break
+						else:
+							print("NO BREAK -", pdb)
 
 					return chains
 			else:
