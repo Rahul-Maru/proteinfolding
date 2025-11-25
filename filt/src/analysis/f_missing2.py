@@ -59,7 +59,7 @@ for bsite in sites_m2:
 	with open(f"filt/dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
 		for line in f:
 			if SOURCE_PATTERN.match(line):
-				print("FAILED - ", bsite)
+				print("FAILED - ", bsite, chains)
 				break
 
 			if (ent := ENTY_PATTERN.match(line)):
@@ -69,15 +69,23 @@ for bsite in sites_m2:
 			elif (ch := CHAIN_PATTERN.match(line)):
 				l = ch.group(1).strip()
 				chains = []
-				if l[-1] == ';':
+				if l[-1] == ';' or l[-1] == ',':
 					chains += l[:-1].split(', ')
 				else:
+					chains += l.split(', ')
+				if l[-1] == ',':
 					for line2 in f:
 						l2 = line2[11:].strip()
-						chains += l2[:-1].split(', ')
-						if l2[-1] == ';':
+						if l2[-1] == ';' or l2[-1] == ',':
+							chains += l2[:-1].split(', ')
+						else:
+							chains += l2.split(', ')
+						if l2[-1] != ',':
 							break
 
+					else:
+						print("NO BREAK -", bsite)
+			
 				if tokens[1] in chains:
 					enty_names.append((f"{tokens[0][3:].upper()}_{enty_n}", bsite, enty_nam))
 					break
