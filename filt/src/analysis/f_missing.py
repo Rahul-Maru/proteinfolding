@@ -153,7 +153,7 @@ c = 0
 # finds all binding sites whose chains are not part of an entity
 for bsite in sites_m:
 	c+=1
-	if c%1000 == 0:
+	if c%10000 == 0:
 		print(c)
 	tokens = bsite.strip().split("_")
 	pdb_id = f"{tokens[0]}.ent"
@@ -168,8 +168,7 @@ for bsite in sites_m:
 
 				if CHAIN_PATTERN.match(line):
 					# find all the chains in the entity section
-					l = ch.group(1).strip()
-					chains = []
+					l = line[18:].strip()
 					if l[-1] == ';' or l[-1] == ',':
 						chains += l[:-1].split(', ')
 					else:
@@ -196,5 +195,5 @@ for bsite in sites_m:
 
 fwrite("nonentities.txt", nonentities)
 fwrite("removed.txt", removed)
-print(len(nonentities))
-print(len(removed))
+print("number of non-entities: ", len(nonentities))
+print("number of sites that should have been removed: ", len(removed))
