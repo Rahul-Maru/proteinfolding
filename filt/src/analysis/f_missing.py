@@ -121,7 +121,8 @@ print("number of entities represented by ^: ", len(enty_names))
 enties, _, names = map(list, zip(*enty_names))
 fwrite("entities_missing_names.txt", '\n'.join(names), "list of names of aforementioned entities")
 
-
+print("\n––clusters-by-entity-70.txt––")
+print("- original cluster file")
 CLUSTF = "filt/dat/clusters-by-entity-70.txt"
 with open(CLUSTF, "r") as f:
 	lines = f.readlines()
