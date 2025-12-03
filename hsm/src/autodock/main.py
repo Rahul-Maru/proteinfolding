@@ -1,10 +1,13 @@
 import getpass
-from mpi4py import MPI
+from concurrent.futures import ProcessPoolExecutor, as_completed
 import os
 import shlex
 import shutil
 import subprocess
 import time
+
+from openmm.app import PDBFile
+from pdbfixer import PDBFixer
 from boxsize import boxsize
 
 
@@ -36,122 +39,124 @@ pdbdir = f"{ROOT}/../filt/dat/struct/pdb"
 
 lig = f"{autodir}/hsm.pdbqt"
 
-# use something better than MPI
-comm = MPI.COMM_WORLD
-rank = comm.Get_rank()
-size = comm.Get_size()
-
 currsite = ""
+worker_name = "main"
 
 def main():
-	global currsite
+	global worker_name
 
-	if rank == 0:
-		print(f"MPI Initiated. Running with {size} cores. \n")
-
-	failed = []
 	with open(inf) as f:
-		# split up the sites for each core
-		sites = f.readlines()
-		subsites = sites[rank::size]
+		sites = [line.strip() for line in f if line.strip()]
 
-		if rank == 0:
-			print(f"processing {len(sites)} sites.")
+	if not sites:
+		print("site file empty.")
+		return
 
-		for i in range(size):
-			if rank == i:
-				print(f"core {rank} processing {len(subsites)} sites.")
-			comm.Barrier()
+	max_workers = min(len(sites), os.cpu_count() or 1)
+	print(f"running with {max_workers} workers")
+	print(f"processing {len(sites)} sites")
+	print("————————————————\n")
 
-		if rank == 0:
-			print("————————————————\n")
-			abs_st_t = time.time()
+	abs_st_t = time.time()
+	failed = []
 
-		comm.Barrier()
-
-		for c, site in enumerate(subsites):
-			site = site.strip()
-			currsite = site
-
-			sitef = f"{sitedir}/{site}"
-			nam = site[:7]
-			pdb = f"{pdbdir}/{site[4:6]}/{nam}.ent"
-
-			# create target directory
-			outdir = f"{ROOT}/outs/autodock/{site[:-4]}"
-			os.makedirs(outdir, exist_ok=True)
-
-			# output files
-			recf = f"{outdir}/site.pdbqt"
-			gpf = f"{outdir}/1.gpf"
-			glg = f"{outdir}/1.glg"
-			dpf = f"{outdir}/1.dpf"
-			dlg = f"{outdir}/1.dlg"
-
-			# navigate to the output directory
-			os.chdir(outdir)
-
-			# move on from already-processed site
-			if os.path.exists(dlg) and os.path.getsize(dlg) > 0 and not os.path.exists("lig.py"):
-				continue
-
-			# temporarily copy the ligand there to match with the dpf file
-			shutil.copy(lig, ".")
-
-			# convert receptor pdb file from .ent into .pdb
-			run(f"cp {pdb} {nam}.pdb")
-
-			print(f"{rank}.{c}) processing site: {site}")
-			site_st_t = time.time()
-
+	with ProcessPoolExecutor(max_workers=max_workers) as executor:
+		futures = {executor.submit(process_site, i, site): site for i, site in enumerate(sites)}
+		for future in as_completed(futures):
+			site = futures[future]
 			try:
-				x = "preparing receptor"
-				# prepare receptor
-				run(f"pythonsh {mgldir}/prepare_receptor4.py -r {nam}.pdb -o {recf} -A checkhydrogens")
-
-				x = "preparing grid file"
-				# grid (boxed around receptor)
-				cent, dims = boxsize(sitef, pt_space, padding)
-#				print(f"{site} ({rank}): grid center, size: ", cent, dims)
-				run(f"pythonsh {mgldir}/prepare_gpf4.py -l {lig} -r {recf} -p npts={dims} -p gridcenter={cent} -o {gpf}")
-
-				x = "running autogrid"
-				run(f"{autodir}/autogrid4 -p {gpf} -l {glg}")
-
-				x = "preparing dock"
-				# docking
-				run(f"pythonsh {mgldir}/prepare_dpf42.py -l {lig} -r {recf} -p ga_run={runs} -p ga_pop_size={pop} -p ga_num_evals={evals} -o {dpf}")
-
-				x = "docking"
-				run(f"{autodir}/autodock4 -p {dpf} -l {dlg}")
-
-				os.remove("hsm.pdbqt")
-				os.remove(f"{nam}.pdb")
-
+				future.result()
 			except Exception as e:
-				os.remove("hsm.pdbqt")
-				os.remove(f"{nam}.pdb")
-
 				failed.append(site)
-				print(f"\033[093m{type(e).__name__} in {site}, while {x}, skipping\033[0m")
-				continue
+				print(f"\033[093mworker failure in {site}: {type(e).__name__}. skipping. \033[0m")
+				print("--------------------------------\n")
 
-			site_end_t = time.time()
-			print(f"{rank}.{c}) Site {site} completed in {site_end_t - site_st_t:.2f}s\n")
+	abs_end_t = time.time()
+	print(f"———all workers completed in {abs_end_t - abs_st_t:.2f}s———\n")
 
-	print(f"core {rank} finished")
+	with open(f"{ROOT}/outs/autodock/failed.txt", 'w') as f2:
+		f2.write('\n'.join(failed))
+		print(len(failed), "sites failed.")
 
-	dat = comm.gather(failed)
+	worker_name = "main"
 
-	if rank == 0:
-		abs_end_t = time.time()
-		print(f"———all cores completed in {abs_end_t - abs_st_t:.2f}s———\n")
+def process_site(i, site):
+	global currsite, worker_name
 
-		allfailed = sum(dat, [])
-		with open(f"{ROOT}/outs/autodock/failed.txt", 'w') as f2:
-			f2.write('\n'.join(allfailed))
-			print(len(allfailed), "sites failed.")
+	currsite = site
+	worker_name = f"pid-{os.getpid()}:{i}"
 
+	sitef = f"{sitedir}/{site}"
+	nam = site[:7]
+	pdb = f"{pdbdir}/{site[4:6]}/{nam}.ent"
+
+	outdir = f"{ROOT}/outs/autodock/{site[:-4]}"
+	os.makedirs(outdir, exist_ok=True)
+
+	recf = f"{outdir}/site.pdbqt"
+	gpf = f"{outdir}/1.gpf"
+	glg = f"{outdir}/1.glg"
+	dpf = f"{outdir}/1.dpf"
+	dlg = f"{outdir}/1.dlg"
+
+	root = os.getcwd()
+	os.chdir(outdir)
+
+	# if the site has already been processed, the temporary ligand file will not exist
+	#   and the dlg file will not be empty, so we can skip the site
+	if os.path.exists(dlg) and os.path.getsize(dlg) > 0 and not os.path.exists("lig.py"):
+		os.chdir(root)
+		return
+
+	# move ligand to output directory temporarily to match with the dpf file
+	shutil.copy(lig, ".")
+	
+	tmp_pdb = f"{nam}.pdb"
+	fixpdb(pdb, tmp_pdb)
+
+	print(f"{worker_name}) processing site: {site}")
+	site_st_t = time.time()
+
+	curr_action = "initializing"
+	try:
+		curr_action = "preparing receptor"
+		run(f"pythonsh {mgldir}/prepare_receptor4.py -r {nam}.pdb -o {recf} -A checkhydrogens")
+
+		curr_action = "preparing grid file"
+		cent, dims = boxsize(sitef, pt_space, padding)
+		run(f"pythonsh {mgldir}/prepare_gpf4.py -l {lig} -r {recf} -p npts={dims} -p gridcenter={cent} -o {gpf}")
+
+		curr_action = "running autogrid"
+		run(f"{autodir}/autogrid4 -p {gpf} -l {glg}")
+
+		curr_action = "preparing dock"
+		run(f"pythonsh {mgldir}/prepare_dpf42.py -l {lig} -r {recf} -p ga_run={runs} -p ga_pop_size={pop} -p ga_num_evals={evals} -o {dpf}")
+
+		curr_action = "docking"
+		run(f"{autodir}/autodock4 -p {dpf} -l {dlg}")
+
+		site_end_t = time.time()
+		print(f"{worker_name}) Site {site} completed in {site_end_t - site_st_t:.2f}s\n")
+
+	except Exception:
+		print(f"\033[093m{worker_name}) Error in {site} while {curr_action}\033[0m")
+		raise
+
+	finally:
+		for temp_file in ("hsm.pdbqt", tmp_pdb):
+			os.remove(temp_file)
+		os.chdir(root)
+
+
+def fixpdb(pdb_file, outf):
+	fixer = PDBFixer(pdb_file)
+	fixer.findMissingResidues()
+	fixer.findNonstandardResidues()
+	fixer.findMissingAtoms()
+	fixer.replaceNonstandardResidues()
+	fixer.removeHeterogens(False)
+	fixer.addMissingHydrogens(7.4)
+	PDBFile.writeFile(fixer.topology, fixer.positions, open(outf, 'w'))
 
 def run(cmd, **kwargs):
 	"""Runs a command and processes error handling.
@@ -168,35 +173,35 @@ def run(cmd, **kwargs):
 			print(result.stdout)
 
 		if result.returncode != 0:
-			print(f"\033[31m[ERROR IN CORE {rank} - {currsite}]\033[0m")
-			print(f"command {cmd} failed with error code {result.returncode}")
+			print(f"\033[31m[ERROR IN WORKER {worker_name} - {currsite}]\033[0m")
+			print(f"{worker_name}) command {cmd} failed with error code {result.returncode}")
 			print(result.stderr)
-#			comm.Abort(42)
-			raise Exception
+			raise RuntimeError(f"command {cmd} failed with code {result.returncode}")
 
 		if "WARNING" in result.stderr:
-			print(f"\033[93m[WARNING IN CORE {rank} - {currsite}]\033[0m")
+			print(f"\033[93m[WARNING IN WORKER {worker_name} - {currsite}]\033[0m")
 			print(result.stderr)
 
 	except subprocess.CalledProcessError as e:
-		print(f"\033[31m[ERROR IN CORE {rank} - {currsite}]\033[0m")
+		print(f"\033[31m[ERROR IN WORKER {worker_name} - {currsite}]\033[0m")
 		print(f"command {cmd} failed with error code {e.returncode}")
 		if e.stderr:
 			# these errors are likely due to malformed geometry and can be skipped
 			if "ZeroDivisionError" in e.stderr:
+				print(f"{worker_name}) {e.stderr}")
 				raise ZeroDivisionError
 			elif "ValueError" in e.stderr:
+				print(f"{worker_name}) {e.stderr}")
 				raise ValueError
 			elif "RuntimeError" in e.stderr:
-				print(e.stderr)
+				print(f"{worker_name}) {e.stderr}")
 				raise RuntimeError
 
-			print(f"Error output: {e.stderr}")
+			print(f"{worker_name}) Error output: {e.stderr}")
 
 		if e.stdout:
-			print(f"Standard output: {e.stdout}")
-#		comm.Abort(42)
-		raise Exception
+			print(f"{worker_name}) Standard output: {e.stdout}")
+		raise
 
 	return result
 
