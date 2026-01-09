@@ -153,6 +153,7 @@ def fixpdb(pdb_file, outf):
 	fixer.findMissingResidues()
 	fixer.findNonstandardResidues()
 	fixer.findMissingAtoms()
+	fixer.addMissingAtoms()
 	fixer.replaceNonstandardResidues()
 	fixer.removeHeterogens(False)
 	fixer.addMissingHydrogens(7.4)
@@ -201,6 +202,7 @@ def run(cmd, **kwargs):
 
 		if e.stdout:
 			print(f"{worker_name}) Standard output: {e.stdout}")
+
 		raise
 
 	return result
