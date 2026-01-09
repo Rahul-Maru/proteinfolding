@@ -20,6 +20,8 @@ MAX_BSITE_DIST = 4.5
 REC = slice(0, 6)
 # ATOM SERIAL NUMBER
 ATNO = slice(6, 11)
+# ATOM NAME
+ATN = slice(12, 16)
 # RESIDUE NAME (3-letter)
 RESN = slice(17, 20)
 # CHAIN ID

@@ -69,6 +69,7 @@ def main():
 			except Exception as e:
 				failed.append(site)
 				print(f"\033[093mworker failure in {site}: {type(e).__name__}. skipping. \033[0m")
+				print(e)
 				print("--------------------------------\n")
 
 	abs_end_t = time.time()
@@ -104,7 +105,7 @@ def process_site(i, site):
 
 	# if the site has already been processed, the temporary ligand file will not exist
 	#   and the dlg file will not be empty, so we can skip the site
-	if os.path.exists(dlg) and os.path.getsize(dlg) > 0 and not os.path.exists("lig.py"):
+	if os.path.exists(dlg) and os.path.getsize(dlg) > 0 and not os.path.exists("hsm.pdbqt"):
 		os.chdir(root)
 		return
 
