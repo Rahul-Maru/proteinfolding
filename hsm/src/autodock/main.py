@@ -6,10 +6,11 @@ import shutil
 import subprocess
 import time
 
-from openmm.app import PDBFile
-from pdbfixer import PDBFixer
+from lib.consts import fixpdb
 from boxsize import boxsize
 
+# skip sites that have already been processed
+skipsites = False
 
 # params
 pt_space = 0.375
@@ -45,6 +46,7 @@ worker_name = "main"
 def main():
 	global worker_name
 
+	# read sites
 	with open(inf) as f:
 		sites = [line.strip() for line in f if line.strip()]
 
@@ -53,14 +55,15 @@ def main():
 		return
 
 	max_workers = min(len(sites), os.cpu_count() or 1)
-	print(f"running with {max_workers} workers")
-	print(f"processing {len(sites)} sites")
+	print(f"processing {len(sites)} sites with {max_workers} workers")
 	print("————————————————\n")
 
+	# timer
 	abs_st_t = time.time()
 	failed = []
 
 	with ProcessPoolExecutor(max_workers=max_workers) as executor:
+		# distribute and process sites
 		futures = {executor.submit(process_site, i, site): site for i, site in enumerate(sites)}
 		for future in as_completed(futures):
 			site = futures[future]
@@ -75,6 +78,7 @@ def main():
 	abs_end_t = time.time()
 	print(f"———all workers completed in {abs_end_t - abs_st_t:.2f}s———\n")
 
+	# write failed sites
 	with open(f"{ROOT}/outs/autodock/failed.txt", 'w') as f2:
 		f2.write('\n'.join(failed))
 		print(len(failed), "sites failed.")
@@ -91,7 +95,7 @@ def process_site(i, site):
 	nam = site[:7]
 	pdb = f"{pdbdir}/{site[4:6]}/{nam}.ent"
 
-	outdir = f"{ROOT}/outs/autodock/{site[:-4]}"
+	outdir = f"{ROOT}/outs/autodock/results/{site[:-4]}"
 	os.makedirs(outdir, exist_ok=True)
 
 	recf = f"{outdir}/site.pdbqt"
@@ -105,13 +109,14 @@ def process_site(i, site):
 
 	# if the site has already been processed, the temporary ligand file will not exist
 	#   and the dlg file will not be empty, so we can skip the site
-	if os.path.exists(dlg) and os.path.getsize(dlg) > 0 and not os.path.exists("hsm.pdbqt"):
+	if os.path.exists(dlg) and (os.path.getsize(dlg) > 0) and (not os.path.exists("hsm.pdbqt")) and skipsites:
+		print(f"{worker_name}) Site {site} already processed. Skipping.")
 		os.chdir(root)
 		return
 
 	# move ligand to output directory temporarily to match with the dpf file
 	shutil.copy(lig, ".")
-	
+
 	tmp_pdb = f"{nam}.pdb"
 	fixpdb(pdb, tmp_pdb)
 
@@ -121,7 +126,8 @@ def process_site(i, site):
 	curr_action = "initializing"
 	try:
 		curr_action = "preparing receptor"
-		run(f"pythonsh {mgldir}/prepare_receptor4.py -r {nam}.pdb -o {recf} -A checkhydrogens")
+		# TODO does this accept pdb at all
+		run(f"pythonsh {mgldir}/prepare_receptor4.py -r {tmp_pdb} -o {recf} -A checkhydrogens")
 
 		curr_action = "preparing grid file"
 		cent, dims = boxsize(sitef, pt_space, padding)
@@ -148,21 +154,9 @@ def process_site(i, site):
 			os.remove(temp_file)
 		os.chdir(root)
 
-
-def fixpdb(pdb_file, outf):
-	fixer = PDBFixer(pdb_file)
-	fixer.findMissingResidues()
-	fixer.findNonstandardResidues()
-	fixer.findMissingAtoms()
-	fixer.addMissingAtoms()
-	fixer.replaceNonstandardResidues()
-	fixer.removeHeterogens(False)
-	fixer.addMissingHydrogens(7.4)
-	PDBFile.writeFile(fixer.topology, fixer.positions, open(outf, 'w'))
-
 def run(cmd, **kwargs):
-	"""Runs a command and processes error handling.
-	"""
+	"""Runs a command and processes error handling."""
+
 	try:
 		result = subprocess.run(
 			shlex.split(cmd),

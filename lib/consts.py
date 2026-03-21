@@ -1,6 +1,8 @@
 """CONSTANTS. TO CHANGE PARAMS, MODIFY THIS SECTION."""
 import math
 import numpy as np
+from openmm.app import PDBFile
+from pdbfixer import PDBFixer
 
 # TODO rearrange
 
@@ -115,3 +117,18 @@ def fwrite(fp, dat, text = "^", shortcut=True):
 	with open(f"{fp}", 'w') as f:
 		print(f"writing to {fp}: {text}\n")
 		f.write(f"{dat}")
+
+def fixpdb(pdb_file, outf, keep_water=False, pH=7.4):
+	"""Fixes input PDB file and stores it in given output file."""
+
+	fixer = PDBFixer(pdb_file)
+
+	fixer.findMissingResidues()
+	fixer.findNonstandardResidues()
+	fixer.findMissingAtoms()
+	fixer.addMissingAtoms()
+	fixer.replaceNonstandardResidues()
+	fixer.removeHeterogens(keep_water)
+	fixer.addMissingHydrogens(pH)
+
+	PDBFile.writeFile(fixer.topology, fixer.positions, open(outf, 'w'))

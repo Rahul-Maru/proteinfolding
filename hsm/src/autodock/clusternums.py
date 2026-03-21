@@ -5,18 +5,16 @@ import json
 prots = json.load(open("hsm/outs/autodock/prots_low_energy.json"))
 
 clusts = defaultdict(list)
-nums = defaultdict(list)
 
 for p in prots:
-    with open(f"hsm/outs/autodock/{p}/1.dlg") as f:
-        # print(p, end=": \n")
+    with open(f"hsm/outs/autodock/results/{p}/1.dlg") as f:
         for l in f:
+            # iterate through clustering histogram
             if l.startswith("_____|___________|_____|___________|_____|____:____|____:____|____:____|____:___"):
                 for l2 in f:
                     if l2.startswith("_____|___________|_____|___________|_____|______________________________________"):
                         break
     
-                    # print(l2, end="")
                     # 0: cluster rank, 1: min binding energy, 2: run no,
                     #   3: mean binding energy, 4: number in cluster
                     toks = [float(k) for k in l2.split('|')[:-1]]
@@ -27,8 +25,6 @@ for p in prots:
 
                     # store the cluster data
                     clusts[p].append(toks)
-                    # store the number of sites in the cluster
-                    nums[p].append(toks[4])
 
                 else:
                     raise
@@ -45,7 +41,8 @@ for p, c in clusts.items():
         if c[r][3] >= -6:
             break
         if c[r][4] >= 10:
-            final_clusts[p].append(int(c[r][0]))
+            # rank and run #
+            final_clusts[p].append((int(c[r][0]), int(c[r][2])))
 
 print('\n'.join([f"{k}: {v}" for k, v in final_clusts.items()]))            
 print(sum([len(v) for _, v  in final_clusts.items()]))
