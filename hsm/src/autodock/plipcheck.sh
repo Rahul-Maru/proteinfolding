@@ -1,12 +1,55 @@
+#!/bin/bash
+
 cd ../../outs/autodock/poses/
+echo "running from $(pwd)"
 
-for f in *.pdbqt; do
-    nam="${f::-6}"
+for lig in *.pdbqt; do
+    nam=${lig::-6}
+    echo "----processing $nam----"
+
+    recnam="${nam:4:2}/${nam:0:7}.ent"
+    rec="../../../../filt/dat/struct/pdb/$recnam"
+
     d="../plip/$nam"
-    tmpf="$d/tmp_$nam.pdb"
+    tmplig="$d/tmp_lig_$nam.pdb"
+    tmplig2="$d/tmp2_lig_$nam.pdb"
 
-    mkdir "$d/"
-    obabel -i pdbqt $f -o pdb -O $tmpf
-    ./../../../tools/plip.simg -f $tmpf -o $d/ -vyt
-    rm $tmpf
+    tmprec="$d/tmp_rec_$nam.pdb"
+    tmpf="$d/tmp_$nam.pdb"
+    tmpf_fix="$d/temp_${nam}_fixed.pdb"
+
+    if [ -d "$d" ]; then
+        if [ "$1" = "-s" ] && [ -f "$d/report.txt" ]; then
+		echo "report.txt found, skipping $d"
+		continue
+	fi
+
+	rm $d/*
+        echo "cleared $d"
+    else
+        mkdir "$d"
+        echo "made $d"
+    fi
+
+    # fix receptor
+    python -c "from bio import fixpdb; fixpdb('$rec', '$tmprec')"
+    grep -E "ATOM" $tmprec > $tmpf
+    echo "fixpdb done"
+
+    obabel -i pdbqt $lig -o pdb -O $tmplig
+    echo "obabel done"
+
+    grep "HETATM" $tmplig >> $tmpf
+
+    pdb_fixinsert $tmpf | pdb_reatom | pdb_reres > $tmpf_fix
+
+    echo "fixed insertions and renumbered atoms"
+
+    ./../../../tools/plip2.simg -f $tmpf_fix -o $d/ -vyt
+    echo "plip done"
+
+    rm $tmplig $tmprec $tmpf
+
+    echo ----done with $nam----
+    echo
 done
