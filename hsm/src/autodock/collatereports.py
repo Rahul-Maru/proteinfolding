@@ -1,21 +1,24 @@
 import json
 import os
 
+indir = "hsm/outs/autodock/reports"
+
 out = {}
-for F in os.listdir("hsm/outs/autodock/reports"):
-		with open(F) as f:
+
+for F in os.listdir(indir):
+		with open(f"{indir}/{F}") as f:
 			table = False
 			pdb = ""
 			interaction = ""
 			for l in f:
-				if 'pdb' in l:
+				if 'PDB' in l:
 					pdb = l[62:-14]
-					print(pdb)
+					print(l)
 					out[pdb] = {}
 
 				elif l.startswith('**'):
 					table = False
-					interaction = l[2:-2]
+					interaction = l[2:-3]
 					print(interaction)
 					out[pdb][interaction] = []
 
