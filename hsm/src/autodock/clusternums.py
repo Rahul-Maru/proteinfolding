@@ -1,6 +1,8 @@
 from collections import defaultdict
 import json
 
+cutoff = float(open("hsm/src/autodock/cutoff").read().strip())
+clust_cutoff = 10
 
 prots = json.load(open("hsm/outs/autodock/prots_low_energy.json"))
 
@@ -19,8 +21,8 @@ for p in prots:
                     #   3: mean binding energy, 4: number in cluster
                     toks = [float(k) for k in l2.split('|')[:-1]]
 
-                    # if mean binding energy of rank one cluster ≥ -6, reject the site
-                    if toks[0] == 1 and toks[3] >= -6:
+                    # if mean binding energy of rank one cluster ≥ cutoff, reject the site
+                    if toks[0] == 1 and toks[3] >= cutoff:
                         break
 
                     # store the cluster data
@@ -37,10 +39,11 @@ final_clusts = defaultdict(list)
 for p, c in clusts.items():
     print(p, c)
     for r in range(len(c)):
-        # if mean binding energy of rank r >= -6, reject the site
-        if c[r][3] >= -6:
+        # if mean binding energy of rank r >= cutoff, reject the site
+        if c[r][3] >= cutoff:
             break
-        if c[r][4] >= 10:
+        # if number in cluster >= clust_cutoff, add the cluster to the final clusters
+        if c[r][4] >= clust_cutoff:
             # rank and run #
             final_clusts[p].append((int(c[r][0]), int(c[r][2])))
 

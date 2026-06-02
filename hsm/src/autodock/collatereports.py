@@ -1,3 +1,7 @@
+"""
+This script collates the PLIP reports into a single JSON file.
+File should be formatted afterwards for readability.
+"""
 import json
 import os
 

@@ -3,6 +3,7 @@ import json
 from matplotlib import pyplot as plt
 import numpy as np
 
+cutoff = float(open("hsm/src/autodock/cutoff").read().strip())
 
 def mid_avg(dat):
    
@@ -38,28 +39,38 @@ with open("hsm/outs/autodock/energies.csv") as f:
 	rows = {row[0]: float(row[1].strip()) for row in lines if row[1].strip()}
 	no_energy = [row[0] for row in lines if not row[1].strip()]
 
+prots_all = {k: v for k,v in sorted(rows.items(), key=lambda x : x[1])}
+energies_all = np.array(list(prots_all.values()))
+
 prots = {k: v for k,v in sorted(rows.items(), key=lambda x : x[1]) if 'HSM' not in k}
 energies = np.array(list(prots.values()))
 
 hsm = {k: v for k,v in sorted(rows.items(), key=lambda x : x[1]) if 'HSM' in k} 
 h_energies = np.array(list(hsm.values()))
 
-print("# total: ", len(prots) + len(hsm))
+print("# total: ", len(prots_all))
 print("# non-hsm: ", len(prots))
-print("# hsm  ", len(hsm))
+print("# hsm: ", len(hsm))
+print()
+print("avg energy: ", np.average(energies_all))
+print("avg energy (middle 50%): ", mid_avg(energies_all))
+print()
 print("non-hsm avg energy: ", np.average(energies))
 print("non-hsm avg energy (middle 50%): ", mid_avg(energies))
+print()
 print("hsm avg energy: ", np.average(h_energies))
 print("hsm avg energy (middle 50%): ", mid_avg(h_energies))
 
-cutoff = -6
-print(f"number of sites with energy < {cutoff}: ", len([v for v in prots.values() if v < cutoff]))
+print()
+print(f"number of sites with energy < {cutoff}: ", len([v for v in prots_all.values() if v <= cutoff]))
+print(f"number of non-hsm sites with energy < {cutoff}: ", len([v for v in prots.values() if v <= cutoff]))
+print(f"number of hsm sites with energy < {cutoff}: ", len([v for v in hsm.values() if v <= cutoff]))
 
-json.dump([k for k, v in prots.items() if v < cutoff], open("hsm/outs/autodock/prots_low_energy.json", "w"))
+json.dump([k for k, v in prots_all.items() if v < cutoff], open("hsm/outs/autodock/prots_low_energy.json", "w"))
 
-all_energies = np.concatenate([abs(energies), abs(h_energies)])
-min_x = min(all_energies) - 0.3
-max_x = max(all_energies) + 0.3
+
+min_x = min(abs(energies_all)) - 0.3
+max_x = max(abs(energies_all)) + 0.3
 
 plt.subplot(1, 2, 1)
 plt.hist(abs(energies), 20, color="xkcd:ultramarine blue", alpha=0.45, density=True)
