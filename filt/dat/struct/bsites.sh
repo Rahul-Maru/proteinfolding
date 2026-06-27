@@ -1,8 +1,9 @@
 # extract all binding sites from pdb/ into odir
 
-# next step: ls -R binding-sites | grep pdb > bsites.txt
-# * split -n 4 bsites.txt
-# * sortbsites.sh
+# next step:
+# * ls -R binding-sites | grep pdb > bsites.txt
+# * split -n l/[4] bsites.txt (4 can be changed)
+# * ./sortbsites.sh [inf] (where inf is each output of split)
 
 odir="binding-sites"
 cutoff=4.5

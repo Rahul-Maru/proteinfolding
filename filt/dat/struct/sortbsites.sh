@@ -7,7 +7,7 @@
 # next step: filterbsites.sh
 
 inf="$1"
-indir="binding=sites"
+indir="binding-sites"
 
 if ! [ -f $inf ]; then
 	echo "input the slice output file to be read (or bsites.txt)"
@@ -41,6 +41,7 @@ done < "$inf"
 
 c=$(ls -p "$indir" | grep -v "/" | wc -w)
 echo "$c"
+
 if [ $c -eq 0 ]; then
 	shutdown
 fi

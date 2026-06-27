@@ -6,6 +6,8 @@
 #   OR
 #	2. they have fewer than 4 amino acid residues
 
+# TODO speed this up
+
 shopt -s nullglob
 
 # if the dir has no subdirs then make them
@@ -87,12 +89,11 @@ for d in "${bsites_base}/"*; do
 			lig=${lig%.*}
 
 			# get number of residues after removing non-AAs
-			filtsite= filter_file "$f"
-			len=$($filtsite | awk '/^ATOM/ {print substr($0, 22,5)}' | sort -n | uniq | wc -l )
+			len=$(filter_file "$f" | awk '/^ATOM/ {print substr($0, 22,5)}' | sort -n | uniq | wc -l )
 
 			outf="${outd}/${fbase}"
 			if (( len >= 4 )) && ! grep -qw $lig unwanted-ligs.txt; then
-				$filtsite > "$outf"
+				filter_file "$f" > "$outf"
 			else
 				if [ -f "$outf" ]; then
 					echo "removing $outf"
