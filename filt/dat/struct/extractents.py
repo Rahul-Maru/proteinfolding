@@ -7,7 +7,7 @@ import re
 
 INDIR = "pdb"
 OUTF = "ents2.txt"
-debug="1pv0"
+debug = ""
 
 SOURCE_PATTERN = re.compile(r"SOURCE")
 ENTY_PATTERN = re.compile(r"COMPND\s+\d*\s*MOL_ID:\s*(\d+)")

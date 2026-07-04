@@ -50,11 +50,16 @@ AA_MAP = {'ALA': 'A', 'ARG': 'R', 'ASN': 'N', 'ASP': 'D', 'CYS': 'C',
 		  'SER': 'S', 'THR': 'T', 'TRP': 'W', 'TYR': 'Y', 'VAL': 'V',
 		  'MSE': 'SeM', '___': '-', 'TER' : '|\n'}
 
-# to invert, uncomment the following line:
-# AA_MAP_INV = {v: k for k, v in AA_MAP.items()}
+# inverse of AA_MAP
+AA_MAP_INV = {v: k for k, v in AA_MAP.items()}
+
+AA_CODES_1L = ['A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I',
+			   'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V']
+AA_CODES_3L = ['ALA', 'ARG', 'ASN', 'ASP', 'CYS', 'GLU', 'GLN', 'GLY', 'HIS', 'ILE',
+			   'LEU', 'LYS', 'MET', 'PHE', 'PRO', 'SER', 'THR', 'TRP', 'TYR', 'VAL']
 
 def aa_map(code: str) -> str:
-	"""Returns the 1-letter code of the amino acid."""
+	"""Returns the 1-letter code of the amino acid given a 3-letter code."""
 	if code in AA_MAP:
 		return AA_MAP[code]
 	else:

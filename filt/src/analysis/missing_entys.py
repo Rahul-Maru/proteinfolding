@@ -29,8 +29,9 @@ missing_entys_pdbs2 = {ent[:4] for ent in missing_entys2}
 INDIR = "filt/dat/struct/pdb"
 missing_pdbs = set()
 for pdb in missing_entys_pdbs:
-    if not os.path.exists(f"{INDIR}/{pdb[1:3]}/{pdb}"):
-        missing_pdbs.add(pdb)
+	pdb = pdb.lower()
+	if not os.path.exists(f"{INDIR}/{pdb[1:3]}/pdb{pdb}.ent"):
+		missing_pdbs.add(pdb)
 
 print("1.: ", len(missing_entys))
 print("number of pdbs represented by 1.: ", len(missing_entys_pdbs))

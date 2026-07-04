@@ -1,6 +1,5 @@
 from collections import defaultdict
 import json
-import random
 import re
 import time
 
@@ -21,16 +20,12 @@ OUT_FILE = "filt/dat/f-clusters-by-bsite-70.json"
 bsites = defaultdict(list)
 # pdbs = {}
 
-
-def load_bsites():
-	t = time.time()
-	with open(SITEF) as f:
-		for line in f:
-			line = line.strip()
-			tokens = line.split("_")
-			bsites[(tokens[0][3:], tokens[1])].append((tokens[3][:-4], line))
-
-	print(f"loaded bsites in {time.time() - t}s")
+# match entity section in pdb file, load for all possible entity numbers
+ENTY_PATTERN = lambda enty : re.compile(rf"COMPND\s+\d*\s*MOL_ID:\s*{enty};")
+# match chain lists under the entity section
+CHAIN_PATTERN = re.compile(r"COMPND\s+\d*\s*CHAIN:")
+# match the source section, implying that all relevant lines have been searched
+SOURCE_PATTERN = re.compile(r"SOURCE")
 
 
 def clusterize():
@@ -48,9 +43,9 @@ def clusterize():
 	with open(CLUSTF, "r") as f:
 		lines = f.readlines()
 
-	# ignore non-PDB entries
+	# ignore non-PDB entries by removing ones that are too long
 	clusters = [
-		[enty.strip() for enty in clust.split(" ") if len(enty) <= 8] for clust in lines
+		[e for enty in clust.split() if len(e:=enty.strip()) <= 8] for clust in lines
 	]
 	clusters = [clust for clust in clusters if len(clust) > 0]
 
@@ -99,12 +94,17 @@ def clusterize():
 
 	return new_clusters
 
-# match entity section in pdb file, load for all possible entity numbers
-ENTY_PATTERN = [re.compile(rf"COMPND\s+\d*\s*MOL_ID:\s*{enty};") for enty in range(166)]
-# match chain lists under the entity section
-CHAIN_PATTERN = re.compile(r"COMPND\s+\d*\s*CHAIN:")
-# match the source section, implying that all relevant lines have been searched
-SOURCE_PATTERN = re.compile(r"SOURCE")
+
+def load_bsites():
+	t = time.time()
+	with open(SITEF) as f:
+		for line in f:
+			line = line.strip()
+			tokens = line.split("_")
+			bsites[(tokens[0][3:], tokens[1])].append((tokens[3][:-4], line))
+
+	print(f"loaded bsites in {time.time() - t}s")
+
 
 def enty_to_chains(pdb, enty):
 	"""Gets the chains from a given molecular entity"""
@@ -113,7 +113,7 @@ def enty_to_chains(pdb, enty):
 	try:
 		with open(path, "r") as f:
 			# go through the lines in the pdb file one by one
-			enty_pattern = ENTY_PATTERN[enty]
+			enty_pattern = ENTY_PATTERN(enty)
 			found = False
 			for line in f:
 				if not found and enty_pattern.match(line):

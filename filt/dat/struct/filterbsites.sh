@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# OBSOLETE (superseded by filterbsites.py)
+
 # filters out unwanted binding sites.
 # binding sites are removed if:
 #	1. they bind to an unwanted ligand
@@ -9,6 +11,15 @@
 # TODO speed this up
 
 shopt -s nullglob
+
+if [[ $(basename $(pwd)) != "struct" ]]; then
+	echo "Error: must be run from the struct/ directory"
+	exit 1
+fi
+
+if [ ! -d "$out_base" ]; then
+	mkdir -p "$out_base"
+fi
 
 # if the dir has no subdirs then make them
 subdircount=$(find "filtered-binding-sites" -maxdepth 1 -type d | wc -l)
@@ -47,7 +58,7 @@ filter_file() {
 		aacodes["VAL"] = 1
 	}
 
-	# there should be no non-ATOM records
+	# there should be no non-ATOM records in input files
 	!/^ATOM/ { print $0 }
 
 	/^ATOM/ {
@@ -59,15 +70,11 @@ filter_file() {
 	}' "$f"
 }
 
-bsites_base='/home/aibio/Desktop/bio/filt/dat/struct/binding-sites'
-out_base='/home/aibio/Desktop/bio/filt/dat/struct/filtered-binding-sites'
+bsites_base='binding-sites'
+out_base='filtered-binding-sites'
+unwanted_ligs='unwanted-ligs'
 
 # find ./$outbase/ -name "*.pdb" -type f -delete
-
-
-if [ ! -d "$out_base" ]; then
-	mkdir -p "$out_base"
-fi
 
 for d in "${bsites_base}/"*; do
 	if [ -d "$d" ]; then
@@ -92,7 +99,7 @@ for d in "${bsites_base}/"*; do
 			len=$(filter_file "$f" | awk '/^ATOM/ {print substr($0, 22,5)}' | sort -n | uniq | wc -l )
 
 			outf="${outd}/${fbase}"
-			if (( len >= 4 )) && ! grep -qw $lig unwanted-ligs.txt; then
+			if (( len >= 4 )) && ! grep -qw "$lig" "unwanted-ligs.txt"; then
 				filter_file "$f" > "$outf"
 			else
 				if [ -f "$outf" ]; then

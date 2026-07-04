@@ -1,9 +1,8 @@
-"""Picks representatives from binding site cluster @ filt/dat/clusters-by-bsite70.json and
+"""Picks representatives from binding site cluster @ filt/dat/f-clusters-by-bsite-70.json and
 stores them in filt/dat/reprs.json
 stores binding sites with no resolution in filt/dat/missing_resolution.txt
 """
 
-from collections import defaultdict
 import json
 from res import get_res
 from bio import fwrite
@@ -19,11 +18,11 @@ def choose_reprs():
 
 	reprs = []
 	nores = []
-	c= 0
+	c = 0
 	for cluster in clusters:
-		# progress logging
+		# progress logging (every 500 clusters)
 		c+=1
-		if not c%500:
+		if not c % 500:
 			print(c)
 
 		# if there is exactly one binding site in the cluster it must be chosen

@@ -8,7 +8,6 @@ import shutil
 
 def main():
 	INDIR = "representative-binding-sites"
-	INDIR = "representative-binding-sites"
 	OUTDIR = "ligand-inclsv-binding-sites"
 
 	# make output directory if it doesn't exist

@@ -1,7 +1,7 @@
 """Statistical analysis of the representative binding sites"""
 
 import json
-from typing import Counter
+from collections import Counter
 import matplotlib.pyplot as plt
 import numpy as np
 

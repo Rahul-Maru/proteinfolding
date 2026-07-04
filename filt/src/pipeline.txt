@@ -1,8 +1,6 @@
 ———Pipeline for filtering the database———
 
-Obtaining the binding sites and the entity cluster data.
-Filtration: discard all binding sites of unwanted ligands. The list of unwanted ligands can be found in the file unwanted-ligands.txt
+Obtain the binding sites and the entity cluster data.
+Filtration: discard all binding sites of unwanted ligands. The list of unwanted ligands can be found in the file unwanted_ligs
 Clusterization: map each entity in the cluster file to the corresponding binding sites, and split each cluster by ligand.
 Choosing representatives: pick one representative per cluster per ligand based on resolution and discard the rest of the binding sites.
-
-

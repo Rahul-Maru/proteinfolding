@@ -3,6 +3,7 @@
 # sorts binding-sites into subdirectories as in pdb/
 #   defined by the middle 2 chars of the pdb id
 #   takes in as input one of the outputs of 'split'
+#	pass 'sd' as second input to shut down after all bsites are moved
 
 # next step: filterbsites.sh
 
@@ -43,7 +44,7 @@ c=$(ls -p "$indir" | grep -v "/" | wc -w)
 echo "$c"
 
 if [ $c -eq 0 ]; then
-	shutdown
+	[[ $2 == "sd" ]] && shutdown
 fi
 
 

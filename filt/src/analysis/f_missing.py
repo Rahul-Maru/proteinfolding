@@ -127,7 +127,7 @@ CLUSTF = "filt/dat/clusters-by-entity-70.txt"
 with open(CLUSTF, "r") as f:
 	lines = f.readlines()
 	# ignore non-PDB entries
-	clusters = [[enty.strip() for enty in clust.split(" ") if len(enty) <= 8] for clust in lines]
+	clusters = [[e for enty in clust.split() if len(e:=enty.strip()) <= 8] for clust in lines]
 	clusters = [clust for clust in clusters if len(clust) > 0]
 	print("number of clusters: ", len(clusters))
 
