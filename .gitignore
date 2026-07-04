@@ -8,9 +8,12 @@ TODO
 *.sh.swp
 filt/dat/*.xz
 filt/dat/struct/*/
-photorec.se*
+filt/dat/stuct/*.txt
+filt/dat/struct/xa*
 filt/dat/struct/logs
 hsm/outs/autodock/*/
 ahsm/crd/SiteDesign-main/
 CLAUDE.md
+photorec.se*
+filt/dat/*missing*.txt
 
