@@ -1,17 +1,6 @@
-# unzips all pdb files
+# unzips all pdb files, n at a time
 # next step: bsites.sh
 
-for d in pdb/*; do
-	if [ -d "$d" ]; then
-		echo "$d"
-		for f in "$d"/*; do
-			if [ $(echo "$f" | grep -c "ent[.]gz$") -eq 1 ]; then
-				gunzip "$f"
-			fi
-		done
-	fi
-done
+n=${1:-4}   # number of parallel workers (first arg, default 4)
 
-if [[ $1 == "sd" ]]; then
-	shutdown
-fi
+find pdb -type f -name '*.ent.gz' -print0 | xargs -0 -P "$n" -n 1 gunzip
