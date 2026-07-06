@@ -54,6 +54,7 @@ clusters() {
 	echo "downloading cluster-file"
 	timed curl -sO https://cdn.rcsb.org/resources/sequence/clusters/clusters-by-entity-70.txt
 	printf "done\n\n"
+	echo "cluster-file downloaded on $(date +%d/%m/%Y) (dd/mm/yy)" > ../README.md 
 }
 
 mkdirs() {
@@ -66,6 +67,8 @@ pdb() {
 	cd "$root/dat/struct" || return 1
 	echo "downloading pdb via rsync"
 	timed ./rsyncPDB.sh
+	
+	echo "PDB files downloaded via rsync on $(date +%d/%m/%Y)" >> ../../README.md
 }
 
 unzip() {

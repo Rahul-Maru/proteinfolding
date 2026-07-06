@@ -1,1 +1,2 @@
 filt/dat/*.json -diff
+filt/dat/*.txt -diff
