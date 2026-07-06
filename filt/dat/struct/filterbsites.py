@@ -29,11 +29,11 @@ def main():
 
 	# make subdirs if missing
 	if not any(os.path.isdir(os.path.join(out_base, e)) for e in os.listdir(out_base)):
-		for d in os.listdir(bsites_base):
+		for d in sorted(os.listdir(bsites_base)):
 			if os.path.isdir(os.path.join(bsites_base, d)):
 				os.makedirs(os.path.join(out_base, d), exist_ok=True)
 
-	for d in os.listdir(bsites_base):
+	for d in sorted(os.listdir(out_base)):
 		if not os.path.isdir(os.path.join(bsites_base, d)):
 			continue
 
@@ -41,7 +41,7 @@ def main():
 		outd = os.path.join(out_base, d)
 		os.makedirs(outd, exist_ok=True)
 
-		for fname in os.listdir(os.path.join(bsites_base, d)):
+		for fname in sorted(os.listdir(os.path.join(bsites_base, d))):
 			if not fname.endswith(".pdb"):
 				continue
 

@@ -130,12 +130,12 @@ filter() {
 
 clusterize() {
 	cd "$root" || return 1
-	timed python filt/src/clusterize.py
+	timed python src/clusterize.py
 }
 
 reprs() {
 	cd "$root" || return 1
-	timed python filt/src/choose_reprs.py
+	timed python src/choose_reprs.py
 }
 
 move_reprs() {
