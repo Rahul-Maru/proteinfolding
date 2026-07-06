@@ -5,6 +5,8 @@
 # * split -n l/[4] bsites.txt (4 can be changed)
 # * ./sortbsites.sh [inf] (where inf is each output of split)
 
+shopt -s nullglob
+
 odir="binding-sites"
 cutoff=4.5
 for d in pdb/*; do

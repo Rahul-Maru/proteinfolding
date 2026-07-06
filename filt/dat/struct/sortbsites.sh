@@ -41,7 +41,8 @@ while read f; do
 done < "$inf"
 
 c=$(ls -p "$indir" | grep -v "/" | wc -w)
-echo "$c"
+echo "$inf sorted"
+echo "$c sites left"
 
 if [ $c -eq 0 ]; then
 	[[ $2 == "sd" ]] && shutdown

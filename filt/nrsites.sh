@@ -23,7 +23,10 @@ timed() {
 	hrs=$(( t / 3600))
 	mns=$(( t / 60 % 60 ))
 	scs=$(( t % 60 ))
-	echo "$1 done in ${hrs}:${mns}:${scs}"
+
+	name=$1
+	[[ $1 == "python" ]] && name=$2
+	echo "$name done in ${hrs}:${mns}:${scs}"
 	echo
 }
 
@@ -119,7 +122,7 @@ filter() {
 	printf "done\n\n"
 
 	echo "filtering binding sites"
-	timed ./filterbsites.sh
+	timed python filterbsites.py
 }
 
 clusterize() {
