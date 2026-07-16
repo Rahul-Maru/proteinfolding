@@ -126,16 +126,18 @@ filter() {
 
 	echo "filtering binding sites"
 	timed python filterbsites.py
+
+	ls -R filtered-binding-sites | grep pdb > f_bsites.txt
 }
 
 clusterize() {
-	cd "$root" || return 1
-	timed python src/clusterize.py
+	cd "$root/.." || return 1
+	timed python filt/src/clusterize.py
 }
 
 reprs() {
-	cd "$root" || return 1
-	timed python src/choose_reprs.py
+	cd "$root/.." || return 1
+	timed python filt/src/choose_reprs.py
 }
 
 move_reprs() {
@@ -143,7 +145,7 @@ move_reprs() {
 	echo "converting output .json file ($root/filt/dat/reprs.json)
 		into .txt ($(pwd)/cluster_reprs.txt)"
 	
-	timed ./reprsjson_to_txt.py
+	timed python reprsjson_to_txt.py
 
 	echo "moving representative binding sites to $(pwd)/representative-binding-sites"
 	timed ./move_reprs.sh
@@ -180,3 +182,7 @@ for step in "${steps[@]}"; do
 done
 
 cd "$root" || return 1
+
+
+#TODO fix root dir of src python files
+
