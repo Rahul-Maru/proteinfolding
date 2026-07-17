@@ -3,6 +3,8 @@ Script that investigates why some sites present in the filtered binding sites di
 not in the final clustered list of binding sites.
 """
 
+# NOTE not entirely obsolete (creates files needed for f_missing2.py)
+
 import json
 import re
 from bio import fwrite

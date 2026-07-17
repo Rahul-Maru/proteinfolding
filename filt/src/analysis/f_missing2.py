@@ -105,10 +105,10 @@ with open(CLUSTF, "r") as f:
 	clusters = [clust for clust in clusters if len(clust) > 0]
 	print("number of clusters: ", len(clusters))
 
-clusters = [enty[:4] for c in clusters for enty in c]
-print("number of entities in cluster-file (only PDB): ", len(clusters))
-print("sample item:", clusters[0])
-clusters = set(clusters)
+clusters_l = [enty[:4] for c in clusters for enty in c]
+print("number of entities in cluster-file (only PDB): ", len(clusters_l))
+print("sample item:", clusters_l[0])
+clusters = set(clusters_l)
 print("number of PDBs in cluster-file: ", len(clusters))
 
 print()
