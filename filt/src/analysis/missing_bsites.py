@@ -13,16 +13,16 @@ with open("filt/dat/struct/bsites.txt") as f:
 	print(" - list of all binding sites")
 	print("number of lines in bsites.txt: ", len(lins))
 	bsites = {b.strip() for b in lins}
-	print("^ without whitespace (number of binding sites)", len(bsites))
+	print("# of lines w/o whitespace (= number of binding sites)", len(bsites))
 
 print("\n––clusters-by-bsite-70.json––")
 print("- clustered list of binding sites")
 clust = json.load(open("filt/dat/clusters-by-bsite-70.json"))
-print("number of ligand-clusters: ", len(clust))
+print("number of (ligand-based) clusters: ", len(clust))
 clust = [site for c in clust for site in c]
 print("number of clustered sites: ", len(clust))
 clust = set(clust)
-print("^ without duplicates: ", len(clust))
+print("# sites w/o duplicates: ", len(clust))
 
 with open("filt/dat/bsites_missing_b.txt", 'w') as f:
 	print("\nwrote to bsites_missing_b: binding sites that were not clustered")
@@ -39,23 +39,24 @@ with open("filt/dat/bsites_missing_pdbs.txt", "w") as f:
 # ———————————
 print('———————————')
 
-with open("filt/dat/struct/pdbs.txt") as f:
-	print("––pdbs.txt––")
-	print(" - list of all pdb entries")
+with open("filt/dat/struct/pdb.txt") as f:
+	print("––pdb.txt––")
+	print(" - list of all PDB entries")
 	lins = f.readlines()
-	print("number of lines in pdbs.txt: ", len(lins))
+	print("number of lines in pdb.txt: ", len(lins))
 	pdbs = {b.strip()[3:-4].upper() for b in lins}
-	print("^ without whitespace (number of pdbs)", len(pdbs))
+	print("# of lines w/o whitespace (number of PDBs)", len(pdbs))
 
 
 print("\n––clusters-by-entity-70.json––")
+print("- original cluster-file")
 print("- clustered list of molecular entities (non-PDB items removed)")
 
 CLUSTF = "filt/dat/clusters-by-entity-70.txt"
 with open(CLUSTF, "r") as f:
 	lines = f.readlines()
 	# ignore non-PDB entries
-	clusters = [[enty.strip() for enty in clust.split(" ") if len(enty) <= 8] for clust in lines]
+	clusters = [[e for enty in clust.split(" ") if len(e:=enty.strip()) <= 8] for clust in lines]
 	clusters = [clust for clust in clusters if len(clust) > 0]
 	print("number of clusters: ", len(clusters))
 
@@ -65,6 +66,7 @@ json.dump(clusters, open("filt/dat/clusters-by-entity-70.json", "w"))
 print("sample item:", clusters[0])
 clusters = {enty[:4] for enty in clusters}
 print("number of PDBs in cluster-file: ", len(clusters))
+
 
 
 with open("filt/dat/pdbs_missing_p.txt", 'w') as f:
