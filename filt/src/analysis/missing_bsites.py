@@ -48,7 +48,7 @@ with open("filt/dat/struct/pdb.txt") as f:
 	print("# of lines w/o whitespace (number of PDBs)", len(pdbs))
 
 
-print("\n––clusters-by-entity-70.json––")
+print("\n––clusters-by-entity-70.txt––")
 print("- original cluster-file")
 print("- clustered list of molecular entities (non-PDB items removed)")
 
@@ -56,26 +56,27 @@ CLUSTF = "filt/dat/clusters-by-entity-70.txt"
 with open(CLUSTF, "r") as f:
 	lines = f.readlines()
 	# ignore non-PDB entries
-	clusters = [[e for enty in clust.split(" ") if len(e:=enty.strip()) <= 8] for clust in lines]
-	clusters = [clust for clust in clusters if len(clust) > 0]
+	clusters = [[e for enty in clust.split() if len(e:=enty.strip()) <= 8] for clust in lines]
+	clusters = [clust for clust in clusters if clust]
 	print("number of clusters: ", len(clusters))
 
-clusters = [enty for c in clusters for enty in c]
-print("number of entities in cluster-file (only PDB ID): ", len(clusters))
-json.dump(clusters, open("filt/dat/clusters-by-entity-70.json", "w"))
-print("sample item:", clusters[0])
-clusters = {enty[:4] for enty in clusters}
-print("number of PDBs in cluster-file: ", len(clusters))
-
+entys = [enty for c in clusters for enty in c]
+print("number of entities in cluster-file (only PDB ID): ", len(entys))
+print("sample item:", entys[0])
+# TODO rename this file to something that isn't misleading
+print("writing entys to filt/dat/clusters-by-entity-70.json")
+json.dump(entys, open("filt/dat/clusters-by-entity-70.json", "w"))
+pdbs_clust = {enty[:4] for enty in entys}
+print("number of PDBs in cluster-file: ", len(pdbs_clust))
 
 
 with open("filt/dat/pdbs_missing_p.txt", 'w') as f:
 	print("\nwriting to pdbs_missing_p.txt: pdbs absent from the clusterfile")
-	f.write(f"{(s2:=pdbs - clusters)}")
+	f.write(f"{(s2:=pdbs - pdbs_clust)}")
 
 with open("filt/dat/pdbs_missing_c.txt", 'w') as f:
 	print("writing to pdbs_missing_c.txt: pdbs in the clusterfile but not in the directory")
-	f.write(f"{clusters - pdbs}")
+	f.write(f"{pdbs_clust - pdbs}")
 
 with open('filt/dat/notfound.txt') as f:
 	print("\n––notfound.txt––")
@@ -85,23 +86,24 @@ with open('filt/dat/notfound.txt') as f:
 	# print(lins)
 
 sites = []
-# pdbs absent from the clusterfile
+# s2 = pdbs absent from the clusterfile
 for i, pdb in enumerate(s2):
 	pdb = pdb.lower()
 	dir = os.listdir(f"filt/dat/struct/binding-sites/{pdb[1:3]}")
 
-	# get all binding sites of the pdb
+	# get all binding sites of this pdb
 	for f in dir:
 		fsplit = f.split("_")
 		# if the binding site belongs to this PDB, add it
 		if pdb == fsplit[0][3:]:
 			sites.append(f)
 
-print("number of binding sites whose parent PDBs are not in the clusterfile: ", len(sites))
+print("number of binding sites whose parent PDBs are not in the cluster-file: ", len(sites))
 
 with open("filt/dat/pdbs_missing_sites.txt", 'w') as f:
 	print("writing to pdbs_missing_sites.txt: ^ the above binding sites")
 	f.write(f"{sites}")
 
 SITE_PDBS = {k.upper() for k in site_pdbs}
-print("\npdbs whose binding sites were not clustered because they are themselves not clustered: ", len(s2 & SITE_PDBS))
+print("\npdbs whose binding sites were not clustered because \
+they are themselves not clustered: ", len(s2 & SITE_PDBS))
