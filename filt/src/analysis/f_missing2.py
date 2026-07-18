@@ -105,17 +105,17 @@ with open(CLUSTF, "r") as f:
 	clusters = [clust for clust in clusters if len(clust) > 0]
 	print("number of clusters: ", len(clusters))
 
-clusters = [enty[:4] for c in clusters for enty in c]
-print("number of entities in cluster-file (only PDB): ", len(clusters))
-print("sample item:", clusters[0])
-clusters = set(clusters)
-print("number of PDBs in cluster-file: ", len(clusters))
+enties_clust = [enty for c in clusters for enty in c]
+print("number of entities in cluster-file (only PDB): ", len(enties_clust))
+print("sample item:", enties_clust[0])
+pdbs_clust = {enty[:4] for enty in enties_clust}
+print("number of PDBs in cluster-file: ", len(pdbs_clust))
 
 print()
 
 missing_enties = []
 for ent in enties:
-	if ent not in clusters:
+	if ent not in enties_clust:
 		missing_enties.append(ent)
 
 print("number of unaccounted-for entities not in the clusterfile: ", len(missing_enties))

@@ -134,7 +134,7 @@
     <div class="sub">Combined bug list from manual review (<code>BUGS.md</code>) and automated code review (<code>filt/code_review.html</code>). Covers the docking pipeline (<code>hsm/</code>) and the non-redundant binding-site curation pipeline (<code>filt/</code>).</div>
     <div class="meta">
       Scope: <code>hsm/src</code>, <code>filt/src</code>, <code>filt/src/analysis</code>, <code>filt/dat/struct</code> &nbsp;·&nbsp;
-      Last updated: 2026-07-03
+      Last updated: 2026-07-18
     </div>
     <div class="legend">
       <span class="badge crit">Critical</span>
@@ -309,14 +309,6 @@
   </div>
 
   <div class="finding" data-sev="low">
-    <div class="f-head"><span class="bug-num">#29</span><span class="badge low">Low</span><span class="loc">stats.py:4</span><span class="f-title"><code>from typing import Counter</code> (deprecated alias)</span></div>
-    <div class="f-body">
-      <p><span class="lab">Problem</span> Imports the generic alias, not <code>collections.Counter</code>; works on current CPython but is deprecated since 3.9.</p>
-      <p><span class="lab fix">Fix</span> <code>from collections import Counter</code>.</p>
-    </div>
-  </div>
-
-  <div class="finding" data-sev="low">
     <div class="f-head"><span class="bug-num">#30</span><span class="badge low">Low</span><span class="loc">multiple</span><span class="f-title">Assorted small issues</span></div>
     <div class="f-body">
       <p><span class="lab">Items</span></p>
@@ -339,6 +331,14 @@
     </div>
   </div>
 
+  <div class="finding" data-sev="low">
+    <div class="f-head"><span class="bug-num">#32</span><span class="badge low">Low</span><span class="loc">missing_bsites.py:42 · getentities.sh:38 · removed.sh:13</span><span class="f-title">PDB-list file referred to inconsistently as <code>pdb.txt</code> vs <code>pdbs.txt</code></span></div>
+    <div class="f-body">
+      <p><span class="lab">Problem</span> The list-of-all-PDBs file is opened as <code>pdb.txt</code> in <code>missing_bsites.py:42-46</code>, <code>getentities.sh:38</code> and <code>removed.sh:13</code>, but is named <code>pdbs.txt</code> in some environments (the canonical name differs between the dev and main machines). Whichever spelling a script hard-codes may not exist on a given machine → <code>FileNotFoundError</code> (Python) or a silently-empty <code>grep</code> (shell). <code>missing_bsites.py</code> was previously <code>pdbs.txt</code> and was changed to <code>pdb.txt</code> to match the shell scripts, which aligns the code but not necessarily the on-disk file.</p>
+      <p><span class="lab fix">Fix</span> Pick one canonical name, rename the data file and every reference to match across both machines (or symlink one to the other). Don't rely on a single machine's filesystem to decide which is correct.</p>
+    </div>
+  </div>
+
   <!-- ============ OBSOLETE ============ -->
   <h2 class="section"><span class="s-num">○ ·</span> Obsolete code</h2>
   <p class="section-note">These bugs live in scripts that have been superseded. No fix needed unless the old code is revived.</p>
@@ -348,14 +348,6 @@
     <div class="f-body">
       <p><span class="lab">Problem</span> Line 12 wipes the whole filtered set unconditionally. Line 25 counts residues on the <strong>raw</strong> file, so HETATM/water/ligand count as "residues" — contradicting the ≥4-amino-acid rule (this is presumably why <code>filterbsites.sh</code> superseded it).</p>
       <p><span class="lab fix">Fix</span> Delete the file (superseded), or pre-filter to AA <code>ATOM</code> records before counting and guard the delete.</p>
-    </div>
-  </div>
-
-<div class="finding" data-obsolete="true" data-sev="medium">
-    <div class="f-head"><span class="bug-num">#26</span><span class="badge obsb">Obsolete</span><span class="badge med">Medium</span><span class="loc">missing_bsites.py:42</span><span class="f-title">Reads <code>pdbs.txt</code>, which does not exist (the file is <code>pdb.txt</code>)</span><span class="obsolete">obsolete</span></div>
-    <div class="f-body">
-      <p><span class="lab">Problem</span> <code>open("filt/dat/struct/pdbs.txt")</code> → <code>FileNotFoundError</code>. Note this script is also the <em>sole producer</em> of <code>clusters-by-entity-70.json</code> that <code>missing_entys.py:7</code> consumes.</p>
-      <p><span class="lab fix">Fix</span> Open <code>pdb.txt</code>; regenerate the JSON from a maintained path.</p>
     </div>
   </div>
 
