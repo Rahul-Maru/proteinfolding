@@ -166,8 +166,8 @@
 <div class="wrap">
 
   <div class="counts">
-    <div class="count c-crit"><div class="n">4</div><div class="l">Critical</div></div>
-    <div class="count c-high"><div class="n">6</div><div class="l">High</div></div>
+    <div class="count c-crit"><div class="n">3</div><div class="l">Critical</div></div>
+    <div class="count c-high"><div class="n">5</div><div class="l">High</div></div>
     <div class="count c-med"><div class="n">0</div><div class="l">Medium</div></div>
     <div class="count c-low"><div class="n">5</div><div class="l">Low / Docs</div></div>
   </div>
@@ -198,14 +198,6 @@
     <div class="f-body">
       <p><span class="lab">Problem</span> <code>[..., "-O" f"{IN}/{TEMPLATE}_HSM.mol2"]</code> — the missing comma causes Python to string-concatenate into a single element <code>"-O/path/file"</code> instead of two separate <code>"-O"</code>, <code>"/path/file"</code>. Same on line 35.</p>
       <p><span class="lab fix">Fix</span> Add the missing comma: <code>"-O", f"{IN}/..."</code>.</p>
-    </div>
-  </div>
-
-  <div class="finding" data-sev="high">
-    <div class="f-head"><span class="bug-num">#4</span><span class="badge high">High</span><span class="loc">hsm/src/autodock/clusternums.py:32</span><span class="f-title">Bare <code>raise</code> outside <code>except</code> block</span></div>
-    <div class="f-body">
-      <p><span class="lab">Problem</span> The <code>else</code> clause of the inner <code>for</code> loop (runs when the closing histogram separator is never found) contains a bare <code>raise</code> with no active exception → <code>RuntimeError: No active exception to re-raise</code>.</p>
-      <p><span class="lab fix">Fix</span> Replace with <code>raise RuntimeError("histogram separator not found")</code> or similar.</p>
     </div>
   </div>
 
@@ -284,15 +276,6 @@
 
   
   
-  <div class="finding" data-sev="critical">
-    <div class="f-head"><span class="bug-num">#23</span><span class="badge crit">Critical</span><span class="loc">f_missing.py:121,134 · f_missing2.py:96,108</span><span class="f-title">Entity-vs-cluster comparison can never match (ID-format mismatch)</span></div>
-    <div class="f-body">
-      <p><span class="lab">Problem</span> <code>enties</code> holds <code>XABY_N</code> strings, but <code>clusters</code> is sliced to bare <code>enty[:4]</code> (<code>XABY</code>). So <code>ent not in clusters</code> flags <em>every</em> entity.</p>
-      <p><span class="lab">Impact</span> "number of unaccounted-for entities not in the clusterfile" is inflated to the full count — a wrong diagnostic, present in both files.</p>
-      <p><span class="lab fix">Fix</span> Compare full entity IDs on both sides (don't slice to <code>[:4]</code>).</p>
-    </div>
-  </div>
-
   
   
   
@@ -398,6 +381,22 @@
   <!-- ============ COMPLETED ============ -->
   <h2 class="section"><span class="s-num">✓ ·</span> Completed</h2>
   <p class="section-note">These bugs have been verified fixed.</p>
+
+<div class="finding" data-fixed="true" data-sev="critical">
+    <div class="f-head"><span class="bug-num">#23</span><span class="badge fixedb">Fixed</span><span class="badge crit">Critical</span><span class="loc">f_missing.py · f_missing2.py</span><span class="f-title">Entity-vs-cluster comparison can never match (ID-format mismatch)</span></div>
+    <div class="f-body">
+      <p><span class="lab">Problem</span> <code>enties</code> held <code>XABY_N</code> strings, but <code>clusters</code> was sliced to bare <code>enty[:4]</code> (<code>XABY</code>), so <code>ent not in clusters</code> flagged <em>every</em> entity — inflating the "unaccounted-for entities" count to the full total in both files.</p>
+      <p><span class="lab fix">Fix</span> Both files now flatten to full IDs (<code>enties_clust</code>/<code>entys</code>) and keep a separate <code>pdbs_clust</code> 4-char set for the PDB count; membership tests full ID against full ID (both sides uppercase, so matches land).</p>
+    </div>
+  </div>
+
+<div class="finding" data-fixed="true" data-sev="high">
+    <div class="f-head"><span class="bug-num">#4</span><span class="badge fixedb">Fixed</span><span class="badge high">High</span><span class="loc">hsm/src/autodock/clusternums.py:32</span><span class="f-title">Bare <code>raise</code> outside <code>except</code> block</span></div>
+    <div class="f-body">
+      <p><span class="lab">Problem</span> The <code>else</code> clause of the inner <code>for</code> loop (when the closing histogram separator is never found) had a bare <code>raise</code> with no active exception → <code>RuntimeError: No active exception to re-raise</code>.</p>
+      <p><span class="lab fix">Fix</span> Now raises <code>RuntimeError(f"histogram end separator not found for {p}")</code>.</p>
+    </div>
+  </div>
 
 <div class="finding" data-fixed="true" data-sev="medium">
     <div class="f-head"><span class="bug-num">#19</span><span class="badge fixedb">Fixed</span><span class="badge med">Medium</span><span class="loc">clusterize.py:103,116</span><span class="f-title"><code>ENTY_PATTERN = [… range(166)]</code> indexed by entity number</span></div>

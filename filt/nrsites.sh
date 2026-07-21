@@ -57,7 +57,7 @@ clusters() {
 	echo "downloading cluster-file"
 	timed curl -sO https://cdn.rcsb.org/resources/sequence/clusters/clusters-by-entity-70.txt
 	printf "done\n\n"
-	echo "cluster-file downloaded on $(date +%d/%m/%Y) (dd/mm/yy)" > ../README.md 
+	echo "cluster-file downloaded on $(date +%d/%m/%Y) (dd/mm/yy)" > ../README.md
 }
 
 mkdirs() {
@@ -70,7 +70,7 @@ pdb() {
 	cd "$root/dat/struct" || return 1
 	echo "downloading pdb via rsync"
 	timed ./rsyncPDB.sh
-	
+
 	echo "PDB files downloaded via rsync on $(date +%d/%m/%Y)" >> ../../README.md
 }
 
@@ -84,7 +84,7 @@ extract() {
 	cd "$root/dat/struct" || return 1
 	echo "extracting molecular entity numbers into $(pwd)/ents.txt"
 	timed python extractents.py
-	
+
 	echo "extracting binding sites into $(pwd)/binding-sites"
 	timed ./bsites.sh
 
@@ -105,9 +105,9 @@ sortbsites() {
 
 	echo "sorting binding sites with $n parallel workers"
 	split -n "l/$n" bsites.txt sortslice.
-	
+
 	# wrapper for timing purposes
-	sorting_bsites() { 
+	sorting_bsites() {
 		for slice in sortslice.*; do
 			./sortbsites.sh "$slice" &
 		done
@@ -144,7 +144,7 @@ move_reprs() {
 	cd "$root/dat/struct" || return 1
 	echo "converting output .json file ($root/filt/dat/reprs.json)
 		into .txt ($(pwd)/cluster_reprs.txt)"
-	
+
 	timed python reprsjson_to_txt.py
 
 	echo "moving representative binding sites to $(pwd)/representative-binding-sites"

@@ -4,6 +4,7 @@ from bio import RESN, AA_CODES_3L, CHAIN, RES_SEQ
 def filter_site(lines):
 	return [l for l in lines if l.startswith("ATOM") and l[RESN].strip() in AA_CODES_3L]
 
+
 def count_aa_residues(lines):
 	seen = set()
 	for line in lines:
@@ -12,6 +13,7 @@ def count_aa_residues(lines):
 		seen.add((line[CHAIN], line[RES_SEQ]))
 
 	return len(seen)
+
 
 def main():
 	if os.getcwd().split("/")[-1] != "struct":

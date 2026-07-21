@@ -3,8 +3,6 @@ Script that investigates why some sites present in the filtered binding sites di
 not in the final clustered list of binding sites.
 """
 
-# NOTE not entirely obsolete (creates files needed for f_missing2.py)
-
 import json
 import re
 from bio import fwrite
@@ -123,17 +121,17 @@ def main():
 							print("NO BREAK -", bsite)
 
 					if tokens[1] in chains:
-						enty_names.append((f"{tokens[0][3:].upper()}_{enty_n}", bsite, enty_nam))
+						enty_names.append((f"{tokens[0][3:].upper()}_{enty_n}", enty_nam))
 						break
 			else:
 				print("UNFOUND ", bsite)
 
 	# for nam in enty_names:
-	# 	print(f"\n---{nam[0]} –– {nam[1]}---")
-	# 	print(nam[2])
+	# 	print(f"\n---{nam[0]}---")
+	# 	print(nam[1])
 
 	print("number of entities represented by ^: ", len(enty_names))
-	enties, _, names = map(list, zip(*enty_names))
+	enties, names = map(list, zip(*enty_names))
 	fwrite("entities_missing_names.txt", '\n'.join(names), "list of names of aforementioned entities")
 
 	print("\n––clusters-by-entity-70.txt––")
@@ -163,7 +161,8 @@ def main():
 
 
 def create_nonents(sites_m):
-	# finds all binding sites whose chains are not part of an entity
+	"""finds all binding sites whose chains are not part of an entity.
+	Takes in set of all filtered binding sites that were not clustered."""
 
 	print("---finding all binding sites whose chains are not part of an entity---")
 	print("note: this may take a while. Set CREATE_NONENTS to False to skip this step.")
@@ -171,11 +170,10 @@ def create_nonents(sites_m):
 	removed = []
 	nonentities = []
 
-	c = 0
-	for bsite in sites_m:
-		c += 1
+	for c, bsite in enumerate(sites_m):
 		if c % 10000 == 0:
 			print(c)
+
 		tokens = bsite.strip().split("_")
 		pdb_id = f"{tokens[0]}.ent"
 		chains = []
@@ -203,7 +201,6 @@ def create_nonents(sites_m):
 									chains += l2.split(', ')
 								if l2[-1] != ',':
 									break
-
 							else:
 								print("NO BREAK -", bsite)
 		except FileNotFoundError as e:

@@ -29,7 +29,7 @@ for p in prots:
                     clusts[p].append(toks)
 
                 else:
-                    raise
+                    raise RuntimeError(f"histogram end separator not found for {p}")
 
                 break
 
