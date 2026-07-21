@@ -32,9 +32,10 @@ def main():
 		with open(f_path) as f:
 			seen = set()
 			for line in f:
-				if not line.startswith("ATOM") or line.startswith("HETATM"):
+				if not (line.startswith("ATOM") or line.startswith("HETATM")):
 					print(f"binding site {f_nam} contains non-ATOM/HETATM records")
 					error["bad_records"].append(f_nam)
+					break
 				elif line.startswith("ATOM"):
 					seen.add((line[CHAIN], line[RES_SEQ]))
 				elif line.startswith("HETATM"):
