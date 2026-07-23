@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# OBSOLETE (superseded by extractentities.py)
+# OBSOLETE (superseded by extractents.py)
 
 shopt -s nullglob
 

@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-INF = "filt/dat/reprs.json"
+INF = "dat/reprs.json"
 
 reprs = json.load(open(INF))
 print(len(reprs))
@@ -18,9 +18,9 @@ ligset = set(ligs)
 # ligand-frequency pairs
 counter = Counter(ligs).most_common()
 print(len(counter), "unique ligands")
-json.dump({c[0]: c[1] for c in counter}, open("filt/dat/ligcounts.json", 'w'))
+json.dump({c[0]: c[1] for c in counter}, open("dat/ligcounts.json", 'w'))
 
-with open("filt/dat/struct/unwanted-ligs.txt") as f:
+with open("dat/struct/unwanted-ligs") as f:
 	bad_ligs = [lig.strip() for lig in f.readlines()]
 
 # print(bad_ligs)

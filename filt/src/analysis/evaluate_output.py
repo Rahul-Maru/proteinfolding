@@ -2,15 +2,15 @@ import json
 import os
 from bio import CHAIN, RES_SEQ
 
-INDIR = "filt/dat/struct/ligand-inclsv-binding-sites/"
-OUTF = "filt/dat/repr_error.txt"
+INDIR = "dat/struct/ligand-inclsv-binding-sites/"
+OUTF = "dat/repr_error.txt"
 
 def main():
 	print(f"---evaluating representative binding sites in {INDIR}---")
 	print(f"total number of b-sites: {len(os.listdir(INDIR))}")
 	print("--------")
 
-	with open("filt/dat/struct/unwanted-ligs") as f:
+	with open("dat/struct/unwanted-ligs") as f:
 		unwanted_ligs = [lig.strip() for lig in f.readlines()]
 	if not unwanted_ligs:
 		raise ValueError("`unwanted-ligs` is empty.")

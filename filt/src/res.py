@@ -3,7 +3,7 @@
 import os
 import re
 
-PDBDIR = "filt/dat/struct/pdb"
+PDBDIR = "dat/struct/pdb"
 
 def get_res(pdb, dir=PDBDIR):
 	"""Extracts the resolution of a given PDB file"""

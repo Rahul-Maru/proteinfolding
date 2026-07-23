@@ -19,7 +19,7 @@ def main():
 	print("––f_bsites.txt––")
 	print(" - filtered list of all binding sites")
 
-	with open("filt/dat/struct/f_bsites.txt") as f:
+	with open("dat/struct/f_bsites.txt") as f:
 		lins = f.readlines()
 		print("number of lines in f_bsites.txt: ", len(lins))
 		f_bsites = {b.strip() for b in lins}
@@ -28,7 +28,7 @@ def main():
 	print("\n––clusters-by-bsite-70.json––")
 	print("- clustered list of filtered binding sites")
 
-	clust = json.load(open("filt/dat/f-clusters-by-bsite-70.json"))
+	clust = json.load(open("dat/f-clusters-by-bsite-70.json"))
 	clust_list = [site for c in clust for site in c]
 	clust_set = set(clust_list)
 
@@ -51,13 +51,13 @@ def main():
 		print(" - list of binding sites whose chains do not belong to a named entity")
 		print("note: this file is created in this script. Set CREATE_NONENTS to True to create it again.")
 
-		with open("filt/dat/nonentities.txt") as f:
+		with open("dat/nonentities.txt") as f:
 			nonentities = set(f.readlines()[0][2:-2].split("', '"))
 			print("number of binding sites not in an entity: ", len(nonentities))
 
 	print("\n––pdbs_missing_sites.txt––")
 	print(" - list of binding sites whose parent PDBs are not in the clusterfile")
-	with open("filt/dat/pdbs_missing_sites.txt") as f:
+	with open("dat/pdbs_missing_sites.txt") as f:
 		unclustered_pdbs_sites = set(f.readlines()[0][2:-2].split("', '"))
 		print("number of such binding sites: ", len(unclustered_pdbs_sites))
 
@@ -86,7 +86,7 @@ def main():
 		enty_n = -1
 		enty_nam = ""
 
-		with open(f"filt/dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
+		with open(f"dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
 			for line in f:
 				# if a SOURCE record is found then we have gone past the relevent section
 				if SOURCE_PATTERN.match(line):
@@ -136,7 +136,7 @@ def main():
 
 	print("\n––clusters-by-entity-70.txt––")
 	print("- original cluster file")
-	CLUSTF = "filt/dat/clusters-by-entity-70.txt"
+	CLUSTF = "dat/clusters-by-entity-70.txt"
 	with open(CLUSTF, "r") as f:
 		lines = f.readlines()
 		# ignore non-PDB entries
@@ -179,7 +179,7 @@ def create_nonents(sites_m):
 		chains = []
 
 		try:
-			with open(f"filt/dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
+			with open(f"dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
 				for line in f:
 					# if a SOURCE record is found then we have gone past the relevent section
 					if SOURCE_PATTERN.match(line):

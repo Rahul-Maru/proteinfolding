@@ -6,6 +6,7 @@
 # SCRIPTS CAN ALSO BE RUN INDIVIDUALLY
 #
 # USAGE:
+#	script must be run from the bio/filt/ directory
 #   . nrsites.sh            run the whole pipeline
 #   . nrsites.sh <step>     start from <step> and run everything after it
 
@@ -26,7 +27,7 @@ timed() {
 
 	name=$1
 	[[ $1 == "python" ]] && name=$2
-	echo "$name done in ${hrs}:${mns}:${scs}"
+	echo "$name done in ${hrs}h, ${mns}m, ${scs}s"
 	echo
 }
 
@@ -44,15 +45,16 @@ move_old() {
 	cd "$root/dat/struct" || return 1
 	local archive="old3/$(date +%Y%m%d-%H%M%S)"
 	mkdir -p "$archive"
-	echo "archiving existing directories to filt/struct/$archive/"
+	echo "archiving existing directories to filt/dat/struct/$archive/"
 	for d in */; do
 		[[ "$d" == old3/ ]] && continue
 		mv "$d" "$archive/"
 	done
+	mv NRsites.tar.gz "$archive/"
 	printf "done\n\n"
 }
 
-clusters() {
+cluster_file_download() {
 	cd "$root/dat" || return 1
 	echo "downloading cluster-file"
 	timed curl -sO https://cdn.rcsb.org/resources/sequence/clusters/clusters-by-entity-70.txt
@@ -69,7 +71,7 @@ mkdirs() {
 pdb() {
 	cd "$root/dat/struct" || return 1
 	echo "downloading pdb via rsync"
-	timed ./rsyncPDB.sh
+	timed "$root/src/rsyncPDB.sh"
 
 	echo "PDB files downloaded via rsync on $(date +%d/%m/%Y)" >> ../../README.md
 }
@@ -77,16 +79,18 @@ pdb() {
 unzip() {
 	cd "$root/dat/struct" || return 1
 	echo "unzipping files"
-	timed ./extractzip.sh
+	timed "$root/src/extractzip.sh"
 }
 
 extract() {
-	cd "$root/dat/struct" || return 1
-	echo "extracting molecular entity numbers into $(pwd)/ents.txt"
-	timed python extractents.py
+	# python runs from filt/; shell + inline data commands run from dat/struct/
+	echo "extracting molecular entity numbers into $root/dat/struct/ents2.txt"
+	cd "$root" || return 1
+	timed python src/extractents.py
 
+	cd "$root/dat/struct" || return 1
 	echo "extracting binding sites into $(pwd)/binding-sites"
-	timed ./bsites.sh
+	timed "$root/src/bsites.sh"
 
 	echo "listing binding sites into $(pwd)/bsites.txt"
 	ls -R binding-sites | grep pdb > bsites.txt
@@ -101,7 +105,7 @@ sortbsites() {
 	fi
 
 	echo "pre-creating subdirectories in $(pwd)/binding-sites/"
-	./mksubdir.sh binding-sites
+	"$root/src/mksubdir.sh" binding-sites
 
 	echo "sorting binding sites with $n parallel workers"
 	split -n "l/$n" bsites.txt sortslice.
@@ -109,7 +113,7 @@ sortbsites() {
 	# wrapper for timing purposes
 	sorting_bsites() {
 		for slice in sortslice.*; do
-			./sortbsites.sh "$slice" &
+			"$root/src/sortbsites.sh" "$slice" &
 		done
 		wait
 	}
@@ -121,51 +125,55 @@ sortbsites() {
 filter() {
 	cd "$root/dat/struct" || return 1
 	echo "creating subdirectories for filtering"
-	./mksubdir.sh filtered-binding-sites
+	"$root/src/mksubdir.sh" filtered-binding-sites
 	printf "done\n\n"
 
 	echo "filtering binding sites"
-	timed python filterbsites.py
+	cd "$root" || return 1
+	timed python src/filterbsites.py
 
+	cd "$root/dat/struct" || return 1
 	ls -R filtered-binding-sites | grep pdb > f_bsites.txt
 }
 
 clusterize() {
-	cd "$root/.." || return 1
-	timed python filt/src/clusterize.py
+	cd "$root" || return 1
+	timed python src/clusterize.py
 }
 
 reprs() {
-	cd "$root/.." || return 1
-	timed python filt/src/choose_reprs.py
+	cd "$root" || return 1
+	timed python src/choose_reprs.py
 }
 
 move_reprs() {
+	echo "converting output .json file ($root/dat/reprs.json)
+		into .txt ($root/dat/struct/cluster_reprs.txt)"
+	cd "$root" || return 1
+	timed python src/reprsjson_to_txt.py
+
 	cd "$root/dat/struct" || return 1
-	echo "converting output .json file ($root/filt/dat/reprs.json)
-		into .txt ($(pwd)/cluster_reprs.txt)"
-
-	timed python reprsjson_to_txt.py
-
 	echo "moving representative binding sites to $(pwd)/representative-binding-sites"
-	timed ./move_reprs.sh
+	timed "$root/src/move_reprs.sh"
 }
 
 move_lig() {
-	cd "$root/dat/struct" || return 1
-	echo "copying ligands into $(pwd)/ligand-inclsv-binding-sites"
-	timed python lig.py
+	echo "copying ligands into $root/dat/struct/ligand-inclsv-binding-sites"
+	cd "$root" || return 1
+	timed python src/lig.py
 }
 
 compress() {
 	cd "$root/dat/struct" || return 1
 	echo "compressing ligand-inclsv-binding-sites/"
-	timed tar czf ligand-inclsv-binding-sites.tar.gz ligand-inclsv-binding-sites
+	timed tar czf NRsites.tar.gz ligand-inclsv-binding-sites
+	mv NRsites.tar.gz ../../out/
+	printf "\nNRsites COMPLETE. THE FINAL ARCHIVE CAN BE FOUND AT filt/out/NRsites.tar.gz. THE UNARCHIVED FOLDER CAN BE FOUND AT filt/dat/struct/ligand-inclsv-binding-sites. TO VERIFY OUTPUT, RUN THE SCRIPTS IN filt/src/analysis, BEARING IN MIND THAT SOME ARE OBSOLETE.\n"
 }
 
 # driver loop -- calls all the functions
 
-steps=(move_old clusters mkdirs pdb unzip extract sortbsites filter clusterize reprs move_reprs move_lig compress)
+steps=(move_old cluster_file_download mkdirs pdb unzip extract sortbsites filter clusterize reprs move_reprs move_lig compress)
 
 start="${1:-${steps[0]}}"
 
@@ -182,7 +190,4 @@ for step in "${steps[@]}"; do
 done
 
 cd "$root" || return 1
-
-
-#TODO fix root dir of src python files
 

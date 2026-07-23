@@ -5,8 +5,8 @@ import os
 import re
 
 
-INDIR = "pdb"
-OUTF = "ents2.txt"
+INDIR = "dat/struct/pdb"
+OUTF = "dat/struct/ents2.txt"
 debug = ""
 
 SOURCE_PATTERN = re.compile(r"SOURCE")
@@ -54,7 +54,7 @@ for d in os.listdir(INDIR):
 
 if not debug:
 	if failures:
-		with open("failedents.txt", "w") as f:
+		with open("dat/struct/failedents.txt", "w") as f:
 			f.write("\n".join(failures))
 
 	with open(OUTF, "w") as f:

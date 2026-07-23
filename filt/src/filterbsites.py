@@ -16,13 +16,13 @@ def count_aa_residues(lines):
 
 
 def main():
-	if os.getcwd().split("/")[-1] != "struct":
-		print("Error: must be run from the struct/ directory")
+	if os.getcwd().split("/")[-1] != "filt":
+		print("Error: must be run from the filt/ directory")
 		exit(1)
 
-	bsites_base = 'binding-sites'
-	out_base = 'filtered-binding-sites'
-	unwanted_ligs = 'unwanted-ligs'
+	bsites_base = 'dat/struct/binding-sites'
+	out_base = 'dat/struct/filtered-binding-sites'
+	unwanted_ligs = 'dat/struct/unwanted-ligs'
 
 	with open(unwanted_ligs) as f:
 		unwanted = set(line.strip() for line in f)

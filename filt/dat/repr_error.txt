@@ -1,0 +1,1 @@
+{"bad_lig": [], "bad_records": [], "too_few_residues": []}

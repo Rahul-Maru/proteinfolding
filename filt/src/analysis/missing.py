@@ -3,7 +3,7 @@
 
 import os
 
-indir = "ligand-inclsv-binding-sites"
+indir = "dat/struct/ligand-inclsv-binding-sites"
 
 nf = []
 
@@ -25,6 +25,6 @@ for f in os.listdir(indir):
 			nf.append(f)
 			print("lig not found: ", f)
 
-with open("wrong_ligs.txt", 'w') as f2:
+with open("dat/struct/wrong_ligs.txt", 'w') as f2:
 	f2.write('\n'.join(nf))
 	

@@ -20,7 +20,7 @@ def main():
 	print("––f_bsites.txt––")
 	print(" - filtered list of all binding sites")
 
-	with open("filt/dat/struct/f_bsites.txt") as f:
+	with open("dat/struct/f_bsites.txt") as f:
 		lins = f.readlines()
 		f_bsites = {b.strip() for b in lins}
 		print("# of lines w/o whitespace ( = number of binding sites): ", len(f_bsites))
@@ -28,7 +28,7 @@ def main():
 	print("\n––clusters-by-bsite-70.json––")
 	print("- clustered list of filtered binding sites")
 
-	clust = json.load(open("filt/dat/f-clusters-by-bsite-70.json"))
+	clust = json.load(open("dat/f-clusters-by-bsite-70.json"))
 	clust_set = {site for c in clust for site in c}
 	print("number of clustered sites: ", len(clust_set))
 
@@ -50,7 +50,7 @@ def main():
 		print(" - list of binding sites whose chains do not belong to a named entity")
 		print("note: this file is created in this script. Set CREATE_NONENTS to True to create it again.")
 
-		with open("filt/dat/nonentities.txt") as f:
+		with open("dat/nonentities.txt") as f:
 			nonentities = set(f.readlines()[0][2:-2].split("', '"))
 			print("number of binding sites not in an entity: ", len(nonentities))
 
@@ -68,7 +68,7 @@ def main():
 		enty_n = -1
 		enty_nam = ""
 
-		with open(f"filt/dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
+		with open(f"dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
 			for line in f:
 				if SOURCE_PATTERN.match(line):
 					print("FAILED - ", bsite, chains)
@@ -110,10 +110,10 @@ def main():
 
 	print("number of entities represented by ^: ", len(enty_names))
 	enties, names = map(list, zip(*enty_names))
-	fwrite("entities_missing_names.txt", '\n'.join(names), "list of names of aforementioned entities")
+	fwrite("entities_missing_names.txt", '\n'.join(f"{e}: {n}" for e, n in enty_names), "list of names of aforementioned entities")
 
 
-	CLUSTF = "filt/dat/clusters-by-entity-70.txt"
+	CLUSTF = "dat/clusters-by-entity-70.txt"
 	with open(CLUSTF, "r") as f:
 		lines = f.readlines()
 		# ignore non-PDB entries
@@ -159,7 +159,7 @@ def create_nonents(sites_m):
 		chains = []
 
 		try:
-			with open(f"filt/dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
+			with open(f"dat/struct/pdb/{pdb_id[4:6]}/{pdb_id}", "r") as f:
 				for line in f:
 					# if a SOURCE record is found then we have gone past the relevent section
 					if SOURCE_PATTERN.match(line):

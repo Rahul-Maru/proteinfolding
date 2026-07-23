@@ -2,20 +2,20 @@
 Compares old binding sites to post-rsync binding sites"""
 
 # full set
-with open("old/bsites_old.txt") as f:
+with open("dat/struct/old/bsites_old.txt") as f:
 	lins = f.readlines()
 	bsites_old = {b.strip() for b in lins}
 
-with open("bsites.txt") as f:
+with open("dat/struct/bsites.txt") as f:
 	lins = f.readlines()
 	bsites = {b.strip() for b in lins}
 
 # after filtering
-with open("old/f_bsites_old.txt") as f:
+with open("dat/struct/old/f_bsites_old.txt") as f:
     lins = f.readlines()
     fbsites_old = {b.strip() for b in lins}
 
-with open("f_bsites.txt") as f:
+with open("dat/struct/f_bsites.txt") as f:
     lins = f.readlines()
     fbsites = {b.strip() for b in lins}
 

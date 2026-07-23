@@ -8,9 +8,9 @@ from res import get_res
 from bio import fwrite
 
 
-INF = "filt/dat/f-clusters-by-bsite-70.json"
-OUTF = "filt/dat/reprs.json"
-NORESF = "missing_resolution.txt" # filt/dat/_
+INF = "dat/f-clusters-by-bsite-70.json"
+OUTF = "dat/reprs.json"
+NORESF = "dat/missing_resolution.txt"
 
 def choose_reprs():
 	clusters = json.load(open(INF))

@@ -7,8 +7,8 @@ import os
 import shutil
 
 def main():
-	INDIR = "representative-binding-sites"
-	OUTDIR = "ligand-inclsv-binding-sites"
+	INDIR = "dat/struct/representative-binding-sites"
+	OUTDIR = "dat/struct/ligand-inclsv-binding-sites"
 
 	# make output directory if it doesn't exist
 	if not os.path.exists(OUTDIR):
@@ -33,7 +33,7 @@ def main():
 		mid = id[4:6]
 
 		found = False
-		with open(f"pdb/{mid}/{id}") as fl:
+		with open(f"dat/struct/pdb/{mid}/{id}") as fl:
 			for l in fl:
 				if l[:6] == "HETATM":
 					# parses ligand info from record
@@ -62,7 +62,7 @@ def main():
 
 	if nf:
 		print(len(nf))
-		with open("nf_lig.txt", 'w') as f:
+		with open("dat/struct/nf_lig.txt", 'w') as f:
 			f.write("\n".join(nf))
 
 if __name__ == "__main__":

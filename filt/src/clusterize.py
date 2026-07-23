@@ -9,13 +9,13 @@ import time
 # NF_FILE = 'test_hsm/notfound'
 # OUT_FILE = "test_hsm/clusters-by-bsite-70.json"
 
-SITEF = "filt/dat/struct/f_bsites.txt"
+SITEF = "dat/struct/f_bsites.txt"
 
-CLUSTF = "filt/dat/clusters-by-entity-70.txt"
-PDBDIR = "filt/dat/struct/pdb"
+CLUSTF = "dat/clusters-by-entity-70.txt"
+PDBDIR = "dat/struct/pdb"
 
-NF_FILE = "filt/dat/f-notfound.txt"
-OUT_FILE = "filt/dat/f-clusters-by-bsite-70.json"
+NF_FILE = "dat/f-notfound.txt"
+OUT_FILE = "dat/f-clusters-by-bsite-70.json"
 
 bsites = defaultdict(list)
 # pdbs = {}

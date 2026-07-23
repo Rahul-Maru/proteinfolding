@@ -5,7 +5,7 @@
 #   takes in as input one of the outputs of 'split'
 #	pass 'sd' as second input to shut down after all bsites are moved
 
-# next step: filterbsites.sh
+# next step: filterbsites.py
 
 inf="$1"
 indir="binding-sites"

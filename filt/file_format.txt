@@ -1,8 +1,8 @@
 ———guide to the nomenclature and directory structures used in this project——— 
 
-files in filt/dat/[pdb, binding-sites, filtered-binding-sites] are sorted into sub-directories 
+files in filt/dat/struct/[pdb, binding-sites, filtered-binding-sites] are sorted into sub-directories
 by their PDB ID's middle 2 characters.
-eg. pdbxaby.ent would be found at filt/dat/pdb/ab/pdbxaby.ent
+eg. pdbxaby.ent would be found at filt/dat/struct/pdb/ab/pdbxaby.ent
 
 binding site (filt/dat/struct/(filtered-)binding-sites/ab/):
 pdbxaby_C_****_Lig.pdb
