@@ -15,7 +15,6 @@ shopt -s nullglob
 root=$(pwd)
 n=4   # number of parallel workers; raise on a bigger machine
 
-
 timed() {
 	t0=$SECONDS
 	"$@"
@@ -30,16 +29,6 @@ timed() {
 	echo "$name done in ${hrs}h, ${mns}m, ${scs}s"
 	echo
 }
-
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-	echo "script must be run via: . nrsites.sh"
-	exit 1
-fi
-
-if [[ $(basename "$root") != "filt" ]]; then
-	echo "script must be run from the bio/filt/ directory"
-	return 1
-fi
 
 move_old() {
 	cd "$root/dat/struct" || return 1
@@ -83,7 +72,6 @@ unzip() {
 }
 
 extract() {
-	# python runs from filt/; shell + inline data commands run from dat/struct/
 	echo "extracting molecular entity numbers into $root/dat/struct/ents2.txt"
 	cd "$root" || return 1
 	timed python src/extractents.py
@@ -167,9 +155,23 @@ compress() {
 	cd "$root/dat/struct" || return 1
 	echo "compressing ligand-inclsv-binding-sites/"
 	timed tar czf NRsites.tar.gz ligand-inclsv-binding-sites
+	mkdir -p "$root/out"
 	mv NRsites.tar.gz ../../out/
 	printf "\nNRsites COMPLETE. THE FINAL ARCHIVE CAN BE FOUND AT filt/out/NRsites.tar.gz. THE UNARCHIVED FOLDER CAN BE FOUND AT filt/dat/struct/ligand-inclsv-binding-sites. TO VERIFY OUTPUT, RUN THE SCRIPTS IN filt/src/analysis, BEARING IN MIND THAT SOME ARE OBSOLETE.\n"
 }
+
+# input validation
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+	echo "script must be run via: . nrsites.sh  NOT:  ./nrsites.sh"
+	exit 1
+fi
+
+if [[ ! -d "$root/dat/struct" ]]; then
+	echo "dat/struct directory not found"
+	mkdir -p "$root/dat/struct"
+fi
+
 
 # driver loop -- calls all the functions
 

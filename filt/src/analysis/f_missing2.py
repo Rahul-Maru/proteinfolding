@@ -4,8 +4,11 @@ not in the final clustered list of binding sites.
 """
 
 import json
+import os
 import re
-from bio import fwrite
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))  # filt/src, for helper
+from helper import fwrite
 
 
 CREATE_NONENTS = True

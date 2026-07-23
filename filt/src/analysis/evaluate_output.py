@@ -1,6 +1,8 @@
 import json
 import os
-from bio import CHAIN, RES_SEQ
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))  # filt/src, for helper
+from helper import CHAIN, RES_SEQ
 
 INDIR = "dat/struct/ligand-inclsv-binding-sites/"
 OUTF = "dat/repr_error.txt"

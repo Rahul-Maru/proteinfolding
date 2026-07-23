@@ -1,5 +1,5 @@
 import os
-from bio import RESN, AA_CODES_3L, CHAIN, RES_SEQ
+from helper import RESN, AA_CODES_3L, CHAIN, RES_SEQ
 
 def filter_site(lines):
 	return [l for l in lines if l.startswith("ATOM") and l[RESN].strip() in AA_CODES_3L]

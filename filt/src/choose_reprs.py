@@ -5,12 +5,12 @@ stores binding sites with no resolution in filt/dat/missing_resolution.txt
 
 import json
 from res import get_res
-from bio import fwrite
+from helper import fwrite
 
 
 INF = "dat/f-clusters-by-bsite-70.json"
 OUTF = "dat/reprs.json"
-NORESF = "dat/missing_resolution.txt"
+NORESF = "missing_resolution.txt"
 
 def choose_reprs():
 	clusters = json.load(open(INF))
